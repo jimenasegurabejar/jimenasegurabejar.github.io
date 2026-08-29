@@ -5,49 +5,426 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jimena Segura</title>
 <meta name="description" content="Jimena Segura — ML researcher. Athenei Biosciences, Imasion.org, and AtheneioLab.">
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF1F3;
+    --bg-deep: #F6E1E7;
+    --ink: #3B2430;
+    --ink-soft: #8C6B78;
+    --rose: #EBA9C0;
+    --rose-deep: #C06A88;
+    --line: #EACBD4;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.7;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  h1,h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    color:var(--ink);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:48px;
+    right:56px;
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    text-align:right;
+  }
+  nav a{
+    font-size:12.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    transition:color .25s ease;
+  }
+  nav a:hover{ color:var(--rose-deep); }
+
+  /* ---------- HERO ---------- */
+  #home{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+
+  .hero-art-wrap{
+    position:absolute;
+    top:0;
+    right:-4%;
+    width:62%;
+    max-width:820px;
+    height:100%;
+  }
+
+  .hero-art{
+    width:100%;
+    opacity:0.92;
+  }
+
+  .cell-img{
+    position:absolute;
+    left:12%;
+    top:54%;
+    width:26%;
+    min-width:110px;
+    z-index:1;
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    padding:0 40px 90px;
+    max-width:640px;
+  }
+
+  .hero-content h1{
+    font-size:clamp(38px, 5.5vw, 58px);
+    margin-bottom:22px;
+    letter-spacing:-0.01em;
+  }
+
+  .affiliations{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+    letter-spacing:0.02em;
+  }
+  .affiliations span{ margin:0 10px; color:var(--rose); }
+  .affiliations span:first-child{ margin-left:0; }
+
+  .contact-line{
+    font-size:14px;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .contact-line a{
+    border-bottom:1px solid var(--rose);
+    padding-bottom:1px;
+  }
+  .contact-line a:hover{ color:var(--rose-deep); border-color:var(--rose-deep); }
+  .dash{ color:var(--rose); }
+
+  /* ---------- SECTIONS ---------- */
+  section.page{
+    padding:120px 0;
+    border-top:1px solid var(--line);
+    position:relative;
+  }
+  section.page:nth-of-type(even){ background:var(--bg-deep); }
+
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+    margin-bottom:18px;
+    display:block;
+  }
+
+  section.page h2{
+    font-size:clamp(28px, 4vw, 40px);
+    margin-bottom:30px;
+  }
+
+  section.page .body-text{
+    max-width:640px;
+    font-size:17px;
+    color:var(--ink);
+  }
+  section.page .body-text p + p{ margin-top:16px; }
+
+  /* ---------- ITEM LISTS ---------- */
+  .entries{
+    max-width:720px;
+    display:flex;
+    flex-direction:column;
+    gap:36px;
+  }
+  .entry{
+    border-left:1.5px solid var(--rose);
+    padding-left:22px;
+  }
+  .entry .tag{
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+    display:block;
+    margin-bottom:6px;
+  }
+  .entry h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px;
+    font-weight:500;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+  .entry p{
+    font-size:15.5px;
+    color:var(--ink-soft);
+  }
+  .entry a{
+    border-bottom:1px solid var(--rose);
+  }
+  .entry a:hover{ color:var(--rose-deep); border-color:var(--rose-deep); }
+
+  /* ---------- CONTACT SECTION ---------- */
+  #contact .body-text a{
+    font-size:19px;
+    font-family:'Cormorant Garamond', serif;
+    border-bottom:1px solid var(--rose);
+  }
+  #contact .body-text a:hover{ color:var(--rose-deep); border-color:var(--rose-deep); }
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:860px){
+    nav{
+      position:static;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:16px;
+      padding:24px 20px;
+      text-align:center;
+    }
+    #home{ min-height:auto; padding-top:20px; }
+    .hero-art-wrap{
+      position:relative;
+      width:100%;
+      right:0;
+      top:0;
+      height:auto;
+      margin-bottom:-20px;
+    }
+    .hero-content{ padding:20px 24px 60px; max-width:100%; }
+    section.page{ padding:70px 0; }
+    .wrap{ padding:0 24px; }
+  }
+</style>
 </head>
 <body>
 
 <nav>
-  <div class="wrap">
-    <a class="site-name" href="index.html">Jimena Segura</a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="featured.html">Featured</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#news">News</a>
+  <a href="#featured">Featured</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#cortexdreams">Cortex Dreams</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<div class="wrap">
+<section id="home">
+  <div class="hero-art-wrap">
+  <svg class="hero-art" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
 
-  <h1>Jimena Segura</h1>
-  <p class="subtitle">ML researcher — optimal transport theory & machine learning</p>
+    <!-- neuron: soma + branching dendrites -->
+    <g fill="none" stroke="#C06A88" stroke-width="1.4" opacity="0.75" stroke-linecap="round">
+      <path d="M470 260 C 430 210, 390 190, 330 170"/>
+      <path d="M330 170 C 300 158, 270 150, 235 156"/>
+      <path d="M330 170 C 310 190, 300 210, 305 235"/>
+      <path d="M470 260 C 500 230, 520 205, 515 165"/>
+      <path d="M470 260 C 505 265, 535 280, 555 310"/>
+      <path d="M470 260 C 445 300, 440 335, 460 370"/>
+      <path d="M470 260 C 420 275, 385 300, 370 335"/>
+    </g>
+    <circle cx="470" cy="260" r="26" fill="#F3D3DE" stroke="#C06A88" stroke-width="1.4" opacity="0.9"/>
 
-  <section>
-    <h2>About 🩷</h2>
-    <p>I work at the intersection of <strong>optimal transport theory</strong> and machine learning. My research thesis: Wasserstein geometry is the correct replacement for Euclidean geometry in probability spaces — a conclusion I arrived at independently through a biological problem, before ever encountering the formal optimal transport literature.</p>
-  </section>
+    <!-- axon trailing into a long geodesic -->
+    <path d="M460 370 C 430 430, 400 480, 380 545 C 365 590, 360 630, 380 670"
+          fill="none" stroke="#C06A88" stroke-width="1.4" opacity="0.6" stroke-linecap="round"/>
 
-  <section>
-    <h2>Research 🧠</h2>
-    <p>From creating <strong>theoretical frameworks</strong> for ASD human brain organoids to AI for cellular agriculture, through <a href="https://atheneibiosciences.com/"><strong>Athenei Biosciences</strong></a>.</p>
-  </section>
+    <!-- mathematical curves / geodesics between distributions -->
+    <g fill="none" stroke="#8C6B78" stroke-width="0.9" opacity="0.55">
+      <path d="M120 120 C 260 180, 320 260, 300 400"/>
+      <path d="M700 120 C 600 200, 560 300, 560 420"/>
+      <path d="M120 700 C 240 620, 300 560, 330 470"/>
+      <path d="M700 700 C 600 640, 540 560, 500 480"/>
+      <path d="M60 380 C 220 340, 380 340, 560 380" stroke-dasharray="2 6"/>
+    </g>
 
-  <section>
-    <h2>Elsewhere</h2>
-    <p>See <a href="portfolio.html">portfolio</a> for papers and projects, <a href="news.html">news</a> for recent updates, or <a href="contact.html">get in touch</a>.</p>
-  </section>
+    <!-- small scattered nodes, like sample points from a distribution -->
+    <g fill="#D98CA6" opacity="0.7">
+      <circle cx="140" cy="200" r="3"/>
+      <circle cx="180" cy="250" r="2.5"/>
+      <circle cx="600" cy="180" r="3"/>
+      <circle cx="650" cy="240" r="2.5"/>
+      <circle cx="600" cy="600" r="3"/>
+      <circle cx="250" cy="700" r="2.5"/>
+      <circle cx="400" cy="620" r="2.5"/>
+      <circle cx="500 " cy="150" r="2.5"/>
+    </g>
+  </svg>
 
-  <footer>
-    © 2026 Jimena Segura
-  </footer>
+  <img class="cell-img" src="flower-cells.png" alt="">
+  </div>
 
-</div>
+  <div class="hero-content">
+    <h1>Jimena Segura</h1>
+    <p class="affiliations">AtheneioLab <span>/</span> Athenei Biosciences <span>/</span> Imasion.org</p>
+    <p class="contact-line">
+      <a href="mailto:jimenavictoriasegurabejar@gmail.com">jimenavictoriasegurabejar@gmail.com</a>
+      <span class="dash">—</span>
+      <a href="https://atheneibiosciences.com/">Athenei Biosciences</a>
+      <a href="https://imasion.org/">Imasion.org</a>
+    </p>
+  </div>
+</section>
+
+<section id="about" class="page">
+  <div class="wrap">
+    <span class="eyebrow">About</span>
+    <h2>A geometry found, not taught</h2>
+    <div class="body-text">
+      <p>I work at the intersection of <strong>optimal transport theory</strong> and machine learning. My path into it didn't start in a textbook — it started with cell trajectory inference for cultivated meat, modelling proliferating cell populations where mass isn't conserved.</p>
+      <p>What I derived to fix that turned out to be <strong>Wasserstein geometry</strong>, arrived at independently before ever reading the formal optimal transport literature. My research thesis: Wasserstein geometry is the correct replacement for Euclidean geometry in probability spaces.</p>
+    </div>
+  </div>
+</section>
+
+<section id="news" class="page">
+  <div class="wrap">
+    <span class="eyebrow">News</span>
+    <h2>Recent updates</h2>
+    <div class="entries">
+      <div class="entry">
+        <span class="tag">2025</span>
+        <h3>Athenei Biosciences Inc. founded</h3>
+        <p>Founded Athenei Biosciences, alongside ten foundational model paper preprints.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">2024</span>
+        <h3>ASD human brain organoid research</h3>
+        <p>Theoretical research on ASD human brain organoids, resulting in two preprints.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">2023</span>
+        <h3>Joined From Fauna Fellowship</h3>
+        <p>Became a fellow of the From Fauna Fellowship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="featured" class="page">
+  <div class="wrap">
+    <span class="eyebrow">Featured</span>
+    <h2>Highlighted work</h2>
+    <div class="entries">
+      <div class="entry">
+        <span class="tag">Venture</span>
+        <h3><a href="https://atheneibiosciences.com/">Athenei Biosciences</a></h3>
+        <p>Biological superintelligence for cellular agriculture, built on the AtheneioLab programme's Wasserstein-geometric foundations.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">Research programme</span>
+        <h3>AtheneioLab</h3>
+        <p>A programme of theoretical foundational-model papers unified by one geometric thesis: Wasserstein geometry as the correct replacement for Euclidean geometry in probability spaces.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">Non-profit</span>
+        <h3><a href="https://imasion.org/">Imasion.org</a></h3>
+        <p>My non-profit organisation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="page">
+  <div class="wrap">
+    <span class="eyebrow">Portfolio</span>
+    <h2>Papers & projects</h2>
+    <div class="entries">
+      <div class="entry">
+        <span class="tag">Paper</span>
+        <h3>WassersteinRL</h3>
+        <p>A Geometric Theory of Distributed Policy Optimisation via Schrödinger Bridges. Anchor paper of the AtheneioLab programme.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">Paper</span>
+        <h3>WassersteinEval</h3>
+        <p>Generative model evaluation via Wasserstein geometry — a multi-scale Sinkhorn divergence framework with a completeness theorem.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">Paper</span>
+        <h3>ProlifOT</h3>
+        <p>Cellular agriculture framed as an optimal transport problem, solvable via Wasserstein geometry and Schrödinger bridges.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">Paper</span>
+        <h3>WFRFlows</h3>
+        <p>Flow matching under the Wasserstein–Fisher–Rao geometry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cortexdreams" class="page">
+  <div class="wrap">
+    <span class="eyebrow">Cortex Dreams</span>
+    <h2>Research notes & writing</h2>
+    <div class="entries">
+      <div class="entry">
+        <span class="tag">Newsletter</span>
+        <h3>CORTEX DREAMS</h3>
+        <p>My Substack newsletter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="page">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Get in touch</h2>
+    <div class="body-text">
+      <p><a href="mailto:jimenavictoriasegurabejar@gmail.com">jimenavictoriasegurabejar@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Jimena Segura
+</footer>
+
 </body>
 </html>
