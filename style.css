@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jimena Segura</title>
+<meta name="description" content="Jimena Segura — ML researcher. Athenei Biosciences, Imasion.org, and AtheneioLab.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<nav>
+  <div class="wrap">
+    <a class="site-name" href="index.html">Jimena Segura</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="featured.html">Featured</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <h1>Jimena Segura</h1>
+  <p class="subtitle">ML researcher — optimal transport theory & machine learning</p>
+
+  <section>
+    <h2>About 🩷</h2>
+    <p>I work at the intersection of <strong>optimal transport theory</strong> and machine learning. My research thesis: Wasserstein geometry is the correct replacement for Euclidean geometry in probability spaces — a conclusion I arrived at independently through a biological problem, before ever encountering the formal optimal transport literature.</p>
+  </section>
+
+  <section>
+    <h2>Research 🧠</h2>
+    <p>From creating <strong>theoretical frameworks</strong> for ASD human brain organoids to AI for cellular agriculture, through <a href="https://atheneibiosciences.com/"><strong>Athenei Biosciences</strong></a>.</p>
+  </section>
+
+  <section>
+    <h2>Elsewhere</h2>
+    <p>See <a href="portfolio.html">portfolio</a> for papers and projects, <a href="news.html">news</a> for recent updates, or <a href="contact.html">get in touch</a>.</p>
+  </section>
+
+  <footer>
+    © 2026 Jimena Segura
+  </footer>
+
+</div>
+</body>
+</html>
