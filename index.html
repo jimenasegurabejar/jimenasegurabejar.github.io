@@ -7,7 +7,7 @@
 <meta name="description" content="Jimena Segura — ML researcher. Athenei Biosciences, Imasion.org, and AtheneioLab.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FBF1F3;
@@ -40,7 +40,7 @@
 
   h1,h2{
     font-family:'Cormorant Garamond', serif;
-    font-weight:400;
+    font-weight:700;
     color:var(--ink);
   }
 
@@ -96,6 +96,12 @@
     z-index:1;
   }
 
+  .mini-flower{
+    position:absolute;
+    z-index:3;
+    pointer-events:none;
+  }
+
   .hero-content{
     position:relative;
     z-index:2;
@@ -104,7 +110,7 @@
   }
 
   .hero-content h1{
-    font-size:clamp(38px, 5.5vw, 58px);
+    font-size:clamp(48px, 7vw, 78px);
     margin-bottom:22px;
     letter-spacing:-0.01em;
   }
@@ -151,7 +157,7 @@
   }
 
   section.page h2{
-    font-size:clamp(28px, 4vw, 40px);
+    font-size:clamp(34px, 5vw, 50px);
     margin-bottom:30px;
   }
 
@@ -183,8 +189,8 @@
   }
   .entry h3{
     font-family:'Cormorant Garamond', serif;
-    font-size:22px;
-    font-weight:500;
+    font-size:26px;
+    font-weight:700;
     margin-bottom:8px;
     color:var(--ink);
   }
@@ -196,6 +202,75 @@
     border-bottom:1px solid var(--rose);
   }
   .entry a:hover{ color:var(--rose-deep); border-color:var(--rose-deep); }
+
+  /* ---------- EXPANDABLE ENTRY (details/summary, no JS) ---------- */
+  .entry-details summary{
+    cursor:pointer;
+    list-style:none;
+  }
+  .entry-details summary::-webkit-details-marker{ display:none; }
+  .entry-details summary::marker{ content:""; }
+  .entry-details summary .tag{
+    display:inline-block;
+  }
+  .entry-details summary .tag::after{
+    content:"+";
+    margin-left:8px;
+    color:var(--rose-deep);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+  }
+  .entry-details[open] summary .tag::after{
+    content:"–";
+  }
+  .entry-details summary h3{
+    display:inline;
+  }
+  .entry-details p{
+    margin-top:8px;
+  }
+  .detail-link{
+    display:inline-block;
+    margin-top:12px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--rose-deep);
+    border-bottom:1px solid var(--rose);
+  }
+  .detail-link:hover{ color:var(--ink); border-color:var(--ink); }
+
+  .work-links{
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px 16px;
+  }
+  .work-links .work-label{
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .work-links .detail-link{ margin-top:0; }
+
+  .see-more-btn{
+    display:inline-block;
+    margin-top:36px;
+    padding:12px 26px;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    border:1.5px solid var(--rose-deep);
+    border-radius:999px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .see-more-btn:hover{
+    background:var(--rose-deep);
+    color:#fff;
+  }
 
   /* ---------- CONTACT SECTION ---------- */
   #contact .body-text a{
@@ -214,6 +289,26 @@
     color:var(--ink-soft);
     border-top:1px solid var(--line);
   }
+
+  .footer-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    margin-bottom:14px;
+  }
+  .footer-links a{
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--rose);
+    padding-bottom:2px;
+    letter-spacing:0.1em;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .footer-links a:hover{
+    color:var(--rose-deep);
+    border-color:var(--rose-deep);
+  }
+  .footer-links .dash{ color:var(--rose); text-transform:none; letter-spacing:0; }
 
   /* ---------- MOBILE ---------- */
   @media (max-width:860px){
@@ -249,7 +344,6 @@
   <a href="#research">Research & Projects</a>
   <a href="#highlighted">Highlighted Work</a>
   <a href="#featuredin">Featured In</a>
-  <a href="#contact">Get in Touch</a>
 </nav>
 
 <section id="home">
@@ -298,6 +392,11 @@
   </div>
 
   <div class="hero-content">
+    <img class="mini-flower" src="flower-cells.png" alt="" style="width:38px; left:-30px; top:-24px; transform:rotate(-8deg);">
+    <img class="mini-flower" src="flower-cells.png" alt="" style="width:26px; left:120px; top:-38px; transform:rotate(14deg);">
+    <img class="mini-flower" src="flower-cells.png" alt="" style="width:44px; left:260px; top:-14px; transform:rotate(-4deg);">
+    <img class="mini-flower" src="flower-cells.png" alt="" style="width:22px; left:20px; top:60px; transform:rotate(20deg); opacity:0.85;">
+    <img class="mini-flower" src="flower-cells.png" alt="" style="width:30px; right:-16px; top:20px; transform:rotate(-16deg);">
     <h1>Jimena Segura</h1>
   </div>
 </section>
@@ -349,6 +448,7 @@
         <p>My Substack newsletter — research notes and writing.</p>
       </div>
     </div>
+    <a class="see-more-btn" href="https://jimenasegurabejar.github.io/portfolio">See 14 Projects →</a>
   </div>
 </section>
 
@@ -362,14 +462,25 @@
         <h3><a href="https://atheneibiosciences.com/">Athenei Biosciences</a></h3>
         <p>Biological superintelligence for cellular agriculture, built on the AtheneioLab programme's Wasserstein-geometric foundations. Founded 2025, alongside ten foundational model paper preprints.</p>
       </div>
-      <div class="entry">
-        <span class="tag">Non-profit</span>
-        <h3><a href="https://imasion.org/">Imasion.org</a></h3>
-        <p>My non-profit organisation.</p>
-      </div>
+      <details class="entry entry-details">
+        <summary>
+          <span class="tag">Non-profit</span>
+          <h3>Imasion</h3>
+        </summary>
+        <p>At Imasion (imasion.org) we are working to impact the 2.33 billion children in the planet Earth.</p>
+        <div class="work-links">
+          <span class="work-label">Work:</span>
+          <a class="detail-link" href="https://imasion.org/" target="_blank" rel="noopener">Imasion</a>
+          <a class="detail-link" href="https://imasionkids.org/" target="_blank" rel="noopener">Imasion Kids</a>
+          <a class="detail-link" href="https://imasionteachers.org/" target="_blank" rel="noopener">Imasion Teachers</a>
+          <a class="detail-link" href="https://imasion.ai/" target="_blank" rel="noopener">Imasion.ai</a>
+          <a class="detail-link" href="https://www.instagram.com/imasionorg/" target="_blank" rel="noopener">Instagram: Imasion</a>
+          <a class="detail-link" href="https://www.instagram.com/imasionorg/" target="_blank" rel="noopener">Instagram: Imasion Kids</a>
+        </div>
+      </details>
       <div class="entry">
         <span class="tag">2024</span>
-        <h3>ASD human brain organoid research</h3>
+        <h3>Neuroscience of ASD</h3>
         <p>Theoretical research on ASD human brain organoids, resulting in two preprints.</p>
       </div>
     </div>
@@ -390,18 +501,13 @@
   </div>
 </section>
 
-<section id="contact" class="page">
-  <div class="wrap">
-    <span class="eyebrow">Get in Touch</span>
-    <h2>Get in touch</h2>
-    <div class="body-text">
-      <p><a href="mailto:jimenavictoriasegurabejar@gmail.com">jimenavictoriasegurabejar@gmail.com</a></p>
-    </div>
-  </div>
-</section>
-
 <footer>
-  © 2026 Jimena Segura
+  <div class="footer-links">
+    <a href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener">GitHub</a>
+    <span class="dash">—</span>
+    <a href="https://www.linkedin.com/in/jimena-segura-bejar/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  © Jimena Segura. All Rights Reserved.
 </footer>
 
 </body>
