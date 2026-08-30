@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jimena Segura</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="Jimena Segura — ML researcher. Athenei Biosciences, Imasion.org, and AtheneioLab.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,13 +48,16 @@
   /* ---------- NAV ---------- */
   nav{
     position:fixed;
-    top:48px;
-    right:56px;
+    top:36px;
+    left:50%;
+    transform:translateX(-50%);
     z-index:50;
     display:flex;
-    flex-direction:column;
-    gap:22px;
-    text-align:right;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:32px;
+    text-align:center;
   }
   nav a{
     font-family:'Cormorant Garamond', serif;
@@ -69,7 +73,7 @@
   /* ---------- HERO ---------- */
   #home{
     min-height:100vh;
-    padding-top:340px;
+    padding-top:240px;
     position:relative;
     display:flex;
     align-items:flex-end;
