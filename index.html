@@ -97,12 +97,14 @@
 
   .cell-img{
     position:absolute;
-    left:12%;
-    top:54%;
-    width:26%;
-    min-width:110px;
     z-index:1;
+    pointer-events:none;
   }
+  .cell-img-1{ left:8%; top:20%; width:9%; min-width:36px; }
+  .cell-img-2{ left:30%; top:8%; width:6%; min-width:26px; opacity:0.85; }
+  .cell-img-3{ left:55%; top:62%; width:11%; min-width:44px; }
+  .cell-img-4{ left:14%; top:60%; width:7%; min-width:30px; opacity:0.9; }
+  .cell-img-5{ left:40%; top:78%; width:8%; min-width:32px; opacity:0.8; }
 
   .mini-flower{
     position:absolute;
@@ -437,15 +439,6 @@
     <path d="M460 370 C 430 430, 400 480, 380 545 C 365 590, 360 630, 380 670"
           fill="none" stroke="#D67A98" stroke-width="1.4" opacity="0.6" stroke-linecap="round"/>
 
-    <!-- mathematical curves / geodesics between distributions -->
-    <g fill="none" stroke="#8B8790" stroke-width="0.9" opacity="0.55">
-      <path d="M120 120 C 260 180, 320 260, 300 400"/>
-      <path d="M700 120 C 600 200, 560 300, 560 420"/>
-      <path d="M120 700 C 240 620, 300 560, 330 470"/>
-      <path d="M700 700 C 600 640, 540 560, 500 480"/>
-      <path d="M60 380 C 220 340, 380 340, 560 380" stroke-dasharray="2 6"/>
-    </g>
-
     <!-- small scattered nodes, like sample points from a distribution -->
     <g fill="#EBA9C0" opacity="0.7">
       <circle cx="140" cy="200" r="3"/>
@@ -459,15 +452,19 @@
     </g>
   </svg>
 
-  <img class="cell-img" src="flower-cells.png" alt="">
+  <img class="cell-img cell-img-1" src="home.png" alt="">
+  <img class="cell-img cell-img-2" src="home.png" alt="">
+  <img class="cell-img cell-img-3" src="home.png" alt="">
+  <img class="cell-img cell-img-4" src="home.png" alt="">
+  <img class="cell-img cell-img-5" src="home.png" alt="">
   </div>
 
   <div class="hero-content">
-    <img class="mini-flower" src="flower-cells.png" alt="" style="width:38px; left:-30px; top:-24px; transform:rotate(-8deg);">
-    <img class="mini-flower" src="flower-cells.png" alt="" style="width:26px; left:120px; top:-38px; transform:rotate(14deg);">
-    <img class="mini-flower" src="flower-cells.png" alt="" style="width:44px; left:260px; top:-14px; transform:rotate(-4deg);">
-    <img class="mini-flower" src="flower-cells.png" alt="" style="width:22px; left:20px; top:60px; transform:rotate(20deg); opacity:0.85;">
-    <img class="mini-flower" src="flower-cells.png" alt="" style="width:30px; right:-16px; top:20px; transform:rotate(-16deg);">
+    <img class="mini-flower" src="home.png" alt="" style="width:38px; left:-30px; top:-24px; transform:rotate(-8deg);">
+    <img class="mini-flower" src="home.png" alt="" style="width:26px; left:120px; top:-38px; transform:rotate(14deg);">
+    <img class="mini-flower" src="home.png" alt="" style="width:44px; left:260px; top:-14px; transform:rotate(-4deg);">
+    <img class="mini-flower" src="home.png" alt="" style="width:22px; left:20px; top:60px; transform:rotate(20deg); opacity:0.85;">
+    <img class="mini-flower" src="home.png" alt="" style="width:30px; right:-16px; top:20px; transform:rotate(-16deg);">
 
     <!-- neuron icon -->
     <svg class="mini-flower" style="width:34px; left:180px; top:-52px;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
