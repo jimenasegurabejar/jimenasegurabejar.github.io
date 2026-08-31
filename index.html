@@ -1,442 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Jimena Segura</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jimena Segura</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <!-- Elegant serif typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:wght@400&display=swap" rel="stylesheet">
 
-    html {
-      scroll-behavior: smooth;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: #f9eef1;
-      color: #454454;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    nav {
-      position: absolute;
-      top: 20px;
-      left: 0;
-      width: 100%;
-      z-index: 20;
+        html {
+            scroll-behavior: smooth;
+        }
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-    }
+        body {
+            background: #fbf1f4;
+            color: #444352;
+            font-family: "Libre Baskerville", Georgia, serif;
+        }
 
-    nav a {
-      text-decoration: none;
-      color: #454454;
+        /* =========================
+           NAVIGATION
+        ========================= */
 
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 25px;
-      font-weight: 600;
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
 
-      transition: opacity 0.2s ease;
-    }
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    nav a:hover {
-      opacity: 0.55;
-    }
+            z-index: 20;
+        }
 
-    /* =========================
-       HOME
-    ========================= */
-
-    #home {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      min-height: 700px;
-      overflow: hidden;
-      background: #f9eef1;
-    }
-
-    .home-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-      object-position: center;
-
-      z-index: 1;
-    }
-
-    /* =========================
-       JIMENA SEGURA
-    ========================= */
-
-    .home-name {
-      position: absolute;
-
-      left: 30px;
-      bottom: 45px;
-
-      z-index: 10;
-
-      font-family: Georgia, "Times New Roman", serif;
-
-      font-size: clamp(82px, 8vw, 140px);
-      line-height: 0.84;
-
-      font-weight: 400;
-      letter-spacing: -4px;
-
-      color: #454454;
-
-      max-width: 700px;
-    }
-
-    .home-name span {
-      display: block;
-    }
-
-    /* =========================
-       GENERAL SECTIONS
-    ========================= */
-
-    section:not(#home) {
-      position: relative;
-      padding: 110px 60px;
-      background: #f9eef1;
-    }
-
-    .section-title {
-      text-align: center;
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 62px;
-      font-weight: 600;
-
-      color: #454454;
-
-      margin-bottom: 55px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    #about {
-      min-height: 600px;
-    }
-
-    .about-content {
-      max-width: 900px;
-      margin: 0 auto;
-
-      font-size: 21px;
-      line-height: 1.8;
-
-      color: #454454;
-      text-align: center;
-    }
-
-    /* =========================
-       RESEARCH
-    ========================= */
-
-    #research {
-      min-height: 700px;
-    }
-
-    .research-content {
-      max-width: 1050px;
-      margin: 0 auto;
-
-      text-align: center;
-
-      font-size: 21px;
-      line-height: 1.8;
-
-      color: #454454;
-    }
-
-    .research-content strong {
-      font-weight: 700;
-    }
-
-    .research-item {
-      margin: 35px 0;
-    }
-
-    /* =========================
-       PORTFOLIO
-    ========================= */
-
-    #portfolio {
-      min-height: 600px;
-    }
-
-    .portfolio-content {
-      max-width: 1000px;
-      margin: 0 auto;
-
-      text-align: center;
-
-      font-size: 21px;
-      line-height: 1.8;
-    }
-
-    /* =========================
-       COMPANIES
-    ========================= */
-
-    #companies {
-      min-height: 600px;
-    }
-
-    .companies-content {
-      max-width: 1000px;
-      margin: 0 auto;
-
-      font-size: 21px;
-      line-height: 1.8;
-
-      text-align: center;
-    }
-
-    /* =========================
-       FEATURED
-    ========================= */
-
-    #featured {
-      min-height: 600px;
-    }
-
-    .featured-content {
-      max-width: 1000px;
-      margin: 0 auto;
-
-      text-align: center;
-
-      font-size: 21px;
-      line-height: 1.8;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      nav {
-        gap: 14px;
-        flex-wrap: wrap;
-        padding: 0 15px;
-      }
-
-      nav a {
-        font-size: 18px;
-      }
-
-      #home {
-        min-height: 650px;
-      }
-
-      .home-name {
-        left: 20px;
-        bottom: 35px;
-
-        font-size: clamp(70px, 18vw, 120px);
-        letter-spacing: -3px;
-      }
-
-      section:not(#home) {
-        padding: 80px 25px;
-      }
-
-      .section-title {
-        font-size: 45px;
-      }
-    }
-  </style>
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 42px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444352;
+
+            font-family: "Libre Baskerville", Georgia, serif;
+            font-size: 21px;
+            font-weight: 400;
+
+            transition: color 0.25s ease;
+        }
+
+        nav a:hover {
+            color: #c47791;
+        }
+
+        /* =========================
+           HOME / HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+
+            overflow: hidden;
+
+            background-color: #fbf1f4;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center center;
+
+            z-index: 1;
+        }
+
+        /* =========================
+           NAME
+        ========================= */
+
+        .hero-name {
+            position: absolute;
+
+            left: 42px;
+            bottom: 65px;
+
+            z-index: 10;
+
+            color: #444352;
+
+            font-family: "DM Serif Display", Georgia, serif;
+
+            /*
+             * IMPORTANTE:
+             * No usamos font-weight: bold.
+             * DM Serif Display ya tiene el estilo serif
+             * elegante de la referencia.
+             */
+            font-weight: 400;
+
+            font-size: clamp(100px, 10vw, 175px);
+
+            line-height: 0.82;
+            letter-spacing: -5px;
+
+            max-width: 720px;
+        }
+
+        .hero-name span {
+            display: block;
+            font-weight: 400;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            position: relative;
+            min-height: 100vh;
+            padding: 120px 8%;
+            background: #fbf1f4;
+        }
+
+        section h2 {
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: clamp(60px, 7vw, 100px);
+            font-weight: 400;
+            color: #444352;
+            letter-spacing: -2px;
+            margin-bottom: 50px;
+        }
+
+        section p {
+            max-width: 850px;
+            font-family: "Libre Baskerville", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.9;
+            color: #6b6873;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                height: 65px;
+            }
+
+            nav ul {
+                gap: 22px;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+
+            .hero-name {
+                left: 25px;
+                bottom: 50px;
+                font-size: clamp(80px, 15vw, 130px);
+                letter-spacing: -3px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                height: auto;
+                padding: 20px 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero-name {
+                left: 20px;
+                bottom: 35px;
+
+                font-size: clamp(65px, 18vw, 105px);
+                line-height: 0.85;
+                letter-spacing: -2px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HOME
-  ========================= -->
-
-  <section id="home">
-
-    <img
-      src="mainpicturehome.png"
-      alt="Optimal Transport and neural systems"
-      class="home-image"
-    >
-
-    <div class="home-name">
-      <span>Jimena</span>
-      <span>Segura</span>
-    </div>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#companies">Companies</a>
-      <a href="#featured">Featured</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#companies">Companies</a></li>
+            <li><a href="#featured">Featured</a></li>
+        </ul>
     </nav>
 
-  </section>
+
+    <!-- =========================
+         HOME
+    ========================= -->
+
+    <main id="home">
+
+        <section class="hero">
+
+            <!--
+                Make sure this file is in the SAME folder
+                as index.html:
+
+                mainpicturehome.png
+            -->
+            <img
+                src="./mainpicturehome.png"
+                alt="Jimena Segura"
+                class="hero-image"
+            >
+
+            <!-- Name -->
+            <div class="hero-name">
+                <span>Jimena</span>
+                <span>Segura</span>
+            </div>
+
+        </section>
 
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+        <!-- =========================
+             ABOUT
+        ========================= -->
 
-  <section id="about">
-
-    <h2 class="section-title">
-      About
-    </h2>
-
-    <div class="about-content">
-      <p>
-        Researcher working at the intersection of mathematics,
-        machine learning, optimal transport and reinforcement learning.
-      </p>
-    </div>
-
-  </section>
+        <section id="about">
+            <h2>About</h2>
+            <p>
+                Jimena Segura is a researcher working at the intersection
+                of artificial intelligence, mathematics, and biological systems.
+            </p>
+        </section>
 
 
-  <!-- =========================
-       RESEARCH
-  ========================= -->
+        <!-- =========================
+             RESEARCH
+        ========================= -->
 
-  <section id="research">
-
-    <h2 class="section-title">
-      Research Focus
-    </h2>
-
-    <div class="research-content">
-
-      <p>
-        Currently
-        <strong>Optimal Transport and Reinforcement Learning</strong>
-        from
-        <strong>ForestButterflyOT</strong>:
-      </p>
-
-      <div class="research-item">
-        <strong>
-          MonarchOT: Geometric Aggregation in Wasserstein Space,
-          Fréchet Means, Curved Geometry, and the Failure of Arithmetic
-          Averaging in Distributed Policy
-        </strong>
-      </div>
-
-      <div class="research-item">
-        to
-        <strong>
-          The JKO Structure of Distributed Learning:
-          Variational Optimality, Geometric Aggregation,
-          and Population Dynamics in Wasserstein Space
-        </strong>
-      </div>
-
-      <div class="research-item">
-        to
-        <strong>
-          Learning as a Child: Schrödinger Bridges,
-          Entropy Regularization and the Geometry of RL
-        </strong>
-      </div>
-
-      <div class="research-item">
-        and
-        <strong>
-          NeuralButterflyOT: Structured Matrix Approximations,
-          Hierarchical Coupling, and Scalable Wasserstein Maps
-          via Butterfly Factorisation
-        </strong>
-      </div>
-
-    </div>
-
-  </section>
+        <section id="research">
+            <h2>Research</h2>
+            <p>
+                Research in Optimal Transport, Reinforcement Learning,
+                Wasserstein geometry, Schrödinger Bridges, and biologically
+                inspired learning systems.
+            </p>
+        </section>
 
 
-  <!-- =========================
-       PORTFOLIO
-  ========================= -->
+        <!-- =========================
+             PORTFOLIO
+        ========================= -->
 
-  <section id="portfolio">
-
-    <h2 class="section-title">
-      Portfolio
-    </h2>
-
-    <div class="portfolio-content">
-      <p>
-        Selected research, scientific projects and ongoing work.
-      </p>
-    </div>
-
-  </section>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <p>
+                Selected research, scientific projects, and computational work.
+            </p>
+        </section>
 
 
-  <!-- =========================
-       COMPANIES
-  ========================= -->
+        <!-- =========================
+             COMPANIES
+        ========================= -->
 
-  <section id="companies">
-
-    <h2 class="section-title">
-      Companies
-    </h2>
-
-    <div class="companies-content">
-      <p>
-        Companies, scientific ventures and projects.
-      </p>
-    </div>
-
-  </section>
+        <section id="companies">
+            <h2>Companies</h2>
+            <p>
+                Selected companies, organizations, and scientific initiatives.
+            </p>
+        </section>
 
 
-  <!-- =========================
-       FEATURED
-  ========================= -->
+        <!-- =========================
+             FEATURED
+        ========================= -->
 
-  <section id="featured">
+        <section id="featured">
+            <h2>Featured</h2>
+            <p>
+                Selected publications, projects, collaborations, and featured work.
+            </p>
+        </section>
 
-    <h2 class="section-title">
-      Featured
-    </h2>
-
-    <div class="featured-content">
-      <p>
-        Featured research and selected work.
-      </p>
-    </div>
-
-  </section>
+    </main>
 
 </body>
 </html>
