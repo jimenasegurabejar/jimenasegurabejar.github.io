@@ -1,920 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Jimena Segura</title>
-
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="./favicon.png">
-
-    <!-- CLASSIC TYPOGRAPHY -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Libre+Baskerville:wght@400&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-
-        /* =========================================
-           RESET
-        ========================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            background: #fbf1f4;
-            color: #464451;
-        }
-
-
-        /* =========================================
-           NAVIGATION
-        ========================================= */
-
-        nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 72px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-
-            display: flex;
-            align-items: center;
-
-            gap: 40px;
-        }
-
-        nav a {
-            text-decoration: none;
-
-            color: #464451;
-
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: 23px;
-
-            font-weight: 500;
-
-            transition: color 0.25s ease;
-        }
-
-        nav a:hover {
-            color: #bd718b;
-        }
-
-
-        /* =========================================
-           HOME
-        ========================================= */
-
-        .hero {
-            position: relative;
-
-            width: 100%;
-            height: 100vh;
-            min-height: 700px;
-
-            overflow: hidden;
-
-            background: #fbf1f4;
-        }
-
-
-        /* =========================================
-           MAIN IMAGE
-        ========================================= */
-
-        .hero-image {
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-            object-position: center center;
-
-            z-index: 1;
-        }
-
-
-        /* =========================================
-           NAME
-        ========================================= */
-
-        .hero-name {
-            position: absolute;
-
-            left: 34px;
-            bottom: 48px;
-
-            z-index: 10;
-
-            color: #464451;
-
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: clamp(105px, 9vw, 160px);
-
-            font-weight: 400;
-
-            line-height: 0.78;
-
-            letter-spacing: -3px;
-        }
-
-        .hero-name span {
-            display: block;
-
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-weight: 400;
-        }
-
-
-        /* =========================================
-           GENERAL SECTIONS
-        ========================================= */
-
-        section.content-section {
-            min-height: 100vh;
-
-            padding: 125px 7% 120px;
-
-            background: #fbf1f4;
-        }
-
-
-        /* =========================================
-           SECTION TITLES
-        ========================================= */
-
-        .section-title {
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: clamp(70px, 7vw, 110px);
-
-            font-weight: 400;
-
-            line-height: 0.9;
-
-            letter-spacing: -2px;
-
-            color: #464451;
-
-            margin-bottom: 65px;
-        }
-
-
-        /* =========================================
-           ABOUT
-        ========================================= */
-
-        .about-text {
-            max-width: 950px;
-
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 19px;
-
-            font-weight: 400;
-
-            line-height: 1.9;
-
-            color: #6b6873;
-        }
-
-
-        /* =========================================
-           RESEARCH
-        ========================================= */
-
-        .research-intro {
-            max-width: 850px;
-
-            margin: 0 auto 65px;
-
-            text-align: center;
-
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 19px;
-
-            line-height: 1.8;
-
-            color: #575462;
-        }
-
-        .research-intro strong {
-            font-weight: 600;
-        }
-
-
-        .research-list {
-            max-width: 1000px;
-
-            margin: 0 auto;
-
-            text-align: center;
-        }
-
-
-        .research-item {
-            margin-bottom: 42px;
-
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 18px;
-
-            line-height: 1.75;
-
-            color: #454352;
-        }
-
-        .research-item strong {
-            font-weight: 600;
-        }
-
-
-        /* =========================================
-           PORTFOLIO
-        ========================================= */
-
-        .portfolio-grid {
-            max-width: 1050px;
-
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 70px;
-
-            margin-top: 20px;
-        }
-
-        .portfolio-item h3 {
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: 38px;
-
-            font-weight: 400;
-
-            color: #464451;
-
-            margin-bottom: 15px;
-        }
-
-        .portfolio-item p {
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 16px;
-
-            line-height: 1.8;
-
-            color: #6b6873;
-        }
-
-
-        /* =========================================
-           COMPANIES
-        ========================================= */
-
-        .companies-content {
-            max-width: 900px;
-        }
-
-        .companies-content p {
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 19px;
-
-            line-height: 1.9;
-
-            color: #6b6873;
-        }
-
-
-        /* =========================================
-           FEATURED
-        ========================================= */
-
-        .featured-content {
-            max-width: 1000px;
-        }
-
-        .featured-label {
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 15px;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-            color: #bd718b;
-
-            margin-bottom: 15px;
-        }
-
-        .featured-title {
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: 50px;
-
-            font-weight: 400;
-
-            color: #464451;
-
-            margin-bottom: 25px;
-        }
-
-        .featured-text {
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 18px;
-
-            line-height: 1.9;
-
-            color: #6b6873;
-
-            margin-bottom: 35px;
-        }
-
-
-        /* =========================================
-           NON-PROFIT
-        ========================================= */
-
-        .nonprofit {
-            margin-top: 90px;
-
-            padding-top: 45px;
-
-            border-top: 1px solid rgba(70, 68, 81, 0.18);
-        }
-
-        .nonprofit-label {
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 15px;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-            color: #bd718b;
-
-            margin-bottom: 15px;
-        }
-
-        .nonprofit-title {
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: 48px;
-
-            font-weight: 400;
-
-            color: #464451;
-
-            margin-bottom: 20px;
-        }
-
-        .nonprofit-text {
-            max-width: 900px;
-
-            font-family: "Libre Baskerville", Georgia, serif;
-
-            font-size: 18px;
-
-            line-height: 1.9;
-
-            color: #6b6873;
-
-            margin-bottom: 30px;
-        }
-
-        .work-links {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 24px;
-
-            font-family: "Libre Baskerville", Georgia, serif;
-        }
-
-        .work-links a {
-            color: #bd718b;
-
-            text-decoration: none;
-
-            border-bottom: 1px solid rgba(189, 113, 139, 0.45);
-
-            padding-bottom: 3px;
-
-            transition: all 0.25s ease;
-        }
-
-        .work-links a:hover {
-            color: #464451;
-
-            border-color: #464451;
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 900px) {
-
-            nav ul {
-                gap: 22px;
-            }
-
-            nav a {
-                font-size: 19px;
-            }
-
-            .hero-name {
-                left: 25px;
-                bottom: 40px;
-
-                font-size: clamp(90px, 15vw, 130px);
-
-                letter-spacing: -2px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-        @media (max-width: 600px) {
-
-            nav {
-                height: auto;
-
-                padding: 18px 12px;
-            }
-
-            nav ul {
-                gap: 13px;
-
-                flex-wrap: wrap;
-
-                justify-content: center;
-            }
-
-            nav a {
-                font-size: 15px;
-            }
-
-            .hero {
-                min-height: 600px;
-            }
-
-            .hero-name {
-                left: 20px;
-                bottom: 30px;
-
-                font-size: 82px;
-
-                line-height: 0.8;
-
-                letter-spacing: -1.5px;
-            }
-
-            section.content-section {
-                padding: 90px 25px;
-            }
-
-            .research-item {
-                font-size: 16px;
-            }
-
-            .research-intro {
-                font-size: 16px;
-            }
-
-            .featured-title,
-            .nonprofit-title {
-                font-size: 40px;
-            }
-
-            .work-links {
-                flex-direction: column;
-
-                gap: 14px;
-            }
-        }
-
-    </style>
-
+  <meta charset="UTF-8">
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jimena Segura</title>
+
+  <!-- CLASSIC SERIF TYPOGRAPHY -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #faf0f3;
+      color: #41404b;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 42px;
+
+      padding: 22px 30px;
+    }
+
+    nav a {
+      color: #41404b;
+      text-decoration: none;
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 25px;
+      font-weight: 500;
+
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover {
+      color: #bd708b;
+    }
+
+    /* =========================
+       HOME
+       ========================= */
+
+    #home {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+
+      background: #faf0f3;
+    }
+
+    .home-background {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center center;
+
+      z-index: 0;
+    }
+
+    .name {
+      position: absolute;
+      z-index: 2;
+
+      left: 4%;
+      bottom: 8%;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(85px, 10vw, 165px);
+      line-height: 0.82;
+
+      font-weight: 500;
+      letter-spacing: -5px;
+
+      color: #41404b;
+    }
+
+    .name span {
+      display: block;
+    }
+
+    /* =========================
+       SECTIONS
+       ========================= */
+
+    section {
+      min-height: 100vh;
+      padding: 120px 7%;
+      background: #faf0f3;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(60px, 7vw, 105px);
+      font-weight: 500;
+      color: #41404b;
+      margin-bottom: 70px;
+      letter-spacing: -2px;
+    }
+
+    .section-content {
+      max-width: 950px;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       RESEARCH
+       ========================= */
+
+    .research-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 1000px;
+    }
+
+    .research-item {
+      border-top: 1px solid rgba(65, 64, 75, 0.25);
+      padding: 25px 0;
+    }
+
+    .research-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .research-header h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .research-plus {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .research-description {
+      display: none;
+      padding-top: 18px;
+      max-width: 800px;
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 23px;
+      line-height: 1.5;
+    }
+
+    .research-item.open .research-description {
+      display: block;
+    }
+
+    .research-item.open .research-plus {
+      transform: rotate(45deg);
+    }
+
+    /* =========================
+       PORTFOLIO
+       ========================= */
+
+    #portfolio {
+      background: #faf0f3;
+    }
+
+    /* =========================
+       COMPANIES
+       ========================= */
+
+    .company-list {
+      max-width: 1000px;
+    }
+
+    .company-item {
+      border-top: 1px solid rgba(65, 64, 75, 0.25);
+      padding: 28px 0;
+    }
+
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      cursor: pointer;
+    }
+
+    .company-name {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 35px;
+      font-weight: 500;
+    }
+
+    .company-plus {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+
+      transition: transform 0.25s ease;
+    }
+
+    .company-description {
+      display: none;
+
+      max-width: 750px;
+      padding-top: 15px;
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .company-item.open .company-description {
+      display: block;
+    }
+
+    .company-item.open .company-plus {
+      transform: rotate(45deg);
+    }
+
+    /* =========================
+       FEATURED
+       ========================= */
+
+    #featured {
+      min-height: 70vh;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+        gap: 18px;
+        padding: 18px 15px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 19px;
+      }
+
+      .name {
+        left: 5%;
+        bottom: 10%;
+        font-size: 18vw;
+        letter-spacing: -3px;
+      }
+
+      section {
+        padding: 100px 6%;
+      }
+
+      .section-title {
+        font-size: 58px;
+      }
+
+      .research-header h3,
+      .company-name {
+        font-size: 27px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- =========================
+       NAVIGATION
+       ========================= -->
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
-
-    <nav>
-
-        <ul>
-
-            <li>
-                <a href="#home">Home</a>
-            </li>
-
-            <li>
-                <a href="#about">About</a>
-            </li>
-
-            <li>
-                <a href="#research">Research</a>
-            </li>
-
-            <li>
-                <a href="#portfolio">Portfolio</a>
-            </li>
-
-            <li>
-                <a href="#companies">Companies</a>
-            </li>
-
-            <li>
-                <a href="#featured">Featured</a>
-            </li>
-
-        </ul>
-
-    </nav>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#companies">Companies</a>
+    <a href="#featured">Featured</a>
+  </nav>
 
 
+  <!-- =========================
+       HOME
+       ========================= -->
 
-    <!-- =========================================
-         HOME
-    ========================================= -->
+  <section id="home">
 
-    <section id="home" class="hero">
+    <!-- MAIN PICTURE -->
+    <img
+      src="mainpicturehome.png"
+      alt=""
+      class="home-background"
+    >
 
-        <img
-            src="./mainpicturehome.png"
-            alt="Jimena Segura"
-            class="hero-image"
+    <!-- NAME -->
+    <div class="name">
+      <span>Jimena</span>
+      <span>Segura</span>
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+       ========================= -->
+
+  <section id="about">
+
+    <h2 class="section-title">About</h2>
+
+    <div class="section-content">
+      <p>
+        Researcher and scientist working at the intersection of
+        artificial intelligence, mathematical biology and cellular
+        agriculture.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       RESEARCH
+       ========================= -->
+
+  <section id="research">
+
+    <h2 class="section-title">Research</h2>
+
+    <div class="research-list">
+
+      <div class="research-item">
+
+        <div class="research-header" onclick="toggleResearch(this)">
+          <h3>Optimal Transport</h3>
+          <span class="research-plus">+</span>
+        </div>
+
+        <div class="research-description">
+          Mathematical modeling of biological systems using optimal
+          transport, dynamic optimal transport and related generative
+          approaches.
+        </div>
+
+      </div>
+
+
+      <div class="research-item">
+
+        <div class="research-header" onclick="toggleResearch(this)">
+          <h3>Cellular Agriculture</h3>
+          <span class="research-plus">+</span>
+        </div>
+
+        <div class="research-description">
+          Predictive modeling of cellular dynamics for the engineering
+          of scalable and controllable cellular agriculture systems.
+        </div>
+
+      </div>
+
+
+      <div class="research-item">
+
+        <div class="research-header" onclick="toggleResearch(this)">
+          <h3>Biological AI</h3>
+          <span class="research-plus">+</span>
+        </div>
+
+        <div class="research-description">
+          Artificial intelligence systems designed to model,
+          understand and predict complex biological processes.
+        </div>
+
+      </div>
+
+
+      <!-- PAPERS -->
+
+      <div class="research-item">
+
+        <div class="research-header" onclick="toggleResearch(this)">
+          <h3>Papers</h3>
+          <span class="research-plus">+</span>
+        </div>
+
+        <div class="research-description">
+          Selected research papers, preprints and scientific work.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PORTFOLIO
+       ========================= -->
+
+  <section id="portfolio">
+
+    <h2 class="section-title">Portfolio</h2>
+
+    <div class="section-content">
+      <p>
+        Selected research, scientific projects and work.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       COMPANIES
+       ========================= -->
+
+  <section id="companies">
+
+    <h2 class="section-title">Companies</h2>
+
+    <div class="company-list">
+
+      <!-- ATHENEI BIOSCIENCES -->
+
+      <div class="company-item">
+
+        <div
+          class="company-header"
+          onclick="toggleCompany(this)"
         >
 
-        <div class="hero-name">
+          <div class="company-name">
+            Athenei Biosciences
+          </div>
 
-            <span>Jimena</span>
-
-            <span>Segura</span>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         ABOUT
-    ========================================= -->
-
-    <section id="about" class="content-section">
-
-        <h1 class="section-title">
-            About
-        </h1>
-
-        <p class="about-text">
-
-            Jimena Segura is a researcher working at the intersection
-            of artificial intelligence, mathematics, and biological systems,
-            with a particular interest in understanding learning and
-            population dynamics through geometry, probability, and
-            optimal transport.
-
-        </p>
-
-    </section>
-
-
-
-    <!-- =========================================
-         RESEARCH
-    ========================================= -->
-
-    <section id="research" class="content-section">
-
-        <h1 class="section-title">
-            Research Focus
-        </h1>
-
-
-        <div class="research-intro">
-
-            Currently
-            <strong>
-                Optimal Transport and Reinforcement Learning
-            </strong>
-            from
-            <strong>
-                ForestButterflyOT
-            </strong>:
+          <div class="company-plus">
+            +
+          </div>
 
         </div>
 
-
-        <div class="research-list">
-
-
-            <div class="research-item">
-
-                <strong>
-                    MonarchOT: Geometric Aggregation in Wasserstein Space,
-                    Fréchet Means, Curved Geometry, and the Failure of
-                    Arithmetic Averaging in Distributed Policy
-                </strong>
-
-            </div>
-
-
-            <div class="research-item">
-
-                to
-                <strong>
-                    The JKO Structure of Distributed Learning:
-                    Variational Optimality, Geometric Aggregation,
-                    and Population Dynamics in Wasserstein Space
-                </strong>
-
-            </div>
-
-
-            <div class="research-item">
-
-                to
-                <strong>
-                    Learning as a Child: Schrödinger Bridges,
-                    Entropy Regularization and the Geometry of RL
-                </strong>
-
-            </div>
-
-
-            <div class="research-item">
-
-                and
-                <strong>
-                    NeuralButterflyOT: Structured Matrix Approximations,
-                    Hierarchical Coupling, and Scalable Wasserstein Maps
-                    via Butterfly Factorisation
-                </strong>
-
-            </div>
-
-
+        <div class="company-description">
+          Biological Superintelligence for Cellular Agriculture.
         </div>
 
-    </section>
+      </div>
 
+    </div>
 
+  </section>
 
-    <!-- =========================================
-         PORTFOLIO
-    ========================================= -->
 
-    <section id="portfolio" class="content-section">
+  <!-- =========================
+       FEATURED
+       ========================= -->
 
-        <h1 class="section-title">
-            Portfolio
-        </h1>
+  <section id="featured">
 
+    <h2 class="section-title">Featured</h2>
 
-        <div class="portfolio-grid">
+  </section>
 
 
-            <div class="portfolio-item">
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
 
-                <h3>
-                    Optimal Transport
-                </h3>
+  <script>
 
-                <p>
-                    Research on Wasserstein geometry, geometric
-                    aggregation, transport maps, and population
-                    dynamics.
-                </p>
+    function toggleCompany(element) {
+      const item = element.parentElement;
+      item.classList.toggle("open");
+    }
 
-            </div>
+    function toggleResearch(element) {
+      const item = element.parentElement;
+      item.classList.toggle("open");
+    }
 
-
-            <div class="portfolio-item">
-
-                <h3>
-                    Reinforcement Learning
-                </h3>
-
-                <p>
-                    Research connecting reinforcement learning with
-                    optimal transport, variational principles,
-                    entropy regularization, and geometric structure.
-                </p>
-
-            </div>
-
-
-            <div class="portfolio-item">
-
-                <h3>
-                    Schrödinger Bridges
-                </h3>
-
-                <p>
-                    Entropy-regularized transport and probabilistic
-                    formulations of learning and dynamical systems.
-                </p>
-
-            </div>
-
-
-            <div class="portfolio-item">
-
-                <h3>
-                    NeuralButterflyOT
-                </h3>
-
-                <p>
-                    Structured approximations and scalable
-                    Wasserstein maps through butterfly factorisation.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         COMPANIES
-    ========================================= -->
-
-    <section id="companies" class="content-section">
-
-        <h1 class="section-title">
-            Companies
-        </h1>
-
-
-        <div class="companies-content">
-
-            <p>
-
-                Research and scientific work across artificial
-                intelligence, reinforcement learning, mathematical
-                biology, and emerging computational systems.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         FEATURED
-    ========================================= -->
-
-    <section id="featured" class="content-section">
-
-        <h1 class="section-title">
-            Featured
-        </h1>
-
-
-        <div class="featured-content">
-
-
-            <div class="featured-label">
-                Featured Work
-            </div>
-
-
-            <h2 class="featured-title">
-                Research & Scientific Work
-            </h2>
-
-
-            <p class="featured-text">
-
-                Selected research, scientific projects,
-                collaborations, and initiatives.
-
-            </p>
-
-
-
-            <!-- =====================================
-                 NON-PROFIT
-            ===================================== -->
-
-            <div class="nonprofit">
-
-                <div class="nonprofit-label">
-                    Non-profit
-                </div>
-
-
-                <h2 class="nonprofit-title">
-                    Imasion
-                </h2>
-
-
-                <p class="nonprofit-text">
-
-                    At Imasion (imasion.org) we are working to
-                    impact the 2.33 billion children on planet Earth.
-                    We believe the new era of AI should emerge with
-                    biologically inspired education and decentralized
-                    science.
-
-                </p>
-
-
-                <div class="work-links">
-
-                    <a href="https://imasion.org" target="_blank">
-                        imasion
-                    </a>
-
-                    <a href="#" target="_blank">
-                        imasionkids
-                    </a>
-
-                    <a href="#" target="_blank">
-                        imasionkits
-                    </a>
-
-                    <a href="#" target="_blank">
-                        imasionteachers
-                    </a>
-
-                    <a href="#" target="_blank">
-                        imasionai
-                    </a>
-
-                    <a href="#" target="_blank">
-                        impact
-                    </a>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
+  </script>
 
 </body>
-
 </html>
