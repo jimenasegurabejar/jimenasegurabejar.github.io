@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -25,7 +26,7 @@
 <style>
 
 /* =========================================================
-   VARIABLES
+   ROOT
    ========================================================= */
 
 :root {
@@ -87,16 +88,17 @@ h4 {
 
 nav {
   position: fixed;
-  top: 30px;
+  top: 28px;
   left: 50%;
   transform: translateX(-50%);
+
   z-index: 100;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 25px;
+  gap: 28px;
 
   width: max-content;
   max-width: 95vw;
@@ -106,10 +108,9 @@ nav {
 
 nav a {
   font-family: 'Cormorant Garamond', serif;
+
   font-size: 21px;
   font-weight: 700;
-
-  letter-spacing: 0.01em;
 
   color: var(--ink);
 
@@ -139,6 +140,14 @@ nav a:hover {
   background: var(--bg);
 }
 
+
+/*
+   THIS IS THE ONLY HOME IMAGE.
+   File must be named:
+
+   mainpicturehome.png
+*/
+
 .hero-image {
   position: absolute;
 
@@ -159,12 +168,13 @@ nav a:hover {
   height: 100%;
 
   object-fit: cover;
+
   object-position: center center;
 }
 
 
 /* =========================================================
-   SECTIONS
+   GENERAL SECTIONS
    ========================================================= */
 
 section.page {
@@ -191,7 +201,7 @@ section.page:nth-of-type(even) {
 
   font-family: 'Cormorant Garamond', serif;
 
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
 
   color: var(--rose-deep);
@@ -295,7 +305,7 @@ section.page h2 {
 }
 
 .research-intro {
-  margin-bottom: 45px;
+  margin-bottom: 42px;
 
   font-family: 'Cormorant Garamond', serif;
 
@@ -316,6 +326,7 @@ section.page h2 {
 
 .research-intro a:hover {
   color: var(--rose-deep);
+
   border-color: var(--rose-deep);
 }
 
@@ -323,9 +334,9 @@ section.page h2 {
   position: relative;
 
   padding-left: 70px;
-  padding-bottom: 40px;
+  padding-bottom: 42px;
 
-  margin-bottom: 40px;
+  margin-bottom: 42px;
 
   border-left: 1px solid var(--rose);
 }
@@ -364,7 +375,7 @@ section.page h2 {
 }
 
 .research-project h4 {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 
   font-family: 'Cormorant Garamond', serif;
 
@@ -454,7 +465,7 @@ section.page h2 {
 
 
 /* =========================================================
-   EXPANDABLE ITEMS
+   EXPANDABLE ENTRIES
    ========================================================= */
 
 .entry-details summary {
@@ -630,6 +641,7 @@ footer {
     height: 100%;
 
     object-fit: cover;
+
     object-position: center center;
   }
 
@@ -734,8 +746,8 @@ footer {
   <div class="hero-image">
 
     <img
-      src="./mainpicturehome.png"
-      alt="Jimena Segura — Optimal Transport and Reinforcement Learning"
+      src="mainpicturehome.png"
+      alt="Optimal Transport and Reinforcement Learning"
     >
 
   </div>
@@ -962,7 +974,9 @@ footer {
 
 
 
-    <h2 class="pub-title">
+    <h2
+      class="pub-title"
+    >
       Publications
     </h2>
 
@@ -1065,6 +1079,7 @@ footer {
     </div>
 
 
+
     <a
       class="see-more-btn"
       href="https://jimenasegurabejar.github.io/portfolio"
@@ -1104,10 +1119,9 @@ footer {
     <div class="entries">
 
 
-      <!-- ATHENEI BIOSCIENCES -->
-
-      <details class="entry entry-details">
-
+      <details
+        class="entry entry-details"
+      >
 
         <summary>
 
@@ -1192,8 +1206,9 @@ footer {
 
       <!-- ATHENEI -->
 
-      <details class="entry entry-details">
-
+      <details
+        class="entry entry-details"
+      >
 
         <summary>
 
@@ -1244,10 +1259,13 @@ footer {
 
 
 
-      <!-- IMASION — NON-PROFIT -->
+      <!-- =====================================================
+           NON-PROFIT
+           ===================================================== -->
 
-      <details class="entry entry-details">
-
+      <details
+        class="entry entry-details"
+      >
 
         <summary>
 
@@ -1345,8 +1363,9 @@ footer {
 
       <!-- NEUROSCIENCE -->
 
-      <details class="entry entry-details">
-
+      <details
+        class="entry entry-details"
+      >
 
         <summary>
 
@@ -1459,4 +1478,5 @@ footer {
 
 
 </body>
+
 </html>
