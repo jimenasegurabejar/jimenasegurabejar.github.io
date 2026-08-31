@@ -1,1482 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jimena Segura</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jimena Segura</title>
-
-<link rel="icon" type="image/png" href="logo.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<meta
-  name="description"
-  content="Jimena Segura — Optimal Transport and Reinforcement Learning researcher."
->
+    html {
+      scroll-behavior: smooth;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    body {
+      background: #f9eef1;
+      color: #454454;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
-  rel="stylesheet"
->
+    /* =========================
+       NAVIGATION
+    ========================= */
 
-<style>
+    nav {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      z-index: 10;
 
-/* =========================================================
-   ROOT
-   ========================================================= */
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+    }
 
-:root {
-  --bg: #FBF1F3;
-  --bg-deep: #F5E1E7;
-  --ink: #4A4750;
-  --ink-soft: #8B8790;
-  --rose: #EBA9C0;
-  --rose-deep: #D67A98;
-  --line: #E8D3DC;
-}
+    nav a {
+      text-decoration: none;
+      color: #454454;
 
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 600;
 
-/* =========================================================
-   RESET
-   ========================================================= */
+      transition: opacity 0.2s ease;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    nav a:hover {
+      opacity: 0.55;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    /* =========================
+       HOME
+    ========================= */
 
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.7;
-}
+    #home {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+      overflow: hidden;
 
-.wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
+      background-color: #f9eef1;
+    }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  color: var(--ink);
-}
+    /*
+      MAIN HOME IMAGE
+      The file must be in the same folder as index.html:
+      
+      mainpicturehome.png
+    */
 
+    .home-image {
+      position: absolute;
+      inset: 0;
 
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
+      width: 100%;
+      height: 100%;
 
-nav {
-  position: fixed;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
+      object-fit: cover;
+      object-position: center;
 
-  z-index: 100;
+      z-index: 1;
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    /*
+      NAME
+      Placed ON TOP of mainpicturehome.png
+    */
 
-  gap: 28px;
+    .home-name {
+      position: absolute;
 
-  width: max-content;
-  max-width: 95vw;
+      left: 30px;
+      bottom: 55px;
 
-  text-align: center;
-}
+      z-index: 3;
 
-nav a {
-  font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 21px;
-  font-weight: 700;
+      font-size: clamp(90px, 10vw, 170px);
+      line-height: 0.82;
 
-  color: var(--ink);
+      font-weight: 600;
+      letter-spacing: -7px;
 
-  white-space: nowrap;
+      color: #454454;
 
-  transition: color 0.25s ease;
-}
+      max-width: 750px;
+    }
 
-nav a:hover {
-  color: var(--rose-deep);
-}
+    .home-name span {
+      display: block;
+    }
 
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
 
-/* =========================================================
-   HOME
-   ========================================================= */
+    section {
+      position: relative;
+      padding: 110px 60px;
+    }
 
-#home {
-  position: relative;
+    .section-title {
+      text-align: center;
 
-  width: 100%;
-  height: 100vh;
-  min-height: 700px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 62px;
+      font-weight: 600;
 
-  overflow: hidden;
+      color: #454454;
 
-  background: var(--bg);
-}
+      margin-bottom: 55px;
+    }
 
+    /* =========================
+       ABOUT
+    ========================= */
 
-/*
-   THIS IS THE ONLY HOME IMAGE.
-   File must be named:
+    #about {
+      background: #f9eef1;
+      min-height: 600px;
+    }
 
-   mainpicturehome.png
-*/
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
 
-.hero-image {
-  position: absolute;
+      font-size: 21px;
+      line-height: 1.8;
 
-  inset: 0;
+      color: #454454;
+      text-align: center;
+    }
 
-  width: 100%;
-  height: 100%;
+    /* =========================
+       RESEARCH
+    ========================= */
 
-  overflow: hidden;
+    #research {
+      background: #f9eef1;
+      min-height: 700px;
+    }
 
-  z-index: 1;
-}
+    .research-content {
+      max-width: 1000px;
+      margin: 0 auto;
 
-.hero-image img {
-  display: block;
+      text-align: center;
 
-  width: 100%;
-  height: 100%;
+      font-size: 21px;
+      line-height: 1.8;
 
-  object-fit: cover;
+      color: #454454;
+    }
 
-  object-position: center center;
-}
+    .research-content strong {
+      font-weight: 700;
+    }
 
+    .research-item {
+      margin: 35px 0;
+    }
 
-/* =========================================================
-   GENERAL SECTIONS
-   ========================================================= */
+    /* =========================
+       PORTFOLIO
+    ========================= */
 
-section.page {
-  position: relative;
+    #portfolio {
+      background: #f9eef1;
+      min-height: 600px;
+    }
 
-  padding: 120px 0;
+    .portfolio-content {
+      max-width: 1000px;
+      margin: 0 auto;
 
-  border-top: 1px solid var(--line);
-}
+      text-align: center;
 
-section.page:nth-of-type(even) {
-  background: var(--bg-deep);
-}
+      font-size: 21px;
+      line-height: 1.8;
+    }
 
+    /* =========================
+       COMPANIES
+    ========================= */
 
-/* =========================================================
-   TYPOGRAPHY
-   ========================================================= */
+    #companies {
+      background: #f9eef1;
+      min-height: 600px;
+    }
 
-.eyebrow {
-  display: block;
+    .companies-content {
+      max-width: 1000px;
+      margin: 0 auto;
 
-  margin-bottom: 18px;
+      font-size: 21px;
+      line-height: 1.8;
 
-  font-family: 'Cormorant Garamond', serif;
+      text-align: center;
+    }
 
-  font-size: 17px;
-  font-weight: 700;
+    /* =========================
+       FEATURED
+    ========================= */
 
-  color: var(--rose-deep);
-}
+    #featured {
+      background: #f9eef1;
+      min-height: 600px;
+    }
 
-section.page h2 {
-  font-family: 'Cormorant Garamond', serif;
+    .featured-content {
+      max-width: 1000px;
+      margin: 0 auto;
 
-  font-size: clamp(50px, 8vw, 90px);
+      text-align: center;
 
-  line-height: 0.95;
+      font-size: 21px;
+      line-height: 1.8;
+    }
 
-  margin-bottom: 40px;
-}
+    /* =========================
+       MOBILE
+    ========================= */
 
+    @media (max-width: 800px) {
 
-/* =========================================================
-   ABOUT
-   ========================================================= */
+      nav {
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 0 15px;
+      }
 
-#about {
-  text-align: center;
-}
+      nav a {
+        font-size: 18px;
+      }
 
-.profile-photo {
-  width: 200px;
-  height: 200px;
+      #home {
+        min-height: 650px;
+      }
 
-  border-radius: 50%;
+      .home-name {
+        left: 20px;
+        bottom: 35px;
 
-  object-fit: cover;
+        font-size: clamp(70px, 18vw, 120px);
+        letter-spacing: -4px;
+      }
 
-  display: block;
+      section {
+        padding: 80px 25px;
+      }
 
-  margin: 0 auto 30px;
-
-  border: 3px solid #fff;
-
-  box-shadow: 0 4px 18px rgba(107,44,67,0.18);
-}
-
-#about .eyebrow {
-  font-size: 18px;
-  color: var(--ink);
-}
-
-.about-title {
-  max-width: 900px;
-
-  margin: 0 auto 35px;
-
-  font-size: clamp(60px, 10vw, 108px);
-
-  line-height: 0.95;
-}
-
-.body-text {
-  max-width: 680px;
-
-  margin: 0 auto;
-
-  font-size: 17px;
-
-  color: var(--ink);
-}
-
-.body-text p + p {
-  margin-top: 18px;
-}
-
-
-/* =========================================================
-   RESEARCH FOCUS
-   ========================================================= */
-
-.about-subtitle {
-  margin-top: 90px;
-  margin-bottom: 55px;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: clamp(50px, 7vw, 74px);
-
-  font-weight: 700;
-
-  line-height: 1;
-
-  color: var(--ink);
-
-  text-align: center;
-}
-
-.research-focus {
-  max-width: 900px;
-
-  margin: 0 auto;
-
-  text-align: left;
-
-  font-family: 'Cormorant Garamond', serif;
-}
-
-.research-intro {
-  margin-bottom: 42px;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: 28px;
-
-  line-height: 1.4;
-
-  color: var(--ink);
-}
-
-.research-intro a {
-  border-bottom: 1px solid var(--rose);
-
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.research-intro a:hover {
-  color: var(--rose-deep);
-
-  border-color: var(--rose-deep);
-}
-
-.research-project {
-  position: relative;
-
-  padding-left: 70px;
-  padding-bottom: 42px;
-
-  margin-bottom: 42px;
-
-  border-left: 1px solid var(--rose);
-}
-
-.research-project:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.research-number {
-  position: absolute;
-
-  left: -18px;
-  top: 0;
-
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  border: 1px solid var(--rose);
-
-  background: var(--bg);
-
-  font-family: 'Inter', sans-serif;
-
-  font-size: 11px;
-  font-weight: 600;
-
-  color: var(--rose-deep);
-}
-
-.research-project h4 {
-  margin-bottom: 10px;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: 32px;
-
-  line-height: 1.15;
-
-  font-weight: 700;
-
-  color: var(--ink);
-}
-
-.research-project p {
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: 23px;
-
-  line-height: 1.45;
-
-  color: var(--ink-soft);
-}
-
-
-/* =========================================================
-   ENTRIES
-   ========================================================= */
-
-.entries {
-  max-width: 760px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 38px;
-}
-
-.entry {
-  border-left: 1.5px solid var(--rose);
-
-  padding-left: 24px;
-}
-
-.entry .tag {
-  display: block;
-
-  margin-bottom: 7px;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: 15px;
-
-  font-weight: 700;
-
-  color: var(--rose-deep);
-}
-
-.entry h3 {
-  margin-bottom: 8px;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: 30px;
-
-  line-height: 1.1;
-
-  font-weight: 700;
-
-  color: var(--ink);
-}
-
-.entry p {
-  font-size: 16px;
-
-  color: var(--ink-soft);
-}
-
-.entry a {
-  border-bottom: 1px solid var(--rose);
-}
-
-.entry a:hover {
-  color: var(--rose-deep);
-
-  border-color: var(--rose-deep);
-}
-
-
-/* =========================================================
-   EXPANDABLE ENTRIES
-   ========================================================= */
-
-.entry-details summary {
-  cursor: pointer;
-
-  list-style: none;
-}
-
-.entry-details summary::-webkit-details-marker {
-  display: none;
-}
-
-.entry-details summary::marker {
-  content: "";
-}
-
-.entry-details summary .tag {
-  display: inline-block;
-}
-
-.entry-details summary .tag::after {
-  content: "+";
-
-  margin-left: 8px;
-
-  color: var(--rose-deep);
-
-  font-family: 'Inter', sans-serif;
-
-  font-weight: 600;
-}
-
-.entry-details[open] summary .tag::after {
-  content: "–";
-}
-
-.entry-details summary h3 {
-  display: inline;
-}
-
-.entry-details p {
-  margin-top: 10px;
-}
-
-.work-links {
-  margin-top: 16px;
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  align-items: center;
-
-  gap: 12px 18px;
-}
-
-.work-label {
-  font-size: 12px;
-
-  letter-spacing: 0.08em;
-
-  text-transform: uppercase;
-
-  color: var(--ink-soft);
-
-  font-weight: 600;
-}
-
-.detail-link {
-  font-size: 15px;
-
-  font-weight: 600;
-
-  color: var(--rose-deep);
-
-  border-bottom: 1px solid var(--rose);
-}
-
-.detail-link:hover {
-  color: var(--ink);
-
-  border-color: var(--ink);
-}
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-.see-more-btn {
-  display: inline-block;
-
-  margin-top: 38px;
-
-  padding: 12px 28px;
-
-  border: 1.5px solid var(--rose-deep);
-
-  border-radius: 999px;
-
-  font-size: 14px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.04em;
-
-  color: var(--ink);
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-
-.see-more-btn:hover {
-  background: var(--rose-deep);
-
-  color: #fff;
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-  padding: 42px 0;
-
-  text-align: center;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: 20px;
-
-  font-weight: 700;
-
-  color: var(--ink-soft);
-
-  border-top: 1px solid var(--line);
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 860px) {
-
-  nav {
-    position: absolute;
-
-    top: 20px;
-
-    left: 50%;
-
-    width: 94vw;
-
-    gap: 10px 18px;
-
-    flex-wrap: wrap;
-  }
-
-  nav a {
-    font-size: 18px;
-  }
-
-  #home {
-    height: 100svh;
-    min-height: 600px;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center center;
-  }
-
-  section.page {
-    padding: 80px 0;
-  }
-
-  .wrap {
-    padding: 0 24px;
-  }
-
-  .profile-photo {
-    width: 140px;
-    height: 140px;
-  }
-
-  .about-title {
-    font-size: clamp(54px, 13vw, 82px);
-  }
-
-  .about-subtitle {
-    margin-top: 65px;
-    margin-bottom: 42px;
-
-    font-size: 52px;
-  }
-
-  .research-intro {
-    font-size: 24px;
-  }
-
-  .research-project {
-    padding-left: 52px;
-
-    padding-bottom: 32px;
-
-    margin-bottom: 32px;
-  }
-
-  .research-project h4 {
-    font-size: 28px;
-  }
-
-  .research-project p {
-    font-size: 20px;
-  }
-
-  .entry h3 {
-    font-size: 27px;
-  }
-
-}
-
-</style>
-
+      .section-title {
+        font-size: 45px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- =========================
+       HOME
+  ========================= -->
 
-<!-- =========================================================
-     NAVIGATION
-     ========================================================= -->
+  <section id="home">
 
-<nav>
-
-  <a href="#home">
-    Home
-  </a>
-
-  <a href="#about">
-    About
-  </a>
-
-  <a href="#research">
-    Research
-  </a>
-
-  <a href="https://jimenasegurabejar.github.io/portfolio">
-    Portfolio
-  </a>
-
-  <a href="#companies">
-    Companies
-  </a>
-
-  <a href="#featuredin">
-    Featured
-  </a>
-
-</nav>
-
-
-
-<!-- =========================================================
-     HOME
-     ========================================================= -->
-
-<section id="home">
-
-  <div class="hero-image">
-
+    <!-- MAIN PICTURE -->
     <img
       src="mainpicturehome.png"
-      alt="Optimal Transport and Reinforcement Learning"
+      alt="Optimal Transport and neural systems"
+      class="home-image"
     >
 
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     ABOUT
-     ========================================================= -->
-
-<section
-  id="about"
-  class="page"
->
-
-  <div class="wrap">
-
-
-    <img
-      class="profile-photo"
-      src="foto.png"
-      alt="Jimena Segura"
-    >
-
-
-    <span class="eyebrow">
-      About
-    </span>
-
-
-    <h2 class="about-title">
-      A geometry found, not taught
-    </h2>
-
-
-    <div class="body-text">
-
-      <p>
-        I work at the intersection of
-        <strong>optimal transport theory</strong>
-        and machine learning. My path into it didn't start in a textbook —
-        it started with cell trajectory inference for cultivated meat,
-        modelling proliferating cell populations where mass isn't conserved.
-      </p>
-
-
-      <p>
-        What I derived to fix that turned out to be
-        <strong>Wasserstein geometry</strong>,
-        arrived at independently before ever reading the formal optimal
-        transport literature. My research thesis: Wasserstein geometry
-        is the correct replacement for Euclidean geometry in probability spaces.
-      </p>
-
+    <!-- YOUR NAME -->
+    <div class="home-name">
+      <span>Jimena</span>
+      <span>Segura</span>
     </div>
 
+    <!-- NAVIGATION -->
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#companies">Companies</a>
+      <a href="#featured">Featured</a>
+    </nav>
+
+  </section>
 
 
-    <!-- =====================================================
-         RESEARCH FOCUS
-         ===================================================== -->
+  <!-- =========================
+       ABOUT
+  ========================= -->
 
-    <h3 class="about-subtitle">
-      Research Focus
-    </h3>
+  <section id="about">
+
+    <h2 class="section-title">About</h2>
+
+    <div class="about-content">
+      <p>
+        Researcher working at the intersection of mathematics,
+        machine learning, optimal transport and reinforcement learning.
+      </p>
+    </div>
+
+  </section>
 
 
-    <div class="research-focus">
+  <!-- =========================
+       RESEARCH
+  ========================= -->
 
+  <section id="research">
 
-      <p class="research-intro">
+    <h2 class="section-title">Research Focus</h2>
 
-        Currently
+    <div class="research-content">
 
-        <a href="http://jimenasegurabejar.github.io/">
-
-          <strong>
-            Optimal Transport and Reinforcement Learning
-          </strong>
-
-        </a>
-
-        from
-
-        <strong>
-          ForestButterflyOT
-        </strong>:
-
+      <p>
+        Currently <strong>Optimal Transport and Reinforcement Learning</strong>
+        from <strong>ForestButterflyOT</strong>:
       </p>
 
-
-
-      <div class="research-project">
-
-        <span class="research-number">
-          01
-        </span>
-
-        <h4>
-          MonarchOT
-        </h4>
-
-        <p>
-          Geometric Aggregation in Wasserstein Space, Fréchet Means,
-          Curved Geometry, and the Failure of Arithmetic Averaging
-          in Distributed Policy
-        </p>
-
+      <div class="research-item">
+        <strong>
+          MonarchOT: Geometric Aggregation in Wasserstein Space,
+          Fréchet Means, Curved Geometry, and the Failure of Arithmetic
+          Averaging in Distributed Policy
+        </strong>
       </div>
 
-
-
-      <div class="research-project">
-
-        <span class="research-number">
-          02
-        </span>
-
-        <h4>
-          The JKO Structure of Distributed Learning
-        </h4>
-
-        <p>
+      <div class="research-item">
+        to
+        <strong>
+          The JKO Structure of Distributed Learning:
           Variational Optimality, Geometric Aggregation,
           and Population Dynamics in Wasserstein Space
-        </p>
-
+        </strong>
       </div>
 
-
-
-      <div class="research-project">
-
-        <span class="research-number">
-          03
-        </span>
-
-        <h4>
-          Learning as a Child
-        </h4>
-
-        <p>
-          Schrödinger Bridges, Entropy Regularization
-          and the Geometry of RL
-        </p>
-
+      <div class="research-item">
+        to
+        <strong>
+          Learning as a Child: Schrödinger Bridges,
+          Entropy Regularization and the Geometry of RL
+        </strong>
       </div>
 
-
-
-      <div class="research-project">
-
-        <span class="research-number">
-          04
-        </span>
-
-        <h4>
-          NeuralButterflyOT
-        </h4>
-
-        <p>
-          Structured Matrix Approximations, Hierarchical Coupling,
-          and Scalable Wasserstein Maps via Butterfly Factorisation
-        </p>
-
+      <div class="research-item">
+        and
+        <strong>
+          NeuralButterflyOT: Structured Matrix Approximations,
+          Hierarchical Coupling, and Scalable Wasserstein Maps
+          via Butterfly Factorisation
+        </strong>
       </div>
-
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
+  <!-- =========================
+       PORTFOLIO
+  ========================= -->
 
-<!-- =========================================================
-     RESEARCH
-     ========================================================= -->
+  <section id="portfolio">
 
-<section
-  id="research"
-  class="page"
->
+    <h2 class="section-title">Portfolio</h2>
 
-  <div class="wrap">
-
-
-    <span class="eyebrow">
-      Research
-    </span>
-
-
-    <h2>
-      Research
-    </h2>
-
-
-    <div class="entries">
-
-
-      <div class="entry">
-
-        <span class="tag">
-          Research programme
-        </span>
-
-        <h3>
-          AtheneioLab
-        </h3>
-
-        <p>
-          A programme of theoretical foundational-model papers unified by
-          one geometric thesis: Wasserstein geometry as the correct
-          replacement for Euclidean geometry in probability spaces.
-        </p>
-
-      </div>
-
-
+    <div class="portfolio-content">
+      <p>
+        Selected research, scientific projects and ongoing work.
+      </p>
     </div>
 
+  </section>
 
 
-    <h2
-      class="pub-title"
-    >
-      Publications
-    </h2>
+  <!-- =========================
+       COMPANIES
+  ========================= -->
 
+  <section id="companies">
 
-    <div class="entries">
+    <h2 class="section-title">Companies</h2>
 
-
-      <div class="entry">
-
-        <span class="tag">
-          Paper
-        </span>
-
-        <h3>
-          WassersteinRL
-        </h3>
-
-        <p>
-          A Geometric Theory of Distributed Policy Optimisation via
-          Schrödinger Bridges. Anchor paper of the AtheneioLab programme.
-        </p>
-
-      </div>
-
-
-
-      <div class="entry">
-
-        <span class="tag">
-          Paper
-        </span>
-
-        <h3>
-          WassersteinEval
-        </h3>
-
-        <p>
-          Generative model evaluation via Wasserstein geometry —
-          a multi-scale Sinkhorn divergence framework with a completeness theorem.
-        </p>
-
-      </div>
-
-
-
-      <div class="entry">
-
-        <span class="tag">
-          Paper
-        </span>
-
-        <h3>
-          ProlifOT
-        </h3>
-
-        <p>
-          Cellular agriculture framed as an optimal transport problem,
-          solvable via Wasserstein geometry and Schrödinger bridges.
-        </p>
-
-      </div>
-
-
-
-      <div class="entry">
-
-        <span class="tag">
-          Paper
-        </span>
-
-        <h3>
-          WFRFlows
-        </h3>
-
-        <p>
-          Flow matching under the Wasserstein–Fisher–Rao geometry.
-        </p>
-
-      </div>
-
-
-
-      <div class="entry">
-
-        <span class="tag">
-          Newsletter
-        </span>
-
-        <h3>
-          CORTEX DREAMS
-        </h3>
-
-        <p>
-          My Substack newsletter — research notes and writing.
-        </p>
-
-      </div>
-
-
+    <div class="companies-content">
+      <p>
+        Companies, scientific ventures and projects.
+      </p>
     </div>
 
+  </section>
 
 
-    <a
-      class="see-more-btn"
-      href="https://jimenasegurabejar.github.io/portfolio"
-    >
-      See 14 Projects →
-    </a>
+  <!-- =========================
+       FEATURED
+  ========================= -->
 
+  <section id="featured">
 
-  </div>
+    <h2 class="section-title">Featured</h2>
 
-</section>
-
-
-
-<!-- =========================================================
-     COMPANIES
-     ========================================================= -->
-
-<section
-  id="companies"
-  class="page"
->
-
-  <div class="wrap">
-
-
-    <span class="eyebrow">
-      Companies
-    </span>
-
-
-    <h2>
-      Companies
-    </h2>
-
-
-    <div class="entries">
-
-
-      <details
-        class="entry entry-details"
-      >
-
-        <summary>
-
-          <span class="tag">
-            Founder
-          </span>
-
-          <h3>
-
-            <a
-              href="https://atheneibiosciences.com/"
-              target="_blank"
-              rel="noopener"
-            >
-              Athenei Biosciences
-            </a>
-
-          </h3>
-
-        </summary>
-
-
-        <p>
-          Biological superintelligence for cellular agriculture.
-        </p>
-
-
-        <div class="work-links">
-
-          <span class="work-label">
-            Work:
-          </span>
-
-
-          <a
-            class="detail-link"
-            href="https://atheneibiosciences.com/#research"
-            target="_blank"
-            rel="noopener"
-          >
-            Our Research
-          </a>
-
-        </div>
-
-
-      </details>
-
-
+    <div class="featured-content">
+      <p>
+        Featured research and selected work.
+      </p>
     </div>
 
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     HIGHLIGHTED WORK
-     ========================================================= -->
-
-<section
-  id="highlighted"
-  class="page"
->
-
-  <div class="wrap">
-
-
-    <span class="eyebrow">
-      Highlighted Work
-    </span>
-
-
-    <h2>
-      Highlighted Work
-    </h2>
-
-
-    <div class="entries">
-
-
-      <!-- ATHENEI -->
-
-      <details
-        class="entry entry-details"
-      >
-
-        <summary>
-
-          <span class="tag">
-            Venture
-          </span>
-
-          <h3>
-
-            <a
-              href="https://atheneibiosciences.com/"
-              target="_blank"
-              rel="noopener"
-            >
-              Athenei Biosciences
-            </a>
-
-          </h3>
-
-        </summary>
-
-
-        <p>
-          Biological superintelligence for cellular agriculture.
-        </p>
-
-
-        <div class="work-links">
-
-          <span class="work-label">
-            Work:
-          </span>
-
-
-          <a
-            class="detail-link"
-            href="https://atheneibiosciences.com/#research"
-            target="_blank"
-            rel="noopener"
-          >
-            Our Research
-          </a>
-
-        </div>
-
-
-      </details>
-
-
-
-      <!-- =====================================================
-           NON-PROFIT
-           ===================================================== -->
-
-      <details
-        class="entry entry-details"
-      >
-
-        <summary>
-
-          <span class="tag">
-            Non-profit
-          </span>
-
-          <h3>
-            Imasion
-          </h3>
-
-        </summary>
-
-
-        <p>
-          At Imasion (imasion.org) we are working to impact the
-          2.33 billion children in the planet Earth. We believe the
-          new era of AI should emerge with biologically inspired
-          education and decentralized science.
-        </p>
-
-
-        <div class="work-links">
-
-          <span class="work-label">
-            Work:
-          </span>
-
-
-          <a
-            class="detail-link"
-            href="https://imasion.org/"
-            target="_blank"
-            rel="noopener"
-          >
-            imasion
-          </a>
-
-
-          <a
-            class="detail-link"
-            href="https://imasionkids.org/"
-            target="_blank"
-            rel="noopener"
-          >
-            imasionkids
-          </a>
-
-
-          <a
-            class="detail-link"
-            href="https://imasionkits.org/"
-            target="_blank"
-            rel="noopener"
-          >
-            imasionkits
-          </a>
-
-
-          <a
-            class="detail-link"
-            href="https://imasionteachers.org/"
-            target="_blank"
-            rel="noopener"
-          >
-            imasionteachers
-          </a>
-
-
-          <a
-            class="detail-link"
-            href="https://imasion.ai/"
-            target="_blank"
-            rel="noopener"
-          >
-            imasionai
-          </a>
-
-
-          <a
-            class="detail-link"
-            href="https://www.instagram.com/imasionorg/"
-            target="_blank"
-            rel="noopener"
-          >
-            impact
-          </a>
-
-        </div>
-
-
-      </details>
-
-
-
-      <!-- NEUROSCIENCE -->
-
-      <details
-        class="entry entry-details"
-      >
-
-        <summary>
-
-          <span class="tag">
-            2024
-          </span>
-
-          <h3>
-            Neuroscience of ASD
-          </h3>
-
-        </summary>
-
-
-        <p>
-          Theoretical research on ASD human brain organoids,
-          resulting in two preprints.
-        </p>
-
-
-        <div class="work-links">
-
-          <span class="work-label">
-            Work:
-          </span>
-
-
-          <a
-            class="detail-link"
-            href="https://jimenasegurabejar.github.io/neuroscience"
-            target="_blank"
-            rel="noopener"
-          >
-            Research
-          </a>
-
-        </div>
-
-
-      </details>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FEATURED
-     ========================================================= -->
-
-<section
-  id="featuredin"
-  class="page"
->
-
-  <div class="wrap">
-
-
-    <span class="eyebrow">
-      Featured
-    </span>
-
-
-    <h2>
-      Featured
-    </h2>
-
-
-    <div class="entries">
-
-
-      <div class="entry">
-
-        <span class="tag">
-          2023
-        </span>
-
-        <h3>
-          From Fauna Fellowship
-        </h3>
-
-        <p>
-          Selected as a fellow of the From Fauna Fellowship.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
-
-<footer>
-
-  © Jimena Segura. All Rights Reserved.
-
-</footer>
-
+  </section>
 
 </body>
-
 </html>
