@@ -21,7 +21,7 @@
        ========================================================= */
 
     :root{
-      --bg:#FAEFF1;
+      --bg:#F7ECED;
       --bg-deep:#f3e2e3;
 
       --ink:#3a3a3a;
@@ -200,6 +200,17 @@
       max-width:820px;
 
       height:100%;
+
+      -webkit-mask-image:linear-gradient(
+        to right,
+        transparent 0%,
+        black 16%
+      );
+      mask-image:linear-gradient(
+        to right,
+        transparent 0%,
+        black 16%
+      );
     }
 
     .hero-art{
@@ -1015,6 +1026,9 @@
         height:auto;
 
         margin-bottom:-20px;
+
+        -webkit-mask-image:none;
+        mask-image:none;
       }
 
       .hero-content{
