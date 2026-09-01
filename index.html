@@ -525,7 +525,7 @@
 
       color:var(--ink);
 
-      margin:56px 0 30px;
+      margin:0 0 30px;
     }
 
     #highlighted h2,
@@ -611,6 +611,18 @@
         90px
       );
       color:var(--ink);
+    }
+
+    .companies-side-img{
+      position:absolute;
+      top:50%;
+      right:6%;
+      transform:translateY(-50%);
+      width:26%;
+      max-width:320px;
+      min-width:140px;
+      height:auto;
+      pointer-events:none;
     }
 
     .about-subtitle{
@@ -1057,6 +1069,10 @@
         height:130px;
       }
 
+      .companies-side-img{
+        display:none;
+      }
+
       #home{
         justify-content:flex-start;
       }
@@ -1108,7 +1124,7 @@
     </a>
 
     <a href="#research">
-      Research
+      Publications
     </a>
 
     <a href="#highlighted">
@@ -1346,40 +1362,6 @@
 
     <div class="wrap">
 
-      <span class="eyebrow">
-        Research & Projects
-      </span>
-
-      <h2 class="research-title">
-        Research
-      </h2>
-
-
-      <div class="entries">
-
-        <div class="entry">
-
-          <span class="tag">
-            Research programme
-          </span>
-
-          <h3>
-            AtheneioLab
-          </h3>
-
-          <p>
-            A programme of theoretical foundational-model
-            papers unified by one geometric thesis:
-            Wasserstein geometry as the correct replacement
-            for Euclidean geometry in probability spaces.
-          </p>
-
-        </div>
-
-      </div>
-
-
-
       <h2 class="pub-title">
         Publications
       </h2>
@@ -1504,6 +1486,12 @@
     id="highlighted"
     class="page"
   >
+
+    <img
+      class="companies-side-img"
+      src="piedepagina.png"
+      alt=""
+    >
 
     <div class="wrap">
 
