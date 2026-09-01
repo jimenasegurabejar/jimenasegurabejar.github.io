@@ -643,6 +643,42 @@
       margin-top:44px;
     }
 
+    .focus-list{
+      max-width:680px;
+
+      margin:28px auto 0;
+
+      padding-left:26px;
+
+      text-align:left;
+
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .focus-list li{
+      font-size:16px;
+      color:var(--ink-soft);
+      line-height:1.6;
+    }
+
+    .focus-list li::marker{
+      color:var(--rose-deep);
+      font-weight:700;
+    }
+
+    .focus-list a{
+      color:var(--ink);
+      font-weight:600;
+      border-bottom:1px solid var(--rose);
+    }
+
+    .focus-list a:hover{
+      color:var(--rose-deep);
+      border-color:var(--rose-deep);
+    }
+
 
     /* =========================================================
        BODY TEXT
@@ -1344,6 +1380,47 @@
       <h3 class="about-subtitle">
         Research Focus
       </h3>
+
+      <ol class="focus-list">
+
+        <li>
+          <a
+            href="http://jimenasegurabejar.github.io/"
+            target="_blank"
+            rel="noopener"
+          >
+            Optimal Transport and Reinforcement Learning
+          </a>
+        </li>
+
+        <li>
+          ForestButterflyOT
+        </li>
+
+        <li>
+          MonarchOT: Geometric Aggregation in Wasserstein Space,
+          Fréchet Means, Curved Geometry, and the Failure of
+          Arithmetic Averaging in Distributed Policy
+        </li>
+
+        <li>
+          The JKO Structure of Distributed Learning:
+          Variational Optimality, Geometric Aggregation, and
+          Population Dynamics in Wasserstein Space
+        </li>
+
+        <li>
+          Learning as a Child: Schrödinger Bridges, Entropy
+          Regularization and the Geometry of RL
+        </li>
+
+        <li>
+          NeuralButterflyOT: Structured Matrix Approximations,
+          Hierarchical Coupling, and Scalable Wasserstein Maps
+          via Butterfly Factorisation
+        </li>
+
+      </ol>
 
     </div>
 
