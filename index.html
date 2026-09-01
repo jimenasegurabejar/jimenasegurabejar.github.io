@@ -618,13 +618,25 @@
     .companies-side-img{
       position:absolute;
       top:50%;
-      right:6%;
+      right:-2%;
       transform:translateY(-50%);
-      width:26%;
-      max-width:320px;
-      min-width:140px;
+      width:48%;
+      max-width:620px;
+      min-width:260px;
       height:auto;
       pointer-events:none;
+      opacity:0.9;
+
+      -webkit-mask-image:radial-gradient(
+        ellipse 65% 65% at center,
+        black 55%,
+        transparent 100%
+      );
+      mask-image:radial-gradient(
+        ellipse 65% 65% at center,
+        black 55%,
+        transparent 100%
+      );
     }
 
     .about-subtitle{
@@ -1837,4 +1849,3 @@
 
 </body>
 </html>
-
