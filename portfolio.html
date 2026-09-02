@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cortex Labs — Jimena Segura</title>
+<title>Research & Projects — Jimena Segura</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FBF1F3;
-    --bg-deep: #F6E1E7;
-    --ink: #3B2430;
-    --ink-soft: #8C6B78;
+    --bg-deep: #F5E1E7;
+    --ink: #4A4750;
+    --ink-soft: #8B8790;
     --rose: #EBA9C0;
-    --rose-deep: #C06A88;
-    --line: #EACBD4;
+    --rose-deep: #D67A98;
+    --rose-card: #E9A9C4;
+    --line: #E8D3DC;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -23,23 +24,23 @@
   body{
     background:var(--bg);
     color:var(--ink);
-    font-family:'Inter', sans-serif;
+    font-family:'Cormorant Garamond', serif;
     line-height:1.7;
   }
 
   a{ color:inherit; text-decoration:none; }
 
   .wrap{
-    max-width:1100px;
+    max-width:1200px;
     margin:0 auto;
     padding:70px 40px 120px;
   }
 
   .back-link{
     display:inline-block;
-    font-size:13px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:0.02em;
     color:var(--ink-soft);
     margin-bottom:40px;
     border-bottom:1px solid var(--rose);
@@ -50,63 +51,121 @@
   h1{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:clamp(36px, 5vw, 54px);
-    margin-bottom:14px;
-    color:var(--ink);
-  }
-
-  .subtitle{
-    font-size:16px;
-    color:var(--ink-soft);
+    font-size:clamp(50px, 8vw, 88px);
     margin-bottom:50px;
-    max-width:520px;
-  }
-
-  .logo-title{
-    display:block;
-    width:100%;
-    max-width:420px;
-    height:auto;
-    margin-bottom:10px;
+    color:var(--ink);
+    line-height:1.02;
   }
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-    gap:22px;
+    grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+    gap:28px;
   }
 
-  .box{
-    border:1px solid var(--line);
-    background:#fff;
-    border-radius:14px;
-    padding:26px 22px;
-    min-height:150px;
+  .card{
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--rose-card);
+    box-shadow:0 10px 30px rgba(214,122,152,0.18);
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
-    transition:border-color .2s ease, transform .2s ease;
+    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .box:hover{ border-color:var(--rose-deep); transform:translateY(-3px); }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+  }
 
-  .box .num{
+  .card-preview{
+    background:#fff;
+    min-height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .card-preview .placeholder{
+    width:100%;
+    height:150px;
+    border:1.5px dashed var(--rose);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     font-family:'Inter', sans-serif;
     font-size:12px;
-    letter-spacing:0.1em;
-    color:var(--rose-deep);
+    letter-spacing:0.08em;
     text-transform:uppercase;
+    color:var(--rose-deep);
   }
 
-  .box h3{
+  .card-body{
+    padding:26px 26px 24px;
+    color:#fff;
+  }
+
+  .card-body h3{
     font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:24px;
+    margin-bottom:6px;
+  }
+  .card-body h3 em{
+    font-style:italic;
+    font-weight:500;
+    color:#fff5f8;
+  }
+
+  .card-body .preprint{
+    font-style:italic;
+    font-size:14px;
+    color:#fbe4ec;
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .card-body p{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    line-height:1.65;
+    color:#fdeef4;
+  }
+
+  .card-footer{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:20px;
+  }
+
+  .visit-link{
+    font-family:'Inter', sans-serif;
+    font-size:13px;
     font-weight:600;
-    font-size:20px;
-    color:var(--ink);
-    margin-top:14px;
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .visit-link:hover{ opacity:0.85; }
+
+  .paper-pill{
+    font-family:'Inter', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    color:#fff;
+    border:1.5px solid rgba(255,255,255,0.7);
+    border-radius:999px;
+    padding:6px 16px;
+  }
+  .paper-pill:hover{
+    background:rgba(255,255,255,0.15);
   }
 
   @media (max-width:640px){
     .wrap{ padding:50px 24px 80px; }
+    .grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -114,24 +173,192 @@
 
 <div class="wrap">
   <a class="back-link" href="index.html">← Back</a>
-  <img class="logo-title" src="cortex-labs-logo.png" alt="Cortex Labs">
-  <p class="subtitle">Reimagining the world with biologically inspired research.</p>
+  <h1>Research & Projects</h1>
 
   <div class="grid">
-    <div class="box"><span class="num">01</span><h3>Project 01</h3></div>
-    <div class="box"><span class="num">02</span><h3>Project 02</h3></div>
-    <div class="box"><span class="num">03</span><h3>Project 03</h3></div>
-    <div class="box"><span class="num">04</span><h3>Project 04</h3></div>
-    <div class="box"><span class="num">05</span><h3>Project 05</h3></div>
-    <div class="box"><span class="num">06</span><h3>Project 06</h3></div>
-    <div class="box"><span class="num">07</span><h3>Project 07</h3></div>
-    <div class="box"><span class="num">08</span><h3>Project 08</h3></div>
-    <div class="box"><span class="num">09</span><h3>Project 09</h3></div>
-    <div class="box"><span class="num">10</span><h3>Project 10</h3></div>
-    <div class="box"><span class="num">11</span><h3>Project 11</h3></div>
-    <div class="box"><span class="num">12</span><h3>Project 12</h3></div>
-    <div class="box"><span class="num">13</span><h3>Project 13</h3></div>
-    <div class="box"><span class="num">14</span><h3>Project 14</h3></div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>01</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>02</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>03</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>04</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>05</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>06</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>07</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>08</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>09</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>10</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>11</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>12</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>13</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>14</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="#">Visit site →</a>
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
