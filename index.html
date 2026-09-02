@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Jimena Segura - Research Scientist</title>
+  <title>Jimena Segura - Research Scientist & Deep Tech Founder</title>
 
   <meta
     name="description"
@@ -1217,126 +1217,256 @@
 
     <div class="hero-art-wrap">
 
-      <img
-        class="main-picture"
-        src="mainpicturehome.png"
-        alt="Jimena Segura"
-      >
-
       <svg
         class="hero-art"
-        viewBox="0 0 800 800"
+        viewBox="0 0 1000 750"
         xmlns="http://www.w3.org/2000/svg"
       >
 
         <defs>
 
-          <radialGradient id="purpleGlow">
-            <stop
-              offset="0%"
-              stop-color="#7552B7"
-              stop-opacity="0.7"
-            />
+          <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="18"/>
+          </filter>
 
-            <stop
-              offset="100%"
-              stop-color="#7552B7"
-              stop-opacity="0"
-            />
+          <filter id="wideBlur" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="34"/>
+          </filter>
+
+          <radialGradient id="pinkWash" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E86A8A" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#E86A8A" stop-opacity="0"/>
           </radialGradient>
 
-          <radialGradient id="pinkGlow">
-            <stop
-              offset="0%"
-              stop-color="#DF91BB"
-              stop-opacity="0.7"
-            />
-
-            <stop
-              offset="100%"
-              stop-color="#DF91BB"
-              stop-opacity="0"
-            />
+          <radialGradient id="roseWash" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#DF91BB" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#DF91BB" stop-opacity="0"/>
           </radialGradient>
+
+          <radialGradient id="purpleWash" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7552B7" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#7552B7" stop-opacity="0"/>
+          </radialGradient>
+
+          <radialGradient id="lavenderWash" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#B9A3D9" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#B9A3D9" stop-opacity="0"/>
+          </radialGradient>
+
+          <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="35%" stop-color="#c9679a" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#c9679a" stop-opacity="0"/>
+          </radialGradient>
+
+          <linearGradient id="flowGradient" x1="60" y1="0" x2="940" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#c9567f"/>
+            <stop offset="50%" stop-color="#b98fc9"/>
+            <stop offset="100%" stop-color="#6f4fa8"/>
+          </linearGradient>
+
+          <linearGradient id="threadGradient" x1="60" y1="0" x2="940" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e0a24a" stop-opacity="0.5"/>
+            <stop offset="50%" stop-color="#d98cae" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#8a6bc2" stop-opacity="0.5"/>
+          </linearGradient>
 
         </defs>
 
 
-        <!-- purple distribution -->
+        <!-- ===================== WATERCOLOR WASHES ===================== -->
 
-        <circle
-          cx="210"
-          cy="350"
-          r="150"
-          fill="url(#purpleGlow)"
-          opacity="0.35"
-        />
+        <g filter="url(#wideBlur)">
+          <ellipse cx="150" cy="140" rx="150" ry="110" fill="url(#pinkWash)"/>
+          <ellipse cx="230" cy="300" rx="180" ry="150" fill="url(#roseWash)"/>
+          <ellipse cx="140" cy="470" rx="160" ry="140" fill="url(#pinkWash)"/>
+          <ellipse cx="290" cy="600" rx="150" ry="120" fill="url(#roseWash)"/>
 
+          <ellipse cx="850" cy="150" rx="150" ry="120" fill="url(#purpleWash)"/>
+          <ellipse cx="780" cy="320" rx="180" ry="150" fill="url(#lavenderWash)"/>
+          <ellipse cx="860" cy="480" rx="150" ry="130" fill="url(#purpleWash)"/>
+          <ellipse cx="740" cy="620" rx="140" ry="110" fill="url(#lavenderWash)"/>
+        </g>
 
-        <!-- pink distribution -->
-
-        <circle
-          cx="610"
-          cy="360"
-          r="150"
-          fill="url(#pinkGlow)"
-          opacity="0.35"
-        />
+        <circle cx="500" cy="380" r="130" fill="url(#centerGlow)"/>
 
 
-        <!-- central geometry -->
+        <!-- ===================== FLOWING GEODESICS ===================== -->
 
-        <g
-          fill="none"
-          stroke="#b94d91"
-          stroke-width="1"
-          opacity="0.16"
-        >
+        <g fill="none" stroke="url(#flowGradient)" stroke-width="1" opacity="0.5">
+          <path d="M120 120 C 320 190, 420 260, 500 380 C 580 500, 680 560, 880 620"/>
+          <path d="M120 220 C 320 250, 420 300, 500 380 C 580 460, 680 500, 880 520"/>
+          <path d="M120 330 C 320 340, 430 360, 500 380 C 570 400, 680 420, 880 430"/>
+          <path d="M120 440 C 320 420, 430 400, 500 380 C 570 360, 680 340, 880 320"/>
+          <path d="M120 560 C 320 490, 420 430, 500 380 C 580 330, 680 260, 880 190"/>
+          <path d="M120 650 C 320 540, 420 450, 500 380 C 580 310, 680 220, 880 110"/>
+        </g>
 
-          <path d="M120 380 C260 240, 400 520, 680 300"/>
-          <path d="M130 410 C280 300, 430 500, 670 350"/>
-          <path d="M150 450 C310 360, 430 470, 650 400"/>
-          <path d="M160 330 C310 450, 480 250, 670 430"/>
+        <g fill="none" stroke="url(#threadGradient)" stroke-width="0.6" opacity="0.7" stroke-dasharray="1 5">
+          <path d="M100 160 C 310 220, 420 290, 500 380 C 590 470, 690 540, 900 590"/>
+          <path d="M100 600 C 310 500, 420 440, 500 380 C 590 320, 690 250, 900 150"/>
+        </g>
 
+        <circle cx="500" cy="380" r="9" fill="#a1477e"/>
+        <circle cx="500" cy="380" r="16" fill="none" stroke="#a1477e" stroke-width="0.6" opacity="0.5"/>
+
+
+        <!-- ===================== NEURONS — SOURCE (left) ===================== -->
+
+        <g stroke="#b03a5f" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.85">
+          <path d="M150 130 C 120 95, 95 70, 60 55"/>
+          <path d="M150 130 C 175 90, 190 65, 185 30"/>
+          <path d="M150 130 C 110 140, 75 135, 45 155"/>
+          <path d="M150 130 C 165 165, 160 195, 185 220"/>
+
+          <path d="M230 290 C 190 260, 150 250, 110 260"/>
+          <path d="M230 290 C 270 260, 300 235, 300 195"/>
+          <path d="M230 290 C 195 320, 180 355, 145 375"/>
+          <path d="M230 290 C 265 315, 285 345, 320 360"/>
+
+          <path d="M150 460 C 110 445, 75 450, 45 430"/>
+          <path d="M150 460 C 180 430, 190 400, 175 365"/>
+          <path d="M150 460 C 140 500, 150 535, 125 565"/>
+          <path d="M150 460 C 185 480, 210 505, 245 510"/>
+
+          <path d="M290 585 C 250 565, 215 570, 180 555"/>
+          <path d="M290 585 C 320 555, 320 520, 350 495"/>
+          <path d="M290 585 C 285 620, 295 650, 275 680"/>
+        </g>
+
+        <g fill="#c14a72">
+          <circle cx="150" cy="130" r="15"/>
+          <circle cx="230" cy="290" r="18"/>
+          <circle cx="150" cy="460" r="16"/>
+          <circle cx="290" cy="585" r="14"/>
+        </g>
+        <g fill="#e8a9be" opacity="0.7">
+          <circle cx="150" cy="130" r="15"/>
+          <circle cx="230" cy="290" r="18"/>
+          <circle cx="150" cy="460" r="16"/>
+          <circle cx="290" cy="585" r="14"/>
         </g>
 
 
-        <!-- central node -->
+        <!-- ===================== NEURONS — TARGET (right) ===================== -->
 
-        <circle
-          cx="400"
-          cy="390"
-          r="45"
-          fill="url(#purpleGlow)"
-          opacity="0.25"
-        />
+        <g stroke="#5f4a90" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.85">
+          <path d="M850 140 C 880 105, 905 85, 940 70"/>
+          <path d="M850 140 C 825 100, 810 75, 815 40"/>
+          <path d="M850 140 C 890 150, 925 145, 955 165"/>
+          <path d="M850 140 C 835 175, 840 205, 815 230"/>
 
-        <circle
-          cx="400"
-          cy="390"
-          r="7"
-          fill="#b94d91"
-          opacity="0.8"
-        />
+          <path d="M770 300 C 810 270, 850 260, 890 270"/>
+          <path d="M770 300 C 730 270, 700 245, 700 205"/>
+          <path d="M770 300 C 805 330, 820 365, 855 385"/>
+          <path d="M770 300 C 735 325, 715 355, 680 370"/>
 
+          <path d="M850 470 C 890 455, 925 460, 955 440"/>
+          <path d="M850 470 C 820 440, 810 410, 825 375"/>
+          <path d="M850 470 C 860 510, 850 545, 875 575"/>
+          <path d="M850 470 C 815 490, 790 515, 755 520"/>
 
-        <!-- small scattered nodes -->
-
-        <g
-          fill="#df91bb"
-          opacity="0.7"
-        >
-
-          <circle cx="140" cy="200" r="3"/>
-          <circle cx="180" cy="250" r="2.5"/>
-          <circle cx="600" cy="180" r="3"/>
-          <circle cx="650" cy="240" r="2.5"/>
-          <circle cx="600" cy="600" r="3"/>
-          <circle cx="250" cy="700" r="2.5"/>
-          <circle cx="400" cy="620" r="2.5"/>
-          <circle cx="500" cy="150" r="2.5"/>
-
+          <path d="M740 600 C 780 580, 815 585, 850 570"/>
+          <path d="M740 600 C 710 570, 710 535, 680 510"/>
+          <path d="M740 600 C 745 635, 735 665, 755 695"/>
         </g>
+
+        <g fill="#6b5296">
+          <circle cx="850" cy="140" r="15"/>
+          <circle cx="770" cy="300" r="18"/>
+          <circle cx="850" cy="470" r="16"/>
+          <circle cx="740" cy="600" r="14"/>
+        </g>
+        <g fill="#c3b3e0" opacity="0.7">
+          <circle cx="850" cy="140" r="15"/>
+          <circle cx="770" cy="300" r="18"/>
+          <circle cx="850" cy="470" r="16"/>
+          <circle cx="740" cy="600" r="14"/>
+        </g>
+
+
+        <!-- ===================== SCATTERED PARTICLES ===================== -->
+
+        <g fill="#d98cae" opacity="0.7">
+          <circle cx="60" cy="60" r="2.4"/>
+          <circle cx="380" cy="90" r="2"/>
+          <circle cx="40" cy="380" r="2.2"/>
+          <circle cx="330" cy="700" r="2"/>
+          <circle cx="470" cy="200" r="1.6"/>
+        </g>
+
+        <g fill="#a688cf" opacity="0.7">
+          <circle cx="940" cy="60" r="2.4"/>
+          <circle cx="630" cy="90" r="2"/>
+          <circle cx="960" cy="380" r="2.2"/>
+          <circle cx="670" cy="700" r="2"/>
+          <circle cx="540" cy="220" r="1.6"/>
+        </g>
+
+        <g fill="#e0a24a" opacity="0.55">
+          <circle cx="470" cy="250" r="1.4"/>
+          <circle cx="530" cy="500" r="1.4"/>
+          <circle cx="410" cy="400" r="1.2"/>
+          <circle cx="600" cy="330" r="1.2"/>
+        </g>
+
+
+        <!-- ===================== LABELS ===================== -->
+
+        <text
+          x="500" y="55"
+          text-anchor="middle"
+          font-family="'Cormorant Garamond', serif"
+          font-weight="700"
+          font-size="22"
+          letter-spacing="3"
+          fill="#5a4a5e"
+        >OPTIMAL TRANSPORT</text>
+
+        <text
+          x="500" y="82"
+          text-anchor="middle"
+          font-family="'Cormorant Garamond', serif"
+          font-style="italic"
+          font-size="16"
+          fill="#8a7a8e"
+        >between probability distributions</text>
+
+        <text
+          x="45" y="700"
+          font-family="'Cormorant Garamond', serif"
+          font-weight="700"
+          font-size="15"
+          letter-spacing="2"
+          fill="#b0507a"
+        >SOURCE</text>
+        <text
+          x="45" y="720"
+          font-family="'Cormorant Garamond', serif"
+          font-weight="700"
+          font-size="15"
+          letter-spacing="2"
+          fill="#b0507a"
+        >DISTRIBUTION</text>
+        <line x1="45" y1="732" x2="105" y2="732" stroke="#b0507a" stroke-width="1"/>
+
+        <text
+          x="815" y="700"
+          font-family="'Cormorant Garamond', serif"
+          font-weight="700"
+          font-size="15"
+          letter-spacing="2"
+          fill="#6f5aa0"
+        >TARGET</text>
+        <text
+          x="815" y="720"
+          font-family="'Cormorant Garamond', serif"
+          font-weight="700"
+          font-size="15"
+          letter-spacing="2"
+          fill="#6f5aa0"
+        >DISTRIBUTION</text>
+        <line x1="815" y1="732" x2="895" y2="732" stroke="#6f5aa0" stroke-width="1"/>
 
       </svg>
 
