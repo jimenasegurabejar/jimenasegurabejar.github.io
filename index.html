@@ -465,6 +465,21 @@
         );
     }
 
+    .news-deco{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    #news .wrap{
+      position:relative;
+      z-index:1;
+    }
+
     section.page:nth-of-type(even){
       background:
         radial-gradient(
@@ -1201,6 +1216,10 @@
       Portfolio
     </a>
 
+    <a href="#news">
+      News
+    </a>
+
     <a
       href="https://jimenasegurabejar.github.io/companies"
       target="_blank"
@@ -1737,6 +1756,72 @@
       >
         See 14 Projects →
       </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       NEWS
+       ======================================================= -->
+
+  <section
+    id="news"
+    class="page"
+  >
+
+    <svg
+      class="news-deco"
+      viewBox="0 0 800 400"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+    >
+      <g fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.5">
+        <path d="M0 60 C 200 20, 350 120, 500 70 C 650 20, 720 90, 800 50"/>
+        <path d="M0 340 C 180 380, 320 300, 480 350 C 620 390, 700 320, 800 360"/>
+      </g>
+      <g fill="var(--rose-deep)" opacity="0.6">
+        <circle cx="60" cy="90" r="2.5"/>
+        <circle cx="180" cy="40" r="2"/>
+        <circle cx="330" cy="100" r="2.5"/>
+        <circle cx="470" cy="55" r="2"/>
+        <circle cx="600" cy="95" r="2.5"/>
+        <circle cx="740" cy="45" r="2"/>
+        <circle cx="90" cy="330" r="2"/>
+        <circle cx="250" cy="365" r="2.5"/>
+        <circle cx="410" cy="325" r="2"/>
+        <circle cx="560" cy="370" r="2.5"/>
+        <circle cx="710" cy="335" r="2"/>
+      </g>
+    </svg>
+
+    <div class="wrap">
+
+      <span class="eyebrow">
+        News
+      </span>
+
+      <h2>
+        News
+      </h2>
+
+      <div class="entries">
+
+        <div class="entry">
+          <span class="tag">2026</span>
+          <h3>News headline goes here</h3>
+          <p>Add a short description of this update here.</p>
+        </div>
+
+        <div class="entry">
+          <span class="tag">2026</span>
+          <h3>News headline goes here</h3>
+          <p>Add a short description of this update here.</p>
+        </div>
+
+      </div>
 
     </div>
 
