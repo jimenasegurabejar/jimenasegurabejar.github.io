@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Companies — Jimena Segura</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF1F3;
+    --bg-deep: #F5E1E7;
+    --ink: #4A4750;
+    --ink-soft: #8B8790;
+    --rose: #EBA9C0;
+    --rose-deep: #D67A98;
+    --rose-card: #E9A9C4;
+    --line: #E8D3DC;
+  }
 
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    line-height:1.7;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding:70px 40px 120px;
+  }
+
+  .back-link{
+    display:inline-block;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    margin-bottom:40px;
+    border-bottom:1px solid var(--rose);
+    padding-bottom:2px;
+  }
+  .back-link:hover{ color:var(--rose-deep); border-color:var(--rose-deep); }
+
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(50px, 8vw, 88px);
+    margin-bottom:50px;
+    color:var(--ink);
+    line-height:1.02;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:32px;
+  }
+
+  .card{
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--rose-card);
+    box-shadow:0 10px 30px rgba(214,122,152,0.18);
+    display:flex;
+    flex-direction:column;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+  }
+
+  .card:active{
+    transform:translateY(-1px) scale(0.99);
+  }
+
+  .card:active .card-body{
+    filter:brightness(1.32) saturate(1.4);
+    animation-duration:1.4s;
+  }
+
+  .card-preview{
+    background:#fff;
+    min-height:300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+  }
+  .card-preview .placeholder{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--rose);
+  }
+
+  .card-body{
+    padding:26px 26px 28px;
+    color:#fff;
+    background:linear-gradient(
+      90deg,
+      var(--rose-card) 0%,
+      #F6D9E7 25%,
+      var(--rose-card) 50%,
+      var(--rose-card) 100%
+    );
+    background-size:300% 100%;
+    animation:shimmerLight 7s ease-in-out infinite;
+    transition:filter .25s ease;
+  }
+
+  @keyframes shimmerLight{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+
+  .card-body h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:26px;
+    margin-bottom:6px;
+  }
+
+  .card-body .tag{
+    font-style:italic;
+    font-size:17px;
+    color:#fbe4ec;
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .card-body p{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    line-height:1.65;
+    color:#fdeef4;
+  }
+
+  .card-footer{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px;
+    margin-top:20px;
+  }
+
+  .visit-link{
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .visit-link:hover{ opacity:0.85; }
+
+  .paper-pill{
+    font-family:'Inter', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    color:#fff;
+    border:1.5px solid rgba(255,255,255,0.7);
+    border-radius:999px;
+    padding:6px 16px;
+  }
+  .paper-pill:hover{
+    background:rgba(255,255,255,0.15);
+  }
+
+  footer{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    padding:40px 0;
+    text-align:center;
+    font-size:16px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:640px){
+    .wrap{ padding:50px 24px 80px; }
+    .grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a class="back-link" href="index.html">← Back</a>
+  <h1>Research Companies</h1>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-preview"><span class="placeholder">Preview</span></div>
+      <div class="card-body">
+        <h3>Athenei Biosciences</h3>
+        <span class="tag">Venture</span>
+        <p>Biological Superintelligence for Cellular Agriculture.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="https://atheneibiosciences.com/" target="_blank" rel="noopener">Visit site →</a>
+          <a class="paper-pill" href="https://atheneibiosciences.com/#research" target="_blank" rel="noopener">Our Research</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><span class="placeholder">Preview</span></div>
+      <div class="card-body">
+        <h3>Physis Research</h3>
+        <span class="tag">Venture</span>
+        <p>We're a research lab creating the foundational models for the new era of reinforcement learning.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="https://jimenasegurabejar.github.io/physisresearch" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><span class="placeholder">Preview</span></div>
+      <div class="card-body">
+        <h3>Imasion</h3>
+        <span class="tag">Venture</span>
+        <p>An edtech startup working to impact the 2.3 billion children in the planet Earth.</p>
+        <div class="card-footer">
+          <a class="visit-link" href="https://imasion.org/" target="_blank" rel="noopener">Visit site →</a>
+          <a class="paper-pill" href="https://imasionkids.org/" target="_blank" rel="noopener">imasionkids</a>
+          <a class="paper-pill" href="https://imasionteachers.org/" target="_blank" rel="noopener">imasionteachers</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © Copyright 2026 Jimena Segura.
+</footer>
+
+</body>
+</html>
