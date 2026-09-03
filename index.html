@@ -1264,37 +1264,49 @@
         <defs>
 
           <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="18"/>
+            <feGaussianBlur stdDeviation="14"/>
           </filter>
 
           <filter id="wideBlur" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="34"/>
+            <feGaussianBlur stdDeviation="30"/>
           </filter>
 
           <radialGradient id="pinkWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#E86A8A" stop-opacity="0.55"/>
+            <stop offset="0%" stop-color="#E86A8A" stop-opacity="0.5"/>
             <stop offset="100%" stop-color="#E86A8A" stop-opacity="0"/>
           </radialGradient>
 
           <radialGradient id="roseWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#DF91BB" stop-opacity="0.45"/>
+            <stop offset="0%" stop-color="#DF91BB" stop-opacity="0.42"/>
             <stop offset="100%" stop-color="#DF91BB" stop-opacity="0"/>
           </radialGradient>
 
           <radialGradient id="purpleWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#7552B7" stop-opacity="0.5"/>
+            <stop offset="0%" stop-color="#7552B7" stop-opacity="0.46"/>
             <stop offset="100%" stop-color="#7552B7" stop-opacity="0"/>
           </radialGradient>
 
           <radialGradient id="lavenderWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#B9A3D9" stop-opacity="0.4"/>
+            <stop offset="0%" stop-color="#B9A3D9" stop-opacity="0.38"/>
             <stop offset="100%" stop-color="#B9A3D9" stop-opacity="0"/>
           </radialGradient>
 
           <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-            <stop offset="35%" stop-color="#c9679a" stop-opacity="0.5"/>
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+            <stop offset="35%" stop-color="#c9679a" stop-opacity="0.4"/>
             <stop offset="100%" stop-color="#c9679a" stop-opacity="0"/>
+          </radialGradient>
+
+          <radialGradient id="somaPink" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#f3c2d3"/>
+            <stop offset="55%" stop-color="#c14a72"/>
+            <stop offset="100%" stop-color="#932b52"/>
+          </radialGradient>
+
+          <radialGradient id="somaPurple" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#d9c9ef"/>
+            <stop offset="55%" stop-color="#6b5296"/>
+            <stop offset="100%" stop-color="#4a3670"/>
           </radialGradient>
 
           <linearGradient id="flowGradient" x1="60" y1="0" x2="940" y2="0" gradientUnits="userSpaceOnUse">
@@ -1315,144 +1327,172 @@
         <!-- ===================== WATERCOLOR WASHES ===================== -->
 
         <g filter="url(#wideBlur)">
-          <ellipse cx="150" cy="140" rx="150" ry="110" fill="url(#pinkWash)"/>
-          <ellipse cx="230" cy="300" rx="180" ry="150" fill="url(#roseWash)"/>
-          <ellipse cx="140" cy="470" rx="160" ry="140" fill="url(#pinkWash)"/>
-          <ellipse cx="290" cy="600" rx="150" ry="120" fill="url(#roseWash)"/>
+          <ellipse cx="110" cy="90" rx="140" ry="100" fill="url(#pinkWash)"/>
+          <ellipse cx="220" cy="200" rx="150" ry="120" fill="url(#roseWash)"/>
+          <ellipse cx="90" cy="300" rx="150" ry="120" fill="url(#pinkWash)"/>
+          <ellipse cx="240" cy="390" rx="160" ry="130" fill="url(#roseWash)"/>
+          <ellipse cx="130" cy="490" rx="150" ry="120" fill="url(#pinkWash)"/>
+          <ellipse cx="270" cy="600" rx="150" ry="120" fill="url(#roseWash)"/>
 
-          <ellipse cx="850" cy="150" rx="150" ry="120" fill="url(#purpleWash)"/>
-          <ellipse cx="780" cy="320" rx="180" ry="150" fill="url(#lavenderWash)"/>
-          <ellipse cx="860" cy="480" rx="150" ry="130" fill="url(#purpleWash)"/>
-          <ellipse cx="740" cy="620" rx="140" ry="110" fill="url(#lavenderWash)"/>
+          <ellipse cx="890" cy="90" rx="140" ry="100" fill="url(#purpleWash)"/>
+          <ellipse cx="770" cy="200" rx="150" ry="120" fill="url(#lavenderWash)"/>
+          <ellipse cx="910" cy="300" rx="150" ry="120" fill="url(#purpleWash)"/>
+          <ellipse cx="750" cy="390" rx="160" ry="130" fill="url(#lavenderWash)"/>
+          <ellipse cx="870" cy="490" rx="150" ry="120" fill="url(#purpleWash)"/>
+          <ellipse cx="720" cy="600" rx="150" ry="120" fill="url(#lavenderWash)"/>
         </g>
 
-        <circle cx="500" cy="380" r="130" fill="url(#centerGlow)"/>
+        <circle cx="500" cy="360" r="130" fill="url(#centerGlow)"/>
 
 
         <!-- ===================== FLOWING GEODESICS ===================== -->
 
-        <g fill="none" stroke="url(#flowGradient)" stroke-width="1" opacity="0.5">
-          <path d="M120 120 C 320 190, 420 260, 500 380 C 580 500, 680 560, 880 620"/>
-          <path d="M120 220 C 320 250, 420 300, 500 380 C 580 460, 680 500, 880 520"/>
-          <path d="M120 330 C 320 340, 430 360, 500 380 C 570 400, 680 420, 880 430"/>
-          <path d="M120 440 C 320 420, 430 400, 500 380 C 570 360, 680 340, 880 320"/>
-          <path d="M120 560 C 320 490, 420 430, 500 380 C 580 330, 680 260, 880 190"/>
-          <path d="M120 650 C 320 540, 420 450, 500 380 C 580 310, 680 220, 880 110"/>
+        <g fill="none" stroke="url(#flowGradient)" stroke-width="1" opacity="0.45">
+          <path d="M110 95 C 300 160, 420 250, 500 360 C 580 470, 690 555, 880 610"/>
+          <path d="M240 210 C 340 250, 430 300, 500 360 C 580 430, 660 470, 750 500"/>
+          <path d="M95 305 C 300 320, 420 340, 500 360 C 580 380, 690 400, 905 305"/>
+          <path d="M245 395 C 340 385, 430 375, 500 360 C 570 345, 660 335, 745 395"/>
+          <path d="M135 495 C 320 440, 430 400, 500 360 C 580 320, 690 260, 865 495"/>
+          <path d="M275 605 C 340 530, 430 440, 500 360 C 570 280, 660 220, 715 605"/>
+          <path d="M110 95 C 280 260, 400 320, 500 360 C 600 400, 720 460, 880 610"/>
+          <path d="M275 605 C 380 480, 440 420, 500 360 C 560 300, 620 240, 720 600"/>
         </g>
 
-        <g fill="none" stroke="url(#threadGradient)" stroke-width="0.6" opacity="0.7" stroke-dasharray="1 5">
-          <path d="M100 160 C 310 220, 420 290, 500 380 C 590 470, 690 540, 900 590"/>
-          <path d="M100 600 C 310 500, 420 440, 500 380 C 590 320, 690 250, 900 150"/>
+        <g fill="none" stroke="url(#threadGradient)" stroke-width="0.6" opacity="0.65" stroke-dasharray="1 5">
+          <path d="M90 150 C 300 220, 420 290, 500 360 C 590 440, 700 520, 900 560"/>
+          <path d="M90 550 C 300 480, 420 420, 500 360 C 590 300, 700 220, 900 160"/>
+          <path d="M120 400 C 300 380, 420 370, 500 360 C 590 350, 700 340, 890 400"/>
         </g>
 
-        <circle cx="500" cy="380" r="9" fill="#a1477e"/>
-        <circle cx="500" cy="380" r="16" fill="none" stroke="#a1477e" stroke-width="0.6" opacity="0.5"/>
+        <circle cx="500" cy="360" r="8" fill="#a1477e"/>
+        <circle cx="500" cy="360" r="15" fill="none" stroke="#a1477e" stroke-width="0.6" opacity="0.5"/>
 
 
         <!-- ===================== NEURONS — SOURCE (left) ===================== -->
 
-        <g stroke="#b03a5f" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.85">
-          <path d="M150 130 C 120 95, 95 70, 60 55"/>
-          <path d="M150 130 C 175 90, 190 65, 185 30"/>
-          <path d="M150 130 C 110 140, 75 135, 45 155"/>
-          <path d="M150 130 C 165 165, 160 195, 185 220"/>
+        <g stroke="#b03a5f" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.85">
+          <path d="M110 90 C 85 60, 65 40, 35 25"/>
+          <path d="M35 25 C 25 18, 12 16, 5 8"/>
+          <path d="M35 25 C 30 35, 20 40, 10 45"/>
+          <path d="M110 90 C 130 55, 140 30, 130 -5"/>
+          <path d="M110 90 C 70 100, 40 95, 15 112"/>
+          <path d="M110 90 C 120 125, 112 155, 135 180"/>
+          <path d="M135 180 C 140 195, 155 200, 165 212"/>
 
-          <path d="M230 290 C 190 260, 150 250, 110 260"/>
-          <path d="M230 290 C 270 260, 300 235, 300 195"/>
-          <path d="M230 290 C 195 320, 180 355, 145 375"/>
-          <path d="M230 290 C 265 315, 285 345, 320 360"/>
+          <path d="M220 200 C 180 175, 140 168, 100 178"/>
+          <path d="M220 200 C 255 172, 280 148, 278 110"/>
+          <path d="M278 110 C 285 98, 298 95, 305 82"/>
+          <path d="M220 200 C 190 228, 178 262, 145 280"/>
+          <path d="M220 200 C 252 222, 270 250, 302 262"/>
+          <path d="M302 262 C 316 268, 322 280, 336 288"/>
 
-          <path d="M150 460 C 110 445, 75 450, 45 430"/>
-          <path d="M150 460 C 180 430, 190 400, 175 365"/>
-          <path d="M150 460 C 140 500, 150 535, 125 565"/>
-          <path d="M150 460 C 185 480, 210 505, 245 510"/>
+          <path d="M90 300 C 55 288, 25 292, 0 275"/>
+          <path d="M90 300 C 118 272, 126 244, 112 210"/>
+          <path d="M90 300 C 82 335, 90 368, 68 395"/>
+          <path d="M90 300 C 122 318, 145 342, 178 348"/>
+          <path d="M178 348 C 190 352, 196 364, 208 370"/>
 
-          <path d="M290 585 C 250 565, 215 570, 180 555"/>
-          <path d="M290 585 C 320 555, 320 520, 350 495"/>
-          <path d="M290 585 C 285 620, 295 650, 275 680"/>
+          <path d="M240 390 C 205 372, 172 375, 140 360"/>
+          <path d="M240 390 C 268 362, 270 330, 296 308"/>
+          <path d="M240 390 C 235 422, 244 450, 226 478"/>
+          <path d="M240 390 C 272 405, 292 428, 322 435"/>
+
+          <path d="M130 490 C 95 475, 62 480, 32 462"/>
+          <path d="M130 490 C 158 462, 168 432, 154 398"/>
+          <path d="M130 490 C 122 528, 132 562, 108 590"/>
+          <path d="M130 490 C 164 508, 188 532, 222 538"/>
+
+          <path d="M270 600 C 235 582, 202 585, 168 570"/>
+          <path d="M270 600 C 298 572, 300 538, 328 514"/>
+          <path d="M270 600 C 265 634, 274 664, 256 692"/>
         </g>
 
-        <g fill="#c14a72">
-          <circle cx="150" cy="130" r="15"/>
-          <circle cx="230" cy="290" r="18"/>
-          <circle cx="150" cy="460" r="16"/>
-          <circle cx="290" cy="585" r="14"/>
-        </g>
-        <g fill="#e8a9be" opacity="0.7">
-          <circle cx="150" cy="130" r="15"/>
-          <circle cx="230" cy="290" r="18"/>
-          <circle cx="150" cy="460" r="16"/>
-          <circle cx="290" cy="585" r="14"/>
+        <g>
+          <circle cx="110" cy="90" r="13" fill="url(#somaPink)"/>
+          <circle cx="220" cy="200" r="15" fill="url(#somaPink)"/>
+          <circle cx="90" cy="300" r="12" fill="url(#somaPink)"/>
+          <circle cx="240" cy="390" r="14" fill="url(#somaPink)"/>
+          <circle cx="130" cy="490" r="13" fill="url(#somaPink)"/>
+          <circle cx="270" cy="600" r="12" fill="url(#somaPink)"/>
         </g>
 
 
         <!-- ===================== NEURONS — TARGET (right) ===================== -->
 
-        <g stroke="#5f4a90" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.85">
-          <path d="M850 140 C 880 105, 905 85, 940 70"/>
-          <path d="M850 140 C 825 100, 810 75, 815 40"/>
-          <path d="M850 140 C 890 150, 925 145, 955 165"/>
-          <path d="M850 140 C 835 175, 840 205, 815 230"/>
+        <g stroke="#5f4a90" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.85">
+          <path d="M890 90 C 915 60, 935 40, 965 25"/>
+          <path d="M965 25 C 975 18, 988 16, 995 8"/>
+          <path d="M890 90 C 870 55, 860 30, 870 -5"/>
+          <path d="M890 90 C 930 100, 960 95, 985 112"/>
+          <path d="M890 90 C 880 125, 888 155, 865 180"/>
 
-          <path d="M770 300 C 810 270, 850 260, 890 270"/>
-          <path d="M770 300 C 730 270, 700 245, 700 205"/>
-          <path d="M770 300 C 805 330, 820 365, 855 385"/>
-          <path d="M770 300 C 735 325, 715 355, 680 370"/>
+          <path d="M770 200 C 810 175, 850 168, 890 178"/>
+          <path d="M770 200 C 735 172, 710 148, 712 110"/>
+          <path d="M712 110 C 705 98, 692 95, 685 82"/>
+          <path d="M770 200 C 800 228, 812 262, 845 280"/>
+          <path d="M770 200 C 738 222, 720 250, 688 262"/>
+          <path d="M688 262 C 674 268, 668 280, 654 288"/>
 
-          <path d="M850 470 C 890 455, 925 460, 955 440"/>
-          <path d="M850 470 C 820 440, 810 410, 825 375"/>
-          <path d="M850 470 C 860 510, 850 545, 875 575"/>
-          <path d="M850 470 C 815 490, 790 515, 755 520"/>
+          <path d="M910 300 C 945 288, 975 292, 1000 275"/>
+          <path d="M910 300 C 882 272, 874 244, 888 210"/>
+          <path d="M910 300 C 918 335, 910 368, 932 395"/>
+          <path d="M910 300 C 878 318, 855 342, 822 348"/>
 
-          <path d="M740 600 C 780 580, 815 585, 850 570"/>
-          <path d="M740 600 C 710 570, 710 535, 680 510"/>
-          <path d="M740 600 C 745 635, 735 665, 755 695"/>
+          <path d="M750 390 C 785 372, 818 375, 850 360"/>
+          <path d="M750 390 C 722 362, 720 330, 694 308"/>
+          <path d="M750 390 C 755 422, 746 450, 764 478"/>
+          <path d="M750 390 C 718 405, 698 428, 668 435"/>
+
+          <path d="M870 490 C 905 475, 938 480, 968 462"/>
+          <path d="M870 490 C 842 462, 832 432, 846 398"/>
+          <path d="M870 490 C 878 528, 868 562, 892 590"/>
+          <path d="M870 490 C 836 508, 812 532, 778 538"/>
+
+          <path d="M720 600 C 755 582, 788 585, 822 570"/>
+          <path d="M720 600 C 692 572, 690 538, 662 514"/>
+          <path d="M720 600 C 725 634, 716 664, 734 692"/>
         </g>
 
-        <g fill="#6b5296">
-          <circle cx="850" cy="140" r="15"/>
-          <circle cx="770" cy="300" r="18"/>
-          <circle cx="850" cy="470" r="16"/>
-          <circle cx="740" cy="600" r="14"/>
-        </g>
-        <g fill="#c3b3e0" opacity="0.7">
-          <circle cx="850" cy="140" r="15"/>
-          <circle cx="770" cy="300" r="18"/>
-          <circle cx="850" cy="470" r="16"/>
-          <circle cx="740" cy="600" r="14"/>
+        <g>
+          <circle cx="890" cy="90" r="13" fill="url(#somaPurple)"/>
+          <circle cx="770" cy="200" r="15" fill="url(#somaPurple)"/>
+          <circle cx="910" cy="300" r="12" fill="url(#somaPurple)"/>
+          <circle cx="750" cy="390" r="14" fill="url(#somaPurple)"/>
+          <circle cx="870" cy="490" r="13" fill="url(#somaPurple)"/>
+          <circle cx="720" cy="600" r="12" fill="url(#somaPurple)"/>
         </g>
 
 
         <!-- ===================== SCATTERED PARTICLES ===================== -->
 
         <g fill="#d98cae" opacity="0.7">
-          <circle cx="60" cy="60" r="2.4"/>
-          <circle cx="380" cy="90" r="2"/>
-          <circle cx="40" cy="380" r="2.2"/>
-          <circle cx="330" cy="700" r="2"/>
-          <circle cx="470" cy="200" r="1.6"/>
+          <circle cx="40" cy="40" r="2.2"/>
+          <circle cx="380" cy="70" r="1.8"/>
+          <circle cx="20" cy="360" r="2"/>
+          <circle cx="330" cy="700" r="1.8"/>
+          <circle cx="450" cy="190" r="1.5"/>
         </g>
 
         <g fill="#a688cf" opacity="0.7">
-          <circle cx="940" cy="60" r="2.4"/>
-          <circle cx="630" cy="90" r="2"/>
-          <circle cx="960" cy="380" r="2.2"/>
-          <circle cx="670" cy="700" r="2"/>
-          <circle cx="540" cy="220" r="1.6"/>
+          <circle cx="960" cy="40" r="2.2"/>
+          <circle cx="620" cy="70" r="1.8"/>
+          <circle cx="980" cy="360" r="2"/>
+          <circle cx="670" cy="700" r="1.8"/>
+          <circle cx="550" cy="210" r="1.5"/>
         </g>
 
-        <g fill="#e0a24a" opacity="0.55">
-          <circle cx="470" cy="250" r="1.4"/>
-          <circle cx="530" cy="500" r="1.4"/>
-          <circle cx="410" cy="400" r="1.2"/>
-          <circle cx="600" cy="330" r="1.2"/>
+        <g fill="#e0a24a" opacity="0.5">
+          <circle cx="460" cy="240" r="1.3"/>
+          <circle cx="540" cy="480" r="1.3"/>
+          <circle cx="400" cy="390" r="1.1"/>
+          <circle cx="610" cy="320" r="1.1"/>
         </g>
 
 
         <!-- ===================== LABELS ===================== -->
 
         <text
-          x="500" y="55"
+          x="500" y="45"
           text-anchor="middle"
           font-family="'Cormorant Garamond', serif"
           font-weight="700"
@@ -1462,7 +1502,7 @@
         >OPTIMAL TRANSPORT</text>
 
         <text
-          x="500" y="82"
+          x="500" y="72"
           text-anchor="middle"
           font-family="'Cormorant Garamond', serif"
           font-style="italic"
@@ -1471,7 +1511,7 @@
         >between probability distributions</text>
 
         <text
-          x="45" y="700"
+          x="20" y="690"
           font-family="'Cormorant Garamond', serif"
           font-weight="700"
           font-size="15"
@@ -1479,17 +1519,17 @@
           fill="#b0507a"
         >SOURCE</text>
         <text
-          x="45" y="720"
+          x="20" y="710"
           font-family="'Cormorant Garamond', serif"
           font-weight="700"
           font-size="15"
           letter-spacing="2"
           fill="#b0507a"
         >DISTRIBUTION</text>
-        <line x1="45" y1="732" x2="105" y2="732" stroke="#b0507a" stroke-width="1"/>
+        <line x1="20" y1="722" x2="80" y2="722" stroke="#b0507a" stroke-width="1"/>
 
         <text
-          x="815" y="700"
+          x="835" y="690"
           font-family="'Cormorant Garamond', serif"
           font-weight="700"
           font-size="15"
@@ -1497,14 +1537,14 @@
           fill="#6f5aa0"
         >TARGET</text>
         <text
-          x="815" y="720"
+          x="835" y="710"
           font-family="'Cormorant Garamond', serif"
           font-weight="700"
           font-size="15"
           letter-spacing="2"
           fill="#6f5aa0"
         >DISTRIBUTION</text>
-        <line x1="815" y1="732" x2="895" y2="732" stroke="#6f5aa0" stroke-width="1"/>
+        <line x1="835" y1="722" x2="915" y2="722" stroke="#6f5aa0" stroke-width="1"/>
 
       </svg>
 
