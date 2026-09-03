@@ -95,6 +95,14 @@
     align-items:center;
     justify-content:center;
     padding:0;
+    overflow:hidden;
+  }
+  .card-preview img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
   }
   .card-preview .placeholder{
     font-family:'Inter', sans-serif;
@@ -231,7 +239,7 @@
     </div>
 
     <div class="card">
-      <div class="card-preview"><span class="placeholder">Preview</span></div>
+      <div class="card-preview"><img src="imasion.png" alt="Imasion"></div>
       <div class="card-body">
         <h3>Imasion</h3>
         <span class="tag">Venture</span>
