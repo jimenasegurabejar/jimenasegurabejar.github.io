@@ -64,18 +64,41 @@
 
     body{
       margin:0;
+      position:relative;
+
       background:
         radial-gradient(
-          circle at 78% 15%,
-          rgba(223,145,187,0.10),
-          transparent 28%
+          circle at 82% 8%,
+          rgba(244,198,220,0.55),
+          transparent 34%
         ),
         radial-gradient(
-          circle at 15% 35%,
-          rgba(117,82,183,0.08),
-          transparent 30%
+          circle at 12% 26%,
+          rgba(248,209,226,0.5),
+          transparent 36%
         ),
-        var(--bg);
+        radial-gradient(
+          circle at 92% 64%,
+          rgba(241,182,208,0.4),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 8% 84%,
+          rgba(250,214,230,0.5),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 55% 45%,
+          rgba(255,255,255,0.55),
+          transparent 55%
+        ),
+        linear-gradient(
+          170deg,
+          #fdeef4 0%,
+          #fce6ef 38%,
+          #fbe1ec 68%,
+          #fce7f0 100%
+        );
 
       color:var(--ink);
 
@@ -85,6 +108,23 @@
       line-height:1.65;
 
       overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+
+      position:fixed;
+      inset:0;
+
+      z-index:1;
+
+      pointer-events:none;
+
+      opacity:0.035;
+
+      mix-blend-mode:overlay;
+
+      background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     a{
@@ -477,8 +517,8 @@
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.82),
-          rgba(250,243,255,0.72)
+          rgba(255,255,255,0.55),
+          rgba(250,243,255,0.42)
         );
     }
 
@@ -510,13 +550,13 @@
       background:
         radial-gradient(
           circle at 80% 20%,
-          rgba(223,145,187,0.08),
+          rgba(223,145,187,0.10),
           transparent 30%
         ),
         linear-gradient(
           135deg,
-          #fbf6ff,
-          #fff8fc
+          rgba(251,246,255,0.5),
+          rgba(255,248,252,0.4)
         );
     }
 
@@ -1233,7 +1273,7 @@
 
       text-align:center;
 
-      font-size:12px;
+      font-size:16px;
 
       letter-spacing:0.02em;
 
