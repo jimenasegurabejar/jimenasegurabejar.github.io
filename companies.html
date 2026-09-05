@@ -149,6 +149,23 @@
     display:block;
   }
 
+  .card-body .location{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    font-weight:600;
+    color:#fff;
+    margin-bottom:16px;
+  }
+
+  .card-body .location svg{
+    width:14px;
+    height:14px;
+    flex-shrink:0;
+  }
+
   .card-body p{
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
@@ -216,29 +233,37 @@
   <div class="grid">
 
     <div class="card">
-      <div class="card-preview"><img src="physislogo.png" alt="Physis Research"></div>
-      <div class="card-body">
-        <h3>Physis Research</h3>
-        <span class="tag">Venture</span>
-        <p>We're a research lab creating the foundational models for the new era of reinforcement learning.</p>
-        <div class="card-footer">
-          <a class="paper-pill" href="https://jimenasegurabejar.github.io/physisresearch" target="_blank" rel="noopener">Website</a>
-          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
-          <a class="paper-pill" href="#" target="_blank" rel="noopener">Research</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
       <div class="card-preview"><img src="athenei logo.jpeg" alt="Athenei Biosciences"></div>
       <div class="card-body">
         <h3>Athenei Biosciences</h3>
         <span class="tag">Venture</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
         <p>Biological Superintelligence for Cellular Agriculture.</p>
         <div class="card-footer">
           <a class="paper-pill" href="https://atheneibiosciences.com/" target="_blank" rel="noopener">Website</a>
           <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
           <a class="paper-pill" href="https://atheneibiosciences.com/#research" target="_blank" rel="noopener">Research</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><img src="physislogo.png" alt="Physis Research"></div>
+      <div class="card-body">
+        <h3>Physis Research</h3>
+        <span class="tag">Venture</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>We're a research lab creating the foundational models for the new era of reinforcement learning.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="https://jimenasegurabejar.github.io/physisresearch" target="_blank" rel="noopener">Website</a>
+          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="#" target="_blank" rel="noopener">Research</a>
         </div>
       </div>
     </div>
