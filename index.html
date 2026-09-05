@@ -156,7 +156,7 @@
        NAVIGATION
        ========================================================= */
 
-    nav{
+    .nav-links{
       position:fixed;
       z-index:50;
 
@@ -188,11 +188,11 @@
       backdrop-filter:blur(8px);
     }
 
-    nav a{
-      font-family:'Cormorant Garamond', serif;
+    .nav-links a{
+      font-family:'Inter', sans-serif;
 
-      font-weight:900;
-      font-size:19px;
+      font-weight:500;
+      font-size:16px;
 
       letter-spacing:0.01em;
       text-transform:none;
@@ -206,9 +206,17 @@
       white-space:nowrap;
     }
 
-    nav a:hover{
+    .nav-links a:hover{
       color:var(--ink);
       transform:translateY(-1px);
+    }
+
+    .nav-toggle-checkbox{
+      display:none;
+    }
+
+    .nav-toggle-label{
+      display:none;
     }
 
 
@@ -1564,57 +1572,113 @@
 
     @media (max-width:860px){
 
-      nav{
-        position:static;
+      .nav-toggle-label{
+        display:flex;
 
-        flex-direction:row;
+        position:fixed;
+        z-index:60;
 
-        flex-wrap:wrap;
+        top:16px;
+        right:16px;
+
+        width:44px;
+        height:44px;
+
+        align-items:center;
+        justify-content:center;
+
+        font-size:24px;
+
+        color:var(--ink);
+
+        background:rgba(255,250,253,0.94);
+
+        border-radius:50%;
+
+        box-shadow:0 4px 14px rgba(117,82,183,0.12);
+
+        cursor:pointer;
+      }
+
+      .nav-links{
+        position:fixed;
+
+        top:0;
+        left:0;
+
+        width:100%;
+        height:100%;
+
+        flex-direction:column;
+
+        flex-wrap:nowrap;
 
         justify-content:center;
 
-        gap:14px 20px;
+        overflow-y:auto;
+
+        gap:26px;
 
         padding:24px 20px;
 
         text-align:center;
 
         background:
-          rgba(255,250,253,0.96);
+          rgba(255,250,253,0.98);
+
+        backdrop-filter:blur(10px);
+
+        transform:translateX(100%);
+
+        transition:transform .3s ease;
       }
 
-      nav a{
+      .nav-toggle-checkbox:checked ~ .nav-links{
+        transform:translateX(0);
+      }
+
+      .nav-links a{
         font-size:20px;
+
+        width:100%;
       }
 
       #home{
-        min-height:auto;
+        min-height:78vh;
 
-        padding-top:20px;
+        padding-top:0;
+
+        overflow:hidden;
       }
 
       .hero-art-wrap{
-        position:relative;
+        position:absolute;
+
+        inset:0;
 
         width:100%;
 
-        right:0;
+        height:100%;
 
-        top:0;
+        margin-bottom:0;
 
-        height:auto;
-
-        margin-bottom:-20px;
-
-        -webkit-mask-image:none;
-        mask-image:none;
+        -webkit-mask-image:linear-gradient(
+          to bottom,
+          black 70%,
+          transparent 100%
+        );
+        mask-image:linear-gradient(
+          to bottom,
+          black 70%,
+          transparent 100%
+        );
       }
 
       .hero-content{
         padding:
-          20px
+          0
           24px
-          60px;
+          36px;
 
         max-width:100%;
 
@@ -1672,7 +1736,10 @@
        NAVIGATION
        ======================================================= -->
 
-  <nav>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">☰</label>
+
+  <nav class="nav-links">
 
     <a href="#home">
       Home
