@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research Companies — Jimena Segura</title>
+<title>Research & Projects — Jimena Segura</title>
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,24 +51,26 @@
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
     font-size:clamp(50px, 8vw, 88px);
-    margin-bottom:12px;
+    margin-bottom:16px;
     color:var(--ink);
     line-height:1.02;
   }
 
-  .roles-subtitle{
-    font-family:'Cormorant Garamond', serif;
+  .scholar-link{
+    display:inline-block;
+    font-size:26px;
     font-weight:600;
-    font-style:normal;
-    font-size:22px;
     color:var(--rose-deep);
     margin-bottom:50px;
+  }
+  .scholar-link:hover{
+    color:var(--ink);
   }
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(380px, 1fr));
-    gap:40px;
+    grid-template-columns:repeat(auto-fill, minmax(480px, 1fr));
+    gap:32px;
   }
 
   .card{
@@ -97,19 +99,11 @@
 
   .card-preview{
     background:#fff;
-    min-height:380px;
+    min-height:280px;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:0;
-    overflow:hidden;
-  }
-  .card-preview img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    display:block;
   }
   .card-preview .placeholder{
     font-family:'Inter', sans-serif;
@@ -120,7 +114,7 @@
   }
 
   .card-body{
-    padding:34px 34px 38px;
+    padding:26px 26px 24px;
     color:#fff;
     background:linear-gradient(
       90deg,
@@ -143,59 +137,58 @@
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:32px;
-    margin-bottom:8px;
-    color:#ffffff;
-    text-shadow:0 1px 3px rgba(0,0,0,0.15);
+    font-size:24px;
+    margin-bottom:6px;
+  }
+  .card-body h3 em{
+    font-style:italic;
+    font-weight:500;
+    color:#fff5f8;
   }
 
-  .card-body .tag{
-    font-style:italic;
-    font-size:18px;
+  .card-body .preprint{
+    font-style:normal;
+    font-weight:700;
+    font-size:22px;
     color:#ffffff;
-    opacity:0.95;
-    margin-bottom:16px;
+    margin-bottom:14px;
     display:block;
   }
 
   .card-body .location{
     display:flex;
     align-items:center;
-    gap:6px;
+    gap:8px;
     font-family:'Inter', sans-serif;
-    font-size:14px;
+    font-size:17px;
     font-weight:600;
     color:#fff;
-    margin-bottom:16px;
+    margin-bottom:14px;
   }
 
   .card-body .location svg{
-    width:14px;
-    height:14px;
+    width:17px;
+    height:17px;
     flex-shrink:0;
   }
 
   .card-body p{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;
-    font-size:17px;
-    line-height:1.6;
-    letter-spacing:0.01em;
-    color:#ffffff;
-    text-shadow:0 1px 2px rgba(0,0,0,0.12);
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    line-height:1.65;
+    color:#fdeef4;
   }
 
   .card-footer{
     display:flex;
-    flex-wrap:wrap;
     align-items:center;
-    gap:16px;
-    margin-top:24px;
+    gap:14px;
+    margin-top:20px;
   }
 
   .visit-link{
     font-family:'Inter', sans-serif;
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
     color:#fff;
     display:inline-flex;
@@ -206,23 +199,23 @@
 
   .paper-pill{
     font-family:'Inter', sans-serif;
-    font-size:13px;
+    font-size:12.5px;
     font-weight:600;
     color:#fff;
     border:1.5px solid rgba(255,255,255,0.7);
     border-radius:0;
-    padding:7px 18px;
+    padding:6px 16px;
   }
   .paper-pill:hover{
     background:rgba(255,255,255,0.15);
   }
 
   footer{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
+    font-family:'Times New Roman', Times, serif;
+    font-weight:400;
     padding:40px 0;
     text-align:center;
-    font-size:16px;
+    font-size:19px;
     color:var(--ink-soft);
     border-top:1px solid var(--line);
   }
@@ -237,56 +230,277 @@
 
 <div class="wrap">
   <a class="back-link" href="index.html">Back</a>
-  <h1>Research Companies</h1>
-  <p class="roles-subtitle">Research Scientist · Founding Scientist</p>
+  <h1>Research & Projects</h1>
+  <a class="scholar-link" href="https://scholar.google.com/" target="_blank" rel="noopener">Complete list on Google Scholar</a>
 
   <div class="grid">
 
     <div class="card">
-      <div class="card-preview"><img src="physislogo.png" alt="Physis Research"></div>
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
-        <h3>Physis Research</h3>
-        <span class="tag">Venture</span>
-        <div class="location">
+        <h3>Learning as a Child: Schrödinger Bridges, Entropy Regularization and the Geometry of RL</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
           Cambridge, United Kingdom
         </div>
-        <p>We're a research lab creating the foundational models for the new era of reinforcement learning.</p>
+        <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://jimenasegurabejar.github.io/physisresearch" target="_blank" rel="noopener">Website</a>
-          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
-          <a class="paper-pill" href="#" target="_blank" rel="noopener">Research</a>
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-preview"><img src="athenei logo.jpeg" alt="Athenei Biosciences"></div>
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
-        <h3>Athenei Biosciences</h3>
-        <span class="tag">Venture</span>
-        <div class="location">
+        <h3>ForestButterflyOT</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
           Cambridge, United Kingdom
         </div>
-        <p>Biological Superintelligence for Cellular Agriculture.</p>
+        <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://atheneibiosciences.com/" target="_blank" rel="noopener">Website</a>
-          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
-          <a class="paper-pill" href="https://atheneibiosciences.com/#research" target="_blank" rel="noopener">Research</a>
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-preview"><img src="imasion.png" alt="Imasion"></div>
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
-        <h3>Imasion</h3>
-        <span class="tag">Venture</span>
-        <p>An edtech startup working to impact the 2.3 billion children in the planet Earth.</p>
+        <h3>Project <em>03</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://imasion.org/" target="_blank" rel="noopener">Website</a>
-          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>04</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>05</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>06</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>07</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>08</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>09</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>10</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Towards a Biological AGI for Cellular Agriculture</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div><div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Towards a Turing Test for Cellular Agriculture</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Biological Dynamical Systems for Cellular Agriculture</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Modeling Motor Dysfunctions in Autism Spectrum Disorder</h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Remote
+        </div>
+        <p>Fetal stage (second trimester) hindbrain assembloids with ASD mutations (SHANK3, CHD8) and alcohol-induced stressors to study cerebellar and spinal cord pathologies.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Paper</a>
         </div>
       </div>
     </div>
