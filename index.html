@@ -1665,7 +1665,11 @@
       }
 
       #home{
-        min-height:78vh;
+        aspect-ratio:4 / 3;
+
+        min-height:auto;
+
+        height:auto;
 
         padding-top:0;
 
@@ -1683,16 +1687,8 @@
 
         margin-bottom:0;
 
-        -webkit-mask-image:linear-gradient(
-          to bottom,
-          black 70%,
-          transparent 100%
-        );
-        mask-image:linear-gradient(
-          to bottom,
-          black 70%,
-          transparent 100%
-        );
+        -webkit-mask-image:none;
+        mask-image:none;
       }
 
       .hero-content{
