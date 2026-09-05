@@ -44,8 +44,10 @@
     letter-spacing:0.02em;
     color:var(--ink-soft);
     margin-bottom:40px;
+    border-bottom:1px solid var(--rose);
+    padding-bottom:2px;
   }
-  .back-link:hover{ color:var(--rose-deep); }
+  .back-link:hover{ color:var(--rose-deep); border-color:var(--rose-deep); }
 
   h1{
     font-family:'Cormorant Garamond', serif;
@@ -79,6 +81,11 @@
 
   .card:active{
     transform:translateY(-1px) scale(0.99);
+  }
+
+  .card:active .card-body{
+    filter:brightness(1.32) saturate(1.4);
+    animation-duration:1.4s;
   }
 
   .card-preview{
@@ -144,17 +151,6 @@
     display:block;
   }
 
-  .location{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    color:#ffffff;
-    opacity:0.9;
-    margin-bottom:16px;
-  }
-
   .card-body p{
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
@@ -190,7 +186,7 @@
     font-weight:600;
     color:#fff;
     border:1.5px solid rgba(255,255,255,0.7);
-    border-radius:999px;
+    border-radius:0;
     padding:7px 18px;
   }
   .paper-pill:hover{
@@ -198,12 +194,11 @@
   }
 
   footer{
-    font-family:'Times New Roman', Times, serif;
+    font-family:'Cormorant Garamond', serif;
     font-weight:700;
     padding:40px 0;
     text-align:center;
-    font-size:19px;
-    letter-spacing:0.03em;
+    font-size:16px;
     color:var(--ink-soft);
     border-top:1px solid var(--line);
   }
@@ -217,7 +212,7 @@
 <body>
 
 <div class="wrap">
-  <a class="back-link" href="index.html">Back</a>
+  <a class="back-link" href="index.html">← Back</a>
   <h1>Research Companies</h1>
 
   <div class="grid">
@@ -227,16 +222,11 @@
       <div class="card-body">
         <h3>Athenei Biosciences</h3>
         <span class="tag">Venture</span>
-        <div class="location">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.9 11.1 7.2 11.4.2.2.5.2.7 0C12.1 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-          </svg>
-          Cambridge, United Kingdom
-        </div>
         <p>Biological Superintelligence for Cellular Agriculture.</p>
         <div class="card-footer">
           <a class="visit-link" href="https://atheneibiosciences.com/" target="_blank" rel="noopener">Visit site →</a>
-          <a class="paper-pill" href="https://atheneibiosciences.com/#research" target="_blank" rel="noopener">Our Research</a>
+          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="https://atheneibiosciences.com/#research" target="_blank" rel="noopener">Research</a>
         </div>
       </div>
     </div>
@@ -249,6 +239,8 @@
         <p>We're a research lab creating the foundational models for the new era of reinforcement learning.</p>
         <div class="card-footer">
           <a class="visit-link" href="https://jimenasegurabejar.github.io/physisresearch" target="_blank" rel="noopener">Visit site →</a>
+          <a class="paper-pill" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="#" target="_blank" rel="noopener">Research</a>
         </div>
       </div>
     </div>
