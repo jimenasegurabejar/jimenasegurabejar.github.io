@@ -429,11 +429,25 @@
 
       margin-bottom:22px;
 
+      display:flex;
+
+      align-items:center;
+
+      gap:20px;
+
       letter-spacing:-0.01em;
 
       line-height:0.95;
 
       color:var(--ink);
+    }
+
+
+    .name-icon{
+      width:clamp(50px, 7vw, 100px);
+      height:auto;
+      flex-shrink:0;
+      filter:drop-shadow(0 2px 8px rgba(117,82,183,0.25));
     }
 
 
@@ -2094,6 +2108,7 @@
     <div class="hero-content">
 
       <h1>
+        <img src="me.png" alt="" class="name-icon">
         Jimena Segura
       </h1>
 
