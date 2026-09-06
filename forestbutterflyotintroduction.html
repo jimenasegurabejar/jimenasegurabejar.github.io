@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forest Butterfly Universe: Introduction | Cortex Dreams</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+  :root{
+    --rose:#df91bb;
+    --rose-deep:#b94d91;
+    --rose-deeper:#8f3570;
+    --purple:#7552b7;
+    --ink:#3a3a3a;
+    --ink-soft:#7d6b74;
+    --line:#f2c9de;
+    --card-bg:#ffffff;
+    --page-bg:#fdeef4;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--page-bg);
+    font-family:'Cormorant Garamond', serif;
+    color:var(--ink);
+    line-height:1.65;
+  }
+
+  a{ color:inherit; }
+
+  .top-link{
+    display:block;
+    max-width:820px;
+    margin:26px auto 0;
+    padding:0 20px;
+
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  .top-link a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+
+  .top-link a:hover{
+    color:var(--rose-deep);
+    border-color:var(--rose-deep);
+  }
+
+  .card{
+    background:var(--card-bg);
+    max-width:820px;
+    margin:16px auto 60px;
+    padding:52px 56px 60px;
+
+    border-radius:14px;
+    box-shadow:0 16px 40px rgba(0,0,0,0.06);
+  }
+
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(30px, 5vw, 40px);
+
+    text-align:center;
+
+    margin:0 0 10px;
+
+    line-height:1.15;
+  }
+
+  .date{
+    display:block;
+    text-align:center;
+
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+
+    margin-bottom:40px;
+  }
+
+  .abstract-line{
+    font-size:19px;
+    color:var(--ink);
+    margin-bottom:26px;
+  }
+
+  blockquote{
+    margin:0 0 40px;
+    padding:4px 0 4px 22px;
+
+    border-left:2.5px solid var(--rose);
+
+    font-style:italic;
+    font-size:17px;
+    color:var(--ink-soft);
+  }
+
+  .intro-text{
+    font-family:'Inter', sans-serif;
+    font-size:14.5px;
+    color:var(--ink-soft);
+
+    margin-bottom:34px;
+
+    line-height:1.7;
+  }
+
+  .intro-text a{
+    color:var(--rose-deep);
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1px solid var(--rose);
+  }
+
+  .intro-text a:hover{
+    border-color:var(--rose-deep);
+  }
+
+  section.embed-block{
+    margin-bottom:44px;
+  }
+
+  section.embed-block h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:23px;
+
+    margin-bottom:14px;
+  }
+
+  .embed-frame{
+    width:100%;
+    aspect-ratio:4/3;
+
+    border:1px solid var(--line);
+    border-radius:8px;
+
+    overflow:hidden;
+
+    background:#faf4f7;
+  }
+
+  .embed-frame iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    display:block;
+  }
+
+  .embed-fallback{
+    height:100%;
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-align:center;
+    padding:20px;
+  }
+
+  .embed-fallback a{
+    color:var(--rose-deep);
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1px solid var(--rose);
+  }
+
+  .further-resources{
+    border-top:1px solid var(--line);
+    padding-top:32px;
+  }
+
+  .further-resources h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:23px;
+
+    margin-bottom:18px;
+  }
+
+  .further-resources ul{
+    margin:0;
+    padding-left:0;
+    list-style:none;
+  }
+
+  .further-resources li{
+    display:flex;
+    gap:12px;
+
+    padding:14px 0;
+
+    border-top:1px solid var(--line);
+
+    font-size:16px;
+  }
+
+  .further-resources li:first-child{
+    border-top:none;
+  }
+
+  .further-resources .res-tag{
+    flex:0 0 90px;
+
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+
+    color:var(--rose-deep);
+
+    padding-top:3px;
+  }
+
+  .further-resources a{
+    text-decoration:none;
+    font-weight:600;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+
+  .further-resources a:hover{
+    color:var(--rose-deep);
+    border-color:var(--rose-deep);
+  }
+
+  .further-resources p{
+    margin:2px 0 0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    .card{
+      padding:34px 22px 40px;
+    }
+    .further-resources li{
+      flex-direction:column;
+      gap:2px;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+  <div class="top-link">
+    <a href="tutorialforestbutterflyot.html">&larr; Back to Forest Butterfly Universe</a>
+  </div>
+
+  <div class="card">
+
+    <h1>Forest Butterfly Universe: Introduction</h1>
+    <span class="date">September 2026</span>
+
+    <p class="abstract-line">
+      A first walk through optimal transport: two simple
+      distributions, a cost function, and the intuition behind
+      the transport plan that connects them, before any of the
+      other branches in the forest make sense.
+    </p>
+
+    <blockquote>
+      Optimal transport asks a deceptively simple question: what is
+      the cheapest way to move one pile of mass into the shape of
+      another? Before Wasserstein distances, Sinkhorn iterations,
+      or Schrödinger bridges enter the picture, the whole field
+      rests on this one idea, a cost function, a coupling, and a
+      plan. This introduction works through that idea from
+      scratch, building the intuition that every other paper and
+      tutorial in the forest relies on.
+    </blockquote>
+
+    <p class="intro-text">
+      For a summary of this introduction, worked examples, and
+      references, find the full write-up below as a downloadable
+      <a href="forestbutterflyot-notes.pdf">PDF</a>, along with the
+      accompanying <a href="forestbutterflyot-slides.pdf">slides</a>.
+      Both are embedded here directly.
+    </p>
+
+    <section class="embed-block">
+      <h2>Slides</h2>
+      <div class="embed-frame">
+        <object data="forestbutterflyot-slides.pdf" type="application/pdf">
+          <div class="embed-fallback">
+            <span>Slides will appear here once uploaded.</span>
+            <a href="forestbutterflyot-slides.pdf">Open forestbutterflyot-slides.pdf</a>
+          </div>
+        </object>
+      </div>
+    </section>
+
+    <section class="embed-block">
+      <h2>Paper / write-up (PDF)</h2>
+      <div class="embed-frame">
+        <object data="forestbutterflyot-notes.pdf" type="application/pdf">
+          <div class="embed-fallback">
+            <span>The write-up will appear here once uploaded.</span>
+            <a href="forestbutterflyot-notes.pdf">Open forestbutterflyot-notes.pdf</a>
+          </div>
+        </object>
+      </div>
+    </section>
+
+    <div class="further-resources">
+      <h2>Further resources</h2>
+      <ul>
+        <li>
+          <span class="res-tag">Demo</span>
+          <div>
+            <a href="demo-robust-ot.html">Projection-Robust Optimal Transport</a>
+            <p>The interactive companion to this introduction — two point clouds and the worst-case projection between them.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Next</span>
+          <div>
+            <a href="tutorialmonarchbutterflyot.html">MonarchButterflyOT</a>
+            <p>Continues from here into Wasserstein distance and Sinkhorn regularization.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Index</span>
+          <div>
+            <a href="tutorialforestbutterflyot.html">Forest Butterfly Universe</a>
+            <p>Back to the full index of papers, tutorials, and demos.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
