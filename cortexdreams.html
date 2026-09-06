@@ -1,1 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Cortex Dreams | Jimena Segura</title>
+
+  <meta
+    name="description"
+    content="Cortex Dreams — Jimena Segura's blog and demos. Research notes, writing, and interactive work at the intersection of optimal transport and machine learning."
+  >
+
+  <link rel="icon" type="image/png" href="me.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       COLOR SYSTEM — BABY PINK
+       ========================================================= */
+
+    :root{
+      --bg:#fdeef4;
+      --bg-deep:#fbdcea;
+
+      --ink:#3a3a3a;
+      --ink-soft:#7d6b74;
+
+      --rose:#df91bb;
+      --rose-deep:#b94d91;
+
+      --purple:#7552b7;
+      --purple-deep:#56358f;
+
+      --pink-soft:#f8d3e6;
+      --pink-softer:#fce9f2;
+
+      --line:#f2c9de;
+      --white:#ffffff;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      position:relative;
+
+      background:
+        radial-gradient(
+          circle at 85% 6%,
+          rgba(248, 211, 230, 0.65),
+          transparent 36%
+        ),
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(252, 225, 238, 0.6),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 90% 70%,
+          rgba(246, 200, 222, 0.45),
+          transparent 34%
+        ),
+        linear-gradient(
+          170deg,
+          #fff2f7 0%,
+          #fde8f1 45%,
+          #fbdfec 100%
+        );
+
+      color:var(--ink);
+
+      font-family:'Cormorant Garamond', serif;
+      font-weight:400;
+
+      line-height:1.65;
+
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    .wrap{
+      width:min(1100px, 92vw);
+      margin:0 auto;
+    }
+
+
+    /* =========================================================
+       NAVIGATION (matches main site)
+       ========================================================= */
+
+    .nav-links{
+      position:fixed;
+      z-index:50;
+
+      top:0;
+      left:0;
+      width:100%;
+
+      display:flex;
+      flex-wrap:wrap;
+
+      justify-content:center;
+      align-items:center;
+
+      gap:18px;
+
+      padding:22px 30px;
+
+      text-align:center;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,242,247,0.94),
+          rgba(255,242,247,0.7),
+          transparent
+        );
+
+      backdrop-filter:blur(8px);
+    }
+
+    .nav-links a{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:400;
+      font-size:19px;
+      letter-spacing:0.01em;
+      color:var(--ink);
+      white-space:nowrap;
+      transition:color .25s ease, transform .25s ease;
+    }
+
+    .nav-links a:hover{
+      transform:translateY(-1px);
+      color:var(--rose-deep);
+    }
+
+    .nav-links a.current{
+      color:var(--rose-deep);
+      border-bottom:1px solid var(--rose-deep);
+      padding-bottom:2px;
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    header.blog-header{
+      padding:200px 0 80px;
+
+      text-align:center;
+
+      position:relative;
+    }
+
+    .blog-eyebrow{
+      display:block;
+
+      font-family:'Inter', sans-serif;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:0.14em;
+
+      color:var(--rose-deep);
+
+      margin-bottom:18px;
+    }
+
+    header.blog-header h1{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+
+      font-size:clamp(56px, 9vw, 108px);
+
+      color:var(--ink);
+
+      line-height:0.98;
+
+      margin-bottom:20px;
+    }
+
+    header.blog-header p{
+      max-width:520px;
+
+      margin:0 auto;
+
+      font-size:19px;
+
+      color:var(--ink-soft);
+    }
+
+
+    /* =========================================================
+       SECTION SHELLS
+       ========================================================= */
+
+    section.page{
+      padding:80px 0;
+      position:relative;
+    }
+
+    section.page + section.page{
+      border-top:1px solid var(--line);
+    }
+
+    .section-title{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+
+      font-size:clamp(34px, 5vw, 48px);
+
+      color:var(--ink);
+
+      margin-bottom:12px;
+    }
+
+    .section-sub{
+      font-size:17px;
+      color:var(--ink-soft);
+      margin-bottom:48px;
+      max-width:560px;
+    }
+
+
+    /* =========================================================
+       BLOG POSTS
+       ========================================================= */
+
+    .posts{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+
+      max-width:760px;
+    }
+
+    .post{
+      display:flex;
+      gap:28px;
+
+      padding:32px 0;
+
+      border-top:1px solid var(--line);
+
+      transition:transform .25s ease;
+    }
+
+    .posts .post:first-child{
+      border-top:none;
+    }
+
+    .post:hover{
+      transform:translateX(4px);
+    }
+
+    .post-date{
+      flex:0 0 110px;
+
+      font-family:'Inter', sans-serif;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:0.06em;
+
+      color:var(--rose-deep);
+
+      padding-top:6px;
+    }
+
+    .post-body h3{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+      font-size:26px;
+
+      margin-bottom:8px;
+
+      color:var(--ink);
+    }
+
+    .post-body h3 a{
+      border-bottom:1px solid transparent;
+      transition:border-color .2s ease, color .2s ease;
+    }
+
+    .post-body h3 a:hover{
+      color:var(--rose-deep);
+      border-color:var(--rose-deep);
+    }
+
+    .post-body p{
+      font-size:16px;
+      color:var(--ink-soft);
+    }
+
+    .post-tag{
+      display:inline-block;
+
+      margin-top:12px;
+
+      font-family:'Inter', sans-serif;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+
+      color:var(--rose-deep);
+
+      background:var(--pink-soft);
+
+      padding:4px 10px;
+
+      border-radius:3px;
+    }
+
+
+    /* =========================================================
+       DEMOS GRID
+       ========================================================= */
+
+    .demos-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+      gap:24px;
+    }
+
+    .demo-card{
+      border:1px solid var(--line);
+
+      background:rgba(255,255,255,0.5);
+
+      padding:26px;
+
+      border-radius:6px;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .demo-card:hover{
+      transform:translateY(-3px);
+
+      box-shadow:0 14px 30px rgba(185, 77, 145, 0.12);
+
+      border-color:var(--rose);
+    }
+
+    .demo-thumb{
+      width:100%;
+      aspect-ratio:16/10;
+
+      border-radius:5px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink-soft),
+          var(--pink-softer)
+        );
+
+      margin-bottom:18px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-family:'Inter', sans-serif;
+      font-size:11px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--rose-deep);
+    }
+
+    .demo-card h3{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+      font-size:22px;
+
+      margin-bottom:8px;
+
+      color:var(--ink);
+    }
+
+    .demo-card p{
+      font-size:15px;
+      color:var(--ink-soft);
+
+      margin-bottom:16px;
+    }
+
+    .demo-link{
+      font-family:'Inter', sans-serif;
+      font-size:13px;
+      font-weight:600;
+
+      color:var(--ink);
+
+      border-bottom:1px solid var(--rose);
+
+      padding-bottom:2px;
+
+      transition:color .2s ease, border-color .2s ease;
+    }
+
+    .demo-link:hover{
+      color:var(--rose-deep);
+      border-color:var(--rose-deep);
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer{
+      font-family:'Times New Roman', Times, serif;
+
+      padding:40px 0;
+
+      text-align:center;
+
+      font-size:19px;
+
+      letter-spacing:0.03em;
+
+      color:var(--ink-soft);
+
+      border-top:1px solid var(--line);
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(117,82,183,0.04),
+          rgba(223,145,187,0.1)
+        );
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:24px;
+      margin-bottom:14px;
+    }
+
+    .footer-links a{
+      color:var(--ink-soft);
+      transition:color .2s ease;
+    }
+
+    .footer-links a:hover{
+      color:var(--rose-deep);
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width:700px){
+
+      header.blog-header{
+        padding:150px 0 60px;
+      }
+
+      .post{
+        flex-direction:column;
+        gap:8px;
+      }
+
+      .post-date{
+        padding-top:0;
+      }
+
+      .nav-links{
+        gap:12px 16px;
+        padding:16px 18px;
+      }
+
+      .nav-links a{
+        font-size:15px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
+
+  <nav class="nav-links">
+
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#research">Publications</a>
+    <a href="https://jimenasegurabejar.github.io/portfolio" target="_blank" rel="noopener">Portfolio</a>
+    <a href="index.html#news">News</a>
+    <a href="https://jimenasegurabejar.github.io/companies" target="_blank" rel="noopener">Research Companies</a>
+    <a href="index.html#featuredin">Featured</a>
+    <a href="cortexdreams.html" class="current">Cortex Dreams</a>
+
+  </nav>
+
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="blog-header">
+
+    <span class="blog-eyebrow">Newsletter &amp; Lab Notes</span>
+
+    <h1>Cortex Dreams</h1>
+
+    <p>
+      Research notes, half-formed ideas, and the demos that come
+      out of working with Wasserstein geometry, transport, and
+      learning.
+    </p>
+
+  </header>
+
+
+  <!-- =======================================================
+       BLOG
+       ======================================================= -->
+
+  <section id="blog" class="page">
+
+    <div class="wrap">
+
+      <h2 class="section-title">Blog</h2>
+      <p class="section-sub">
+        Writing on optimal transport, geometry, and the research
+        as it happens.
+      </p>
+
+      <div class="posts">
+
+        <div class="post">
+          <span class="post-date">Sep 2026</span>
+          <div class="post-body">
+            <h3><a href="#">Optimal Transport and Reinforcement Learning</a></h3>
+            <p>
+              Why parameter averaging across distributed training
+              nodes is the wrong move, and what treating policy
+              space as a Wasserstein manifold gets you instead.
+            </p>
+            <span class="post-tag">Research notes</span>
+          </div>
+        </div>
+
+        <div class="post">
+          <span class="post-date">Sep 2026</span>
+          <div class="post-body">
+            <h3><a href="#">Post title goes here</a></h3>
+            <p>
+              A short excerpt describing what this post is about,
+              written in one or two sentences.
+            </p>
+            <span class="post-tag">Research notes</span>
+          </div>
+        </div>
+
+        <div class="post">
+          <span class="post-date">Aug 2026</span>
+          <div class="post-body">
+            <h3><a href="#">Another post title</a></h3>
+            <p>
+              A short excerpt describing what this post covers
+              and why it matters.
+            </p>
+            <span class="post-tag">Idea</span>
+          </div>
+        </div>
+
+        <div class="post">
+          <span class="post-date">Jul 2026</span>
+          <div class="post-body">
+            <h3><a href="#">A third post title</a></h3>
+            <p>
+              A brief description of the content, written as
+              plain-spoken prose.
+            </p>
+            <span class="post-tag">Writing</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       DEMOS
+       ======================================================= -->
+
+  <section id="demos" class="page">
+
+    <div class="wrap">
+
+      <h2 class="section-title">Demos</h2>
+      <p class="section-sub">
+        Interactive pieces and small tools built alongside the
+        research — things to click, not just read.
+      </p>
+
+      <div class="demos-grid">
+
+        <div class="demo-card">
+          <div class="demo-thumb">Add preview</div>
+          <h3>Demo title</h3>
+          <p>One line on what this demo shows or lets you do.</p>
+          <a class="demo-link" href="#">Open demo</a>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-thumb">Add preview</div>
+          <h3>Demo title</h3>
+          <p>One line on what this demo shows or lets you do.</p>
+          <a class="demo-link" href="#">Open demo</a>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-thumb">Add preview</div>
+          <h3>Demo title</h3>
+          <p>One line on what this demo shows or lets you do.</p>
+          <a class="demo-link" href="#">Open demo</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer>
+
+    <div class="footer-links">
+      <a href="https://x.com/JimenaS86541537" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+          <path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.8 10.8.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.6A10.5 10.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/jimena-segura-bejar/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.11 20.45H3.56V9h3.55v11.45z"/>
+        </svg>
+      </a>
+      <a href="mailto:#" aria-label="Email">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+          <path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.3 7.3 6.1a.75.75 0 0 0 .96 0l7.3-6.1H4.2zM20 7.06l-6.87 5.73a2.25 2.25 0 0 1-2.87 0L3.4 7.06V18h16.6V7.06z"/>
+        </svg>
+      </a>
+    </div>
+
+    © Jimena Segura. All Rights Reserved.
+
+  </footer>
+
+
+</body>
+</html>
