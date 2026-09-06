@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tutorial on ForestButterflyOT | Cortex Dreams</title>
+<title>ForestButterflyOT — The Universe | Cortex Dreams</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -297,87 +297,70 @@
 
   <div class="card">
 
-    <h1>Tutorial on ForestButterflyOT</h1>
-    <span class="date">September 2026</span>
+    <h1>ForestButterflyOT</h1>
+    <span class="date">The full ButterflyOT universe</span>
 
     <p class="abstract-line">
-      A first walk through optimal transport: two simple
-      distributions, a cost function, and the intuition behind
-      the transport plan that connects them.
+      Every paper and tutorial from my research on optimal
+      transport lives somewhere in this forest — each one named
+      after the species it grew out of. This page is the index:
+      start here, then follow whichever branch matches what
+      you're trying to understand.
     </p>
 
     <blockquote>
-      Optimal transport asks a deceptively simple question: what is
-      the cheapest way to move one pile of mass into the shape of
-      another? Before Wasserstein distances, Sinkhorn iterations,
-      or Schrödinger bridges enter the picture, the whole field
-      rests on this one idea — a cost function, a coupling, and a
-      plan. ForestButterflyOT works through that idea from scratch,
-      building the intuition that everything later in Cortex Dreams
-      relies on.
+      A forest isn't one tree explained well — it's the whole
+      canopy, and how each part connects to the others. Some of
+      these are beginner walkthroughs, some are the papers
+      themselves, and some are half-finished branches still
+      growing. All of them share the same root: treating
+      probability space as the curved thing it actually is,
+      instead of forcing it flat.
     </blockquote>
 
-    <p class="intro-text">
-      For a summary of the tutorial, worked examples, and
-      references, find the full write-up below as a downloadable
-      <a href="forestbutterflyot-notes.pdf">PDF</a>, along with the
-      accompanying <a href="forestbutterflyot-slides.pdf">slides</a>.
-      Both are embedded here directly.
-    </p>
-
-    <section class="embed-block">
-      <h2>Slides</h2>
-      <div class="embed-frame">
-        <object data="forestbutterflyot-slides.pdf" type="application/pdf">
-          <div class="embed-fallback">
-            <span>Slides will appear here once uploaded.</span>
-            <a href="forestbutterflyot-slides.pdf">Open forestbutterflyot-slides.pdf</a>
-          </div>
-        </object>
-      </div>
-    </section>
-
-    <section class="embed-block">
-      <h2>Paper / write-up (PDF)</h2>
-      <div class="embed-frame">
-        <object data="forestbutterflyot-notes.pdf" type="application/pdf">
-          <div class="embed-fallback">
-            <span>The write-up will appear here once uploaded.</span>
-            <a href="forestbutterflyot-notes.pdf">Open forestbutterflyot-notes.pdf</a>
-          </div>
-        </object>
-      </div>
-    </section>
-
-    <div class="further-resources">
-      <h2>Further resources</h2>
+    <div class="further-resources" style="border-top:none; padding-top:0;">
+      <h2>The universe</h2>
       <ul>
+        <li>
+          <span class="res-tag">Tutorial</span>
+          <div>
+            <a href="tutorialmonarchbutterflyot.html">MonarchButterflyOT</a>
+            <p>Moving from discrete to continuous transport — Wasserstein distance and Sinkhorn regularization.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Tutorial</span>
+          <div>
+            <a href="tutorialneuralbutterflyot.html">NeuralButterflyOT</a>
+            <p>Optimal transport inside learning systems — Wasserstein gradient flows and Schrödinger bridges.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Paper</span>
+          <div>
+            <a href="index.html#research">WassersteinRL</a>
+            <p>A geometric theory of distributed policy optimisation via Schrödinger bridges — the anchor paper of the AtheneioLab programme.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Paper</span>
+          <div>
+            <a href="index.html#research">WassersteinEval</a>
+            <p>Generative model evaluation via Wasserstein geometry — a multi-scale Sinkhorn divergence framework.</p>
+          </div>
+        </li>
         <li>
           <span class="res-tag">Demo</span>
           <div>
             <a href="demo-robust-ot.html">Projection-Robust Optimal Transport</a>
-            <p>The interactive companion to this tutorial — two point clouds and the worst-case projection between them.</p>
+            <p>Interactive companion — two point clouds and the worst-case projection between them.</p>
           </div>
         </li>
         <li>
-          <span class="res-tag">Next</span>
+          <span class="res-tag">Demo</span>
           <div>
-            <a href="tutorialmonarchbutterflyot.html">MonarchButterflyOT</a>
-            <p>Continues from here into Wasserstein distance and Sinkhorn regularization.</p>
-          </div>
-        </li>
-        <li>
-          <span class="res-tag">Reading</span>
-          <div>
-            <a href="https://arxiv.org/abs/1803.00567" target="_blank" rel="noopener">Peyré &amp; Cuturi — Computational Optimal Transport</a>
-            <p>The standard reference for the computational side of this field.</p>
-          </div>
-        </li>
-        <li>
-          <span class="res-tag">Reading</span>
-          <div>
-            <a href="https://www.cedricvillani.org/wp-content/uploads/2012/08/preprint-1.pdf" target="_blank" rel="noopener">Villani — Optimal Transport: Old and New</a>
-            <p>The deeper mathematical treatment, for anyone who wants the full theory.</p>
+            <a href="demo-decentralized-agg.html">Decentralized Policy Aggregation</a>
+            <p>Six nodes, asynchronous updates, and the gap between naive and Wasserstein aggregation.</p>
           </div>
         </li>
       </ul>
