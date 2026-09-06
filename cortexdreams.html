@@ -456,6 +456,24 @@
         border-color .25s ease;
     }
 
+    .tutorial-card.featured{
+      grid-column:1 / -1;
+
+      background:var(--pink-soft);
+      border-color:var(--rose);
+
+      display:flex;
+      flex-direction:column;
+    }
+
+    .tutorial-card.featured h3{
+      font-size:32px;
+    }
+
+    .tutorial-card.featured p{
+      max-width:640px;
+    }
+
     .tutorial-card:hover{
       transform:translateY(-3px);
 
@@ -765,23 +783,24 @@
       <p class="section-sub">
         Step-by-step walkthroughs of the ideas behind the
         research — for anyone who wants to follow the math,
-        not just read the conclusions.
+        not just read the conclusions. Part of the ButterflyOT
+        universe.
       </p>
 
       <div class="tutorials-grid">
 
-        <div class="tutorial-card">
-          <span class="tutorial-level">Beginner</span>
-          <h3><a href="#">ForestButterflyOT</a></h3>
+        <div class="tutorial-card featured">
+          <span class="tutorial-level">Overview</span>
+          <h3><a href="tutorialforestbutterflyot.html">ForestButterflyOT</a></h3>
           <p>
-            A first walk through optimal transport: two simple
-            distributions, a cost function, and the intuition
-            behind the transport plan that connects them.
+            The full universe of my research on optimal
+            transport, start here for an index of every paper
+            and tutorial in the collection.
           </p>
         </div>
 
         <div class="tutorial-card">
-          <span class="tutorial-level">Intermediate</span>
+          <span class="tutorial-level">Paper</span>
           <h3><a href="#">MonarchButterflyOT</a></h3>
           <p>
             Moving from discrete to continuous transport —
@@ -791,7 +810,7 @@
         </div>
 
         <div class="tutorial-card">
-          <span class="tutorial-level">Advanced</span>
+          <span class="tutorial-level">Paper</span>
           <h3><a href="#">NeuralButterflyOT</a></h3>
           <p>
             Optimal transport inside learning systems — Wasserstein
