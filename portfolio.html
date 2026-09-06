@@ -57,6 +57,30 @@
     line-height:1.02;
   }
 
+  .word-wrap{
+    position:relative;
+    display:inline-block;
+  }
+
+  .name-icon{
+    position:absolute;
+    top:0.32em;
+    left:100%;
+    margin-left:-0.1em;
+    width:clamp(20px, 2vw, 32px);
+    height:auto;
+    filter:drop-shadow(0 2px 6px rgba(117,82,183,0.2));
+    animation:flutter 3.5s ease-in-out infinite;
+  }
+
+  @keyframes flutter{
+    0%{ transform:translate(0, 0) rotate(-8deg); }
+    25%{ transform:translate(3px, -6px) rotate(2deg); }
+    50%{ transform:translate(-2px, -10px) rotate(-10deg); }
+    75%{ transform:translate(4px, -4px) rotate(4deg); }
+    100%{ transform:translate(0, 0) rotate(-8deg); }
+  }
+
   .scholar-link{
     display:inline-block;
     font-size:26px;
@@ -232,7 +256,7 @@
 
 <div class="wrap">
   <a class="back-link" href="index.html">Back</a>
-  <h1>Research & Projects</h1>
+  <h1>Research &amp; <span class="word-wrap">Projects<img src="me.png" alt="" class="name-icon"></span></h1>
   <a class="scholar-link" href="https://scholar.google.com/" target="_blank" rel="noopener">Complete list on Google Scholar</a>
 
   <div class="grid">
