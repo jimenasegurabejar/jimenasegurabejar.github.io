@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forest Butterfly Universe: Introduction | Cortex Dreams</title>
+<title>Forest Butterfly Universe | Cortex Dreams</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,13 +73,13 @@
   h1{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:clamp(30px, 5vw, 40px);
+    font-size:clamp(32px, 5vw, 44px);
 
     text-align:center;
 
     margin:0 0 10px;
 
-    line-height:1.15;
+    line-height:1.1;
   }
 
   .date{
@@ -97,6 +97,30 @@
     font-size:19px;
     color:var(--ink);
     margin-bottom:26px;
+  }
+
+  .meta-label{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+
+    color:var(--rose-deep);
+
+    margin-bottom:8px;
+  }
+
+  .speakers{
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:var(--ink-soft);
+
+    margin-bottom:36px;
+  }
+
+  .speakers b{
+    color:var(--ink);
   }
 
   blockquote{
@@ -268,86 +292,81 @@
 <body>
 
   <div class="top-link">
-    <a href="tutorialforestbutterflyot.html">&larr; Back to Forest Butterfly Universe</a>
+    <a href="cortexdreams.html">&larr; Back to Cortex Dreams</a>
   </div>
 
   <div class="card">
 
-    <h1>Forest Butterfly Universe: Introduction</h1>
-    <span class="date">September 2026</span>
+    <h1>Forest Butterfly Universe</h1>
 
     <p class="abstract-line">
-      A first walk through optimal transport: two simple
-      distributions, a cost function, and the intuition behind
-      the transport plan that connects them, before any of the
-      other branches in the forest make sense.
+      Every paper and tutorial from my research on optimal
+      transport lives somewhere in this forest, each one named
+      after the species it grew out of. This page is the index:
+      start here, then follow whichever branch matches what
+      you're trying to understand.
     </p>
 
     <blockquote>
-      Optimal transport asks a deceptively simple question: what is
-      the cheapest way to move one pile of mass into the shape of
-      another? Before Wasserstein distances, Sinkhorn iterations,
-      or Schrödinger bridges enter the picture, the whole field
-      rests on this one idea, a cost function, a coupling, and a
-      plan. This introduction works through that idea from
-      scratch, building the intuition that every other paper and
-      tutorial in the forest relies on.
+      A forest isn't one tree explained well — it's the whole
+      canopy, and how each part connects to the others. Some of
+      these are beginner walkthroughs, some are the papers
+      themselves, and some are half-finished branches still
+      growing. All of them share the same root: treating
+      probability space as the curved thing it actually is,
+      instead of forcing it flat.
     </blockquote>
 
-    <p class="intro-text">
-      For a summary of this introduction, worked examples, and
-      references, find the full write-up below as a downloadable
-      <a href="forestbutterflyot-notes.pdf">PDF</a>, along with the
-      accompanying <a href="forestbutterflyot-slides.pdf">slides</a>.
-      Both are embedded here directly.
-    </p>
-
-    <section class="embed-block">
-      <h2>Slides</h2>
-      <div class="embed-frame">
-        <object data="forestbutterflyot-slides.pdf" type="application/pdf">
-          <div class="embed-fallback">
-            <span>Slides will appear here once uploaded.</span>
-            <a href="forestbutterflyot-slides.pdf">Open forestbutterflyot-slides.pdf</a>
-          </div>
-        </object>
-      </div>
-    </section>
-
-    <section class="embed-block">
-      <h2>Paper / write-up (PDF)</h2>
-      <div class="embed-frame">
-        <object data="forestbutterflyot-notes.pdf" type="application/pdf">
-          <div class="embed-fallback">
-            <span>The write-up will appear here once uploaded.</span>
-            <a href="forestbutterflyot-notes.pdf">Open forestbutterflyot-notes.pdf</a>
-          </div>
-        </object>
-      </div>
-    </section>
-
-    <div class="further-resources">
-      <h2>Further resources</h2>
+    <div class="further-resources" style="border-top:none; padding-top:0;">
+      <h2>The universe</h2>
       <ul>
+        <li>
+          <span class="res-tag">Start here</span>
+          <div>
+            <a href="forestbutterflyotintroduction.html">Forest Butterfly Universe: Introduction</a>
+            <p>A first walk through optimal transport, before any of the other branches make sense.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Tutorial</span>
+          <div>
+            <a href="tutorialmonarchbutterflyot.html">MonarchButterflyOT</a>
+            <p>Moving from discrete to continuous transport — Wasserstein distance and Sinkhorn regularization.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Tutorial</span>
+          <div>
+            <a href="tutorialneuralbutterflyot.html">NeuralButterflyOT</a>
+            <p>Optimal transport inside learning systems — Wasserstein gradient flows and Schrödinger bridges.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Paper</span>
+          <div>
+            <a href="index.html#research">WassersteinRL</a>
+            <p>A geometric theory of distributed policy optimisation via Schrödinger bridges — the anchor paper of the AtheneioLab programme.</p>
+          </div>
+        </li>
+        <li>
+          <span class="res-tag">Paper</span>
+          <div>
+            <a href="index.html#research">WassersteinEval</a>
+            <p>Generative model evaluation via Wasserstein geometry — a multi-scale Sinkhorn divergence framework.</p>
+          </div>
+        </li>
         <li>
           <span class="res-tag">Demo</span>
           <div>
             <a href="demo-robust-ot.html">Projection-Robust Optimal Transport</a>
-            <p>The interactive companion to this introduction — two point clouds and the worst-case projection between them.</p>
+            <p>Interactive companion — two point clouds and the worst-case projection between them.</p>
           </div>
         </li>
         <li>
-          <span class="res-tag">Next</span>
+          <span class="res-tag">Demo</span>
           <div>
-            <a href="tutorialmonarchbutterflyot.html">MonarchButterflyOT</a>
-            <p>Continues from here into Wasserstein distance and Sinkhorn regularization.</p>
-          </div>
-        </li>
-        <li>
-          <span class="res-tag">Index</span>
-          <div>
-            <a href="tutorialforestbutterflyot.html">Forest Butterfly Universe</a>
-            <p>Back to the full index of papers, tutorials, and demos.</p>
+            <a href="demo-decentralized-agg.html">Decentralized Policy Aggregation</a>
+            <p>Six nodes, asynchronous updates, and the gap between naive and Wasserstein aggregation.</p>
           </div>
         </li>
       </ul>
