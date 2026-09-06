@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimal Transport and Reinforcement Learning | Cortex Dreams</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+  :root{
+    --rose:#df91bb;
+    --rose-deep:#b94d91;
+    --rose-deeper:#8f3570;
+    --purple:#7552b7;
+    --purple-deep:#56358f;
+    --gold:#c99a3f;
+    --grey:#8f8f8f;
+    --ink:#3a3a3a;
+    --ink-soft:#7d6b74;
+    --card-bg:#ffffff;
+    --plot-bg:#fbe4ee;
+    --page-bg:#fdeef4;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--page-bg);
+    font-family:'Cormorant Garamond', serif;
+    color:var(--ink);
+  }
+
+  .top-link{
+    display:block;
+    max-width:980px;
+    margin:26px auto 0;
+    padding:0 20px;
+
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  .top-link a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+
+  .top-link a:hover{
+    color:var(--rose-deep);
+    border-color:var(--rose-deep);
+  }
+
+  .card{
+    background:var(--card-bg);
+    max-width:980px;
+    margin:16px auto 60px;
+    padding:28px 28px 32px;
+
+    border-radius:14px;
+    box-shadow:0 16px 40px rgba(0,0,0,0.06);
+  }
+
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:30px;
+    margin:0 0 6px;
+  }
+
+  .subtitle{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+    max-width:660px;
+    line-height:1.55;
+  }
+
+  #plot-wrap svg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .controls{
+    margin-top:20px;
+
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px 20px;
+
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+  }
+
+  .controls + .controls{
+    margin-top:12px;
+  }
+
+  button{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+
+    padding:10px 20px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    transition:background .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
+  }
+
+  button:active{
+    transform:translateY(1px);
+  }
+
+  .btn-primary{
+    background:var(--rose-deep);
+    color:#fff;
+    border:1.5px solid var(--rose-deep);
+  }
+
+  .btn-primary:hover{
+    background:var(--rose-deeper);
+    border-color:var(--rose-deeper);
+  }
+
+  .btn-outline{
+    background:transparent;
+    color:var(--rose-deep);
+    border:1.5px solid var(--rose-deep);
+  }
+
+  .btn-outline:hover{
+    background:rgba(185,77,145,0.08);
+  }
+
+  .btn-outline.active{
+    background:var(--rose-deep);
+    color:#fff;
+  }
+
+  .slider-label{
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+
+  input[type=range]{
+    accent-color:var(--rose-deep);
+    width:220px;
+  }
+
+  .legend-row{
+    margin-top:22px;
+
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px 26px;
+
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  .legend-row .dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:6px;
+    vertical-align:middle;
+  }
+
+  .legend-row .line-swatch{
+    display:inline-block;
+    width:20px;
+    height:0;
+    border-top:2.5px solid var(--gold);
+    margin-right:6px;
+    vertical-align:middle;
+  }
+
+  .legend-row .line-swatch.dashed{
+    border-top:2.5px dashed var(--grey);
+  }
+
+  .stats-row{
+    margin-top:14px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 34px;
+
+    font-family:'Inter', sans-serif;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  .stats-row b{
+    color:var(--ink);
+    font-weight:600;
+  }
+
+</style>
+</head>
+
+<body>
+
+  <div class="top-link">
+    <a href="cortexdreams.html">&larr; Back to Cortex Dreams</a>
+  </div>
+
+  <div class="card">
+
+    <h1>Optimal Transport and Reinforcement Learning</h1>
+
+    <p class="subtitle">
+      Two distributed nodes have each learned a slightly different
+      policy over the same action space, drawn here as a Gaussian.
+      Aggregate them the standard way — averaging parameters,
+      treating policy space as Euclidean — and compare that to
+      aggregating along the Wasserstein geodesic, the geometrically
+      correct interpolation. Drag t to move from node A's policy to
+      node B's, and watch the two aggregation rules disagree.
+    </p>
+
+    <div id="plot-wrap">
+      <svg id="plot" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <div class="controls">
+      <button id="resampleBtn" class="btn-primary">Resample policies</button>
+      <button id="naiveBtn" class="btn-outline active">Show naive average</button>
+      <span class="slider-label">Aggregation weight t</span>
+      <input id="tSlider" type="range" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <div class="legend-row">
+      <span><span class="dot" style="background:#7552b7;"></span>node A policy</span>
+      <span><span class="dot" style="background:#b94d91;"></span>node B policy</span>
+      <span><span class="line-swatch"></span>Wasserstein aggregate</span>
+      <span><span class="line-swatch dashed"></span>Euclidean average</span>
+    </div>
+
+    <div class="stats-row">
+      <span>Wasserstein gap (geometric vs. naive): <b id="gapVal">–</b></span>
+      <span>distance between A and B (W2): <b id="w2Val">–</b></span>
+      <span>aggregation weight t: <b id="tVal">–</b></span>
+    </div>
+
+  </div>
+
+
+<script>
+
+  const PLOT = { x:40, y:20, w:820, h:420 };
+  const cx = PLOT.x + PLOT.w/2;
+  const cy = PLOT.y + PLOT.h/2;
+  const SCALE = 145;
+
+  const svg = document.getElementById('plot');
+  const resampleBtn = document.getElementById('resampleBtn');
+  const naiveBtn = document.getElementById('naiveBtn');
+  const tSlider = document.getElementById('tSlider');
+  const gapVal = document.getElementById('gapVal');
+  const w2Val = document.getElementById('w2Val');
+  const tVal = document.getElementById('tVal');
+
+  let showNaive = true;
+  let nodeA = null, nodeB = null;
+
+  function toPx(p){
+    return { px: cx + p.x*SCALE, py: cy - p.y*SCALE };
+  }
+
+  // ---- 2x2 symmetric matrix helpers ----
+
+  function matMul(A, B){
+    return [
+      [A[0][0]*B[0][0]+A[0][1]*B[1][0], A[0][0]*B[0][1]+A[0][1]*B[1][1]],
+      [A[1][0]*B[0][0]+A[1][1]*B[1][0], A[1][0]*B[0][1]+A[1][1]*B[1][1]]
+    ];
+  }
+
+  function transpose(A){
+    return [[A[0][0], A[1][0]], [A[0][1], A[1][1]]];
+  }
+
+  function matAddScaled(A, B, t){
+    return [
+      [(1-t)*A[0][0]+t*B[0][0], (1-t)*A[0][1]+t*B[0][1]],
+      [(1-t)*A[1][0]+t*B[1][0], (1-t)*A[1][1]+t*B[1][1]]
+    ];
+  }
+
+  function eig2x2(M){
+    const a = M[0][0], b = M[0][1], d = M[1][1];
+    const tr = a+d, det = a*d-b*b;
+    const disc = Math.sqrt(Math.max(0, tr*tr/4 - det));
+    const l1 = tr/2+disc, l2 = tr/2-disc;
+    function eigvec(l){
+      if (Math.abs(b) > 1e-9){
+        const vx = b, vy = l-a;
+        const n = Math.hypot(vx, vy) || 1;
+        return [vx/n, vy/n];
+      }
+      return (Math.abs(l-a) < Math.abs(l-d)) ? [1,0] : [0,1];
+    }
+    return { vals: [l1,l2], vecs: [eigvec(l1), eigvec(l2)] };
+  }
+
+  function matFromEig(vals, vecs){
+    const [v1, v2] = vecs;
+    const V = [[v1[0], v2[0]], [v1[1], v2[1]]];
+    const D = [[vals[0], 0], [0, vals[1]]];
+    return matMul(matMul(V, D), transpose(V));
+  }
+
+  function matSqrt(M){
+    const { vals, vecs } = eig2x2(M);
+    return matFromEig(vals.map(v => Math.sqrt(Math.max(0, v))), vecs);
+  }
+
+  function matInvSqrt(M){
+    const { vals, vecs } = eig2x2(M);
+    return matFromEig(vals.map(v => 1/Math.sqrt(Math.max(1e-9, v))), vecs);
+  }
+
+  function det2(M){
+    return M[0][0]*M[1][1] - M[0][1]*M[1][0];
+  }
+
+  // Bures-Wasserstein geodesic between two covariances (McCann interpolation)
+  function wassersteinGeodesicCov(S0, S1, t){
+    const S0sqrt = matSqrt(S0);
+    const S0isqrt = matInvSqrt(S0);
+    const inner = matMul(matMul(S0sqrt, S1), S0sqrt);
+    const innerSqrt = matSqrt(inner);
+    const T = matMul(matMul(S0isqrt, innerSqrt), S0isqrt);
+    const I = [[1,0],[0,1]];
+    const A = matAddScaled(I, T, t);
+    return matMul(matMul(A, S0), transpose(A));
+  }
+
+  function euclideanCov(S0, S1, t){
+    return matAddScaled(S0, S1, t);
+  }
+
+  // squared Bures distance between two covariances (same-mean W2^2)
+  function buresDistSq(Sa, Sb){
+    const SaSqrt = matSqrt(Sa);
+    const inner = matMul(matMul(SaSqrt, Sb), SaSqrt);
+    const innerSqrt = matSqrt(inner);
+    const trInnerSqrt = innerSqrt[0][0]+innerSqrt[1][1];
+    const trA = Sa[0][0]+Sa[1][1];
+    const trB = Sb[0][0]+Sb[1][1];
+    return Math.max(0, trA+trB-2*trInnerSqrt);
+  }
+
+  function buildCov(theta, s1, s2){
+    const c = Math.cos(theta), s = Math.sin(theta);
+    const R = [[c,-s],[s,c]];
+    const D = [[s1*s1,0],[0,s2*s2]];
+    return matMul(matMul(R, D), transpose(R));
+  }
+
+  function ellipsePoints(mean, Sigma, k=1.6, n=72){
+    const { vals, vecs } = eig2x2(Sigma);
+    const a = k*Math.sqrt(Math.max(0, vals[0]));
+    const b = k*Math.sqrt(Math.max(0, vals[1]));
+    const [v1, v2] = vecs;
+    const pts = [];
+    for (let i = 0; i <= n; i++){
+      const phi = (i/n) * 2*Math.PI;
+      const cx_ = a*Math.cos(phi), cy_ = b*Math.sin(phi);
+      const x = mean[0] + v1[0]*cx_ + v2[0]*cy_;
+      const y = mean[1] + v1[1]*cx_ + v2[1]*cy_;
+      pts.push(toPx({x, y}));
+    }
+    return pts;
+  }
+
+  function pointsToStr(pts){
+    return pts.map(p => `${p.px.toFixed(1)},${p.py.toFixed(1)}`).join(' ');
+  }
+
+  function randRange(lo, hi){ return lo + Math.random()*(hi-lo); }
+
+  function resample(){
+    const meanA = [-1.05 + randRange(-0.1,0.1), randRange(-0.15,0.15)];
+    const meanB = [ 1.05 + randRange(-0.1,0.1), randRange(-0.15,0.15)];
+    const thetaA = randRange(0, Math.PI);
+    const thetaB = randRange(0, Math.PI);
+    const covA = buildCov(thetaA, randRange(0.32,0.6), randRange(0.14,0.28));
+    const covB = buildCov(thetaB, randRange(0.32,0.6), randRange(0.14,0.28));
+    nodeA = { mean: meanA, cov: covA };
+    nodeB = { mean: meanB, cov: covB };
+    render();
+  }
+
+  function render(){
+    const t = parseFloat(tSlider.value);
+    const meanT = [
+      (1-t)*nodeA.mean[0] + t*nodeB.mean[0],
+      (1-t)*nodeA.mean[1] + t*nodeB.mean[1]
+    ];
+
+    const SigmaW = wassersteinGeodesicCov(nodeA.cov, nodeB.cov, t);
+    const SigmaE = euclideanCov(nodeA.cov, nodeB.cov, t);
+
+    const gap = Math.sqrt(buresDistSq(SigmaW, SigmaE));
+    const dMean2 = (nodeA.mean[0]-nodeB.mean[0])**2 + (nodeA.mean[1]-nodeB.mean[1])**2;
+    const w2AB = Math.sqrt(dMean2 + buresDistSq(nodeA.cov, nodeB.cov));
+
+    const parts = [];
+    parts.push(`<defs><clipPath id="plotClip"><rect x="${PLOT.x}" y="${PLOT.y}" width="${PLOT.w}" height="${PLOT.h}" rx="10"/></clipPath></defs>`);
+    parts.push(`<rect x="${PLOT.x}" y="${PLOT.y}" width="${PLOT.w}" height="${PLOT.h}" rx="10" fill="#fbe4ee"/>`);
+    parts.push(`<g clip-path="url(#plotClip)">`);
+
+    // node A / node B ellipses (fixed reference policies)
+    parts.push(`<polygon points="${pointsToStr(ellipsePoints(nodeA.mean, nodeA.cov))}" fill="#7552b7" fill-opacity="0.16" stroke="#7552b7" stroke-width="1.5"/>`);
+    parts.push(`<polygon points="${pointsToStr(ellipsePoints(nodeB.mean, nodeB.cov))}" fill="#b94d91" fill-opacity="0.16" stroke="#b94d91" stroke-width="1.5"/>`);
+
+    // naive Euclidean average (dashed)
+    if (showNaive){
+      parts.push(`<polygon points="${pointsToStr(ellipsePoints(meanT, SigmaE))}" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-dasharray="6,5"/>`);
+    }
+
+    // Wasserstein aggregate (solid gold)
+    parts.push(`<polygon points="${pointsToStr(ellipsePoints(meanT, SigmaW))}" fill="none" stroke="#c99a3f" stroke-width="2.5"/>`);
+
+    // centers
+    const cA = toPx({x:nodeA.mean[0], y:nodeA.mean[1]});
+    const cB = toPx({x:nodeB.mean[0], y:nodeB.mean[1]});
+    const cT = toPx({x:meanT[0], y:meanT[1]});
+    parts.push(`<circle cx="${cA.px}" cy="${cA.py}" r="4" fill="#7552b7"/>`);
+    parts.push(`<circle cx="${cB.px}" cy="${cB.py}" r="4" fill="#b94d91"/>`);
+    parts.push(`<circle cx="${cT.px}" cy="${cT.py}" r="3.5" fill="#c99a3f"/>`);
+
+    parts.push(`</g>`);
+
+    svg.innerHTML = parts.join('');
+
+    gapVal.textContent = gap.toFixed(3);
+    w2Val.textContent = w2AB.toFixed(3);
+    tVal.textContent = t.toFixed(2);
+  }
+
+  resampleBtn.addEventListener('click', resample);
+
+  naiveBtn.addEventListener('click', () => {
+    showNaive = !showNaive;
+    naiveBtn.classList.toggle('active', showNaive);
+    naiveBtn.textContent = showNaive ? 'Show naive average' : 'Hide naive average';
+    render();
+  });
+
+  tSlider.addEventListener('input', render);
+
+  resample();
+
+</script>
+
+</body>
+</html>
