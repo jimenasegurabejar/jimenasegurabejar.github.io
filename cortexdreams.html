@@ -435,68 +435,76 @@
        TUTORIALS
        ========================================================= */
 
-    .tutorials{
-      display:flex;
-      flex-direction:column;
-      gap:0;
-
-      max-width:760px;
-    }
-
-    .tutorial{
-      display:flex;
+    .tutorials-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
       gap:28px;
-
-      padding:32px 0;
-
-      border-top:1px solid var(--line);
-
-      transition:transform .25s ease;
     }
 
-    .tutorials .tutorial:first-child{
-      border-top:none;
+    .tutorial-card{
+      border:1px solid var(--line);
+
+      background:rgba(255,255,255,0.5);
+
+      padding:32px;
+
+      border-radius:8px;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
     }
 
-    .tutorial:hover{
-      transform:translateX(4px);
+    .tutorial-card:hover{
+      transform:translateY(-3px);
+
+      box-shadow:0 14px 30px rgba(185, 77, 145, 0.12);
+
+      border-color:var(--rose);
     }
 
     .tutorial-level{
-      flex:0 0 110px;
+      display:inline-block;
 
       font-family:'Inter', sans-serif;
-      font-size:12px;
+      font-size:11px;
       font-weight:600;
-      letter-spacing:0.06em;
+      letter-spacing:0.08em;
       text-transform:uppercase;
 
       color:var(--rose-deep);
 
-      padding-top:6px;
+      background:var(--pink-soft);
+
+      padding:4px 10px;
+
+      border-radius:3px;
+
+      margin-bottom:16px;
     }
 
-    .tutorial-body h3{
+    .tutorial-card h3{
       font-family:'Cormorant Garamond', serif;
       font-weight:700;
       font-size:26px;
 
-      margin-bottom:8px;
+      margin-bottom:10px;
 
       color:var(--ink);
     }
 
-    .tutorial-body h3 a{
+    .tutorial-card h3 a{
       border-bottom:1px solid transparent;
       transition:border-color .2s ease, color .2s ease;
     }
 
-    .tutorial-body h3 a:hover{
+    .tutorial-card h3 a:hover{
       color:var(--rose-deep);
       border-color:var(--rose-deep);
     }
 
-    .tutorial-body p{
+    .tutorial-card p{
       font-size:16px;
       color:var(--ink-soft);
     }
@@ -750,39 +758,36 @@
         not just read the conclusions.
       </p>
 
-      <div class="tutorials">
+      <div class="tutorials-grid">
 
-        <div class="tutorial">
+        <div class="tutorial-card">
           <span class="tutorial-level">Beginner</span>
-          <div class="tutorial-body">
-            <h3><a href="#">Tutorial title goes here</a></h3>
-            <p>
-              A short description of what this tutorial walks
-              through and what you'll come away understanding.
-            </p>
-          </div>
+          <h3><a href="#">ForestButterflyOT</a></h3>
+          <p>
+            A first walk through optimal transport: two simple
+            distributions, a cost function, and the intuition
+            behind the transport plan that connects them.
+          </p>
         </div>
 
-        <div class="tutorial">
+        <div class="tutorial-card">
           <span class="tutorial-level">Intermediate</span>
-          <div class="tutorial-body">
-            <h3><a href="#">Another tutorial title</a></h3>
-            <p>
-              A short description of the concepts covered and
-              the tools or math used along the way.
-            </p>
-          </div>
+          <h3><a href="#">MonarchButterflyOT</a></h3>
+          <p>
+            Moving from discrete to continuous transport —
+            Wasserstein distance, Sinkhorn regularization, and
+            how the geometry changes as distributions evolve.
+          </p>
         </div>
 
-        <div class="tutorial">
+        <div class="tutorial-card">
           <span class="tutorial-level">Advanced</span>
-          <div class="tutorial-body">
-            <h3><a href="#">A third tutorial title</a></h3>
-            <p>
-              A brief description, written as plain-spoken
-              prose, of what this one covers.
-            </p>
-          </div>
+          <h3><a href="#">NeuralButterflyOT</a></h3>
+          <p>
+            Optimal transport inside learning systems — Wasserstein
+            gradient flows, Schrödinger bridges, and aggregating
+            models across the manifold instead of in Euclidean space.
+          </p>
         </div>
 
       </div>
