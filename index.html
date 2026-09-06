@@ -453,9 +453,31 @@
 
       right:100%;
 
+      top:0.75em;
+
       margin-left:0;
 
-      margin-right:-0.15em;
+      margin-right:0.05em;
+
+      animation:flutterLeft 3.5s ease-in-out infinite;
+    }
+
+    @keyframes flutterLeft{
+      0%{
+        transform:scaleX(-1) translate(0, 0) rotate(-8deg);
+      }
+      25%{
+        transform:scaleX(-1) translate(3px, -6px) rotate(2deg);
+      }
+      50%{
+        transform:scaleX(-1) translate(-2px, -10px) rotate(-10deg);
+      }
+      75%{
+        transform:scaleX(-1) translate(4px, -4px) rotate(4deg);
+      }
+      100%{
+        transform:scaleX(-1) translate(0, 0) rotate(-8deg);
+      }
     }
 
     .name-icon{
