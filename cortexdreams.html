@@ -432,6 +432,77 @@
 
 
     /* =========================================================
+       TUTORIALS
+       ========================================================= */
+
+    .tutorials{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+
+      max-width:760px;
+    }
+
+    .tutorial{
+      display:flex;
+      gap:28px;
+
+      padding:32px 0;
+
+      border-top:1px solid var(--line);
+
+      transition:transform .25s ease;
+    }
+
+    .tutorials .tutorial:first-child{
+      border-top:none;
+    }
+
+    .tutorial:hover{
+      transform:translateX(4px);
+    }
+
+    .tutorial-level{
+      flex:0 0 110px;
+
+      font-family:'Inter', sans-serif;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+
+      color:var(--rose-deep);
+
+      padding-top:6px;
+    }
+
+    .tutorial-body h3{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+      font-size:26px;
+
+      margin-bottom:8px;
+
+      color:var(--ink);
+    }
+
+    .tutorial-body h3 a{
+      border-bottom:1px solid transparent;
+      transition:border-color .2s ease, color .2s ease;
+    }
+
+    .tutorial-body h3 a:hover{
+      color:var(--rose-deep);
+      border-color:var(--rose-deep);
+    }
+
+    .tutorial-body p{
+      font-size:16px;
+      color:var(--ink-soft);
+    }
+
+
+    /* =========================================================
        FOOTER
        ========================================================= */
 
@@ -526,6 +597,7 @@
     <a href="https://jimenasegurabejar.github.io/companies">Research Companies</a>
     <a href="index.html#featuredin">Featured</a>
     <a href="cortexdreams.html" class="current">Cortex Dreams</a>
+    <a href="#tutorials">Tutorials</a>
 
   </nav>
 
@@ -657,6 +729,63 @@
             weight and watch the two disagree.
           </p>
           <a class="demo-link" href="demo-ot-rl.html">Open demo</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       TUTORIALS
+       ======================================================= -->
+
+  <section id="tutorials" class="page">
+
+    <div class="wrap">
+
+      <h2 class="section-title">Tutorials</h2>
+      <p class="section-sub">
+        Step-by-step walkthroughs of the ideas behind the
+        research — for anyone who wants to follow the math,
+        not just read the conclusions.
+      </p>
+
+      <div class="tutorials">
+
+        <div class="tutorial">
+          <span class="tutorial-level">Beginner</span>
+          <div class="tutorial-body">
+            <h3><a href="#">Tutorial title goes here</a></h3>
+            <p>
+              A short description of what this tutorial walks
+              through and what you'll come away understanding.
+            </p>
+          </div>
+        </div>
+
+        <div class="tutorial">
+          <span class="tutorial-level">Intermediate</span>
+          <div class="tutorial-body">
+            <h3><a href="#">Another tutorial title</a></h3>
+            <p>
+              A short description of the concepts covered and
+              the tools or math used along the way.
+            </p>
+          </div>
+        </div>
+
+        <div class="tutorial">
+          <span class="tutorial-level">Advanced</span>
+          <div class="tutorial-body">
+            <h3><a href="#">A third tutorial title</a></h3>
+            <p>
+              A brief description, written as plain-spoken
+              prose, of what this one covers.
+            </p>
+          </div>
         </div>
 
       </div>
