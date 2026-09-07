@@ -16,8 +16,10 @@
     --ink-soft: #8B8790;
     --rose: #EBA9C0;
     --rose-deep: #D67A98;
-    --rose-card: #E9A9C4;
+    --rose-card: #201c3d;
     --line: #E8D3DC;
+    --lavender: #b7a8e6;
+    --periwinkle: #a6b3f5;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -94,15 +96,15 @@
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(min(480px, 100%), 1fr));
-    gap:32px;
+    grid-template-columns:repeat(auto-fill, minmax(min(500px, 100%), 1fr));
+    gap:36px;
   }
 
   .card{
-    border-radius:0;
+    border-radius:14px;
     overflow:hidden;
     background:var(--rose-card);
-    box-shadow:0 10px 30px rgba(214,122,152,0.18);
+    box-shadow:0 14px 34px rgba(214,122,152,0.22);
     display:flex;
     flex-direction:column;
     cursor:pointer;
@@ -110,21 +112,17 @@
   }
   .card:hover{
     transform:translateY(-4px);
-    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+    box-shadow:0 20px 42px rgba(214,122,152,0.3);
   }
 
   .card:active{
     transform:translateY(-1px) scale(0.99);
   }
 
-  .card:active .card-body{
-    filter:brightness(1.32) saturate(1.4);
-    animation-duration:1.4s;
-  }
-
   .card-preview{
     background:#fff;
-    min-height:280px;
+    aspect-ratio:16/11;
+    min-height:0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -139,31 +137,20 @@
   }
 
   .card-body{
-    padding:26px 26px 24px;
-    color:#fff;
-    background:linear-gradient(
-      90deg,
-      var(--rose-card) 0%,
-      #F6D9E7 25%,
-      var(--rose-card) 50%,
-      var(--rose-card) 100%
-    );
-    background-size:300% 100%;
-    animation:shimmerLight 7s ease-in-out infinite;
-    transition:filter .25s ease;
-  }
-
-  @keyframes shimmerLight{
-    0%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-    100%{ background-position:0% 50%; }
+    padding:32px 32px 34px;
+    color:var(--ink);
+    background:var(--rose-card);
+    flex:1;
+    display:flex;
+    flex-direction:column;
   }
 
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:24px;
+    font-size:27px;
     margin-bottom:6px;
+    color:#ffffff;
   }
   .card-body h3 em{
     font-style:italic;
@@ -172,11 +159,11 @@
   }
 
   .card-body .preprint{
-    font-style:normal;
-    font-weight:700;
-    font-size:22px;
-    color:#ffffff;
-    margin-bottom:14px;
+    font-style:italic;
+    font-weight:500;
+    font-size:16px;
+    color:var(--lavender);
+    margin-bottom:18px;
     display:block;
   }
 
@@ -185,23 +172,25 @@
     align-items:center;
     gap:8px;
     font-family:'Inter', sans-serif;
-    font-size:17px;
+    font-size:15px;
     font-weight:600;
-    color:#fff;
+    color:var(--lavender);
     margin-bottom:14px;
   }
 
   .card-body .location svg{
-    width:17px;
-    height:17px;
+    width:15px;
+    height:15px;
     flex-shrink:0;
   }
 
   .card-body p{
-    font-family:'Inter', sans-serif;
-    font-size:13.5px;
-    line-height:1.65;
-    color:#fdeef4;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:17px;
+    line-height:1.6;
+    color:#dcd8ea;
+    flex:1;
   }
 
   .card-footer{
@@ -209,31 +198,35 @@
     align-items:center;
     flex-wrap:wrap;
     gap:14px;
-    margin-top:20px;
+    margin-top:22px;
   }
 
   .visit-link{
-    font-family:'Inter', sans-serif;
-    font-size:13px;
+    font-family:'Cormorant Garamond', serif;
     font-weight:600;
-    color:#fff;
+    font-size:17px;
+    color:var(--periwinkle);
     display:inline-flex;
     align-items:center;
     gap:6px;
   }
-  .visit-link:hover{ opacity:0.85; }
+  .visit-link::after{
+    content:"→";
+  }
+  .visit-link:hover{ opacity:0.8; }
 
   .paper-pill{
     font-family:'Inter', sans-serif;
     font-size:12.5px;
     font-weight:600;
     color:#fff;
-    border:1.5px solid rgba(255,255,255,0.7);
-    border-radius:0;
-    padding:6px 16px;
+    border:1.5px solid rgba(255,255,255,0.35);
+    border-radius:999px;
+    padding:7px 18px;
   }
   .paper-pill:hover{
-    background:rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.1);
+    border-color:rgba(255,255,255,0.6);
   }
 
   footer{
@@ -272,7 +265,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -292,7 +285,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -312,7 +305,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -332,7 +325,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -352,7 +345,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -372,7 +365,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -392,7 +385,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -412,7 +405,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -432,7 +425,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -452,7 +445,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -472,7 +465,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
@@ -488,7 +481,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
@@ -506,7 +499,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
