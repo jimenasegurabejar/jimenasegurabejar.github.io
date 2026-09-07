@@ -16,10 +16,8 @@
     --ink-soft: #8B8790;
     --rose: #EBA9C0;
     --rose-deep: #D67A98;
-    --rose-card: #201c3d;
+    --rose-card: #E9A9C4;
     --line: #E8D3DC;
-    --lavender: #b7a8e6;
-    --periwinkle: #a6b3f5;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -96,15 +94,15 @@
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(min(500px, 100%), 1fr));
-    gap:36px;
+    grid-template-columns:repeat(auto-fill, minmax(min(480px, 100%), 1fr));
+    gap:32px;
   }
 
   .card{
-    border-radius:14px;
+    border-radius:0;
     overflow:hidden;
     background:var(--rose-card);
-    box-shadow:0 14px 34px rgba(214,122,152,0.22);
+    box-shadow:0 10px 30px rgba(214,122,152,0.18);
     display:flex;
     flex-direction:column;
     cursor:pointer;
@@ -112,17 +110,21 @@
   }
   .card:hover{
     transform:translateY(-4px);
-    box-shadow:0 20px 42px rgba(214,122,152,0.3);
+    box-shadow:0 16px 36px rgba(214,122,152,0.26);
   }
 
   .card:active{
     transform:translateY(-1px) scale(0.99);
   }
 
+  .card:active .card-body{
+    filter:brightness(1.32) saturate(1.4);
+    animation-duration:1.4s;
+  }
+
   .card-preview{
     background:#fff;
-    aspect-ratio:16/11;
-    min-height:0;
+    min-height:280px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -137,20 +139,31 @@
   }
 
   .card-body{
-    padding:32px 32px 34px;
-    color:var(--ink);
-    background:var(--rose-card);
-    flex:1;
-    display:flex;
-    flex-direction:column;
+    padding:26px 26px 24px;
+    color:#fff;
+    background:linear-gradient(
+      90deg,
+      var(--rose-card) 0%,
+      #F6D9E7 25%,
+      var(--rose-card) 50%,
+      var(--rose-card) 100%
+    );
+    background-size:300% 100%;
+    animation:shimmerLight 7s ease-in-out infinite;
+    transition:filter .25s ease;
+  }
+
+  @keyframes shimmerLight{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
   }
 
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:27px;
+    font-size:24px;
     margin-bottom:6px;
-    color:#ffffff;
   }
   .card-body h3 em{
     font-style:italic;
@@ -159,11 +172,11 @@
   }
 
   .card-body .preprint{
-    font-style:italic;
-    font-weight:500;
-    font-size:16px;
-    color:var(--lavender);
-    margin-bottom:18px;
+    font-style:normal;
+    font-weight:700;
+    font-size:22px;
+    color:#ffffff;
+    margin-bottom:14px;
     display:block;
   }
 
@@ -172,25 +185,23 @@
     align-items:center;
     gap:8px;
     font-family:'Inter', sans-serif;
-    font-size:15px;
+    font-size:17px;
     font-weight:600;
-    color:var(--lavender);
+    color:#fff;
     margin-bottom:14px;
   }
 
   .card-body .location svg{
-    width:15px;
-    height:15px;
+    width:17px;
+    height:17px;
     flex-shrink:0;
   }
 
   .card-body p{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    font-size:17px;
-    line-height:1.6;
-    color:#dcd8ea;
-    flex:1;
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    line-height:1.65;
+    color:#fdeef4;
   }
 
   .card-footer{
@@ -202,31 +213,27 @@
   }
 
   .visit-link{
-    font-family:'Cormorant Garamond', serif;
+    font-family:'Inter', sans-serif;
+    font-size:13px;
     font-weight:600;
-    font-size:17px;
-    color:var(--periwinkle);
+    color:#fff;
     display:inline-flex;
     align-items:center;
     gap:6px;
   }
-  .visit-link::after{
-    content:"→";
-  }
-  .visit-link:hover{ opacity:0.8; }
+  .visit-link:hover{ opacity:0.85; }
 
   .paper-pill{
     font-family:'Inter', sans-serif;
     font-size:12.5px;
     font-weight:600;
     color:#fff;
-    border:1.5px solid rgba(255,255,255,0.35);
-    border-radius:999px;
-    padding:7px 18px;
+    border:1.5px solid rgba(255,255,255,0.7);
+    border-radius:0;
+    padding:6px 16px;
   }
   .paper-pill:hover{
-    background:rgba(255,255,255,0.1);
-    border-color:rgba(255,255,255,0.6);
+    background:rgba(255,255,255,0.15);
   }
 
   footer{
@@ -265,7 +272,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -285,7 +292,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -305,7 +312,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -325,7 +332,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -345,7 +352,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -365,7 +372,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -385,7 +392,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -405,7 +412,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -425,7 +432,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -445,7 +452,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -465,7 +472,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
@@ -481,7 +488,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
@@ -499,7 +506,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="visit-link" href="#">Website</a>
+          <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
