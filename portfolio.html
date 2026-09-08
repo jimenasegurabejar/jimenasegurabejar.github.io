@@ -157,7 +157,15 @@
     height:auto;
     margin-left:10px;
     filter:drop-shadow(0 4px 10px rgba(185,77,145,0.35));
-    animation:flutter 3.5s ease-in-out infinite;
+    animation:flutterBig 3s ease-in-out infinite;
+  }
+
+  @keyframes flutterBig{
+    0%{ transform:translate(0, 0) rotate(-14deg); }
+    25%{ transform:translate(8px, -14px) rotate(6deg); }
+    50%{ transform:translate(-6px, -22px) rotate(-18deg); }
+    75%{ transform:translate(10px, -10px) rotate(10deg); }
+    100%{ transform:translate(0, 0) rotate(-14deg); }
   }
 
   .grid{
