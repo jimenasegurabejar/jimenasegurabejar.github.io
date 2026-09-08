@@ -96,6 +96,9 @@
   }
 
   .filter-bar{
+    position:relative;
+    overflow:visible;
+
     display:flex;
     align-items:center;
     flex-wrap:wrap;
@@ -153,19 +156,32 @@
   }
 
   .filter-icon{
+    position:absolute;
+    left:1180px;
+    top:50%;
+
     width:48px;
     height:auto;
-    margin-left:10px;
+
     filter:drop-shadow(0 4px 10px rgba(185,77,145,0.35));
-    animation:flutterBig 3s ease-in-out infinite;
+    animation:seahorseSwim 9s ease-in-out infinite;
   }
 
-  @keyframes flutterBig{
-    0%{ transform:translate(0, 0) rotate(-14deg); }
-    25%{ transform:translate(8px, -14px) rotate(6deg); }
-    50%{ transform:translate(-6px, -22px) rotate(-18deg); }
-    75%{ transform:translate(10px, -10px) rotate(10deg); }
-    100%{ transform:translate(0, 0) rotate(-14deg); }
+  @keyframes seahorseSwim{
+    0%{ transform:translate(0, -50%) rotate(-10deg); }
+    15%{ transform:translate(80px, -80%) rotate(8deg); }
+    30%{ transform:translate(140px, -20%) rotate(-6deg); }
+    45%{ transform:translate(60px, 40%) rotate(10deg); }
+    60%{ transform:translate(-60px, 90px) rotate(-14deg); }
+    75%{ transform:translate(-160px, 10px) rotate(6deg); }
+    90%{ transform:translate(-70px, -60%) rotate(-8deg); }
+    100%{ transform:translate(0, -50%) rotate(-10deg); }
+  }
+
+  @media (max-width:900px){
+    .filter-icon{
+      display:none;
+    }
   }
 
   .grid{
