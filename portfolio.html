@@ -52,6 +52,18 @@
   }
   .back-link:hover{ color:var(--rose-deep); }
 
+  .back-icon{
+    height:28px;
+    width:auto;
+    display:block;
+    transition:transform .2s ease, opacity .2s ease;
+  }
+
+  .back-link:hover .back-icon{
+    transform:translateX(-3px);
+    opacity:0.85;
+  }
+
   h1{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
@@ -342,7 +354,7 @@
 <body>
 
 <div class="wrap">
-  <a class="back-link" href="index.html">Back</a>
+  <a class="back-link" href="index.html"><img src="backportfolio.png" alt="Back" class="back-icon"></a>
   <h1>Research &amp; <span class="word-wrap">Projects</span></h1>
   <div class="filter-bar" id="filterBar">
     <button class="filter-pill active" data-filter="all">All</button>
