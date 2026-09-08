@@ -36,6 +36,7 @@
   a{ color:inherit; text-decoration:none; }
 
   .wrap{
+    position:relative;
     max-width:1280px;
     margin:0 auto;
     padding:70px 40px 120px;
@@ -157,25 +158,27 @@
 
   .filter-icon{
     position:absolute;
-    left:1180px;
-    top:50%;
+    top:190px;
+    right:30px;
+    z-index:5;
 
     width:48px;
     height:auto;
 
     filter:drop-shadow(0 4px 10px rgba(185,77,145,0.35));
-    animation:seahorseSwim 9s ease-in-out infinite;
+    animation:seahorseSwim 14s ease-in-out infinite;
   }
 
   @keyframes seahorseSwim{
-    0%{ transform:translate(0, -50%) rotate(-10deg); }
-    15%{ transform:translate(80px, -80%) rotate(8deg); }
-    30%{ transform:translate(140px, -20%) rotate(-6deg); }
-    45%{ transform:translate(60px, 40%) rotate(10deg); }
-    60%{ transform:translate(-60px, 90px) rotate(-14deg); }
-    75%{ transform:translate(-160px, 10px) rotate(6deg); }
-    90%{ transform:translate(-70px, -60%) rotate(-8deg); }
-    100%{ transform:translate(0, -50%) rotate(-10deg); }
+    0%{   transform:translate(0, 0) rotate(-8deg); }
+    12%{  transform:translate(-60px, 50px) rotate(10deg); }
+    26%{  transform:translate(-420px, 130px) rotate(-6deg); }
+    38%{  transform:translate(-900px, 250px) rotate(8deg); }
+    50%{  transform:translate(-1280px, 400px) rotate(-10deg); }
+    62%{  transform:translate(-1300px, 560px) rotate(6deg); }
+    74%{  transform:translate(-900px, 520px) rotate(-8deg); }
+    86%{  transform:translate(-300px, 320px) rotate(10deg); }
+    100%{ transform:translate(0, 0) rotate(-8deg); }
   }
 
   @media (max-width:900px){
@@ -351,8 +354,9 @@
     <button class="filter-pill" data-filter="cell-ag">Cell Ag</button>
     <button class="filter-pill" data-filter="biological-rl">Biological RL</button>
     <button class="filter-pill" data-filter="writing">Writing</button>
-    <img src="iconportfolio.png" alt="" class="filter-icon">
   </div>
+
+  <img src="iconportfolio.png" alt="" class="filter-icon">
 
   <div class="grid">
 
