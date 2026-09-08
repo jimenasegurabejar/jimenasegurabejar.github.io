@@ -18,6 +18,9 @@
     --rose-deep: #D67A98;
     --rose-card: #E9A9C4;
     --line: #E8D3DC;
+    --navy: #211d3f;
+    --lavender: #b7a8e6;
+    --periwinkle: #a6b3f5;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -92,17 +95,72 @@
     color:var(--ink);
   }
 
+  .filter-bar{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+
+    background:#FADCE7;
+    border-radius:999px;
+
+    padding:14px 24px;
+
+    margin-bottom:50px;
+  }
+
+  .filter-label{
+    font-family:'Inter', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+    margin-right:6px;
+  }
+
+  .filter-pill{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+
+    background:rgba(255,255,255,0.5);
+    border:1.5px solid transparent;
+    border-radius:999px;
+
+    padding:8px 20px;
+
+    cursor:pointer;
+
+    transition:background .2s ease, border-color .2s ease, color .2s ease;
+  }
+
+  .filter-pill:hover{
+    background:rgba(255,255,255,0.8);
+  }
+
+  .filter-pill.active{
+    background:#ffffff;
+    border-color:var(--rose-deep);
+    color:var(--rose-deep);
+  }
+
+  .card.hidden{
+    display:none;
+  }
+
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(min(480px, 100%), 1fr));
-    gap:32px;
+    grid-template-columns:repeat(auto-fill, minmax(min(420px, 100%), 1fr));
+    gap:36px;
   }
 
   .card{
-    border-radius:0;
+    border-radius:22px;
     overflow:hidden;
     background:var(--rose-card);
-    box-shadow:0 10px 30px rgba(214,122,152,0.18);
+    box-shadow:0 16px 36px rgba(214,122,152,0.24);
     display:flex;
     flex-direction:column;
     cursor:pointer;
@@ -110,21 +168,17 @@
   }
   .card:hover{
     transform:translateY(-4px);
-    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+    box-shadow:0 22px 44px rgba(214,122,152,0.32);
   }
 
   .card:active{
     transform:translateY(-1px) scale(0.99);
   }
 
-  .card:active .card-body{
-    filter:brightness(1.32) saturate(1.4);
-    animation-duration:1.4s;
-  }
-
   .card-preview{
     background:#fff;
-    min-height:280px;
+    aspect-ratio:1/0.62;
+    min-height:0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -139,43 +193,33 @@
   }
 
   .card-body{
-    padding:26px 26px 24px;
+    padding:32px 32px 34px;
     color:#fff;
-    background:linear-gradient(
-      90deg,
-      var(--rose-card) 0%,
-      #F6D9E7 50%,
-      var(--rose-card) 100%
-    );
-    background-size:200% 100%;
-    animation:shimmerLight 7s ease-in-out infinite;
-    transition:filter .25s ease;
-  }
-
-  @keyframes shimmerLight{
-    0%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-    100%{ background-position:0% 50%; }
+    background:var(--rose-card);
+    flex:1;
+    display:flex;
+    flex-direction:column;
   }
 
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:24px;
+    font-size:27px;
     margin-bottom:6px;
+    color:#ffffff;
   }
   .card-body h3 em{
     font-style:italic;
     font-weight:500;
-    color:#fff5f8;
+    color:var(--periwinkle);
   }
 
   .card-body .preprint{
-    font-style:normal;
-    font-weight:700;
-    font-size:22px;
-    color:#ffffff;
-    margin-bottom:14px;
+    font-style:italic;
+    font-weight:500;
+    font-size:16px;
+    color:var(--lavender);
+    margin-bottom:18px;
     display:block;
   }
 
@@ -184,23 +228,25 @@
     align-items:center;
     gap:8px;
     font-family:'Inter', sans-serif;
-    font-size:17px;
+    font-size:15px;
     font-weight:600;
-    color:#fff;
+    color:#ffffff;
     margin-bottom:14px;
   }
 
   .card-body .location svg{
-    width:17px;
-    height:17px;
+    width:15px;
+    height:15px;
     flex-shrink:0;
   }
 
   .card-body p{
-    font-family:'Inter', sans-serif;
-    font-size:13.5px;
-    line-height:1.65;
-    color:#fdeef4;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:17px;
+    line-height:1.6;
+    color:#d8d4e8;
+    flex:1;
   }
 
   .card-footer{
@@ -212,27 +258,31 @@
   }
 
   .visit-link{
-    font-family:'Inter', sans-serif;
-    font-size:13px;
+    font-family:'Cormorant Garamond', serif;
     font-weight:600;
-    color:#fff;
+    font-size:17px;
+    color:var(--periwinkle);
     display:inline-flex;
     align-items:center;
     gap:6px;
   }
-  .visit-link:hover{ opacity:0.85; }
+  .visit-link::after{
+    content:"→";
+  }
+  .visit-link:hover{ opacity:0.8; }
 
   .paper-pill{
     font-family:'Inter', sans-serif;
     font-size:12.5px;
     font-weight:600;
     color:#fff;
-    border:1.5px solid rgba(255,255,255,0.7);
-    border-radius:0;
-    padding:6px 16px;
+    border:1.5px solid rgba(255,255,255,0.35);
+    border-radius:999px;
+    padding:8px 20px;
   }
   .paper-pill:hover{
-    background:rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.1);
+    border-color:rgba(255,255,255,0.6);
   }
 
   footer{
@@ -256,11 +306,17 @@
 <div class="wrap">
   <a class="back-link" href="index.html">Back</a>
   <h1>Research &amp; <span class="word-wrap">Projects<img src="me.png" alt="" class="name-icon"></span></h1>
-  <a class="scholar-link" href="https://scholar.google.com/" target="_blank" rel="noopener">Complete list on Google Scholar</a>
+  <div class="filter-bar" id="filterBar">
+    <span class="filter-label">Filter</span>
+    <button class="filter-pill active" data-filter="all">All</button>
+    <button class="filter-pill" data-filter="bio-ml">Bio &amp; ML</button>
+    <button class="filter-pill" data-filter="neuro">Neuro</button>
+    <button class="filter-pill" data-filter="rl">RL</button>
+  </div>
 
   <div class="grid">
 
-    <div class="card">
+    <div class="card" data-category="rl">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Learning as a Child: Schrödinger Bridges, Entropy Regularization and the Geometry of RL</h3>
@@ -271,7 +327,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -280,7 +336,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>ForestButterflyOT</h3>
@@ -291,7 +347,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -300,7 +356,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>03</em></h3>
@@ -311,7 +367,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -320,7 +376,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>04</em></h3>
@@ -331,7 +387,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -340,7 +396,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>05</em></h3>
@@ -351,7 +407,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -360,7 +416,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>06</em></h3>
@@ -371,7 +427,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -380,7 +436,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>07</em></h3>
@@ -391,7 +447,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -400,7 +456,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>08</em></h3>
@@ -411,7 +467,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -420,7 +476,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>09</em></h3>
@@ -431,7 +487,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -440,7 +496,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Project <em>10</em></h3>
@@ -451,7 +507,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Code</a>
           <a class="paper-pill" href="#">Dataset</a>
@@ -460,7 +516,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Towards a Biological AGI for Cellular Agriculture</h3>
@@ -471,12 +527,12 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
       </div>
-    </div><div class="card">
+    </div><div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Towards a Turing Test for Cellular Agriculture</h3>
@@ -487,14 +543,14 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="bio-ml">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Biological Dynamical Systems for Cellular Agriculture</h3>
@@ -505,7 +561,7 @@
         </div>
         <p>Add a short description of this project here.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
+          <a class="visit-link" href="#">Visit site</a>
           <a class="paper-pill" href="#">Paper</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
@@ -514,7 +570,7 @@
 
 
 
-    <div class="card">
+    <div class="card" data-category="neuro">
       <div class="card-preview"><div class="placeholder">Preview</div></div>
       <div class="card-body">
         <h3>Modeling Motor Dysfunctions in Autism Spectrum Disorder</h3>
@@ -536,6 +592,28 @@
 <footer>
   © Copyright 2026 Jimena Segura.
 </footer>
+
+<script>
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.card');
+
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      const filter = pill.dataset.filter;
+
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
