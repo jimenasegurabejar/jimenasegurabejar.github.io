@@ -210,6 +210,51 @@
       transform:translateY(-1px);
     }
 
+    .nav-dropdown{
+      position:relative;
+    }
+
+    .nav-dropdown-menu{
+      display:none;
+
+      position:absolute;
+
+      top:100%;
+
+      left:50%;
+
+      transform:translateX(-50%);
+
+      flex-direction:column;
+
+      gap:14px;
+
+      padding:16px 20px;
+
+      margin-top:8px;
+
+      min-width:220px;
+
+      background:rgba(255,250,253,0.98);
+
+      border-radius:10px;
+
+      box-shadow:0 10px 26px rgba(117,82,183,0.14);
+
+      text-align:center;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu{
+      display:flex;
+    }
+
+    .nav-dropdown-menu a{
+      font-size:16px;
+
+      white-space:nowrap;
+    }
+
     .nav-toggle-checkbox{
       display:none;
     }
@@ -1776,6 +1821,32 @@
         color:#f3e8f0;
       }
 
+      .nav-dropdown-menu{
+        display:flex;
+
+        position:static;
+
+        transform:none;
+
+        margin-top:10px;
+
+        padding:0 0 0 18px;
+
+        background:transparent;
+
+        box-shadow:none;
+
+        text-align:left;
+
+        gap:10px;
+      }
+
+      .nav-dropdown-menu a{
+        font-size:17px;
+
+        color:#e7d5e8;
+      }
+
       #home{
         aspect-ratio:4 / 3;
 
@@ -1909,45 +1980,51 @@
       Featured
     </a>
 
-    <a
-      href="https://jimenasegurabejar.github.io/cortexdreams"
-      target="_blank"
-      rel="noopener"
-    >
-      Blog
-    </a>
+    <div class="nav-dropdown">
+      <a
+        href="https://jimenasegurabejar.github.io/cortexdreams"
+        target="_blank"
+        rel="noopener"
+      >
+        Blog
+      </a>
 
-    <a
-      href="https://jimenasegurabejar.github.io/demootrl"
-      target="_blank"
-      rel="noopener"
-    >
-      Demo: OT RL
-    </a>
+      <div class="nav-dropdown-menu">
 
-    <a
-      href="https://jimenasegurabejar.github.io/demo-decentralized-agg"
-      target="_blank"
-      rel="noopener"
-    >
-      Demo: Decentralized Agg
-    </a>
+        <a
+          href="https://jimenasegurabejar.github.io/demootrl"
+          target="_blank"
+          rel="noopener"
+        >
+          Demo: OT RL
+        </a>
 
-    <a
-      href="https://jimenasegurabejar.github.io/forestbutterflyotintroduction"
-      target="_blank"
-      rel="noopener"
-    >
-      ForestButterflyOT Intro
-    </a>
+        <a
+          href="https://jimenasegurabejar.github.io/demo-decentralized-agg"
+          target="_blank"
+          rel="noopener"
+        >
+          Demo: Decentralized Agg
+        </a>
 
-    <a
-      href="https://jimenasegurabejar.github.io/tutorialforestbutterflyot"
-      target="_blank"
-      rel="noopener"
-    >
-      ForestButterflyOT Tutorial
-    </a>
+        <a
+          href="https://jimenasegurabejar.github.io/forestbutterflyotintroduction"
+          target="_blank"
+          rel="noopener"
+        >
+          ForestButterflyOT Intro
+        </a>
+
+        <a
+          href="https://jimenasegurabejar.github.io/tutorialforestbutterflyot"
+          target="_blank"
+          rel="noopener"
+        >
+          ForestButterflyOT Tutorial
+        </a>
+
+      </div>
+    </div>
 
   </nav>
 
