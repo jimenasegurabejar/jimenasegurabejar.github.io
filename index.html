@@ -2351,27 +2351,31 @@
       <div class="body-text">
 
         <p>
-          My work sits at the intersection of
+          My research sits at the intersection of
           <strong>optimal transport</strong>
-          and reinforcement learning, focused on aggregation in
-          decentralized policy training. When training spans
-          distributed, asynchronous compute, the standard move,
-          averaging parameters across nodes, implicitly treats
-          policy space as Euclidean. It isn't. Treating it as a
-          Riemannian manifold under the Wasserstein metric, and
-          casting aggregation as a Schrödinger bridge rather than
-          an arithmetic mean, gives principled aggregation rules
-          with real convergence behavior under heterogeneity. The
-          same machinery extends to generative modeling and
-          biological transport, feeding a broader thesis: most of
-          what looks like optimization noise is unaccounted-for
-          geometry.
+          and reinforcement learning, and asks a narrow but
+          consequential question: what is the correct geometry
+          for aggregation in decentralized policy training? The
+          conventional answer, averaging parameters across
+          distributed, asynchronous compute nodes, tacitly treats
+          policy space as Euclidean. It is not. Once one regards
+          it instead as a Riemannian manifold under the
+          Wasserstein metric, and recasts aggregation as a
+          Schrödinger bridge rather than an arithmetic mean, a
+          principled family of aggregation rules emerges, with
+          convergence guarantees that hold under genuine
+          heterogeneity. The same apparatus carries over to
+          generative modelling and biological transport, and
+          motivates a broader thesis I keep returning to: much
+          of what is dismissed as optimisation noise is, on
+          closer inspection, unaccounted-for geometry.
         </p>
 
         <p>
-          My work has moved from inferring single-cell
-          transcriptomic trajectories underlying cell-fate
-          branching in human brain organoids, drawing on
+          This line of thinking has taken shape across several
+          settings: inferring the single-cell transcriptomic
+          trajectories underlying cell-fate branching in human
+          brain organoids, developed in
           <a
             href="https://jimenasegurabejar.github.io/portfolio"
             target="_blank"
@@ -2379,10 +2383,10 @@
           >
             Theoretical Frameworks
           </a>
-          and using optimal-transport-based trajectory inference
-          in place of pseudotime heuristics, to modeling
+          , where optimal-transport-based trajectory inference
+          replaces the usual pseudotime heuristics; modelling
           proliferating cell populations in cellular agriculture
-          as unbalanced transport problems, developing the
+          as unbalanced transport problems, which grounds the
           multi-scale foundation models behind
           <a
             href="https://athenei.com"
@@ -2391,9 +2395,9 @@
           >
             Athenei Biosciences
           </a>
-          , and building the pretraining objectives and scalable
+          ; and designing the pretraining objectives and scalable
           architectures for sequential decision-making that
-          anchor
+          underpin
           <a
             href="https://physisresearch.com"
             target="_blank"
@@ -2405,7 +2409,7 @@
         </p>
 
         <p>
-          Beyond this, I founded
+          At 16, I founded
           <a
             href="https://imasion.org/"
             target="_blank"
