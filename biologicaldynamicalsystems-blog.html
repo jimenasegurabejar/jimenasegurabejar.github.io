@@ -1,1 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Growth Curve Has a Dark Side — Jimena Segura</title>
+<meta name="description" content="A proliferating cell population looks like a smooth S-curve right up until it doesn't. Push the same growth rate parameter past a threshold and the same equation that describes healthy bioreactor scaling starts describing oscillation, and then chaos.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#FBF1F3; --bg-deep:#F5E1E7; --ink:#3a3a3a; --ink-soft:#757575;
+    --rose:#df91bb; --rose-deep:#b94d91; --purple:#7552b7; --purple-deep:#56358f; --line:#eadcf0;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:
+      radial-gradient(circle at 82% 8%, rgba(244,198,220,0.32), transparent 34%),
+      radial-gradient(circle at 12% 26%, rgba(248,209,226,0.3), transparent 36%),
+      radial-gradient(circle at 92% 64%, rgba(241,182,208,0.24), transparent 32%),
+      radial-gradient(circle at 8% 84%, rgba(250,214,230,0.3), transparent 38%),
+      radial-gradient(circle at 55% 45%, rgba(255,255,255,0.55), transparent 55%),
+      linear-gradient(170deg, #fdf3f6 0%, #fcf0f5 38%, #fbeef4 68%, #fcf1f5 100%);
+    color:var(--ink); font-family:'Cormorant Garamond', serif; line-height:1.75;
+  }
+  a{ color:var(--rose-deep); text-decoration:none; border-bottom:1px solid var(--rose); }
+  a:hover{ color:var(--purple-deep); border-color:var(--purple-deep); }
+  .wrap{ max-width:780px; margin:0 auto; padding:70px 28px 140px; }
+  .back-link{ display:inline-block; font-family:'Inter', sans-serif; font-size:13px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-soft); border-bottom:none; margin-bottom:40px; }
+  .back-link:hover{ color:var(--rose-deep); }
+  .meta{ font-family:'Inter', sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:16px; }
+  h1{ font-weight:700; font-size:clamp(34px,6vw,50px); line-height:1.08; letter-spacing:-0.01em; margin-bottom:20px; color:var(--ink); }
+  .dek{ font-size:20px; font-style:italic; color:var(--ink-soft); margin-bottom:12px; line-height:1.55; }
+  h2{ font-weight:700; font-size:27px; margin:60px 0 18px; color:var(--ink); }
+  p{ font-size:18px; color:var(--ink); margin-bottom:20px; }
+  p.lead{ font-size:21px; }
+  .math{ font-style:italic; }
+  .cap{ font-family:'Inter', sans-serif; font-size:13px; color:var(--ink-soft); text-align:center; margin-top:14px; line-height:1.55; }
+
+  .hero-fig{ margin:36px 0 44px; border-radius:20px; overflow:hidden; background:linear-gradient(160deg, #fdf0f5, #f4ecfb); box-shadow:0 14px 36px rgba(117,82,183,0.12); }
+  .hero-fig svg{ width:100%; height:auto; display:block; }
+
+  .figure{ margin:40px 0; padding:26px 20px 22px; background:#ffffff; border:1px solid var(--line); border-radius:16px; box-shadow:0 10px 30px rgba(117,82,183,0.08); }
+  .figure svg{ width:100%; height:auto; display:block; }
+
+  .controls{ display:flex; align-items:center; justify-content:center; gap:16px; margin-top:18px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .controls label{ font-size:13px; font-weight:600; color:var(--ink-soft); letter-spacing:0.03em; }
+  .controls input[type="range"]{ width:180px; accent-color:var(--rose-deep); }
+  .badge{ display:inline-flex; align-items:center; justify-content:center; min-width:48px; height:26px; padding:0 8px; border-radius:999px; background:#f5c9dd; color:#a8447a; font-size:12px; font-weight:700; font-family:'Inter',sans-serif; }
+
+  .play-btn{
+    font-family:'Inter', sans-serif; font-size:13px; font-weight:700; letter-spacing:0.03em;
+    color:#a8447a; background:#f5c9dd; border:1.4px solid #f0b5cf; border-radius:999px; padding:9px 22px;
+    cursor:pointer; transition:background .2s ease;
+  }
+  .play-btn:hover{ background:#f0b5cf; }
+
+  .toggle-row{ display:flex; justify-content:center; gap:10px; margin-bottom:6px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .toggle-btn{ font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px; border:1.4px solid var(--rose); background:transparent; color:var(--ink); cursor:pointer; transition:all .2s ease; }
+  .toggle-btn.active{ background:#f5c9dd; border-color:#f0b5cf; color:#a8447a; }
+
+  .stat-row{ display:flex; justify-content:center; gap:36px; margin-top:16px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .stat{ text-align:center; }
+  .stat .num{ font-family:'Cormorant Garamond', serif; font-weight:700; font-size:24px; color:var(--purple-deep); }
+  .stat .label{ font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); }
+
+  .pull-quote{ font-size:25px; font-weight:600; font-style:italic; color:var(--purple-deep); text-align:center; line-height:1.35; margin:54px 0; padding:0 16px; }
+  .bibtex-box{ background:#2b2530; color:#e9dcf2; border-radius:12px; padding:22px; font-family:'Courier New', monospace; font-size:13px; overflow-x:auto; line-height:1.6; margin-top:14px; }
+  hr.sep{ border:none; border-top:1px solid var(--line); margin:56px 0; }
+  footer{ font-family:'Inter', sans-serif; font-size:13px; color:var(--ink-soft); text-align:center; margin-top:36px; }
+
+  .drag-hint{ font-family:'Inter', sans-serif; font-size:12px; color:var(--rose-deep); text-align:center; margin-bottom:6px; letter-spacing:0.02em; }
+
+  @media (max-width:640px){ .wrap{ padding:50px 20px 100px; } .pull-quote{ font-size:20px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="back-link" href="https://jimenasegurabejar.github.io/cortexdreams">← Back to Cortex Dreams</a>
+
+  <div class="meta">Cortex Dreams · Research Notes</div>
+  <h1>The Growth Curve Has a Dark Side</h1>
+  <p class="dek">Every cellular agriculture pitch deck has the same S-curve: slow start, exponential rise, smooth plateau at capacity. That curve is real. It is also only one regime of a much richer dynamical system — and the same growth rate that makes it beautiful can make it oscillate, or worse, chaotic.</p>
+
+  <div class="hero-fig">
+    <svg id="heroSvg" viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+  <p class="cap">Cells dividing inside a bioreactor. Each division is simple. What the population does in aggregate is not always simple at all.</p>
+
+  <p class="lead">The starting point is the Verhulst logistic equation, first proposed in 1838 to correct the unbounded exponential growth model: <span class="math">dN/dt = rN(1 − N/K)</span>. Population <span class="math">N</span> grows at intrinsic rate <span class="math">r</span> subject to a resource ceiling <span class="math">K</span> — nutrient availability, dissolved oxygen, waste accumulation, physical space — at which growth self-limits. As a flow, the equation has a unique non-trivial fixed point at <span class="math">N* = K</span>, and linearizing about it gives <span class="math">d(δN)/dt = −rδN</span>: the perturbation decays exponentially, so <span class="math">N*</span> is asymptotically stable for every <span class="math">r &gt; 0</span>. There is no parameter regime in which the continuous model does anything other than settle.</p>
+
+  <p>That last sentence is the entire reason the discrete version is worth taking seriously. Continuous time is a modeling convenience — real bioreactor operation is not continuous. Feed-batch and fed-batch protocols add nutrient and remove product on a cycle: daily, or every few generations. The natural object for a system updated once per cycle is not a flow but a map, and the qualitative behavior of maps and flows near a fixed point can differ in a way that has nothing to do with modeling error and everything to do with the mathematics of iteration itself.</p>
+
+  <h2>Play with the continuous model</h2>
+
+  <p>Drag the growth rate and carrying capacity below. In continuous time, this equation is extremely well-behaved: no matter where you start, the population converges smoothly to <span class="math">K</span>. The phase line on the right shows why — there's exactly one stable equilibrium, and every trajectory flows toward it.</p>
+
+  <div class="figure">
+    <svg id="logisticSvg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="controls">
+      <label for="rSlider">Growth rate r</label>
+      <input type="range" id="rSlider" min="10" max="300" value="80">
+      <span class="badge" id="rBadge">0.80</span>
+      <label for="kSlider">Carrying capacity K</label>
+      <input type="range" id="kSlider" min="40" max="100" value="85">
+      <span class="badge" id="kBadge">85</span>
+    </div>
+    <p class="cap">Left: population over time from three different starting points. Right: the phase line — arrows show which way N moves at every population size. All roads lead to K.</p>
+  </div>
+
+  <p>Nothing about this model predicts trouble. Trouble shows up when you stop modeling time continuously and start modeling it the way a real bioreactor actually runs: in discrete batches, feeding and harvesting on a cycle rather than continuously. That turns the same growth law into a <em>map</em> instead of a flow — and maps can do things flows can't.</p>
+
+  <h2>Why iteration is different from flow</h2>
+
+  <p>The discrete-time analogue is <span class="math">x_{n+1} = f(x_n) = rx_n(1 − x_n)</span>, with <span class="math">x</span> rescaled to <span class="math">[0,1]</span> as a fraction of carrying capacity. It has the same non-trivial fixed point condition, <span class="math">x* = f(x*)</span>, giving <span class="math">x* = 1 − 1/r</span> for <span class="math">r &gt; 1</span>. But stability of a fixed point under iteration is governed by a different criterion than stability of a flow: <span class="math">x*</span> is stable if and only if <span class="math">|f'(x*)| &lt; 1</span>. Computing the derivative, <span class="math">f'(x*) = 2 − r</span>, so the stability condition becomes <span class="math">1 &lt; r &lt; 3</span>.</p>
+
+  <p>At <span class="math">r = 3</span> exactly, <span class="math">|f'(x*)| = 1</span> — the fixed point loses stability through a <em>period-doubling bifurcation</em>. Past that threshold, the population no longer converges to a single value; it settles into a stable 2-cycle, alternating between two population levels forever. The same mechanism recurs: each new cycle is itself a fixed point of the twice-iterated map <span class="math">f∘f</span>, and it too eventually loses stability as <span class="math">r</span> increases, doubling the period again. The sequence of thresholds — 3, 3.449, 3.544, 3.564... — accumulates geometrically, converging to the Feigenbaum point <span class="math">r_∞ ≈ 3.56995</span>, beyond which the attractor is, for almost every parameter value, chaotic. This is not a metaphorical use of the word: trajectories exhibit sensitive dependence on initial conditions, positive topological entropy, and a positive Lyapunov exponent — the same formal criteria used to classify chaos in any dynamical system, biological or otherwise.</p>
+
+  <div class="pull-quote">A continuous system settles down. Its discrete cousin, run too aggressively, can bifurcate its way into chaos using the exact same growth rate.</div>
+
+  <h2>The discrete version breaks differently</h2>
+
+  <p>Replace the flow with the discrete logistic map, <span class="math">x_{n+1} = r · x_n(1 − x_n)</span>, and watch what happens as <span class="math">r</span> crosses a series of thresholds. Below <span class="math">r ≈ 3</span>: a stable population, cycle after cycle. Between roughly 3 and 3.57: the population starts alternating between two, then four, then eight values — period doubling. Past <span class="math">r ≈ 3.57</span>: chaos. Same equation. Same biological growth rate. Wildly different outcome.</p>
+
+  <div class="figure">
+    <p class="drag-hint">↔ drag the slider slowly through r ≈ 3.0 and r ≈ 3.57</p>
+    <svg id="mapSvg" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="controls">
+      <label for="mapR">Growth rate r</label>
+      <input type="range" id="mapR" min="200" max="400" value="250" step="1">
+      <span class="badge" id="mapRBadge">2.50</span>
+      <button class="play-btn" id="mapReplay">Restart trajectory</button>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="statRegime">Stable</div><div class="label">Regime</div></div>
+      <div class="stat"><div class="num" id="statPeriod">1</div><div class="label">Apparent period</div></div>
+    </div>
+    <p class="cap">Left: the last 60 batch cycles of population fraction. Right: the bifurcation diagram — every r value's long-run attractor, plotted at once. The vertical line marks where you are right now.</p>
+  </div>
+
+  <p>This is not a purely academic warning. A batch-fed bioreactor scaled up carelessly — too much nutrient added per cycle relative to the population's actual carrying capacity — moves its effective <span class="math">r</span> to the right along that bifurcation diagram without anyone deciding to do so. What looks like "the culture is being temperamental" is frequently a system that has quietly crossed into a periodic or chaotic regime.</p>
+
+  <h2>Sensitive dependence, made visible</h2>
+
+  <p>The formal signature of chaos is a positive Lyapunov exponent: two trajectories started arbitrarily close together separate at an exponential rate, <span class="math">|δx_n| ≈ |δx_0|e^{λn}</span>, with <span class="math">λ &gt; 0</span>. Below the chaotic threshold, by contrast, nearby trajectories converge — <span class="math">λ &lt; 0</span> — which is exactly why the stable and periodic regimes are experimentally reproducible and the chaotic one is not.</p>
+
+  <div class="figure">
+    <p class="drag-hint">uses the same r as the figure above</p>
+    <svg id="lyapunovSvg" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="controls">
+      <button class="play-btn" id="lyapunovRun">Run two trajectories 0.0001 apart</button>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="statLyap">—</div><div class="label">Estimated λ</div></div>
+      <div class="stat"><div class="num" id="statLyapSign">—</div><div class="label">Sign</div></div>
+    </div>
+    <p class="cap">Two batch cultures, started a fraction of a percent apart in initial density, run under identical conditions. In the stable and periodic regimes they stay indistinguishable. In the chaotic regime, an immeasurably small difference in starting density becomes the entire story within a few dozen cycles — a direct experimental consequence of <span class="math">λ &gt; 0</span>, not measurement noise.</p>
+  </div>
+
+  <p>For a process engineer, the practical content of a positive Lyapunov exponent is blunt: in that regime, no amount of improved initial-condition measurement will make the batch outcome predictable, because prediction error grows exponentially with the number of cycles regardless of how precisely the starting state is known. The only lever that helps is moving <span class="math">r</span> itself back below threshold.</p>
+
+  <h2>Where this connects</h2>
+
+  <p>This dynamical-systems view is the scaffolding underneath <a href="https://jimenasegurabejar.github.io" target="_blank">ProlifOT</a>, which frames the same proliferating populations as an unbalanced optimal transport problem — mass is created, not just moved. The dynamical systems picture here explains <em>why</em> that framing has to allow for regime changes rather than assuming a population is always cleanly converging: any transport-based model of a bioreactor population has to know which regime it's actually in before it can say anything useful about where the mass is going next.</p>
+
+  <h2>Further reading</h2>
+
+  <p>The logistic equation originates with Pierre-François Verhulst (1838). The discrete map's route to chaos, and its relevance to population biology specifically, was made precise by Robert May's 1976 <em>Nature</em> paper "Simple mathematical models with very complicated dynamics" — still the standard entry point for this material, and the reason the discrete logistic map is a fixture of every dynamical systems course rather than a curiosity.</p>
+
+  <hr class="sep">
+
+  <h2>BibTeX</h2>
+  <div class="bibtex-box">@article{segura2026biologicaldynamicalsystems,
+  title   = {Biological Dynamical Systems for Cellular Agriculture},
+  author  = {Segura, Jimena},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</div>
+
+  <footer>
+    Part of <a href="https://jimenasegurabejar.github.io/cortexdreams">Cortex Dreams</a> — research notes by Jimena Segura.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function clear(node){ while(node.firstChild) node.removeChild(node.firstChild); }
+
+  /* ================= HERO: dividing cells ================= */
+  const heroSvg = document.getElementById('heroSvg');
+  const cells = [];
+  for (let i=0;i<10;i++){
+    cells.push({
+      x: 60 + Math.random()*660,
+      y: 40 + Math.random()*180,
+      r: 8 + Math.random()*6,
+      phase: Math.random()*Math.PI*2,
+      speed: 0.4 + Math.random()*0.5,
+      color: Math.random() > 0.5 ? '#c14a72' : '#6b5296'
+    });
+  }
+  const cellEls = cells.map(c => {
+    const g = el('g', {});
+    const c1 = el('circle', {cx:c.x, cy:c.y, r:c.r, fill:c.color, opacity:0.8});
+    const c2 = el('circle', {cx:c.x, cy:c.y, r:c.r, fill:c.color, opacity:0.8});
+    g.appendChild(c1); g.appendChild(c2);
+    heroSvg.appendChild(g);
+    return {c1, c2, base:c};
+  });
+
+  let heroT = 0;
+  function animateHero(){
+    heroT += 0.02;
+    cellEls.forEach(({c1,c2,base}) => {
+      const t = (Math.sin(heroT*base.speed + base.phase) + 1)/2; // 0..1 pulsing split cycle
+      const sep = t*base.r*1.4;
+      c1.setAttribute('cx', base.x - sep);
+      c2.setAttribute('cx', base.x + sep);
+      const r = base.r * (1 - t*0.25);
+      c1.setAttribute('r', r); c2.setAttribute('r', r);
+      c1.setAttribute('opacity', 0.55 + 0.3*(1-t));
+      c2.setAttribute('opacity', 0.55 + 0.3*t);
+    });
+    requestAnimationFrame(animateHero);
+  }
+  animateHero();
+
+  /* ================= FIGURE 1: continuous logistic ================= */
+  const logisticSvg = document.getElementById('logisticSvg');
+  const rSlider = document.getElementById('rSlider');
+  const kSlider = document.getElementById('kSlider');
+  const rBadge = document.getElementById('rBadge');
+  const kBadge = document.getElementById('kBadge');
+
+  function drawLogistic(){
+    clear(logisticSvg);
+    const r = (+rSlider.value)/100;
+    const K = +kSlider.value;
+    rBadge.textContent = r.toFixed(2);
+    kBadge.textContent = K;
+
+    const plotW = 330, plotH = 230, plotX = 20, plotY = 30;
+    const maxN = 100, maxT = 12;
+
+    // axes
+    logisticSvg.appendChild(el('line', {x1:plotX, y1:plotY, x2:plotX, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+    logisticSvg.appendChild(el('line', {x1:plotX, y1:plotY+plotH, x2:plotX+plotW, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+    logisticSvg.appendChild(el('line', {x1:plotX, y1:plotY+plotH*(1-K/maxN), x2:plotX+plotW, y2:plotY+plotH*(1-K/maxN), stroke:'#a1477e', 'stroke-width':1, 'stroke-dasharray':'3 4', opacity:0.5}));
+    const kLabel = el('text', {x:plotX+plotW-4, y:plotY+plotH*(1-K/maxN)-6, 'text-anchor':'end', 'font-family':"'Inter', sans-serif", 'font-size':10, fill:'#a1477e'});
+    kLabel.textContent = 'K';
+    logisticSvg.appendChild(kLabel);
+
+    [8, 30, 96].forEach((N0, idx) => {
+      const pts = [];
+      const dt = 0.05;
+      let N = N0;
+      for (let t=0; t<=maxT; t+=dt){
+        pts.push({x: plotX + (t/maxT)*plotW, y: plotY + plotH*(1 - N/maxN)});
+        const dN = r*N*(1-N/K);
+        N = N + dN*dt;
+        if (N < 0) N = 0;
+      }
+      const d = "M" + pts.map(p=>`${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L");
+      logisticSvg.appendChild(el('path', {d, fill:'none', stroke: idx===0?'#c14a72':(idx===1?'#a1477e':'#6b5296'), 'stroke-width':2, opacity:0.85}));
+    });
+
+    // phase line panel
+    const pX = 400, pW = 260, pY = 30, pH = 230;
+    logisticSvg.appendChild(el('line', {x1:pX, y1:pY+pH/2, x2:pX+pW, y2:pY+pH/2, stroke:'#d8c5d0', 'stroke-width':1}));
+    for (let i=0;i<=10;i++){
+      const N = i*10;
+      const x = pX + (N/maxN)*pW;
+      const dN = r*N*(1-N/K);
+      const scale = 4;
+      const dir = dN > 0.3 ? 1 : (dN < -0.3 ? -1 : 0);
+      if (dir !== 0){
+        const arrow = el('path', {
+          d: `M${x-6*dir} ${pY+pH/2-4} L${x+6*dir} ${pY+pH/2} L${x-6*dir} ${pY+pH/2+4} Z`,
+          fill: '#a1477e', opacity:0.7
+        });
+        logisticSvg.appendChild(arrow);
+      }
+    }
+    const eqX = pX + (K/maxN)*pW;
+    logisticSvg.appendChild(el('circle', {cx:eqX, cy:pY+pH/2, r:7, fill:'#a1477e'}));
+    const eqLabel = el('text', {x:eqX, y:pY+pH/2+24, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':10, fill:'#8a7a8e'});
+    eqLabel.textContent = 'stable equilibrium';
+    logisticSvg.appendChild(eqLabel);
+    const phaseLabel = el('text', {x:pX+pW/2, y:20, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e', 'letter-spacing':'0.04em'});
+    phaseLabel.textContent = 'PHASE LINE';
+    logisticSvg.appendChild(phaseLabel);
+  }
+  rSlider.addEventListener('input', drawLogistic);
+  kSlider.addEventListener('input', drawLogistic);
+  drawLogistic();
+
+  /* ================= FIGURE 2: discrete logistic map + bifurcation ================= */
+  const mapSvg = document.getElementById('mapSvg');
+  const mapR = document.getElementById('mapR');
+  const mapRBadge = document.getElementById('mapRBadge');
+  const mapReplay = document.getElementById('mapReplay');
+  const statRegime = document.getElementById('statRegime');
+  const statPeriod = document.getElementById('statPeriod');
+
+  let mapX0 = 0.3;
+
+  function regimeOf(r){
+    if (r < 3.0) return {name:'Stable', period:1};
+    if (r < 3.449) return {name:'Period-2', period:2};
+    if (r < 3.544) return {name:'Period-4', period:4};
+    if (r < 3.57) return {name:'Period-8+', period:8};
+    return {name:'Chaotic', period:'∞'};
+  }
+
+  function drawMap(){
+    clear(mapSvg);
+    const r = (+mapR.value)/100;
+    mapRBadge.textContent = r.toFixed(2);
+    const reg = regimeOf(r);
+    statRegime.textContent = reg.name;
+    statPeriod.textContent = reg.period;
+
+    // left: time series of last 60 iterates
+    const plotX=20, plotY=30, plotW=310, plotH=230;
+    mapSvg.appendChild(el('line', {x1:plotX, y1:plotY, x2:plotX, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+    mapSvg.appendChild(el('line', {x1:plotX, y1:plotY+plotH, x2:plotX+plotW, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+
+    let x = mapX0;
+    const seq = [];
+    for (let i=0;i<200;i++){ x = r*x*(1-x); seq.push(x); }
+    const last = seq.slice(-60);
+    const pts = last.map((v,i) => ({x: plotX + (i/(last.length-1))*plotW, y: plotY + plotH*(1-v)}));
+    const d = "M" + pts.map(p=>`${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L");
+    mapSvg.appendChild(el('path', {d, fill:'none', stroke:'#a1477e', 'stroke-width':1.6, opacity:0.85}));
+    pts.forEach((p,i) => {
+      if (i % 3 === 0) mapSvg.appendChild(el('circle', {cx:p.x, cy:p.y, r:2.2, fill:'#c14a72', opacity:0.7}));
+    });
+    const tsLabel = el('text', {x:plotX+plotW/2, y:20, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e', 'letter-spacing':'0.04em'});
+    tsLabel.textContent = 'LAST 60 BATCH CYCLES';
+    mapSvg.appendChild(tsLabel);
+
+    // right: bifurcation diagram (precomputed sparse, drawn as points)
+    const bX = 390, bW = 290, bY = 30, bH = 230;
+    mapSvg.appendChild(el('line', {x1:bX, y1:bY, x2:bX, y2:bY+bH, stroke:'#d8c5d0', 'stroke-width':1}));
+    mapSvg.appendChild(el('line', {x1:bX, y1:bY+bH, x2:bX+bW, y2:bY+bH, stroke:'#d8c5d0', 'stroke-width':1}));
+    const bifLabel = el('text', {x:bX+bW/2, y:20, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e', 'letter-spacing':'0.04em'});
+    bifLabel.textContent = 'BIFURCATION DIAGRAM';
+    mapSvg.appendChild(bifLabel);
+
+    const rMin = 2.4, rMax = 4.0;
+    const dotsGroup = el('g', {});
+    for (let ri=0; ri<140; ri++){
+      const rr = rMin + (rMax-rMin)*(ri/140);
+      let xx = 0.4;
+      for (let i=0;i<80;i++) xx = rr*xx*(1-xx);
+      for (let i=0;i<40;i++){
+        xx = rr*xx*(1-xx);
+        const px = bX + ((rr-rMin)/(rMax-rMin))*bW;
+        const py = bY + bH*(1-xx);
+        dotsGroup.appendChild(el('circle', {cx:px, cy:py, r:0.8, fill:'#6b5296', opacity:0.35}));
+      }
+    }
+    mapSvg.appendChild(dotsGroup);
+
+    const markerX = bX + ((r-rMin)/(rMax-rMin))*bW;
+    mapSvg.appendChild(el('line', {x1:markerX, y1:bY, x2:markerX, y2:bY+bH, stroke:'#c14a72', 'stroke-width':1.4, opacity:0.75}));
+  }
+
+  mapR.addEventListener('input', drawMap);
+  mapReplay.addEventListener('click', () => { mapX0 = 0.15 + Math.random()*0.4; drawMap(); });
+  drawMap();
+
+  /* ================= FIGURE 3: Lyapunov sensitivity ================= */
+  const lyapunovSvg = document.getElementById('lyapunovSvg');
+  const lyapunovRun = document.getElementById('lyapunovRun');
+  const statLyap = document.getElementById('statLyap');
+  const statLyapSign = document.getElementById('statLyapSign');
+
+  function drawLyapunov(animated){
+    clear(lyapunovSvg);
+    const r = (+mapR.value)/100;
+    const plotX=30, plotY=20, plotW=640, plotH=210;
+    lyapunovSvg.appendChild(el('line', {x1:plotX, y1:plotY, x2:plotX, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+    lyapunovSvg.appendChild(el('line', {x1:plotX, y1:plotY+plotH, x2:plotX+plotW, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+
+    const n = 60;
+    let xa = 0.3, xb = 0.3 + 0.0001;
+    const seqA = [xa], seqB = [xb];
+    let logDivSum = 0, logDivCount = 0;
+    let prevDiff = Math.abs(xb - xa);
+    for (let i=0;i<n;i++){
+      xa = r*xa*(1-xa);
+      xb = r*xb*(1-xb);
+      seqA.push(xa); seqB.push(xb);
+      const diff = Math.abs(xb-xa);
+      if (diff > 1e-12 && prevDiff > 1e-12){
+        logDivSum += Math.log(diff/prevDiff);
+        logDivCount++;
+      }
+      prevDiff = diff > 1e-12 ? diff : 1e-12;
+    }
+    const lambda = logDivCount > 0 ? logDivSum/logDivCount : 0;
+    statLyap.textContent = lambda.toFixed(3);
+    statLyapSign.textContent = lambda > 0.02 ? 'Chaotic (+)' : (lambda < -0.02 ? 'Stable (−)' : '≈ 0');
+
+    const ptsA = seqA.map((v,i) => ({x: plotX + (i/n)*plotW, y: plotY + plotH*(1-v)}));
+    const ptsB = seqB.map((v,i) => ({x: plotX + (i/n)*plotW, y: plotY + plotH*(1-v)}));
+    const dA = "M" + ptsA.map(p=>`${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L");
+    const dB = "M" + ptsB.map(p=>`${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L");
+    lyapunovSvg.appendChild(el('path', {d:dA, fill:'none', stroke:'#c14a72', 'stroke-width':1.8, opacity:0.85}));
+    lyapunovSvg.appendChild(el('path', {d:dB, fill:'none', stroke:'#6b5296', 'stroke-width':1.8, opacity:0.85, 'stroke-dasharray': animated ? '0' : '3 3'}));
+
+    const legend1 = el('text', {x:plotX+8, y:plotY+16, 'font-family':"'Inter', sans-serif", 'font-size':10.5, fill:'#c14a72'});
+    legend1.textContent = 'culture A (x₀ = 0.3000)';
+    lyapunovSvg.appendChild(legend1);
+    const legend2 = el('text', {x:plotX+8, y:plotY+30, 'font-family':"'Inter', sans-serif", 'font-size':10.5, fill:'#6b5296'});
+    legend2.textContent = 'culture B (x₀ = 0.3001)';
+    lyapunovSvg.appendChild(legend2);
+  }
+
+  lyapunovRun.addEventListener('click', () => drawLyapunov(true));
+  drawLyapunov(false);
+  mapR.addEventListener('input', () => drawLyapunov(false));
+})();
+</script>
+
+</body>
+</html>
