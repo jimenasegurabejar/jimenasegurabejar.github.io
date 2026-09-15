@@ -955,7 +955,7 @@
     }
 
     .focus-list li{
-      font-size:16px;
+      font-size:19px;
       color:var(--ink-soft);
       line-height:1.6;
       text-align:justify;
@@ -2422,30 +2422,28 @@
 
         <li>
           <strong>Distributed policy optimization.</strong>
-          Reframing distributed reinforcement learning as transport
-          between probability distributions via Schrödinger bridges,
-          replacing Euclidean parameter averaging with geometric
-          aggregation on the Wasserstein manifold, directly relevant
-          to aggregating policy updates across globally distributed,
-          high-latency training nodes.
+          Aggregating policy updates as Schrödinger bridges instead
+          of Euclidean averages, with convergence guarantees under
+          asynchronous, heterogeneous compute.
         </li>
 
         <li>
           <strong>Scalable optimal transport.</strong>
-          Structured matrix approximations and hierarchical coupling
-          via butterfly factorisation, making Wasserstein map
-          computation tractable at scale, a building block toward
-          lower-bandwidth alternatives to standard parameter
-          synchronization in decentralized training.
+          Hierarchical butterfly factorisation for tractable
+          Wasserstein maps, toward lower-bandwidth alternatives to
+          standard parameter synchronization.
         </li>
 
         <li>
-          <strong>Geometric theory of learning dynamics.</strong>
-          The JKO scheme as a lens on distributed learning, with
-          variational optimality and population dynamics unfolding
-          in Wasserstein space, casting decentralized aggregation as
-          a gradient flow with real convergence implications for
-          heterogeneous, asynchronous compute.
+          <strong>Geometry of learning dynamics.</strong>
+          The JKO scheme as a variational lens on decentralized
+          aggregation, framed as gradient flow in Wasserstein space.
+        </li>
+
+        <li>
+          <strong>Biological transport.</strong>
+          Organoid trajectory inference and proliferating cell
+          populations, modeled with the same geometric toolkit.
         </li>
 
       </ol>
@@ -3379,27 +3377,27 @@
 
     <div class="footer-links">
       <a href="https://x.com/JimenaS86541537" target="_blank" rel="noopener" class="icon-link" aria-label="X">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+        <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
       </a>
       <a href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+        <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
           <path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.8 10.8.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.6A10.5 10.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/>
         </svg>
       </a>
       <a href="#" target="_blank" rel="noopener" class="icon-link" aria-label="Google Scholar">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+        <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
           <path d="M12 2L1 8l11 6 9-4.91V17h2V8L12 2zM5 13.18v4.36L12 21l7-3.46v-4.36L12 17l-7-3.82z"/>
         </svg>
       </a>
       <a href="https://www.linkedin.com/in/jimena-segura-bejar/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+        <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
           <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.11 20.45H3.56V9h3.55v11.45z"/>
         </svg>
       </a>
       <a href="mailto:#" class="icon-link" aria-label="Email">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+        <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
           <path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.3 7.3 6.1a.75.75 0 0 0 .96 0l7.3-6.1H4.2zM20 7.06l-6.87 5.73a2.25 2.25 0 0 1-2.87 0L3.4 7.06V18h16.6V7.06z"/>
         </svg>
         <img src="mushroom.png" alt="" class="mushroom-icon">
