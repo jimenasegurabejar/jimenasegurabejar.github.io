@@ -1,3470 +1,566 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Jimena Segura | Research Scientist & Deep Tech Founder</title>
-
-  <meta
-    name="description"
-    content="Jimena Segura | Research Scientist & Deep Tech Founder. Working at the intersection of optimal transport theory, machine learning, and biologically inspired research."
-  >
-
-  <link rel="icon" type="image/png" href="me.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    /* =========================================================
-       COLOR SYSTEM — PURPLE + PINK
-       ========================================================= */
-
-    :root{
-      --bg:#F7ECED;
-      --bg-deep:#f3e2e3;
-
-      --ink:#3a3a3a;
-      --ink-soft:#757575;
-
-      --rose:#df91bb;
-      --rose-deep:#b94d91;
-
-      --purple:#7552b7;
-      --purple-deep:#56358f;
-
-      --pink-soft:#f4c6dc;
-      --lavender:#d9c7f2;
-
-      --line:#eadcf0;
-      --white:#ffffff;
-    }
-
-
-    /* =========================================================
-       RESET
-       ========================================================= */
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      position:relative;
-
-      background:
-        radial-gradient(
-          circle at 82% 8%,
-          rgba(244,198,220,0.55),
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 12% 26%,
-          rgba(248,209,226,0.5),
-          transparent 36%
-        ),
-        radial-gradient(
-          circle at 92% 64%,
-          rgba(241,182,208,0.4),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 8% 84%,
-          rgba(250,214,230,0.5),
-          transparent 38%
-        ),
-        radial-gradient(
-          circle at 55% 45%,
-          rgba(255,255,255,0.55),
-          transparent 55%
-        ),
-        linear-gradient(
-          170deg,
-          #fdeef4 0%,
-          #fce6ef 38%,
-          #fbe1ec 68%,
-          #fce7f0 100%
-        );
-
-      color:var(--ink);
-
-      font-family:'Cormorant Garamond', serif;
-      font-weight:400;
-
-      line-height:1.65;
-
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-
-      position:fixed;
-      inset:0;
-
-      z-index:1;
-
-      pointer-events:none;
-
-      opacity:0.035;
-
-      mix-blend-mode:overlay;
-
-      background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-    }
-
-    strong{
-      font-weight:600;
-      color:var(--ink);
-    }
-
-    .partner-highlight{
-      font-weight:700;
-      color:var(--ink);
-    }
-
-    .wrap{
-      width:min(1180px, 92vw);
-      margin:0 auto;
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-       ========================================================= */
-
-    .nav-links{
-      position:fixed;
-      z-index:50;
-
-      top:0;
-      left:0;
-      width:100%;
-
-      display:flex;
-      flex-wrap:wrap;
-
-      justify-content:center;
-      align-items:center;
-
-      gap:18px;
-
-      padding:22px 30px;
-
-      text-align:center;
-      max-width:100vw;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(255,250,253,0.94),
-          rgba(255,250,253,0.72),
-          transparent
-        );
-
-      backdrop-filter:blur(8px);
-    }
-
-    .nav-links a{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:400;
-      font-size:19px;
-      letter-spacing:0.01em;
-      text-transform:none;
-
-      color:var(--ink);
-
-      transition:
-        color .25s ease,
-        transform .25s ease;
-      
-      white-space:nowrap;
-    }
-
-    .nav-links a:hover{
-      color:var(--ink);
-      transform:translateY(-1px);
-    }
-
-    .nav-dropdown{
-      position:relative;
-    }
-
-    .nav-dropdown-menu{
-      display:none;
-
-      position:absolute;
-
-      top:100%;
-
-      left:50%;
-
-      transform:translateX(-50%);
-
-      flex-direction:column;
-
-      gap:14px;
-
-      padding:16px 20px;
-
-      margin-top:8px;
-
-      min-width:220px;
-
-      background:rgba(255,250,253,0.98);
-
-      border-radius:10px;
-
-      box-shadow:0 10px 26px rgba(117,82,183,0.14);
-
-      text-align:center;
-    }
-
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown:focus-within .nav-dropdown-menu{
-      display:flex;
-    }
-
-    .nav-dropdown-menu a{
-      font-size:16px;
-
-      white-space:nowrap;
-    }
-
-    .nav-toggle-checkbox{
-      display:none;
-    }
-
-    .nav-toggle-label{
-      display:none;
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    #home{
-      min-height:100vh;
-
-      padding-top:300px;
-
-      position:relative;
-
-      display:flex;
-      align-items:flex-end;
-      justify-content:flex-start;
-
-      overflow:hidden;
-
-      background:
-        radial-gradient(
-          circle at 75% 35%,
-          rgba(223,145,187,0.12),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 55% 70%,
-          rgba(117,82,183,0.08),
-          transparent 28%
-        );
-    }
-
-    .hero-art-wrap{
-      position:absolute;
-
-      top:0;
-      right:0;
-
-      width:72%;
-      max-width:920px;
-
-      height:100%;
-
-      -webkit-mask-image:linear-gradient(
-        to right,
-        transparent 0%,
-        black 12%,
-        black 90%,
-        transparent 100%
-      );
-      mask-image:linear-gradient(
-        to right,
-        transparent 0%,
-        black 12%,
-        black 90%,
-        transparent 100%
-      );
-    }
-
-    .hero-art{
-      width:100%;
-      height:100%;
-      display:block;
-      opacity:0.92;
-    }
-
-
-    /* =========================================================
-       DECORATIVE IMAGES
-       ========================================================= */
-
-    .cell-img{
-      position:absolute;
-
-      z-index:1;
-
-      pointer-events:none;
-
-      filter:
-        hue-rotate(20deg)
-        saturate(1.05);
-    }
-
-    .cell-img-1{
-      left:8%;
-      top:20%;
-
-      width:9%;
-      min-width:36px;
-    }
-
-    .cell-img-2{
-      left:30%;
-      top:8%;
-
-      width:6%;
-      min-width:26px;
-
-      opacity:0.85;
-    }
-
-    .cell-img-3{
-      left:55%;
-      top:62%;
-
-      width:11%;
-      min-width:44px;
-    }
-
-    .cell-img-4{
-      left:14%;
-      top:60%;
-
-      width:7%;
-      min-width:30px;
-
-      opacity:0.9;
-    }
-
-    .cell-img-5{
-      left:40%;
-      top:78%;
-
-      width:8%;
-      min-width:32px;
-
-      opacity:0.8;
-    }
-
-    .mini-flower{
-      position:absolute;
-
-      z-index:3;
-
-      pointer-events:none;
-
-      opacity:0.75;
-
-      filter:
-        hue-rotate(15deg)
-        saturate(1.15);
-    }
-
-
-    /* =========================================================
-       HERO CONTENT
-       ========================================================= */
-
-    .hero-content{
-      position:relative;
-
-      z-index:2;
-
-      padding:
-        0
-        40px
-        90px
-        56px;
-
-      max-width:900px;
-
-      text-align:left;
-
-      margin-right:auto;
-    }
-
-    .profile-photo{
-      width:300px;
-      height:300px;
-
-      border-radius:50%;
-
-      object-fit:cover;
-
-      object-position:center top;
-
-      display:block;
-
-      box-shadow:
-        0 4px 22px rgba(117,82,183,0.16);
-
-      position:relative;
-
-      z-index:2;
-    }
-
-    .about-photo{
-      display:block;
-      margin:0 auto 30px;
-    }
-
-    .main-picture{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      z-index:0;
-    }
-
-    .hero-content h1{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:700;
-
-      font-size:clamp(
-        72px,
-        10vw,
-        150px
-      );
-
-      margin-bottom:22px;
-
-      letter-spacing:-0.01em;
-
-      line-height:0.95;
-
-      color:var(--ink);
-    }
-
-    .first-name-wrap{
-      position:relative;
-
-      display:inline-block;
-    }
-
-    .second-name-wrap{
-      position:relative;
-
-      display:inline-block;
-    }
-
-    .name-icon.name-icon-left{
-      left:9%;
-
-      right:auto;
-
-      top:0.62em;
-
-      margin-left:0;
-
-      margin-right:0;
-
-      width:clamp(16px, 1.6vw, 24px);
-    }
-
-    @keyframes flutterLeft{
-      0%{
-        transform:scaleX(-1) translate(0, 0) rotate(-8deg);
-      }
-      25%{
-        transform:scaleX(-1) translate(3px, -6px) rotate(2deg);
-      }
-      50%{
-        transform:scaleX(-1) translate(-2px, -10px) rotate(-10deg);
-      }
-      75%{
-        transform:scaleX(-1) translate(4px, -4px) rotate(4deg);
-      }
-      100%{
-        transform:scaleX(-1) translate(0, 0) rotate(-8deg);
-      }
-    }
-
-    .name-icon{
-      position:absolute;
-
-      top:0.32em;
-
-      left:100%;
-
-      margin-left:-0.15em;
-
-      width:clamp(24px, 2.5vw, 38px);
-      height:auto;
-
-      filter:drop-shadow(0 2px 6px rgba(117,82,183,0.2));
-
-      animation:flutter 3.5s ease-in-out infinite;
-    }
-
-    @keyframes flutter{
-      0%{
-        transform:translate(0, 0) rotate(-8deg);
-      }
-      25%{
-        transform:translate(3px, -6px) rotate(2deg);
-      }
-      50%{
-        transform:translate(-2px, -10px) rotate(-10deg);
-      }
-      75%{
-        transform:translate(4px, -4px) rotate(4deg);
-      }
-      100%{
-        transform:translate(0, 0) rotate(-8deg);
-      }
-    }
-
-
-    /* =========================================================
-       AFFILIATIONS
-       ========================================================= */
-
-    .affiliations{
-      font-size:15px;
-
-      color:var(--ink-soft);
-
-      margin-bottom:20px;
-
-      letter-spacing:0.02em;
-    }
-
-    .affiliations span{
-      margin:0 10px;
-
-      color:var(--ink);
-    }
-
-    .affiliations span:first-child{
-      margin-left:0;
-    }
-
-
-    /* =========================================================
-       CONTACT LINE
-       ========================================================= */
-
-    .contact-line{
-      font-size:14px;
-
-      color:var(--ink-soft);
-
-      display:flex;
-
-      align-items:center;
-
-      gap:14px;
-
-      flex-wrap:wrap;
-    }
-
-    .contact-line a{
-      border-bottom:
-        1px solid var(--rose);
-
-      padding-bottom:1px;
-
-      transition:
-        color .2s ease,
-        border-color .2s ease;
-    }
-
-    .contact-line a:hover{
-      color:var(--ink);
-
-      border-color:
-        var(--purple-deep);
-    }
-
-    .dash{
-      color:var(--rose);
-    }
-
-    .icon-link{
-      color: var(--ink-soft);
-      display: inline-flex;
-      transition: color .2s ease, transform .2s ease;
-    }
-
-    .icon-link:hover{
-      color: var(--rose-deep);
-      transform: translateY(-2px);
-    }
-
-    .icon-link.icon-badge{
-      width:32px;
-      height:32px;
-
-      background:var(--pink-soft);
-
-      color:var(--rose-deep);
-
-      border-radius:9px;
-
-      align-items:center;
-      justify-content:center;
-    }
-
-    .icon-link.icon-badge:hover{
-      background:var(--rose);
-
-      color:var(--rose-deep);
-
-      transform:translateY(-2px);
-    }
-
-
-    /* =========================================================
-       SECTIONS
-       ========================================================= */
-
-    section.page{
-      padding:120px 0;
-
-      border-top:
-        1px solid var(--line);
-
-      position:relative;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.55),
-          rgba(250,243,255,0.42)
-        );
-    }
-
-    #news{
-      background:
-        linear-gradient(
-          135deg,
-          #fdf2f5,
-          #fbe6ee
-        );
-    }
-
-    .news-deco{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      z-index:0;
-      pointer-events:none;
-    }
-
-    #news .wrap{
-      position:relative;
-      z-index:1;
-    }
-
-    section.page:nth-of-type(even){
-      background:
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(223,145,187,0.10),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          rgba(251,246,255,0.5),
-          rgba(255,248,252,0.4)
-        );
-    }
-
-
-    /* =========================================================
-       EYEBROWS
-       ========================================================= */
-
-    .eyebrow{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:700;
-
-      font-size:12px;
-
-      letter-spacing:0.02em;
-
-      text-transform:none;
-
-      color:var(--ink);
-
-      margin-bottom:18px;
-
-      display:block;
-    }
-
-
-    /* =========================================================
-       HEADINGS
-       ========================================================= */
-
-    section.page h2{
-      font-size:clamp(
-        34px,
-        5vw,
-        50px
-      );
-
-      margin-bottom:30px;
-
-      color:var(--ink);
-    }
-
-    .pub-title{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:700;
-
-      font-size:clamp(
-        34px,
-        5vw,
-        50px
-      );
-
-      color:var(--ink);
-
-      margin:0 0 30px;
-    }
-
-    #highlighted h2,
-    #featuredin h2{
-      font-size:clamp(
-        50px,
-        8vw,
-        90px
-      );
-    }
-
-    #news h2{
-      font-size:clamp(
-        50px,
-        8vw,
-        90px
-      );
-    }
-
-    #research h2{
-      font-size:clamp(
-        50px,
-        8vw,
-        90px
-      );
-    }
-
-
-    /* =========================================================
-       ABOUT
-       ========================================================= */
-
-    #about .eyebrow{
-      font-size:clamp(
-        48px,
-        7vw,
-        68px
-      );
-
-      letter-spacing:0.04em;
-
-      color:var(--ink);
-    }
-
-    .about-title{
-      text-align:center;
-
-      font-size:clamp(
-        60px,
-        10vw,
-        108px
-      );
-
-      max-width:900px;
-
-      margin-left:auto;
-      margin-right:auto;
-
-      line-height:0.98;
-
-      color:var(--ink);
-    }
-
-    #about .wrap{
-      text-align:center;
-    }
-
-    #about .body-text{
-      margin-left:auto;
-      margin-right:auto;
-
-      text-align:justify;
-    }
-
-    #about .eyebrow{
-      text-align:center;
-    }
-
-    .research-title{
-      font-size:clamp(
-        46px,
-        7vw,
-        74px
-      );
-    }
-
-    .companies-title{
-      font-family:'Cormorant Garamond', serif;
-      font-weight:700;
-      font-size:clamp(
-        50px,
-        8vw,
-        90px
-      );
-      color:var(--ink);
-    }
-
-    .companies-deco{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:340px;
-      z-index:0;
-      pointer-events:none;
-      opacity:0.85;
-      overflow:hidden;
-    }
-
-    #highlighted .wrap{
-      position:relative;
-      z-index:1;
-    }
-
-    #highlighted .entries{
-      gap:18px;
-    }
-
-    #featuredin .entries{
-      flex-direction:row;
-
-      flex-wrap:wrap;
-
-      gap:40px;
-
-      max-width:none;
-    }
-
-    #featuredin .featured-card{
-      flex:1 1 420px;
-
-      max-width:520px;
-    }
-
-    .featured-subtitle{
-      font-family:'Cormorant Garamond', serif;
-
-      font-style:normal;
-
-      font-size:24px;
-
-      color:var(--ink-soft);
-
-      margin-top:-20px;
-
-      margin-bottom:30px;
-    }
-
-    .about-subtitle{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:700;
-
-      font-size:clamp(
-        40px,
-        6vw,
-        58px
-      );
-
-      color:var(--ink);
-
-      text-align:center;
-
-      margin-top:44px;
-    }
-
-    .focus-list{
-      max-width:680px;
-
-      margin:28px auto 0;
-
-      padding-left:26px;
-
-      text-align:left;
-
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-
-    .focus-list li{
-      font-size:16px;
-      color:var(--ink-soft);
-      line-height:1.6;
-      text-align:justify;
-    }
-
-    .focus-list li::marker{
-      color:var(--rose-deep);
-      font-weight:700;
-    }
-
-    .focus-list a{
-      color:var(--ink);
-      font-weight:600;
-      border-bottom:1px solid var(--rose);
-    }
-
-    .focus-list a:hover{
-      color:var(--rose-deep);
-      border-color:var(--rose-deep);
-    }
-
-
-    /* =========================================================
-       BODY TEXT
-       ========================================================= */
-
-    section.page .body-text{
-      max-width:640px;
-
-      font-size:17px;
-
-      color:var(--ink);
-    }
-
-    section.page .body-text p + p{
-      margin-top:16px;
-    }
-
-    section.page .body-text a{
-      color:#262626;
-      font-weight:700;
-    }
-
-    section.page .body-text a:hover{
-      color:var(--ink-soft);
-    }
-
-
-    /* =========================================================
-       ITEM LISTS
-       ========================================================= */
-
-    .entries{
-      max-width:720px;
-
-      display:flex;
-
-      flex-direction:column;
-
-      gap:36px;
-    }
-
-    .entry{
-      border-left:
-        1.5px solid var(--rose);
-
-      padding-left:22px;
-
-      transition:
-        border-color .25s ease,
-        transform .25s ease;
-    }
-
-    .entry:hover{
-      border-left-color:
-        var(--purple);
-    }
-
-    .entry .tag{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:700;
-
-      font-size:13px;
-
-      letter-spacing:0.02em;
-
-      text-transform:none;
-
-      color:var(--ink);
-
-      display:block;
-
-      margin-bottom:6px;
-    }
-
-    .entry h3{
-      font-family:'Cormorant Garamond', serif;
-
-      font-size:26px;
-
-      font-weight:700;
-
-      margin-bottom:8px;
-
-      color:var(--ink);
-    }
-
-    .entry p{
-      font-family:'Cormorant Garamond', serif;
-
-      font-size:17px;
-
-      font-weight:400;
-
-      line-height:1.65;
-
-      letter-spacing:0.01em;
-
-      text-align:justify;
-
-      color:var(--ink-soft);
-    }
-
-    .entry a{
-      border-bottom:
-        1px solid var(--rose);
-    }
-
-    .entry h3 a{
-      border-bottom:none;
-    }
-
-    .entry a:hover{
-      color:var(--ink);
-
-      border-color:
-        var(--purple-deep);
-    }
-
-
-    /* =========================================================
-       EXPANDABLE ENTRY
-       ========================================================= */
-
-    .entry.entry-details{
-      padding:22px 26px 22px 24px;
-
-      border-radius:4px;
-
-      transition:
-        background .3s ease,
-        box-shadow .3s ease,
-        border-left-color .3s ease,
-        transform .3s ease;
-    }
-
-    .entry.entry-details:hover{
-      background:rgba(255,255,255,0.55);
-
-      box-shadow:
-        0 14px 34px
-        rgba(117,82,183,0.10);
-
-      transform:translateX(3px);
-    }
-
-    .entry-details summary{
-      cursor:pointer;
-
-      list-style:none;
-    }
-
-    .entry-details summary::-webkit-details-marker{
-      display:none;
-    }
-
-    .entry-details summary::marker{
-      content:"";
-    }
-
-    .entry-details summary .tag{
-      display:inline-flex;
-
-      align-items:center;
-
-      gap:10px;
-
-      text-transform:uppercase;
-
-      font-size:11px;
-
-      font-weight:700;
-
-      letter-spacing:0.16em;
-
-      color:var(--rose-deep);
-    }
-
-    .entry-details summary .tag::after{
-      content:"+";
-
-      display:inline-flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      width:20px;
-      height:20px;
-
-      margin-left:2px;
-
-      border:1px solid var(--rose);
-
-      border-radius:50%;
-
-      color:var(--rose-deep);
-
-      font-family:'Cormorant Garamond', serif;
-
-      font-size:14px;
-      font-weight:600;
-
-      line-height:1;
-
-      transition:
-        transform .3s ease,
-        background .3s ease,
-        color .3s ease,
-        border-color .3s ease;
-    }
-
-    .entry-details[open]
-    summary
-    .tag::after{
-      transform:rotate(45deg);
-
-      background:var(--rose-deep);
-
-      color:#fff;
-
-      border-color:var(--rose-deep);
-    }
-
-    .entry-details summary h3{
-      display:block;
-
-      margin-top:6px;
-    }
-
-    .entry-details p{
-      margin-top:8px;
-    }
-
-
-    /* =========================================================
-       DETAIL LINKS
-       ========================================================= */
-
-    .detail-link{
-      display:inline-block;
-
-      margin-top:12px;
-
-      font-size:14px;
-
-      font-weight:600;
-
-      color:var(--ink);
-
-      border-bottom:
-        1px solid var(--rose);
-
-      transition:
-        color .2s ease,
-        border-color .2s ease;
-    }
-
-    .detail-link:hover{
-      color:var(--ink);
-
-      border-color:
-        var(--purple-deep);
-    }
-
-
-    /* =========================================================
-       WORK LINKS
-       ========================================================= */
-
-    .work-links{
-      margin-top:14px;
-
-      display:flex;
-
-      flex-wrap:wrap;
-
-      align-items:center;
-
-      gap:12px 16px;
-    }
-
-    .work-links .work-label{
-      font-size:12px;
-
-      letter-spacing:0.08em;
-
-      text-transform:uppercase;
-
-      color:var(--ink-soft);
-
-      font-weight:600;
-    }
-
-    .work-links .detail-link{
-      margin-top:0;
-    }
-
-
-    /* =========================================================
-       SEE MORE BUTTON
-       ========================================================= */
-
-    .see-more-btn{
-      display:inline-block;
-
-      margin-top:36px;
-
-      padding:12px 26px;
-
-      font-size:13.5px;
-
-      font-weight:600;
-
-      letter-spacing:0.04em;
-
-      color:var(--ink);
-
-      border:
-        1.5px solid var(--purple);
-
-      border-radius:4px;
-
-      transition:
-        background .2s ease,
-        color .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .see-more-btn:hover{
-      background:var(--pink-soft);
-
-      color:var(--ink);
-
-      border-color:
-        transparent;
-
-      box-shadow:
-        0 8px 24px
-        rgba(223,145,187,0.28);
-    }
-
-    .see-more-btn:active{
-      background:var(--rose);
-
-      color:var(--ink);
-
-      border-color:
-        transparent;
-
-      box-shadow:
-        0 4px 14px
-        rgba(223,145,187,0.4);
-    }
-
-
-    /* =========================================================
-       NEWS SCROLL LIST
-       ========================================================= */
-
-    .news-scroll{
-      max-width:900px;
-
-      max-height:220px;
-
-      overflow-y:auto;
-
-      padding-right:18px;
-
-      margin-top:8px;
-    }
-
-    .news-scroll::-webkit-scrollbar{
-      width:6px;
-    }
-
-    .news-scroll::-webkit-scrollbar-track{
-      background:transparent;
-    }
-
-    .news-scroll::-webkit-scrollbar-thumb{
-      background:var(--rose);
-
-      border-radius:999px;
-
-      opacity:0.6;
-    }
-
-    .news-row{
-      display:flex;
-
-      align-items:flex-start;
-
-      flex-wrap:wrap;
-
-      gap:8px 28px;
-
-      padding:22px 0;
-
-      border-bottom:1px solid var(--line);
-    }
-
-    .news-row:first-child{
-      padding-top:4px;
-    }
-
-    .news-row:last-child{
-      border-bottom:none;
-    }
-
-    .news-date{
-      font-family:'Cormorant Garamond', serif;
-
-      font-weight:700;
-
-      font-size:16px;
-
-      letter-spacing:0.02em;
-
-      color:var(--ink);
-
-      white-space:nowrap;
-
-      width:120px;
-
-      flex:0 0 120px;
-    }
-
-    .news-text{
-      font-family:'Cormorant Garamond', serif;
-
-      font-size:17px;
-
-      font-weight:400;
-
-      line-height:1.65;
-
-      letter-spacing:0.01em;
-
-      text-align:justify;
-
-      color:var(--ink-soft);
-
-      flex:1 1 400px;
-
-      min-width:0;
-    }
-
-    .news-text a{
-      color:var(--ink);
-      font-weight:600;
-      border-bottom:1px solid var(--rose);
-    }
-
-    .news-text a:hover{
-      color:var(--rose-deep);
-      border-color:var(--rose-deep);
-    }
-
-    .news-emoji{
-      font-size:15px;
-    }
-
-    .news-buttons{
-      display:flex;
-
-      gap:8px;
-
-      flex-wrap:wrap;
-
-      align-items:center;
-
-      margin-left:auto;
-
-      flex:0 0 auto;
-    }
-
-    .news-btn{
-      font-family:'Inter', sans-serif;
-
-      font-size:11px;
-
-      font-weight:700;
-
-      letter-spacing:0.08em;
-
-      text-transform:uppercase;
-
-      color:var(--rose-deep);
-
-      border:1.3px solid var(--rose);
-
-      border-radius:0;
-
-      padding:6px 14px;
-
-      white-space:nowrap;
-
-      transition:
-        background .2s ease,
-        color .2s ease,
-        border-color .2s ease;
-    }
-
-    .news-btn:hover{
-      background:var(--rose-deep);
-
-      color:#fff;
-
-      border-color:var(--rose-deep);
-    }
-
-    @media (max-width:640px){
-
-      .news-row{
-        flex-direction:column;
-
-        gap:6px;
-      }
-
-      .news-date{
-        color:var(--rose-deep);
-
-        width:auto;
-      }
-
-      .news-buttons{
-        margin-left:0;
-
-        margin-top:6px;
-      }
-    }
-
-
-    /* =========================================================
-       CONTACT
-       ========================================================= */
-
-    #contact .body-text a{
-      font-size:19px;
-
-      font-family:'Cormorant Garamond', serif;
-
-      border-bottom:
-        1px solid var(--rose);
-    }
-
-    #contact .body-text a:hover{
-      color:var(--ink);
-
-      border-color:
-        var(--purple-deep);
-    }
-
-
-    /* =========================================================
-       FEATURED IMAGE CARD
-       ========================================================= */
-
-    .featured-card{
-      border-left:none;
-
-      padding-left:0;
-
-      max-width:520px;
-    }
-
-    .featured-image{
-      width:100%;
-      aspect-ratio:1 / 1;
-
-      border-radius:6px;
-
-      overflow:hidden;
-
-      background:var(--pink-soft);
-
-      margin-bottom:18px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .featured-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .featured-image-placeholder{
-      font-family:'Inter', sans-serif;
-      font-size:12px;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      color:var(--rose-deep);
-    }
-
-    .featured-card-body{
-      border-left:1.5px solid var(--rose);
-      padding-left:22px;
-    }
-
-    .featured-meta{
-      display:flex;
-
-      justify-content:space-between;
-
-      align-items:center;
-
-      margin-bottom:6px;
-    }
-
-    .featured-org{
-      font-family:'Inter', sans-serif;
-
-      font-size:11px;
-
-      font-weight:700;
-
-      letter-spacing:0.14em;
-
-      color:var(--rose-deep);
-    }
-
-    .featured-year{
-      font-family:'Times New Roman', Times, serif;
-
-      font-style:normal;
-
-      font-size:15px;
-
-      color:var(--ink-soft);
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer{
-      font-family:'Times New Roman', Times, serif;
-
-      font-weight:400;
-
-      padding:40px 0;
-
-      text-align:center;
-
-      font-size:19px;
-
-      letter-spacing:0.03em;
-
-      text-transform:none;
-
-      color:var(--ink-soft);
-
-      border-top:
-        1px solid var(--line);
-
-      background:
-        linear-gradient(
-          120deg,
-          rgba(117,82,183,0.04),
-          rgba(223,145,187,0.08)
-        );
-    }
-
-    .footer-links{
-      display:flex;
-
-      justify-content:center;
-
-      align-items:center;
-
-      gap:24px;
-
-      margin-bottom:14px;
-    }
-
-    .footer-links a{
-      color:var(--ink-soft);
-
-      border-bottom:
-        1px solid var(--rose);
-
-      padding-bottom:2px;
-
-      letter-spacing:0.1em;
-
-      transition:
-        color .2s ease,
-        border-color .2s ease;
-    }
-
-    .footer-links a:hover{
-      color:var(--ink);
-
-      border-color:
-        var(--purple-deep);
-    }
-
-    .footer-links a.icon-link{
-      border-bottom:none;
-
-      padding-bottom:0;
-    }
-
-    .footer-links .dash{
-      color:var(--rose);
-
-      text-transform:none;
-
-      letter-spacing:0;
-    }
-
-    .icon-link{
-      position:relative;
-    }
-
-    .mushroom-icon{
-      position:absolute;
-
-      top:-16px;
-      right:-16px;
-
-      width:26px;
-      height:auto;
-
-      animation:mushroomBounce 3s ease-in-out infinite;
-    }
-
-    @keyframes mushroomBounce{
-      0%{
-        transform:translateY(0) rotate(0deg);
-      }
-      30%{
-        transform:translateY(-3px) rotate(-6deg);
-      }
-      60%{
-        transform:translateY(1px) rotate(5deg);
-      }
-      100%{
-        transform:translateY(0) rotate(0deg);
-      }
-    }
-
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width:860px){
-
-      .nav-toggle-label{
-        display:flex;
-
-        position:fixed;
-        z-index:60;
-
-        top:16px;
-        right:16px;
-
-        width:44px;
-        height:44px;
-
-        align-items:center;
-        justify-content:center;
-
-        font-size:22px;
-
-        color:var(--ink);
-
-        background:rgba(255,250,253,0.94);
-
-        border-radius:50%;
-
-        box-shadow:0 4px 14px rgba(117,82,183,0.12);
-
-        cursor:pointer;
-      }
-
-      .nav-toggle-label .icon-close{
-        display:none;
-      }
-
-      .nav-toggle-checkbox:checked ~ .nav-toggle-label{
-        color:#fff;
-
-        background:rgba(58,58,58,0.4);
-      }
-
-      .nav-toggle-checkbox:checked ~ .nav-toggle-label .icon-open{
-        display:none;
-      }
-
-      .nav-toggle-checkbox:checked ~ .nav-toggle-label .icon-close{
-        display:flex;
-      }
-
-      .nav-links{
-        position:fixed;
-
-        top:0;
-        left:0;
-
-        width:100%;
-        height:100%;
-
-        flex-direction:column;
-
-        flex-wrap:nowrap;
-
-        align-items:flex-end;
-
-        justify-content:flex-start;
-
-        overflow-y:auto;
-
-        gap:22px;
-
-        padding:96px 28px 40px;
-
-        text-align:right;
-
-        background:
-          rgba(58,50,58,0.72);
-
-        backdrop-filter:blur(6px);
-
-        transform:translateX(100%);
-
-        transition:transform .3s ease;
-      }
-
-      .nav-toggle-checkbox:checked ~ .nav-links{
-        transform:translateX(0);
-      }
-
-      .nav-links a{
-        font-size:22px;
-
-        width:auto;
-
-        color:#f3e8f0;
-      }
-
-      .nav-dropdown-menu{
-        display:flex;
-
-        position:static;
-
-        transform:none;
-
-        margin-top:10px;
-
-        padding:0 0 0 18px;
-
-        background:transparent;
-
-        box-shadow:none;
-
-        text-align:left;
-
-        gap:10px;
-      }
-
-      .nav-dropdown-menu a{
-        font-size:17px;
-
-        color:#e7d5e8;
-      }
-
-      #home{
-        aspect-ratio:4 / 3;
-
-        min-height:auto;
-
-        height:auto;
-
-        padding-top:0;
-
-        overflow:hidden;
-      }
-
-      .hero-art-wrap{
-        position:absolute;
-
-        inset:0;
-
-        width:100%;
-
-        height:100%;
-
-        margin-bottom:0;
-
-        -webkit-mask-image:none;
-        mask-image:none;
-      }
-
-      .hero-content{
-        padding:
-          0
-          24px
-          36px;
-
-        max-width:100%;
-
-        text-align:left;
-
-        margin-left:0;
-      }
-
-      .profile-photo{
-        width:190px;
-        height:190px;
-      }
-
-      .companies-side-img{
-        display:none;
-      }
-
-      #home{
-        justify-content:flex-start;
-      }
-
-      section.page{
-        padding:70px 0;
-      }
-
-      .wrap{
-        padding:0 24px;
-      }
-
-      .about-title{
-        font-size:clamp(
-          52px,
-          13vw,
-          82px
-        );
-      }
-
-      .hero-content h1{
-        font-size:clamp(
-          56px,
-          14vw,
-          100px
-        );
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Projects — Jimena Segura</title>
+<link rel="icon" type="image/png" href="me.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF1F3;
+    --bg-deep: #F5E1E7;
+    --ink: #4A4750;
+    --ink-soft: #8B8790;
+    --rose: #EBA9C0;
+    --rose-deep: #D67A98;
+    --rose-card: #E9A9C4;
+    --line: #E8D3DC;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding:70px 40px 120px;
+  }
+
+  .back-link{
+    display:inline-block;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    margin-bottom:40px;
+  }
+  .back-link:hover{ color:var(--rose-deep); }
+
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(50px, 8vw, 88px);
+    margin-bottom:16px;
+    color:var(--ink);
+    line-height:1.02;
+  }
+
+  .word-wrap{
+    position:relative;
+    display:inline-block;
+  }
+
+  .name-icon{
+    position:absolute;
+    top:0.32em;
+    left:100%;
+    margin-left:-0.1em;
+    width:clamp(20px, 2vw, 32px);
+    height:auto;
+    filter:drop-shadow(0 2px 6px rgba(117,82,183,0.2));
+    animation:flutter 3.5s ease-in-out infinite;
+  }
+
+  @keyframes flutter{
+    0%{ transform:translate(0, 0) rotate(-8deg); }
+    25%{ transform:translate(3px, -6px) rotate(2deg); }
+    50%{ transform:translate(-2px, -10px) rotate(-10deg); }
+    75%{ transform:translate(4px, -4px) rotate(4deg); }
+    100%{ transform:translate(0, 0) rotate(-8deg); }
+  }
+
+  .scholar-link{
+    display:inline-block;
+    font-size:26px;
+    font-weight:600;
+    color:var(--rose-deep);
+    margin-bottom:50px;
+  }
+  .scholar-link:hover{
+    color:var(--ink);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(min(480px, 100%), 1fr));
+    gap:32px;
+  }
+
+  .card{
+    border-radius:0;
+    overflow:hidden;
+    background:var(--rose-card);
+    box-shadow:0 10px 30px rgba(214,122,152,0.18);
+    display:flex;
+    flex-direction:column;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+  }
+
+  .card:active{
+    transform:translateY(-1px) scale(0.99);
+  }
+
+  .card:active .card-body{
+    filter:brightness(1.32) saturate(1.4);
+    animation-duration:1.4s;
+  }
+
+  .card-preview{
+    background:#fff;
+    min-height:280px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+  }
+  .card-preview .placeholder{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--rose);
+  }
+
+  .card-body{
+    padding:26px 26px 24px;
+    color:#fff;
+    background:linear-gradient(
+      90deg,
+      var(--rose-card) 0%,
+      #F6D9E7 25%,
+      var(--rose-card) 50%,
+      var(--rose-card) 100%
+    );
+    background-size:300% 100%;
+    animation:shimmerLight 7s ease-in-out infinite;
+    transition:filter .25s ease;
+  }
+
+  @keyframes shimmerLight{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+
+  .card-body h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:24px;
+    margin-bottom:6px;
+  }
+  .card-body h3 em{
+    font-style:italic;
+    font-weight:500;
+    color:#fff5f8;
+  }
+
+  .card-body .preprint{
+    font-style:normal;
+    font-weight:700;
+    font-size:22px;
+    color:#ffffff;
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .card-body .location{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter', sans-serif;
+    font-size:17px;
+    font-weight:600;
+    color:#fff;
+    margin-bottom:14px;
+  }
+
+  .card-body .location svg{
+    width:17px;
+    height:17px;
+    flex-shrink:0;
+  }
+
+  .card-body p{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    line-height:1.65;
+    color:#fdeef4;
+  }
+
+  .card-footer{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:20px;
+  }
+
+  .visit-link{
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .visit-link:hover{ opacity:0.85; }
+
+  .paper-pill{
+    font-family:'Inter', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    color:#fff;
+    border:1.5px solid rgba(255,255,255,0.7);
+    border-radius:0;
+    padding:6px 16px;
+  }
+  .paper-pill:hover{
+    background:rgba(255,255,255,0.15);
+  }
+
+  footer{
+    font-family:'Times New Roman', Times, serif;
+    font-weight:400;
+    padding:40px 0;
+    text-align:center;
+    font-size:26px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:640px){
+    .wrap{ padding:50px 24px 80px; }
+    .grid{ grid-template-columns:1fr; }
+  }
+</style>
 </head>
-
-
 <body>
 
+<div class="wrap">
+  <a class="back-link" href="index.html">Back</a>
+  <h1>Research &amp; <span class="word-wrap">Projects<img src="me.png" alt="" class="name-icon"></span></h1>
+  <a class="scholar-link" href="https://scholar.google.com/" target="_blank" rel="noopener">Complete list on Google Scholar</a>
 
-  <!-- =======================================================
-       NAVIGATION
-       ======================================================= -->
+  <div class="grid">
 
-  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-  <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
-    <span class="icon-open">☰</span>
-    <span class="icon-close">✕</span>
-  </label>
-
-  <nav class="nav-links">
-
-    <a href="#home">
-      Home
-    </a>
-
-    <a href="#about">
-      About
-    </a>
-
-    <a href="#research">
-      Publications
-    </a>
-
-    <a
-      href="https://jimenasegurabejar.github.io/portfolio"
-    >
-      Portfolio
-    </a>
-
-    <a href="#news">
-      News
-    </a>
-
-    <a
-      href="https://jimenasegurabejar.github.io/companies"
-    >
-      Research Companies
-    </a>
-
-    <a href="#featuredin">
-      Featured
-    </a>
-
-    <div class="nav-dropdown">
-      <a
-        href="https://jimenasegurabejar.github.io/cortexdreams"
-      >
-        Blog
-      </a>
-
-      <div class="nav-dropdown-menu">
-
-        <a
-          href="https://jimenasegurabejar.github.io/demootrl"
-        >
-          Demo: OT RL
-        </a>
-
-        <a
-          href="https://jimenasegurabejar.github.io/demo-decentralized-agg"
-        >
-          Demo: Decentralized Agg
-        </a>
-
-        <a
-          href="https://jimenasegurabejar.github.io/forestbutterflyotintroduction"
-        >
-          ForestButterflyOT Intro
-        </a>
-
-        <a
-          href="https://jimenasegurabejar.github.io/tutorialforestbutterflyot"
-        >
-          ForestButterflyOT Tutorial
-        </a>
-
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Learning as a Child: Schrödinger Bridges, Entropy Regularization and the Geometry of RL</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
       </div>
     </div>
 
-  </nav>
-
-
-
-  <!-- =======================================================
-       HERO
-       ======================================================= -->
-
-  <section id="home">
-
-    <div class="hero-art-wrap">
-
-      <svg
-        class="hero-art"
-        viewBox="0 0 1000 750"
-        preserveAspectRatio="xMidYMid slice"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-
-        <defs>
-
-          <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="14"/>
-          </filter>
-
-          <filter id="wideBlur" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="30"/>
-          </filter>
-
-          <radialGradient id="pinkWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#E86A8A" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#E86A8A" stop-opacity="0"/>
-          </radialGradient>
-
-          <radialGradient id="roseWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#DF91BB" stop-opacity="0.42"/>
-            <stop offset="100%" stop-color="#DF91BB" stop-opacity="0"/>
-          </radialGradient>
-
-          <radialGradient id="purpleWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#7552B7" stop-opacity="0.46"/>
-            <stop offset="100%" stop-color="#7552B7" stop-opacity="0"/>
-          </radialGradient>
-
-          <radialGradient id="lavenderWash" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#B9A3D9" stop-opacity="0.38"/>
-            <stop offset="100%" stop-color="#B9A3D9" stop-opacity="0"/>
-          </radialGradient>
-
-          <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
-            <stop offset="35%" stop-color="#c9679a" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#c9679a" stop-opacity="0"/>
-          </radialGradient>
-
-          <radialGradient id="somaPink" cx="35%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#f3c2d3"/>
-            <stop offset="55%" stop-color="#c14a72"/>
-            <stop offset="100%" stop-color="#932b52"/>
-          </radialGradient>
-
-          <radialGradient id="somaPurple" cx="35%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#d9c9ef"/>
-            <stop offset="55%" stop-color="#6b5296"/>
-            <stop offset="100%" stop-color="#4a3670"/>
-          </radialGradient>
-
-          <linearGradient id="flowGradient" x1="60" y1="0" x2="940" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#c9567f"/>
-            <stop offset="50%" stop-color="#b98fc9"/>
-            <stop offset="100%" stop-color="#6f4fa8"/>
-          </linearGradient>
-
-          <linearGradient id="threadGradient" x1="60" y1="0" x2="940" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#e0a24a" stop-opacity="0.5"/>
-            <stop offset="50%" stop-color="#d98cae" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#8a6bc2" stop-opacity="0.5"/>
-          </linearGradient>
-
-        </defs>
-
-
-        <g filter="url(#wideBlur)">
-          <ellipse cx="110" cy="90" rx="140" ry="100" fill="url(#pinkWash)"/>
-          <ellipse cx="220" cy="200" rx="150" ry="120" fill="url(#roseWash)"/>
-          <ellipse cx="90" cy="300" rx="150" ry="120" fill="url(#pinkWash)"/>
-          <ellipse cx="240" cy="390" rx="160" ry="130" fill="url(#roseWash)"/>
-          <ellipse cx="130" cy="490" rx="150" ry="120" fill="url(#pinkWash)"/>
-          <ellipse cx="270" cy="600" rx="150" ry="120" fill="url(#roseWash)"/>
-
-          <ellipse cx="890" cy="90" rx="140" ry="100" fill="url(#purpleWash)"/>
-          <ellipse cx="770" cy="200" rx="150" ry="120" fill="url(#lavenderWash)"/>
-          <ellipse cx="910" cy="300" rx="150" ry="120" fill="url(#purpleWash)"/>
-          <ellipse cx="750" cy="390" rx="160" ry="130" fill="url(#lavenderWash)"/>
-          <ellipse cx="870" cy="490" rx="150" ry="120" fill="url(#purpleWash)"/>
-          <ellipse cx="720" cy="600" rx="150" ry="120" fill="url(#lavenderWash)"/>
-        </g>
-
-        <circle cx="500" cy="360" r="130" fill="url(#centerGlow)"/>
-
-        <g fill="none" stroke="url(#flowGradient)" stroke-linecap="round">
-          <path d="M220 200 C 495 188, 495 179, 770 200" opacity="0.13" stroke-width="0.72"/>
-          <path d="M220 200 C 475 322, 467 344, 750 390" opacity="0.27" stroke-width="0.66"/>
-          <path d="M220 200 C 488 377, 503 359, 720 600" opacity="0.2" stroke-width="0.42"/>
-          <path d="M90 300 C 486 180, 483 168, 890 90" opacity="0.12" stroke-width="0.59"/>
-          <path d="M240 390 C 579 375, 582 398, 910 300" opacity="0.28" stroke-width="0.74"/>
-          <path d="M240 390 C 558 424, 560 411, 870 490" opacity="0.17" stroke-width="0.43"/>
-          <path d="M130 490 C 428 528, 431 514, 720 600" opacity="0.27" stroke-width="0.59"/>
-          <path d="M270 600 C 593 457, 596 463, 910 300" opacity="0.24" stroke-width="0.51"/>
-          <path d="M270 600 C 506 486, 503 478, 750 390" opacity="0.27" stroke-width="0.7"/>
-          <path d="M270 600 C 567 530, 565 518, 870 490" opacity="0.14" stroke-width="0.42"/>
-          <path d="M110 90 C 309 220, 312 215, 500 360" opacity="0.26" stroke-width="0.53"/>
-          <path d="M220 200 C 363 275, 366 270, 500 360" opacity="0.28" stroke-width="0.44"/>
-          <path d="M90 300 C 295 333, 294 335, 500 360" opacity="0.2" stroke-width="0.53"/>
-          <path d="M240 390 C 369 369, 369 365, 500 360" opacity="0.22" stroke-width="0.69"/>
-          <path d="M130 490 C 317 431, 319 435, 500 360" opacity="0.22" stroke-width="0.67"/>
-          <path d="M270 600 C 381 476, 377 473, 500 360" opacity="0.24" stroke-width="0.66"/>
-          <path d="M500 360 C 697 227, 698 229, 890 90" opacity="0.19" stroke-width="0.7"/>
-          <path d="M500 360 C 632 275, 630 271, 770 200" opacity="0.22" stroke-width="0.63"/>
-          <path d="M500 360 C 705 327, 704 324, 910 300" opacity="0.22" stroke-width="0.42"/>
-          <path d="M500 360 C 626 367, 627 360, 750 390" opacity="0.26" stroke-width="0.47"/>
-          <path d="M500 360 C 684 427, 684 428, 870 490" opacity="0.23" stroke-width="0.54"/>
-          <path d="M500 360 C 603 486, 598 491, 720 600" opacity="0.25" stroke-width="0.57"/>
-        </g>
-
-        <circle cx="500" cy="360" r="8" fill="#a1477e"/>
-        <circle cx="500" cy="360" r="15" fill="none" stroke="#a1477e" stroke-width="0.6" opacity="0.5"/>
-
-        <g filter="url(#softBlur)">
-          <circle cx="101" cy="92" r="36" fill="url(#pinkWash)" opacity="0.4"/>
-          <circle cx="115" cy="74" r="27" fill="url(#pinkWash)" opacity="0.45"/>
-          <circle cx="101" cy="80" r="52" fill="url(#pinkWash)" opacity="0.37"/>
-          <circle cx="122" cy="89" r="43" fill="url(#pinkWash)" opacity="0.31"/>
-          <circle cx="225" cy="213" r="40" fill="url(#roseWash)" opacity="0.43"/>
-          <circle cx="226" cy="184" r="46" fill="url(#roseWash)" opacity="0.4"/>
-          <circle cx="213" cy="183" r="48" fill="url(#roseWash)" opacity="0.37"/>
-          <circle cx="228" cy="214" r="45" fill="url(#roseWash)" opacity="0.46"/>
-          <circle cx="86" cy="311" r="38" fill="url(#pinkWash)" opacity="0.47"/>
-          <circle cx="104" cy="286" r="30" fill="url(#pinkWash)" opacity="0.32"/>
-          <circle cx="107" cy="298" r="43" fill="url(#pinkWash)" opacity="0.34"/>
-          <circle cx="90" cy="296" r="36" fill="url(#pinkWash)" opacity="0.4"/>
-          <circle cx="243" cy="405" r="44" fill="url(#roseWash)" opacity="0.47"/>
-          <circle cx="253" cy="408" r="44" fill="url(#roseWash)" opacity="0.31"/>
-          <circle cx="253" cy="407" r="49" fill="url(#roseWash)" opacity="0.39"/>
-          <circle cx="248" cy="380" r="48" fill="url(#roseWash)" opacity="0.39"/>
-          <circle cx="122" cy="474" r="48" fill="url(#pinkWash)" opacity="0.48"/>
-          <circle cx="115" cy="501" r="37" fill="url(#pinkWash)" opacity="0.31"/>
-          <circle cx="123" cy="500" r="49" fill="url(#pinkWash)" opacity="0.29"/>
-          <circle cx="134" cy="474" r="45" fill="url(#pinkWash)" opacity="0.35"/>
-          <circle cx="284" cy="617" r="40" fill="url(#roseWash)" opacity="0.48"/>
-          <circle cx="263" cy="585" r="42" fill="url(#roseWash)" opacity="0.29"/>
-          <circle cx="259" cy="597" r="42" fill="url(#roseWash)" opacity="0.31"/>
-          <circle cx="254" cy="613" r="35" fill="url(#roseWash)" opacity="0.47"/>
-        </g>
-
-        <g stroke="#a83a63" fill="none" stroke-linecap="round">
-          <path d="M110.0 90.0 Q 99.0 111.3, 96.2 135.2" opacity="0.55" stroke-width="1.08"/>
-        </g>
-
-        <g>
-          <circle cx="110" cy="90" r="12" fill="url(#somaPink)"/>
-          <circle cx="220" cy="200" r="14" fill="url(#somaPink)"/>
-          <circle cx="90" cy="300" r="11" fill="url(#somaPink)"/>
-          <circle cx="240" cy="390" r="13" fill="url(#somaPink)"/>
-          <circle cx="130" cy="490" r="12" fill="url(#somaPink)"/>
-          <circle cx="270" cy="600" r="11" fill="url(#somaPink)"/>
-        </g>
-
-        <g filter="url(#softBlur)">
-          <circle cx="904" cy="86" r="38" fill="url(#purpleWash)" opacity="0.38"/>
-          <circle cx="895" cy="93" r="41" fill="url(#purpleWash)" opacity="0.4"/>
-          <circle cx="906" cy="90" r="38" fill="url(#purpleWash)" opacity="0.42"/>
-          <circle cx="881" cy="83" r="51" fill="url(#purpleWash)" opacity="0.38"/>
-          <circle cx="772" cy="182" r="37" fill="url(#lavenderWash)" opacity="0.4"/>
-          <circle cx="753" cy="204" r="43" fill="url(#lavenderWash)" opacity="0.29"/>
-          <circle cx="775" cy="199" r="44" fill="url(#lavenderWash)" opacity="0.35"/>
-          <circle cx="777" cy="209" r="28" fill="url(#lavenderWash)" opacity="0.29"/>
-          <circle cx="916" cy="317" r="33" fill="url(#purpleWash)" opacity="0.37"/>
-          <circle cx="913" cy="294" r="36" fill="url(#purpleWash)" opacity="0.34"/>
-          <circle cx="905" cy="303" r="34" fill="url(#purpleWash)" opacity="0.36"/>
-          <circle cx="920" cy="283" r="41" fill="url(#purpleWash)" opacity="0.43"/>
-          <circle cx="743" cy="380" r="47" fill="url(#lavenderWash)" opacity="0.33"/>
-          <circle cx="739" cy="388" r="44" fill="url(#lavenderWash)" opacity="0.3"/>
-          <circle cx="744" cy="384" r="48" fill="url(#lavenderWash)" opacity="0.37"/>
-          <circle cx="763" cy="378" r="35" fill="url(#lavenderWash)" opacity="0.41"/>
-          <circle cx="884" cy="488" r="33" fill="url(#purpleWash)" opacity="0.3"/>
-          <circle cx="871" cy="479" r="47" fill="url(#purpleWash)" opacity="0.45"/>
-          <circle cx="859" cy="482" r="47" fill="url(#purpleWash)" opacity="0.41"/>
-          <circle cx="881" cy="484" r="30" fill="url(#purpleWash)" opacity="0.34"/>
-          <circle cx="731" cy="592" r="36" fill="url(#lavenderWash)" opacity="0.36"/>
-          <circle cx="717" cy="597" r="50" fill="url(#lavenderWash)" opacity="0.31"/>
-          <circle cx="702" cy="616" r="49" fill="url(#lavenderWash)" opacity="0.48"/>
-          <circle cx="718" cy="616" r="50" fill="url(#lavenderWash)" opacity="0.32"/>
-        </g>
-
-        <g stroke="#544189" fill="none" stroke-linecap="round">
-          <path d="M890.0 90.0 Q 899.0 114.5, 892.5 138.9" opacity="0.52" stroke-width="1.08"/>
-        </g>
-
-        <g>
-          <circle cx="890" cy="90" r="12" fill="url(#somaPurple)"/>
-          <circle cx="770" cy="200" r="14" fill="url(#somaPurple)"/>
-          <circle cx="910" cy="300" r="11" fill="url(#somaPurple)"/>
-          <circle cx="750" cy="390" r="13" fill="url(#somaPurple)"/>
-          <circle cx="870" cy="490" r="12" fill="url(#somaPurple)"/>
-          <circle cx="720" cy="600" r="11" fill="url(#somaPurple)"/>
-        </g>
-
-        <g fill="#d98cae" opacity="0.7">
-          <circle cx="40" cy="40" r="2.2"/>
-          <circle cx="380" cy="70" r="1.8"/>
-          <circle cx="20" cy="360" r="2"/>
-          <circle cx="330" cy="700" r="1.8"/>
-          <circle cx="450" cy="190" r="1.5"/>
-        </g>
-
-        <g fill="#a688cf" opacity="0.7">
-          <circle cx="960" cy="40" r="2.2"/>
-          <circle cx="620" cy="70" r="1.8"/>
-          <circle cx="980" cy="360" r="2"/>
-          <circle cx="670" cy="700" r="1.8"/>
-          <circle cx="550" cy="210" r="1.5"/>
-        </g>
-
-        <g fill="#e0a24a" opacity="0.5">
-          <circle cx="460" cy="240" r="1.3"/>
-          <circle cx="540" cy="480" r="1.3"/>
-          <circle cx="400" cy="390" r="1.1"/>
-          <circle cx="610" cy="320" r="1.1"/>
-        </g>
-
-        <text
-          x="500" y="45"
-          text-anchor="middle"
-          font-family="'Cormorant Garamond', serif"
-          font-weight="700"
-          font-size="22"
-          letter-spacing="3"
-          fill="#5a4a5e"
-        >OPTIMAL TRANSPORT</text>
-
-        <text
-          x="500" y="72"
-          text-anchor="middle"
-          font-family="'Cormorant Garamond', serif"
-          font-style="italic"
-          font-size="16"
-          fill="#8a7a8e"
-        >between probability distributions</text>
-
-        <text
-          x="20" y="690"
-          font-family="'Cormorant Garamond', serif"
-          font-weight="700"
-          font-size="15"
-          letter-spacing="2"
-          fill="#b0507a"
-        >SOURCE</text>
-        <text
-          x="20" y="710"
-          font-family="'Cormorant Garamond', serif"
-          font-weight="700"
-          font-size="15"
-          letter-spacing="2"
-          fill="#b0507a"
-        >DISTRIBUTION</text>
-        <line x1="20" y1="722" x2="80" y2="722" stroke="#b0507a" stroke-width="1"/>
-
-        <text
-          x="835" y="690"
-          font-family="'Cormorant Garamond', serif"
-          font-weight="700"
-          font-size="15"
-          letter-spacing="2"
-          fill="#6f5aa0"
-        >TARGET</text>
-        <text
-          x="835" y="710"
-          font-family="'Cormorant Garamond', serif"
-          font-weight="700"
-          font-size="15"
-          letter-spacing="2"
-          fill="#6f5aa0"
-        >DISTRIBUTION</text>
-        <line x1="835" y1="722" x2="915" y2="722" stroke="#6f5aa0" stroke-width="1"/>
-
-      </svg>
-
-
-      <!-- decorative images -->
-
-    </div>
-
-
-    <div class="hero-content">
-
-      <h1>
-        <span class="first-name-wrap">Jimena<img src="me.png" alt="" class="name-icon"></span> <span class="second-name-wrap"><img src="me.png" alt="" class="name-icon name-icon-left">Segura</span>
-      </h1>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =======================================================
-       ABOUT
-       ======================================================= -->
-
-  <section
-    id="about"
-    class="page"
-  >
-
-    <div class="wrap">
-
-      <img
-        class="profile-photo about-photo"
-        src="jimena.png"
-        alt="Jimena Segura"
-      >
-
-      <span class="eyebrow">
-        About
-      </span>
-
-      <h2 class="about-title">
-        A geometry found, not taught
-      </h2>
-
-      <div class="body-text">
-
-        <p>
-          My research sits at the intersection of
-          <strong>optimal transport</strong>
-          and reinforcement learning. Questions I'm exploring:
-          along which axes we should scale decentralized
-          training to make Wasserstein-geometric aggregation
-          practical at frontier scale, whether we can unlock
-          emergent properties, transfer across tasks, in-context
-          adaptation, in policies trained under
-          Schrödinger-bridge aggregation rather than parameter
-          averaging, and how geometric aggregation rules should
-          interact with standard federated and distributed
-          learning methods to make large-scale decentralized RL
-          discoveries possible.
-        </p>
-
-        <p>
-          Additionally, I've been developing
-          <a
-            href="https://jimenasegurabejar.github.io/portfolio"
-            target="_blank"
-            rel="noopener"
-          >
-            Theoretical Frameworks
-          </a>
-          that extend this thesis to human brain organoids, replacing
-          pseudotime heuristics with optimal-transport-based
-          trajectory inference for cell-fate branching, and the
-          same logic underlies the foundation models behind
-          <a
-            href="https://athenei.com"
-            target="_blank"
-            rel="noopener"
-          >
-            Athenei Biosciences
-          </a>
-          in cellular agriculture.
-        </p>
-
-        <p>
-          Beyond this, at 16, I founded
-          <a
-            href="https://imasion.org/"
-            target="_blank"
-            rel="noopener"
-          >
-            Imasion
-          </a>
-          , an edtech startup, now a non-profit, working to
-          democratize the next generation of climate education
-          in underserved communities in Peru,
-          backed by <span class="partner-highlight">MIT Solve</span>, <span class="partner-highlight">UN Women</span>,
-          <span class="partner-highlight">Catalyst Now</span>,
-          <span class="partner-highlight">Malala Fund</span>,
-          <span class="partner-highlight">Earth Guardians</span>,
-          and others. It's the same conviction that runs through my
-          technical work: that decentralizing access, whether to
-          compute, to models, or to education, is what lets people
-          historically locked out of a field actually contribute
-          to it.
-        </p>
-
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>ForestButterflyOT</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
       </div>
-
-      <h3 class="about-subtitle">
-        Research Focus
-      </h3>
-
-      <ol class="focus-list">
-
-        <li>
-          <strong>Distributed policy optimization.</strong>
-          Reframing distributed reinforcement learning as transport
-          between probability distributions via Schrödinger bridges,
-          replacing Euclidean parameter averaging with geometric
-          aggregation on the Wasserstein manifold, directly relevant
-          to aggregating policy updates across globally distributed,
-          high-latency training nodes.
-        </li>
-
-        <li>
-          <strong>Scalable optimal transport.</strong>
-          Structured matrix approximations and hierarchical coupling
-          via butterfly factorisation, making Wasserstein map
-          computation tractable at scale, a building block toward
-          lower-bandwidth alternatives to standard parameter
-          synchronization in decentralized training.
-        </li>
-
-        <li>
-          <strong>Geometric theory of learning dynamics.</strong>
-          The JKO scheme as a lens on distributed learning, with
-          variational optimality and population dynamics unfolding
-          in Wasserstein space, casting decentralized aggregation as
-          a gradient flow with real convergence implications for
-          heterogeneous, asynchronous compute.
-        </li>
-
-        <li>
-          <strong>Biological transport problems.</strong>
-          Framing cellular agriculture and proliferating cell
-          populations as optimal transport, where mass isn't
-          conserved, solved via Schrödinger bridges, a separate
-          line of work connecting the same geometric toolkit to
-          biology.
-        </li>
-
-      </ol>
-
     </div>
 
-  </section>
-
-
-
-  <!-- =======================================================
-       RESEARCH
-       ======================================================= -->
-
-  <section
-    id="research"
-    class="page"
-  >
-
-    <div class="wrap">
-
-      <h2 class="pub-title">
-        Publications
-      </h2>
-
-
-      <div class="entries">
-
-
-        <div class="entry">
-
-          <span class="tag">
-            Paper
-          </span>
-
-          <h3>
-            WassersteinRL
-          </h3>
-
-          <p>
-            A Geometric Theory of Distributed Policy
-            Optimisation via Schrödinger Bridges.
-            Anchor paper of the AtheneioLab programme.
-          </p>
-
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>MonarchButterflyOT</h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
         </div>
-
-
-        <div class="entry">
-
-          <span class="tag">
-            Paper
-          </span>
-
-          <h3>
-            WassersteinEval
-          </h3>
-
-          <p>
-            Generative model evaluation via Wasserstein
-            geometry — a multi-scale Sinkhorn divergence
-            framework with a completeness theorem.
-          </p>
-
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="https://jimenasegurabejar.github.io/MonarchButterflyOT/">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
         </div>
-
-
-        <div class="entry">
-
-          <span class="tag">
-            Paper
-          </span>
-
-          <h3>
-            ProlifOT
-          </h3>
-
-          <p>
-            Cellular agriculture framed as an optimal
-            transport problem, solvable via Wasserstein
-            geometry and Schrödinger bridges.
-          </p>
-
-        </div>
-
-
-        <div class="entry">
-
-          <span class="tag">
-            Paper
-          </span>
-
-          <h3>
-            WFRFlows
-          </h3>
-
-          <p>
-            Flow matching under the
-            Wasserstein–Fisher–Rao geometry.
-          </p>
-
-        </div>
-
-
-        <div class="entry">
-
-          <span class="tag">
-            Newsletter
-          </span>
-
-          <h3>
-            CORTEX DREAMS
-          </h3>
-
-          <p>
-            My Substack newsletter —
-            research notes and writing.
-          </p>
-
-        </div>
-
       </div>
-
-
-      <a
-        class="see-more-btn"
-        href="https://jimenasegurabejar.github.io/portfolio"
-      >
-        Portfolio
-      </a>
-
     </div>
 
-  </section>
-
-
-
-  <!-- =======================================================
-       NEWS
-       ======================================================= -->
-
-  <section
-    id="news"
-    class="page"
-  >
-
-    <svg
-      class="news-deco"
-      viewBox="0 0 1200 500"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-    >
-
-      <defs>
-        <filter id="newsBlur" x="-80%" y="-80%" width="260%" height="260%">
-          <feGaussianBlur stdDeviation="38"/>
-        </filter>
-
-        <filter id="newsSoftLine" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="0.6"/>
-        </filter>
-
-        <radialGradient id="newsPink" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#df4d8c" stop-opacity="0.22"/>
-          <stop offset="60%" stop-color="#df4d8c" stop-opacity="0.08"/>
-          <stop offset="100%" stop-color="#df4d8c" stop-opacity="0"/>
-        </radialGradient>
-
-        <radialGradient id="newsPurple" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#7552B7" stop-opacity="0.1"/>
-          <stop offset="60%" stop-color="#7552B7" stop-opacity="0.04"/>
-          <stop offset="100%" stop-color="#7552B7" stop-opacity="0"/>
-        </radialGradient>
-
-        <radialGradient id="newsSoma" cx="35%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#f6d4e0"/>
-          <stop offset="55%" stop-color="#d17b9c"/>
-          <stop offset="100%" stop-color="#af5a7d"/>
-        </radialGradient>
-
-        <radialGradient id="newsSomaPurple" cx="35%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#e5daf3"/>
-          <stop offset="55%" stop-color="#8b76b3"/>
-          <stop offset="100%" stop-color="#6b5892"/>
-        </radialGradient>
-      </defs>
-
-      <g filter="url(#newsBlur)">
-        <ellipse cx="110" cy="70" rx="240" ry="180" fill="url(#newsPink)"/>
-        <ellipse cx="140" cy="450" rx="220" ry="170" fill="url(#newsPink)"/>
-        <ellipse cx="1090" cy="80" rx="240" ry="180" fill="url(#newsPurple)"/>
-        <ellipse cx="1060" cy="440" rx="220" ry="170" fill="url(#newsPurple)"/>
-      </g>
-
-      <g fill="none" stroke="var(--rose)" stroke-width="0.6" opacity="0.18" filter="url(#newsSoftLine)">
-        <path d="M40 60 C 260 30, 420 150, 600 130 C 780 110, 900 40, 1160 60"/>
-        <path d="M40 440 C 260 470, 420 350, 600 370 C 780 390, 900 460, 1160 440"/>
-      </g>
-      <g fill="none" stroke="var(--purple)" stroke-width="0.5" opacity="0.14" stroke-dasharray="1 6" filter="url(#newsSoftLine)">
-        <path d="M60 110 C 280 200, 460 240, 600 250 C 740 260, 920 210, 1140 120"/>
-        <path d="M60 400 C 280 320, 460 280, 600 260 C 740 240, 920 300, 1140 390"/>
-      </g>
-
-      <g stroke="#a83a63" fill="none" stroke-linecap="round" filter="url(#newsSoftLine)">
-        <path d="M90.0 70.0 Q 105.2 75.8, 115.6 67.7" opacity="0.56" stroke-width="0.93"/>
-      </g>
-
-      <g opacity="0.85">
-        <circle cx="90" cy="70" r="9" fill="url(#newsSoma)"/>
-        <circle cx="60" cy="430" r="8" fill="url(#newsSoma)"/>
-      </g>
-
-      <g opacity="0.85">
-        <circle cx="1110" cy="75" r="9" fill="url(#newsSomaPurple)"/>
-        <circle cx="1140" cy="425" r="8" fill="url(#newsSomaPurple)"/>
-      </g>
-
-      <circle cx="600" cy="250" r="4" fill="#c17293" opacity="0.25"/>
-      <circle cx="600" cy="250" r="10" fill="none" stroke="#c17293" stroke-width="0.4" opacity="0.18"/>
-
-      <g fill="var(--rose-deep)" opacity="0.28">
-        <circle cx="180" cy="40" r="1.6"/>
-        <circle cx="330" cy="100" r="2"/>
-        <circle cx="470" cy="55" r="1.6"/>
-        <circle cx="250" cy="365" r="2"/>
-        <circle cx="410" cy="325" r="1.6"/>
-      </g>
-      <g fill="var(--purple)" opacity="0.28">
-        <circle cx="740" cy="45" r="1.6"/>
-        <circle cx="960" cy="95" r="2"/>
-        <circle cx="600" cy="95" r="2"/>
-        <circle cx="710" cy="335" r="1.6"/>
-        <circle cx="560" cy="370" r="2"/>
-      </g>
-
-    </svg>
-
-    <div class="wrap">
-
-      <h2>
-        News
-      </h2>
-
-      <div class="news-scroll">
-
-        <div class="news-row">
-          <span class="news-date">Sep 04, 2026</span>
-          <p class="news-text">
-            News headline goes here — mention a
-            <a href="#" target="_blank" rel="noopener">linked project or update</a>
-            <span class="news-emoji">🆕</span>. A short description
-            of what happened.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>04</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
         </div>
-
-        <div class="news-row">
-          <span class="news-date">Sep 03, 2026</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">Another recent update</a>
-            <span class="news-emoji">📣</span> — one or two sentences
-            describing it.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
         </div>
-
-        <div class="news-row">
-          <span class="news-date">Sep 02, 2026</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A talk, event, or release</a>
-            <span class="news-emoji">📌</span> — a short note on what
-            it covers.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Sep 01, 2026</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">Something to highlight</a>
-            <span class="news-emoji">✨</span> — a brief description
-            and why it matters.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Aug 23, 2026</span>
-          <p class="news-text">
-            News headline goes here — mention a
-            <a href="#" target="_blank" rel="noopener">linked project or event</a>
-            <span class="news-emoji">🔬</span>. Add a short description
-            of this update, and link out to anything relevant
-            by <strong>a deadline</strong> if there is one.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jul 24, 2026</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">Paper or project name</a>
-            <span class="news-emoji">🌀</span> is out! One or two
-            sentences describing what it is and why it matters.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jun 15, 2026</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">First release</a>
-            <span class="news-emoji">🧬</span> and
-            <a href="#" target="_blank" rel="noopener">second release</a>
-            <span class="news-emoji">📡</span> are out! A short
-            summary of both, written as one flowing sentence.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Mar 30, 2026</span>
-          <p class="news-text">
-            New note or talk on
-            <a href="#" target="_blank" rel="noopener">a topic name</a>
-            — a brief description of the content and where to find it.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Feb 12, 2026</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">Another project name</a>
-            <span class="news-emoji">🧠</span> is out! A short summary
-            of the release and what problem it solves.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jan 08, 2026</span>
-          <p class="news-text">
-            Invited to speak at
-            <a href="#" target="_blank" rel="noopener">an event or conference name</a>
-            <span class="news-emoji">🎤</span> — a sentence on the topic
-            of the talk.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Dec 03, 2025</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A collaboration or fellowship</a>
-            <span class="news-emoji">🤝</span> announced — a short
-            description of what it involves.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Nov 19, 2025</span>
-          <p class="news-text">
-            New preprint on
-            <a href="#" target="_blank" rel="noopener">a research topic</a>
-            <span class="news-emoji">📄</span> — one sentence on the
-            main contribution.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Oct 05, 2025</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A workshop or panel</a>
-            <span class="news-emoji">🗣️</span> — a sentence on what
-            was discussed and who else was involved.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Sep 14, 2025</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A grant or award</a>
-            <span class="news-emoji">🏆</span> received — a short
-            description of what it supports.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Aug 02, 2025</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">Codebase or dataset</a>
-            <span class="news-emoji">💾</span> released publicly — a
-            sentence on what it contains and how to use it.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jun 21, 2025</span>
-          <p class="news-text">
-            Joined
-            <a href="#" target="_blank" rel="noopener">a lab, fellowship, or program</a>
-            <span class="news-emoji">🌱</span> — a short note on the
-            focus of the work.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">May 09, 2025</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A blog post or newsletter issue</a>
-            <span class="news-emoji">✍️</span> — a sentence on what
-            it covers.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Apr 17, 2025</span>
-          <p class="news-text">
-            Accepted at
-            <a href="#" target="_blank" rel="noopener">a conference or venue name</a>
-            <span class="news-emoji">🎉</span> — a short note on the
-            paper and what it's about.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Mar 03, 2025</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">An interview or podcast appearance</a>
-            <span class="news-emoji">🎙️</span> — a sentence on the
-            topic discussed.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jan 28, 2025</span>
-          <p class="news-text">
-            Started
-            <a href="#" target="_blank" rel="noopener">a new project or venture name</a>
-            <span class="news-emoji">🚀</span> — a short description
-            of its goal.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Dec 11, 2024</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">An earlier milestone</a>
-            <span class="news-emoji">📍</span> — a sentence
-            summarizing it.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Oct 30, 2024</span>
-          <p class="news-text">
-            Gave a talk on
-            <a href="#" target="_blank" rel="noopener">a topic name</a>
-            <span class="news-emoji">📽️</span> — a sentence on the
-            venue and audience.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Sep 15, 2024</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A mentorship or advisory role</a>
-            <span class="news-emoji">🧭</span> — a short note on
-            what it involves.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Aug 03, 2024</span>
-          <p class="news-text">
-            Earliest entry — a short note on how this work or
-            organization started.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jun 14, 2024</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A residency or program name</a>
-            <span class="news-emoji">🏛️</span> — a short note on
-            what it focused on.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Apr 22, 2024</span>
-          <p class="news-text">
-            Published
-            <a href="#" target="_blank" rel="noopener">a report or whitepaper name</a>
-            <span class="news-emoji">📘</span> — a sentence on its
-            contents.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Feb 09, 2024</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A collaboration announcement</a>
-            <span class="news-emoji">🔗</span> — a short note on the
-            partner and the goal.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Dec 20, 2023</span>
-          <p class="news-text">
-            Founding entry — a short note on the origin of the lab
-            or organization.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Oct 05, 2023</span>
-          <p class="news-text">
-            Earliest note — a short line on what came before all
-            of this.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Aug 18, 2023</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">A workshop attended or organized</a>
-            <span class="news-emoji">🧩</span> — a short note on
-            what it was about.
-          </p>
-          <div class="news-buttons">
-            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
-          </div>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jun 02, 2023</span>
-          <p class="news-text">
-            <a href="#" target="_blank" rel="noopener">First public write-up</a>
-            <span class="news-emoji">🖋️</span> — a sentence on the
-            topic and where it was published.
-          </p>
-        </div>
-
-        <div class="news-row">
-          <span class="news-date">Jan 09, 2023</span>
-          <p class="news-text">
-            First line item — a short note on where this all
-            started.
-          </p>
-        </div>
-
       </div>
-
     </div>
 
-  </section>
-
-
-
-  <!-- =======================================================
-       HIGHLIGHTED WORK
-       ======================================================= -->
-
-  <section
-    id="highlighted"
-    class="page"
-  >
-
-<svg
-      class="companies-deco"
-      viewBox="0 0 1600 420"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid slice"
-    >
-
-      <defs>
-
-        <filter id="companiesBlur" x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="26"/>
-        </filter>
-
-        <radialGradient id="burstPurple" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#7552B7" stop-opacity="0.55"/>
-          <stop offset="45%" stop-color="#9c7fd0" stop-opacity="0.32"/>
-          <stop offset="100%" stop-color="#9c7fd0" stop-opacity="0"/>
-        </radialGradient>
-
-        <radialGradient id="burstPink" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#df4d8c" stop-opacity="0.55"/>
-          <stop offset="45%" stop-color="#e88cae" stop-opacity="0.32"/>
-          <stop offset="100%" stop-color="#e88cae" stop-opacity="0"/>
-        </radialGradient>
-
-        <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-          <stop offset="40%" stop-color="#e8a0c0" stop-opacity="0.5"/>
-          <stop offset="100%" stop-color="#e8a0c0" stop-opacity="0"/>
-        </radialGradient>
-
-        <linearGradient id="waveGradient" x1="0" y1="0" x2="1600" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#7552B7"/>
-          <stop offset="50%" stop-color="#df91bb"/>
-          <stop offset="100%" stop-color="#df4d8c"/>
-        </linearGradient>
-
-      </defs>
-
-      <g filter="url(#companiesBlur)">
-        <ellipse cx="150" cy="220" rx="220" ry="180" fill="url(#burstPurple)"/>
-        <ellipse cx="1450" cy="220" rx="220" ry="180" fill="url(#burstPink)"/>
-      </g>
-
-      <circle cx="800" cy="230" r="70" fill="url(#coreGlow)"/>
-
-      <g fill="none" stroke="url(#waveGradient)" stroke-width="1">
-          <path d="M0 175 C 100 175, 100 195, 200 195 C 300 195, 300 200, 400 200 C 500 200, 500 186, 600 186 C 700 186, 700 163, 800 163 C 900 163, 900 150, 1000 150 C 1100 150, 1100 155, 1200 155 C 1300 155, 1300 175, 1400 175 C 1500 175, 1500 196, 1600 196" opacity="0.4"/>
-          <path d="M0 204 C 100 204, 100 218, 200 218 C 300 218, 300 208, 400 208 C 500 208, 500 181, 600 181 C 700 181, 700 158, 800 158 C 900 158, 900 156, 1000 156 C 1100 156, 1100 177, 1200 177 C 1300 177, 1300 205, 1400 205 C 1500 205, 1500 218, 1600 218" opacity="0.19"/>
-          <path d="M0 232 C 100 232, 100 230, 200 230 C 300 230, 300 202, 400 202 C 500 202, 500 171, 600 171 C 700 171, 700 159, 800 159 C 900 159, 900 176, 1000 176 C 1100 176, 1100 209, 1200 209 C 1300 209, 1300 233, 1400 233 C 1500 233, 1500 229, 1600 229" opacity="0.28"/>
-          <path d="M0 251 C 100 251, 100 227, 200 227 C 300 227, 300 189, 400 189 C 500 189, 500 165, 600 165 C 700 165, 700 174, 800 174 C 900 174, 900 209, 1000 209 C 1100 209, 1100 243, 1200 243 C 1300 243, 1300 251, 1400 251 C 1500 251, 1500 226, 1600 226" opacity="0.26"/>
-          <path d="M0 237 C 100 237, 100 215, 200 215 C 300 215, 300 196, 400 196 C 500 196, 500 195, 600 195 C 700 195, 700 212, 800 212 C 900 212, 900 234, 1000 234 C 1100 234, 1100 245, 1200 245 C 1300 245, 1300 236, 1400 236 C 1500 236, 1500 214, 1600 214" opacity="0.44"/>
-          <path d="M0 235 C 100 235, 100 208, 200 208 C 300 208, 300 198, 400 198 C 500 198, 500 212, 600 212 C 700 212, 700 240, 800 240 C 900 240, 900 260, 1000 260 C 1100 260, 1100 257, 1200 257 C 1300 257, 1300 234, 1400 234 C 1500 234, 1500 208, 1600 208" opacity="0.42"/>
-          <path d="M0 224 C 100 224, 100 204, 200 204 C 300 204, 300 212, 400 212 C 500 212, 500 242, 600 242 C 700 242, 700 271, 800 271 C 900 271, 900 278, 1000 278 C 1100 278, 1100 257, 1200 257 C 1300 257, 1300 224, 1400 224 C 1500 224, 1500 204, 1600 204" opacity="0.49"/>
-          <path d="M0 214 C 100 214, 100 211, 200 211 C 300 211, 300 240, 400 240 C 500 240, 500 277, 600 277 C 700 277, 700 296, 800 296 C 900 296, 900 281, 1000 281 C 1100 281, 1100 244, 1200 244 C 1300 244, 1300 213, 1400 213 C 1500 213, 1500 212, 1600 212" opacity="0.21"/>
-          <path d="M0 237 C 100 237, 100 249, 200 249 C 300 249, 300 271, 400 271 C 500 271, 500 287, 600 287 C 700 287, 700 285, 800 285 C 900 285, 900 266, 1000 266 C 1100 266, 1100 245, 1200 245 C 1300 245, 1300 237, 1400 237 C 1500 237, 1500 249, 1600 249" opacity="0.33"/>
-          <path d="M0 249 C 100 249, 100 275, 200 275 C 300 275, 300 299, 400 299 C 500 299, 500 305, 600 305 C 700 305, 700 287, 800 287 C 900 287, 900 259, 1000 259 C 1100 259, 1100 243, 1200 243 C 1300 243, 1300 250, 1400 250 C 1500 250, 1500 275, 1600 275" opacity="0.19"/>
-          <path d="M0 274 C 100 274, 100 307, 200 307 C 300 307, 300 323, 400 323 C 500 323, 500 310, 600 310 C 700 310, 700 278, 800 278 C 900 278, 900 252, 1000 252 C 1100 252, 1100 250, 1200 250 C 1300 250, 1300 275, 1400 275 C 1500 275, 1500 307, 1600 307" opacity="0.26"/>
-      </g>
-
-      <g fill="#8f6fc9">
-          <circle cx="150" cy="220" r="2.7" opacity="0.38"/>
-          <circle cx="16" cy="270" r="3.2" opacity="0.45"/>
-      </g>
-
-      <g fill="#df5f96">
-          <circle cx="1461" cy="220" r="1.2" opacity="0.4"/>
-          <circle cx="1483" cy="231" r="4.2" opacity="0.61"/>
-      </g>
-
-      <g fill="#e8a0c0">
-          <circle cx="522" cy="195" r="1.4" opacity="0.38"/>
-          <circle cx="1098" cy="250" r="1.2" opacity="0.17"/>
-      </g>
-
-      <circle cx="800" cy="230" r="4" fill="#ffffff" opacity="0.9"/>
-      <circle cx="800" cy="230" r="9" fill="none" stroke="#e8a0c0" stroke-width="0.6" opacity="0.6"/>
-
-    </svg>
-
-    <div class="wrap">
-
-      <span class="eyebrow">
-        Research Companies
-      </span>
-
-      <h2 class="companies-title">
-        Research Companies
-      </h2>
-
-
-      <div class="entries">
-
-
-        <!-- PHYSIS RESEARCH -->
-
-        <details class="entry entry-details">
-
-          <summary>
-
-            <span class="tag">
-              Venture
-            </span>
-
-            <h3>
-              Physis Research
-            </h3>
-
-          </summary>
-
-          <p>
-            We're a research lab creating the foundational
-            models for the new era of reinforcement learning.
-          </p>
-
-          <div class="work-links">
-
-            <span class="work-label">
-              Work:
-            </span>
-
-            <a
-              class="detail-link"
-              href="https://jimenasegurabejar.github.io/physisresearch"
-              target="_blank"
-              rel="noopener"
-            >
-              Research
-            </a>
-
-          </div>
-
-        </details>
-
-
-
-        <!-- ATHENEI -->
-
-        <details class="entry entry-details">
-
-          <summary>
-
-            <span class="tag">
-              Venture
-            </span>
-
-            <h3>
-              <a
-                href="https://athenei.com/"
-              >
-                Athenei Biosciences
-              </a>
-            </h3>
-
-          </summary>
-
-          <p>
-            Biological Superintelligence for Cellular Agriculture.
-            Cambridge, UK.
-          </p>
-
-          <div class="work-links">
-
-            <span class="work-label">
-              Work:
-            </span>
-
-            <a
-              class="detail-link"
-              href="https://athenei.com/#research"
-              target="_blank"
-              rel="noopener"
-            >
-              Our Research
-            </a>
-
-          </div>
-
-        </details>
-
-
-
-        <!-- IMASION -->
-
-        <details class="entry entry-details">
-
-          <summary>
-
-            <span class="tag">
-              Venture
-            </span>
-
-            <h3>
-              Imasion
-            </h3>
-
-          </summary>
-
-          <p>
-            An edtech startup working to impact the
-            2.3 billion children in the planet Earth.
-          </p>
-
-          <div class="work-links">
-
-            <span class="work-label">
-              Work:
-            </span>
-
-            <a
-              class="detail-link"
-              href="https://imasion.org/"
-              target="_blank"
-              rel="noopener"
-            >
-              imasion
-            </a>
-
-            <a
-              class="detail-link"
-              href="https://imasionkids.org/"
-              target="_blank"
-              rel="noopener"
-            >
-              imasionkids
-            </a>
-
-            <a
-              class="detail-link"
-              href="https://imasionkits.org/"
-              target="_blank"
-              rel="noopener"
-            >
-              imasionkits
-            </a>
-
-            <a
-              class="detail-link"
-              href="https://imasionteachers.org/"
-              target="_blank"
-              rel="noopener"
-            >
-              imasionteachers
-            </a>
-
-            <a
-              class="detail-link"
-              href="https://imasion.ai/"
-              target="_blank"
-              rel="noopener"
-            >
-              imasionai
-            </a>
-
-            <a
-              class="detail-link"
-              href="https://www.instagram.com/imasionorg/"
-              target="_blank"
-              rel="noopener"
-            >
-              impact
-            </a>
-
-          </div>
-
-        </details>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =======================================================
-       FEATURED
-       ======================================================= -->
-
-  <section
-    id="featuredin"
-    class="page"
-  >
-
-    <div class="wrap">
-
-      <h2>
-        Featured
-      </h2>
-
-      <p class="featured-subtitle">
-        Press &amp; Recognition
-      </p>
-
-
-      <div class="entries">
-
-        <div class="entry featured-card">
-
-          <div class="featured-image">
-            <div class="featured-image-placeholder">Add photo</div>
-          </div>
-
-          <div class="featured-card-body">
-
-            <div class="featured-meta">
-              <span class="featured-year">2023</span>
-            </div>
-
-            <h3>
-              From Fauna Fellowship
-            </h3>
-
-            <p>
-              Selected as a fellow of the From Fauna Fellowship.
-            </p>
-
-          </div>
-
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>05</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
         </div>
-
-        <div class="entry featured-card">
-
-          <div class="featured-image">
-            <div class="featured-image-placeholder">Add photo</div>
-          </div>
-
-          <div class="featured-card-body">
-
-            <div class="featured-meta">
-              <span class="featured-year">2023</span>
-            </div>
-
-            <h3>
-              Malala Fund Article
-            </h3>
-
-            <p>
-              Add a short description of this feature here.
-            </p>
-
-          </div>
-
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
         </div>
-
       </div>
-
     </div>
 
-  </section>
-
-
-
-  <!-- =======================================================
-       FOOTER
-       ======================================================= -->
-
-  <footer>
-
-    <div class="footer-links">
-      <a href="https://x.com/JimenaS86541537" target="_blank" rel="noopener" class="icon-link" aria-label="X">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
-      </a>
-      <a href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-          <path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.8 10.8.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.6A10.5 10.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/>
-        </svg>
-      </a>
-      <a href="#" target="_blank" rel="noopener" class="icon-link" aria-label="Google Scholar">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-          <path d="M12 2L1 8l11 6 9-4.91V17h2V8L12 2zM5 13.18v4.36L12 21l7-3.46v-4.36L12 17l-7-3.82z"/>
-        </svg>
-      </a>
-      <a href="https://www.linkedin.com/in/jimena-segura-bejar/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.11 20.45H3.56V9h3.55v11.45z"/>
-        </svg>
-      </a>
-      <a href="mailto:#" class="icon-link" aria-label="Email">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-          <path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.3 7.3 6.1a.75.75 0 0 0 .96 0l7.3-6.1H4.2zM20 7.06l-6.87 5.73a2.25 2.25 0 0 1-2.87 0L3.4 7.06V18h16.6V7.06z"/>
-        </svg>
-        <img src="mushroom.png" alt="" class="mushroom-icon">
-      </a>
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>06</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
     </div>
 
-    © Jimena Segura. All Rights Reserved.
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>07</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
 
-  </footer>
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>08</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>09</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Project <em>10</em></h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Dataset</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Towards a Biological AGI for Cellular Agriculture</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div><div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Towards a Turing Test for Cellular Agriculture</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Biological Dynamical Systems for Cellular Agriculture</h3>
+        <span class="preprint">Preprint 2026</span>
+       <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Cambridge, United Kingdom
+        </div>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Modeling Motor Dysfunctions in Autism Spectrum Disorder</h3>
+        <span class="preprint">Preprint 2026</span>
+        <div class="location">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Remote
+        </div>
+        <p>Fetal stage (second trimester) hindbrain assembloids with ASD mutations (SHANK3, CHD8) and alcohol-induced stressors to study cerebellar and spinal cord pathologies.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Optimal Transport on Human Brain Organoids</h3>
+        <span class="preprint">Preprint 2026</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="https://github.com/jimenasegurabejar/Optimal-Transport-for-Human-Brain-Organoids-Cell-Mappings">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-preview"><div class="placeholder">Preview</div></div>
+      <div class="card-body">
+        <h3>Imasion</h3>
+        <span class="preprint">Social Impact · AI for Climate Change Education</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="https://github.com/Imasion-org">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © Copyright 2026 Jimena Segura.
+</footer>
 
 </body>
 </html>
