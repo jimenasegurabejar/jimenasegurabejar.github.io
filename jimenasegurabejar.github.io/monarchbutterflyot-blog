@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why the Average Butterfly Doesn't Exist — Jimena Segura</title>
+<meta name="description" content="Monarch butterflies migrate along curved corridors, not straight lines. Average their GPS coordinates and you land in the wrong place. That's exactly what arithmetic parameter averaging does to distributed policies — and what MonarchButterflyOT fixes with a real Fréchet mean.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#FBF1F3;
+    --bg-deep:#F5E1E7;
+    --ink:#3a3a3a;
+    --ink-soft:#757575;
+    --rose:#df91bb;
+    --rose-deep:#b94d91;
+    --purple:#7552b7;
+    --purple-deep:#56358f;
+    --line:#eadcf0;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(223,145,187,0.10), transparent 30%),
+      radial-gradient(circle at 90% 85%, rgba(117,82,183,0.10), transparent 32%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    line-height:1.75;
+  }
+
+  a{ color:var(--rose-deep); text-decoration:none; border-bottom:1px solid var(--rose); }
+  a:hover{ color:var(--purple-deep); border-color:var(--purple-deep); }
+
+  .wrap{ max-width:780px; margin:0 auto; padding:70px 28px 140px; }
+
+  .back-link{
+    display:inline-block;
+    font-family:'Inter', sans-serif;
+    font-size:13px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--ink-soft); border-bottom:none; margin-bottom:40px;
+  }
+  .back-link:hover{ color:var(--rose-deep); }
+
+  .meta{
+    font-family:'Inter', sans-serif; font-size:12.5px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--rose-deep); margin-bottom:16px;
+  }
+
+  h1{
+    font-weight:700; font-size:clamp(34px,6vw,50px); line-height:1.08;
+    letter-spacing:-0.01em; margin-bottom:20px; color:var(--ink);
+  }
+
+  .dek{ font-size:20px; font-style:italic; color:var(--ink-soft); margin-bottom:12px; line-height:1.55; }
+
+  h2{ font-weight:700; font-size:27px; margin:60px 0 18px; color:var(--ink); }
+
+  p{ font-size:18px; color:var(--ink); margin-bottom:20px; }
+  p.lead{ font-size:21px; }
+
+  .math{ font-style:italic; }
+
+  .cap{ font-family:'Inter', sans-serif; font-size:13px; color:var(--ink-soft); text-align:center; margin-top:14px; line-height:1.55; }
+
+  /* ============ hero migration ============ */
+  .hero-fig{
+    margin:36px 0 44px;
+    border-radius:20px;
+    overflow:hidden;
+    background:linear-gradient(160deg, #fdf0f5, #f4ecfb);
+    box-shadow:0 14px 36px rgba(117,82,183,0.12);
+  }
+  .hero-fig svg{ width:100%; height:auto; display:block; }
+
+  /* ============ interactive canvas figure ============ */
+  .figure{
+    margin:40px 0;
+    padding:26px 20px 22px;
+    background:#ffffff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(117,82,183,0.08);
+  }
+  .figure svg{ width:100%; height:auto; display:block; touch-action:none; }
+
+  .controls{
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    margin-top:18px; flex-wrap:wrap; font-family:'Inter', sans-serif;
+  }
+  .controls label{ font-size:13px; font-weight:600; color:var(--ink-soft); letter-spacing:0.03em; }
+  .controls input[type="range"]{ width:170px; accent-color:var(--rose-deep); }
+
+  .toggle-row{ display:flex; justify-content:center; gap:10px; margin-bottom:6px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .toggle-btn{
+    font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px;
+    border:1.4px solid var(--rose); background:transparent; color:var(--ink);
+    cursor:pointer; transition:all .2s ease;
+  }
+  .toggle-btn.active{ background:var(--rose-deep); border-color:var(--rose-deep); color:#fff; }
+
+  .legend{
+    display:flex; justify-content:center; gap:26px; margin-top:16px;
+    font-family:'Inter', sans-serif; font-size:12.5px; color:var(--ink-soft); flex-wrap:wrap;
+  }
+  .legend span{ display:inline-flex; align-items:center; gap:7px; }
+  .dot{ width:11px; height:11px; border-radius:50%; display:inline-block; }
+
+  .stat-row{ display:flex; justify-content:center; gap:36px; margin-top:16px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .stat{ text-align:center; }
+  .stat .num{ font-family:'Cormorant Garamond', serif; font-weight:700; font-size:24px; color:var(--purple-deep); }
+  .stat .label{ font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); }
+
+  .pull-quote{
+    font-size:25px; font-weight:600; font-style:italic; color:var(--purple-deep);
+    text-align:center; line-height:1.35; margin:54px 0; padding:0 16px;
+  }
+
+  .bibtex-box{
+    background:#2b2530; color:#e9dcf2; border-radius:12px; padding:22px;
+    font-family:'Courier New', monospace; font-size:13px; overflow-x:auto;
+    line-height:1.6; margin-top:14px;
+  }
+
+  hr.sep{ border:none; border-top:1px solid var(--line); margin:56px 0; }
+
+  footer{ font-family:'Inter', sans-serif; font-size:13px; color:var(--ink-soft); text-align:center; margin-top:36px; }
+
+  .drag-hint{
+    font-family:'Inter', sans-serif; font-size:12px; color:var(--rose-deep);
+    text-align:center; margin-bottom:6px; letter-spacing:0.02em;
+  }
+
+  @media (max-width:640px){
+    .wrap{ padding:50px 20px 100px; }
+    .pull-quote{ font-size:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="back-link" href="https://jimenasegurabejar.github.io/cortexdreams">← Back to Cortex Dreams</a>
+
+  <div class="meta">Cortex Dreams · Research Notes</div>
+  <h1>Why the Average Butterfly Doesn't Exist</h1>
+  <p class="dek">Monarchs migrating from a dozen different fields don't converge because someone averaged their GPS coordinates. They converge because each one is following a curved corridor to the same destination. Drag the nodes below and watch the difference between averaging and actually aggregating.</p>
+
+  <div class="hero-fig">
+    <svg id="heroSvg" viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+  <p class="cap">Six migration routes, one overwintering site. No route is a straight line — and no two routes are the same shape.</p>
+
+  <p class="lead">Here is the question MonarchButterflyOT actually answers: when you have several distributions — policy checkpoints from different training nodes, in the case I care about — what does it mean to combine them into one?</p>
+
+  <p>The default answer in distributed training is: average the parameters. Add up the weight vectors, divide by the number of nodes, done. That operation is only correct if the space those parameters live in is <em>flat</em> — if straight-line interpolation between two points is actually the shortest, most meaningful path between them. Policy space, under the Wasserstein metric, is not flat. It's curved, the way the migratory corridors above are curved around geography that doesn't move in a straight line either.</p>
+
+  <h2>Try it: three policies, two ways of combining them</h2>
+
+  <p>Below are three draggable points — think of them as three policy checkpoints returned by different training nodes. Watch two markers: the <strong>arithmetic mean</strong> (the naive coordinate average) and the <strong>Fréchet mean</strong> (the point that actually minimizes total curved distance to all three, recomputed live via gradient descent as you drag). Turn up "curvature" to make the effect obvious.</p>
+
+  <div class="figure">
+    <p class="drag-hint">↕ drag any of the three pink nodes</p>
+    <svg id="meanSvg" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="legend">
+      <span><span class="dot" style="background:#c14a72"></span>Policy checkpoint</span>
+      <span><span class="dot" style="background:#6b5296"></span>Arithmetic mean</span>
+      <span><span class="dot" style="background:#a1477e"></span>Fréchet mean</span>
+    </div>
+    <div class="controls">
+      <label for="curveSlider">Curvature</label>
+      <input type="range" id="curveSlider" min="0" max="100" value="55">
+      <label for="showGeo" style="display:flex;align-items:center;gap:6px;">
+        <input type="checkbox" id="showGeo" checked style="accent-color:var(--rose-deep);"> show curved paths
+      </label>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="statGap">—</div><div class="label">Gap between means</div></div>
+      <div class="stat"><div class="num" id="statCost">—</div><div class="label">Fréchet mean is better by</div></div>
+    </div>
+    <p class="cap">The shaded region is a synthetic "obstacle" in policy space — a zone the true geometry routes around. The arithmetic mean walks straight through it anyway, because it doesn't know it's there. The Fréchet mean does.</p>
+  </div>
+
+  <p>At curvature zero, the two markers sit on top of each other — flat space, arithmetic averaging is fine. Push the slider up and they separate. That gap is not a rounding error. It's the entire reason a policy aggregated by naive averaging can under-perform every single one of the checkpoints that went into it: the average has been dragged into a region none of the original policies would have chosen to visit.</p>
+
+  <div class="pull-quote">Averaging assumes the space doesn't push back. Wasserstein geometry is what happens once you admit that it does.</div>
+
+  <h2>Compare: what each aggregation rule "sees"</h2>
+
+  <div class="figure">
+    <div class="toggle-row">
+      <button class="toggle-btn active" id="btnArith">Arithmetic averaging</button>
+      <button class="toggle-btn" id="btnFrechet">Fréchet mean (Wasserstein)</button>
+    </div>
+    <svg id="compareSvg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p class="cap" id="compareCap">Treats every checkpoint as a point in flat Euclidean space. Fast, and wrong whenever the geometry is curved.</p>
+  </div>
+
+  <h2>Where this connects</h2>
+
+  <p>This is the same machinery behind <a href="https://jimenasegurabejar.github.io" target="_blank">WassersteinRL</a>: once aggregation is framed as a Schrödinger bridge instead of a mean, the convergence guarantees hold under real heterogeneity — asynchronous nodes, different local data, different training speeds. MonarchButterflyOT is the geometric-aggregation half of that story, worked out on its own: Fréchet means, curved policy space, and exactly where arithmetic averaging quietly breaks.</p>
+
+  <hr class="sep">
+
+  <h2>BibTeX</h2>
+  <div class="bibtex-box">@article{segura2026monarchbutterflyot,
+  title   = {MonarchOT: Geometric Aggregation in Wasserstein Space, Fréchet Means, Curved Geometry, and the Failure of Arithmetic Averaging in Distributed Policy},
+  author  = {Segura, Jimena},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</div>
+
+  <footer>
+    Part of <a href="https://jimenasegurabejar.github.io/cortexdreams">Cortex Dreams</a> — research notes by Jimena Segura.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function clear(node){ while(node.firstChild) node.removeChild(node.firstChild); }
+
+  /* ================= HERO: migrating butterflies ================= */
+  const heroSvg = document.getElementById('heroSvg');
+  const W1 = 780, H1 = 340;
+  const dest = {x: 690, y: 170};
+  const starts = [
+    {x:40,y:40}, {x:30,y:120}, {x:20,y:200}, {x:40,y:280},
+    {x:90,y:60}, {x:80,y:310}
+  ];
+
+  function bezier(p0,p1,p2,t){
+    const x = (1-t)*(1-t)*p0.x + 2*(1-t)*t*p1.x + t*t*p2.x;
+    const y = (1-t)*(1-t)*p0.y + 2*(1-t)*t*p1.y + t*t*p2.y;
+    return {x,y};
+  }
+
+  const grad = el('linearGradient', {id:'heroGrad', x1:'0', y1:'0', x2:'1', y2:'0'});
+  grad.appendChild(el('stop', {offset:'0%', 'stop-color':'#c9567d'}));
+  grad.appendChild(el('stop', {offset:'100%', 'stop-color':'#6f4fa8'}));
+  const defs = el('defs', {});
+  defs.appendChild(grad);
+  heroSvg.appendChild(defs);
+
+  const paths = [];
+  starts.forEach((s, i) => {
+    const ctrl = {x: (s.x+dest.x)/2, y: s.y + (i%2===0 ? -70 : 70) + (i-2.5)*10};
+    const d = `M${s.x} ${s.y} Q ${ctrl.x} ${ctrl.y}, ${dest.x} ${dest.y}`;
+    const path = el('path', {d, fill:'none', stroke:'url(#heroGrad)', 'stroke-width':1, opacity:0.4});
+    heroSvg.appendChild(path);
+    paths.push({s, ctrl, dest});
+  });
+
+  heroSvg.appendChild(el('circle', {cx:dest.x, cy:dest.y, r:14, fill:'#a1477e', opacity:0.9}));
+  heroSvg.appendChild(el('circle', {cx:dest.x, cy:dest.y, r:24, fill:'none', stroke:'#a1477e', 'stroke-width':0.7, opacity:0.4}));
+  const destLabel = el('text', {x:dest.x, y:dest.y+42, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e', 'letter-spacing':'0.06em'});
+  destLabel.textContent = 'OVERWINTERING SITE';
+  heroSvg.appendChild(destLabel);
+
+  function butterflySVG(cx, cy, scale, rot, c1, c2){
+    const g = el('g', {transform:`translate(${cx},${cy}) rotate(${rot}) scale(${scale})`});
+    g.appendChild(el('path', {d:"M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z", fill:c1}));
+    g.appendChild(el('path', {d:"M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z", fill:c1}));
+    g.appendChild(el('path', {d:"M0 0 C -8 10, -16 22, -10 30 C -4 36, 5 28, 0 0 Z", fill:c2, opacity:0.9}));
+    g.appendChild(el('path', {d:"M0 0 C 8 10, 16 22, 10 30 C 4 36, -5 28, 0 0 Z", fill:c2, opacity:0.9}));
+    g.appendChild(el('line', {x1:0,y1:0,x2:0,y2:10, stroke:'#6b4a5a', 'stroke-width':1.4}));
+    return g;
+  }
+
+  const flyers = paths.map((p, i) => {
+    const g = butterflySVG(p.s.x, p.s.y, 0.5, 0, i%2===0 ? '#e8a9be' : '#c3b3e0', i%2===0 ? '#d17b9c' : '#8b76b3');
+    heroSvg.appendChild(g);
+    return {g, offset: Math.random(), speed: 0.15 + Math.random()*0.08, path: p};
+  });
+
+  let heroT = 0;
+  function animateHero(){
+    heroT += 0.008;
+    flyers.forEach(f => {
+      const t = (heroT * f.speed + f.offset) % 1;
+      const pos = bezier(f.path.s, f.path.ctrl, f.path.dest, t);
+      const posAhead = bezier(f.path.s, f.path.ctrl, f.path.dest, Math.min(1, t+0.01));
+      const angle = Math.atan2(posAhead.y - pos.y, posAhead.x - pos.x) * 180 / Math.PI;
+      const scale = 0.4 + t*0.35;
+      f.g.setAttribute('transform', `translate(${pos.x},${pos.y}) rotate(${angle}) scale(${scale})`);
+      f.g.style.opacity = 0.5 + t*0.5;
+    });
+    requestAnimationFrame(animateHero);
+  }
+  animateHero();
+
+  /* ================= FIGURE 2: draggable Fréchet mean demo ================= */
+  const meanSvg = document.getElementById('meanSvg');
+  const curveSlider = document.getElementById('curveSlider');
+  const showGeoCheckbox = document.getElementById('showGeo');
+  const statGap = document.getElementById('statGap');
+  const statCost = document.getElementById('statCost');
+
+  const W2 = 700, H2 = 380;
+  const obstacle = {x: 350, y: 190};
+
+  let points = [
+    {x: 160, y: 120},
+    {x: 520, y: 110},
+    {x: 340, y: 300}
+  ];
+  let dragIdx = null;
+
+  function curvature(){ return (+curveSlider.value) / 100 * 3.2; }
+
+  function warpAt(px, py){
+    const dx = px - obstacle.x, dy = py - obstacle.y;
+    const d2 = dx*dx + dy*dy;
+    const sigma2 = 90*90;
+    return 1 + curvature() * Math.exp(-d2 / sigma2);
+  }
+
+  function curvedDist2(ax, ay, bx, by){
+    const mx = (ax+bx)/2, my = (ay+by)/2;
+    const w = warpAt(mx, my);
+    const dx = ax-bx, dy = ay-by;
+    return (dx*dx + dy*dy) * w * w;
+  }
+
+  function totalCost(x, y){
+    let s = 0;
+    points.forEach(p => s += curvedDist2(x, y, p.x, p.y));
+    return s;
+  }
+
+  function frechetMean(){
+    let x = points.reduce((a,p)=>a+p.x,0)/points.length;
+    let y = points.reduce((a,p)=>a+p.y,0)/points.length;
+    const h = 0.5;
+    for (let iter = 0; iter < 120; iter++){
+      const c0 = totalCost(x,y);
+      const gx = (totalCost(x+h,y) - c0) / h;
+      const gy = (totalCost(x,y+h) - c0) / h;
+      const lr = 0.02;
+      x -= lr * gx;
+      y -= lr * gy;
+    }
+    return {x, y};
+  }
+
+  function arithMean(){
+    return {
+      x: points.reduce((a,p)=>a+p.x,0)/points.length,
+      y: points.reduce((a,p)=>a+p.y,0)/points.length
+    };
+  }
+
+  function curvedPath(p0, p1){
+    const mx = (p0.x+p1.x)/2, my = (p0.y+p1.y)/2;
+    const dx = obstacle.x - mx, dy = obstacle.y - my;
+    const dist = Math.hypot(dx,dy);
+    const push = Math.min(60, curvature()*22);
+    let nx = 0, ny = 0;
+    if (dist > 1){ nx = -dy/dist; ny = dx/dist; }
+    const bendSign = ((p0.x - obstacle.x) * (p1.y - obstacle.y) - (p0.y - obstacle.y)*(p1.x - obstacle.x)) > 0 ? 1 : -1;
+    const cx = mx + nx * push * bendSign;
+    const cy = my + ny * push * bendSign;
+    return `M${p0.x} ${p0.y} Q ${cx} ${cy}, ${p1.x} ${p1.y}`;
+  }
+
+  function drawMeanFigure(){
+    clear(meanSvg);
+
+    // obstacle field visualization
+    const gradId = 'obsGrad';
+    const defs = el('defs', {});
+    const rg = el('radialGradient', {id:gradId, cx:'50%', cy:'50%', r:'50%'});
+    rg.appendChild(el('stop', {offset:'0%', 'stop-color':'#7552B7', 'stop-opacity': Math.min(0.5, curvature()*0.16)}));
+    rg.appendChild(el('stop', {offset:'100%', 'stop-color':'#7552B7', 'stop-opacity':'0'}));
+    defs.appendChild(rg);
+    meanSvg.appendChild(defs);
+    meanSvg.appendChild(el('circle', {cx:obstacle.x, cy:obstacle.y, r:130, fill:`url(#${gradId})`}));
+    meanSvg.appendChild(el('circle', {cx:obstacle.x, cy:obstacle.y, r:4, fill:'#7552B7', opacity:0.35}));
+
+    const aMean = arithMean();
+    const fMean = frechetMean();
+
+    // connecting lines/curves
+    const showGeo = showGeoCheckbox.checked;
+    points.forEach(p => {
+      if (showGeo){
+        meanSvg.appendChild(el('path', {d: curvedPath(p, fMean), stroke:'#a1477e', 'stroke-width':1.1, fill:'none', opacity:0.5}));
+        meanSvg.appendChild(el('line', {x1:p.x, y1:p.y, x2:aMean.x, y2:aMean.y, stroke:'#6b5296', 'stroke-width':1, 'stroke-dasharray':'3 4', opacity:0.4}));
+      }
+    });
+
+    // arithmetic mean marker
+    meanSvg.appendChild(el('circle', {cx:aMean.x, cy:aMean.y, r:9, fill:'#6b5296', opacity:0.9}));
+    // frechet mean marker
+    meanSvg.appendChild(el('circle', {cx:fMean.x, cy:fMean.y, r:9, fill:'#a1477e', opacity:0.95}));
+    meanSvg.appendChild(el('circle', {cx:fMean.x, cy:fMean.y, r:16, fill:'none', stroke:'#a1477e', 'stroke-width':0.8, opacity:0.5}));
+
+    // draggable points
+    points.forEach((p, i) => {
+      const c = el('circle', {cx:p.x, cy:p.y, r:12, fill:'#c14a72', stroke:'#fff', 'stroke-width':2, style:'cursor:grab'});
+      c.dataset.idx = i;
+      meanSvg.appendChild(c);
+    });
+
+    // stats
+    const gap = Math.hypot(aMean.x-fMean.x, aMean.y-fMean.y);
+    statGap.textContent = gap.toFixed(1) + ' px';
+    const costA = totalCost(aMean.x, aMean.y);
+    const costF = totalCost(fMean.x, fMean.y);
+    const improvement = costA > 0 ? Math.round((1 - costF/costA)*100) : 0;
+    statCost.textContent = improvement + '%';
+  }
+
+  meanSvg.addEventListener('pointerdown', (e) => {
+    const rect = meanSvg.getBoundingClientRect();
+    const scaleX = W2 / rect.width, scaleY = H2 / rect.height;
+    const mx = (e.clientX - rect.left) * scaleX;
+    const my = (e.clientY - rect.top) * scaleY;
+    let closest = -1, closestD = 26;
+    points.forEach((p,i) => {
+      const d = Math.hypot(p.x-mx, p.y-my);
+      if (d < closestD){ closestD = d; closest = i; }
+    });
+    if (closest >= 0){ dragIdx = closest; meanSvg.setPointerCapture(e.pointerId); }
+  });
+  meanSvg.addEventListener('pointermove', (e) => {
+    if (dragIdx === null) return;
+    const rect = meanSvg.getBoundingClientRect();
+    const scaleX = W2 / rect.width, scaleY = H2 / rect.height;
+    const mx = (e.clientX - rect.left) * scaleX;
+    const my = (e.clientY - rect.top) * scaleY;
+    points[dragIdx].x = Math.max(20, Math.min(W2-20, mx));
+    points[dragIdx].y = Math.max(20, Math.min(H2-20, my));
+    drawMeanFigure();
+  });
+  meanSvg.addEventListener('pointerup', () => { dragIdx = null; });
+  meanSvg.addEventListener('pointerleave', () => { dragIdx = null; });
+
+  curveSlider.addEventListener('input', drawMeanFigure);
+  showGeoCheckbox.addEventListener('change', drawMeanFigure);
+
+  drawMeanFigure();
+
+  /* ================= FIGURE 3: toggle compare ================= */
+  const compareSvg = document.getElementById('compareSvg');
+  const btnArith = document.getElementById('btnArith');
+  const btnFrechet = document.getElementById('btnFrechet');
+  const compareCap = document.getElementById('compareCap');
+
+  const cPoints = [{x:120,y:230},{x:350,y:80},{x:560,y:220},{x:300,y:250}];
+  const cObstacle = {x:340, y:170};
+
+  function drawCompare(mode){
+    clear(compareSvg);
+    const defs = el('defs', {});
+    const rg = el('radialGradient', {id:'cObsGrad', cx:'50%', cy:'50%', r:'50%'});
+    rg.appendChild(el('stop', {offset:'0%', 'stop-color':'#7552B7', 'stop-opacity':'0.4'}));
+    rg.appendChild(el('stop', {offset:'100%', 'stop-color':'#7552B7', 'stop-opacity':'0'}));
+    defs.appendChild(rg);
+    compareSvg.appendChild(defs);
+    compareSvg.appendChild(el('circle', {cx:cObstacle.x, cy:cObstacle.y, r:110, fill:'url(#cObsGrad)'}));
+
+    let meanPt;
+    if (mode === 'arith'){
+      meanPt = {
+        x: cPoints.reduce((a,p)=>a+p.x,0)/cPoints.length,
+        y: cPoints.reduce((a,p)=>a+p.y,0)/cPoints.length
+      };
+      cPoints.forEach(p => {
+        compareSvg.appendChild(el('line', {x1:p.x,y1:p.y,x2:meanPt.x,y2:meanPt.y, stroke:'#6b5296', 'stroke-width':1.3, opacity:0.55}));
+      });
+      compareSvg.appendChild(el('circle', {cx:meanPt.x, cy:meanPt.y, r:11, fill:'#6b5296'}));
+    } else {
+      // approximate frechet by pulling mean away from obstacle
+      let mx = cPoints.reduce((a,p)=>a+p.x,0)/cPoints.length;
+      let my = cPoints.reduce((a,p)=>a+p.y,0)/cPoints.length;
+      const dx = mx - cObstacle.x, dy = my - cObstacle.y;
+      const dist = Math.hypot(dx,dy) || 1;
+      mx += (dx/dist) * 55;
+      my += (dy/dist) * 55;
+      meanPt = {x:mx, y:my};
+      cPoints.forEach(p => {
+        const midx = (p.x+meanPt.x)/2, midy = (p.y+meanPt.y)/2;
+        const odx = cObstacle.x - midx, ody = cObstacle.y - midy;
+        const odist = Math.hypot(odx,ody) || 1;
+        const nx = -ody/odist, ny = odx/odist;
+        const bend = 40;
+        const cx = midx + nx*bend, cy = midy + ny*bend;
+        compareSvg.appendChild(el('path', {d:`M${p.x} ${p.y} Q ${cx} ${cy}, ${meanPt.x} ${meanPt.y}`, fill:'none', stroke:'#a1477e', 'stroke-width':1.4, opacity:0.6}));
+      });
+      compareSvg.appendChild(el('circle', {cx:meanPt.x, cy:meanPt.y, r:11, fill:'#a1477e'}));
+      compareSvg.appendChild(el('circle', {cx:meanPt.x, cy:meanPt.y, r:19, fill:'none', stroke:'#a1477e', 'stroke-width':0.8, opacity:0.5}));
+    }
+
+    cPoints.forEach(p => {
+      compareSvg.appendChild(el('circle', {cx:p.x, cy:p.y, r:9, fill:'#c14a72', stroke:'#fff', 'stroke-width':1.6}));
+    });
+  }
+
+  btnArith.addEventListener('click', () => {
+    btnArith.classList.add('active'); btnFrechet.classList.remove('active');
+    compareCap.textContent = "Treats every checkpoint as a point in flat Euclidean space — fast, and wrong whenever the geometry is curved.";
+    drawCompare('arith');
+  });
+  btnFrechet.addEventListener('click', () => {
+    btnFrechet.classList.add('active'); btnArith.classList.remove('active');
+    compareCap.textContent = "Routes around the curvature and lands on the point that actually minimizes distance to every checkpoint — the Fréchet mean.";
+    drawCompare('frechet');
+  });
+
+  drawCompare('arith');
+})();
+</script>
+
+</body>
+</html>
