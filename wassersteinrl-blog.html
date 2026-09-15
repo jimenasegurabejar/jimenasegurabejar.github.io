@@ -1,1 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Schrödinger Bridge Actually Looks Like — Jimena Segura</title>
+<meta name="description" content="Turn entropy regularization up and a deterministic transport map slowly becomes a noisy, spreading bridge. That single slider is most of the geometric story behind WassersteinRL's convergence guarantees under asynchronous, heterogeneous compute.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#FBF1F3; --bg-deep:#F5E1E7; --ink:#3a3a3a; --ink-soft:#757575;
+    --rose:#df91bb; --rose-deep:#b94d91; --purple:#7552b7; --purple-deep:#56358f; --line:#eadcf0;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:
+      radial-gradient(circle at 82% 8%, rgba(244,198,220,0.32), transparent 34%),
+      radial-gradient(circle at 12% 26%, rgba(248,209,226,0.3), transparent 36%),
+      radial-gradient(circle at 92% 64%, rgba(241,182,208,0.24), transparent 32%),
+      radial-gradient(circle at 8% 84%, rgba(250,214,230,0.3), transparent 38%),
+      radial-gradient(circle at 55% 45%, rgba(255,255,255,0.55), transparent 55%),
+      linear-gradient(170deg, #fdf3f6 0%, #fcf0f5 38%, #fbeef4 68%, #fcf1f5 100%);
+    color:var(--ink); font-family:'Cormorant Garamond', serif; line-height:1.75;
+  }
+  a{ color:var(--rose-deep); text-decoration:none; border-bottom:1px solid var(--rose); }
+  a:hover{ color:var(--purple-deep); border-color:var(--purple-deep); }
+  .wrap{ max-width:780px; margin:0 auto; padding:70px 28px 140px; }
+  .back-link{ display:inline-block; font-family:'Inter', sans-serif; font-size:13px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-soft); border-bottom:none; margin-bottom:40px; }
+  .back-link:hover{ color:var(--rose-deep); }
+  .meta{ font-family:'Inter', sans-serif; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:16px; }
+  h1{ font-weight:700; font-size:clamp(34px,6vw,50px); line-height:1.08; letter-spacing:-0.01em; margin-bottom:20px; color:var(--ink); }
+  .dek{ font-size:20px; font-style:italic; color:var(--ink-soft); margin-bottom:12px; line-height:1.55; }
+  h2{ font-weight:700; font-size:27px; margin:60px 0 18px; color:var(--ink); }
+  p{ font-size:18px; color:var(--ink); margin-bottom:20px; }
+  p.lead{ font-size:21px; }
+  .math{ font-style:italic; }
+  .cap{ font-family:'Inter', sans-serif; font-size:13px; color:var(--ink-soft); text-align:center; margin-top:14px; line-height:1.55; }
+
+  .hero-fig{ margin:36px 0 44px; border-radius:20px; overflow:hidden; background:linear-gradient(160deg, #fdf0f5, #f4ecfb); box-shadow:0 14px 36px rgba(117,82,183,0.12); }
+  .hero-fig svg{ width:100%; height:auto; display:block; }
+
+  .figure{ margin:40px 0; padding:26px 20px 22px; background:#ffffff; border:1px solid var(--line); border-radius:16px; box-shadow:0 10px 30px rgba(117,82,183,0.08); }
+  .figure svg{ width:100%; height:auto; display:block; }
+
+  .controls{ display:flex; align-items:center; justify-content:center; gap:16px; margin-top:18px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .controls label{ font-size:13px; font-weight:600; color:var(--ink-soft); letter-spacing:0.03em; }
+  .controls input[type="range"]{ width:190px; accent-color:var(--rose-deep); }
+  .badge{ display:inline-flex; align-items:center; justify-content:center; min-width:44px; height:26px; padding:0 8px; border-radius:999px; background:var(--rose-deep); color:#fff; font-size:12px; font-weight:700; font-family:'Inter',sans-serif; }
+
+  .toggle-row{ display:flex; justify-content:center; gap:10px; margin-bottom:6px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .toggle-btn{ font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px; border:1.4px solid var(--rose); background:transparent; color:var(--ink); cursor:pointer; transition:all .2s ease; }
+  .toggle-btn.active{ background:#f5c9dd; border-color:#f0b5cf; color:#a8447a; }
+
+  .stat-row{ display:flex; justify-content:center; gap:36px; margin-top:16px; flex-wrap:wrap; font-family:'Inter', sans-serif; }
+  .stat{ text-align:center; }
+  .stat .num{ font-family:'Cormorant Garamond', serif; font-weight:700; font-size:24px; color:var(--purple-deep); }
+  .stat .label{ font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); }
+
+  .play-btn{
+    font-family:'Inter', sans-serif; font-size:13px; font-weight:700; letter-spacing:0.03em;
+    color:#a8447a; background:#f5c9dd; border:1.4px solid #f0b5cf; border-radius:999px; padding:9px 22px;
+    cursor:pointer; transition:background .2s ease;
+  }
+  .play-btn:hover{ background:#f0b5cf; }
+
+  .pull-quote{ font-size:25px; font-weight:600; font-style:italic; color:var(--purple-deep); text-align:center; line-height:1.35; margin:54px 0; padding:0 16px; }
+  .bibtex-box{ background:#2b2530; color:#e9dcf2; border-radius:12px; padding:22px; font-family:'Courier New', monospace; font-size:13px; overflow-x:auto; line-height:1.6; margin-top:14px; }
+  hr.sep{ border:none; border-top:1px solid var(--line); margin:56px 0; }
+  footer{ font-family:'Inter', sans-serif; font-size:13px; color:var(--ink-soft); text-align:center; margin-top:36px; }
+
+  @media (max-width:640px){ .wrap{ padding:50px 20px 100px; } .pull-quote{ font-size:20px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="back-link" href="https://jimenasegurabejar.github.io/cortexdreams">← Back to Cortex Dreams</a>
+
+  <div class="meta">Cortex Dreams · Research Notes</div>
+  <h1>What a Schrödinger Bridge Actually Looks Like</h1>
+  <p class="dek">A transport map is a single deterministic answer to "where does this mass go?" A Schrödinger bridge is a whole distribution of plausible answers, controlled by one dial. Turn it below and watch the difference stop being abstract.</p>
+
+  <div class="hero-fig">
+    <svg id="heroSvg" viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+  <p class="cap">Eight training nodes, each sending a policy update along a stochastic bridge instead of a straight wire. The pulse never stops — that's the asynchronous part.</p>
+
+  <p class="lead">WassersteinRL's central move is to stop treating policy aggregation as "average the parameters" and start treating it as a Schrödinger bridge problem: find the most likely stochastic path connecting a distribution of local policies to a shared target, subject to an entropy budget.</p>
+
+  <p>The entropy budget is the part that's easy to state and hard to feel. So: feel it.</p>
+
+  <h2>Turn the entropy dial</h2>
+
+  <p>Below, particles are transported from a source distribution (left) to a target distribution (right). At entropy zero, this is a classic, deterministic optimal transport map — every particle takes the straightest path the assignment allows. As you raise entropy, the same two distributions are connected by a genuinely stochastic bridge: paths wobble, cross, and diffuse, exactly the way Schrödinger's original problem describes a cloud of Brownian particles conditioned on their start and end points.</p>
+
+  <div class="figure">
+    <svg id="bridgeSvg" viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="controls">
+      <label for="entropySlider">Entropy regularization</label>
+      <input type="range" id="entropySlider" min="0" max="100" value="0">
+      <span class="badge" id="entropyBadge">0.00</span>
+      <button class="play-btn" id="replayBtn">Replay transport</button>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="statSpread">0.0</div><div class="label">Path spread (σ)</div></div>
+      <div class="stat"><div class="num" id="statCross">0</div><div class="label">Path crossings</div></div>
+    </div>
+    <p class="cap">At zero entropy the map is a permutation — no two paths cross. Every crossing you see above a positive entropy value is the bridge admitting genuine uncertainty about which source feeds which target.</p>
+  </div>
+
+  <p>This matters for distributed training for a very specific reason: local policies from different nodes are never <em>exactly</em> the samples a deterministic map expects. They're noisy, asynchronous, and arrive at different times. A rigid transport map has no way to say "I'm not sure, but probably here." A Schrödinger bridge does — the entropy term is precisely a calibrated admission of that uncertainty, and it's what makes the convergence guarantees survive real heterogeneity instead of only working in the noiseless case in a paper's appendix.</p>
+
+  <div class="pull-quote">Zero entropy gives you the single best guess. A well-chosen entropy budget gives you a guess you can trust under noise.</div>
+
+  <h2>Synchronous vs. asynchronous aggregation</h2>
+
+  <p>The second thing worth seeing directly: what happens to naive parameter averaging when nodes don't report in at the same time, versus what happens to bridge-based aggregation under the same delays.</p>
+
+  <div class="figure">
+    <div class="toggle-row">
+      <button class="toggle-btn active" id="btnSync">Synchronous (ideal)</button>
+      <button class="toggle-btn" id="btnAsync">Asynchronous (real)</button>
+    </div>
+    <svg id="asyncSvg" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p class="cap" id="asyncCap">All eight nodes report at once. Averaging is fine here — there's no staleness to account for.</p>
+  </div>
+
+  <h2>Where this leaves the theory</h2>
+
+  <p>None of this replaces the convergence proofs — it's meant to make the object the proofs are about something you've actually watched move. The entropy dial above is, almost literally, the regularization parameter that appears in WassersteinRL's convergence bound: too low, and the bridge is brittle under real asynchrony; too high, and it converges to something too diffuse to be a useful policy at all. The interesting regime, and the one the paper spends most of its pages on, is the narrow band in between where the bridge is exactly informative enough.</p>
+
+  <hr class="sep">
+
+  <h2>BibTeX</h2>
+  <div class="bibtex-box">@article{segura2026wassersteinrl,
+  title   = {WassersteinRL: A Geometric Theory of Distributed Policy Optimisation via Schrödinger Bridges},
+  author  = {Segura, Jimena},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</div>
+
+  <footer>
+    Part of <a href="https://jimenasegurabejar.github.io/cortexdreams">Cortex Dreams</a> — research notes by Jimena Segura.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function clear(node){ while(node.firstChild) node.removeChild(node.firstChild); }
+
+  /* ================= HERO: pulsing distributed nodes ================= */
+  const heroSvg = document.getElementById('heroSvg');
+  const center = {x:390, y:150};
+  const nodeCount = 8;
+  const nodes = [];
+  for (let i=0;i<nodeCount;i++){
+    const ang = (i/nodeCount) * 2*Math.PI;
+    const r = 125;
+    nodes.push({x: center.x + r*Math.cos(ang), y: center.y + r*Math.sin(ang)*0.62, ang});
+  }
+
+  const defs1 = el('defs',{});
+  const g1 = el('radialGradient', {id:'centerGlow', cx:'50%', cy:'50%', r:'50%'});
+  g1.appendChild(el('stop', {offset:'0%', 'stop-color':'#ffffff', 'stop-opacity':'0.95'}));
+  g1.appendChild(el('stop', {offset:'45%', 'stop-color':'#c9679a', 'stop-opacity':'0.4'}));
+  g1.appendChild(el('stop', {offset:'100%', 'stop-color':'#c9679a', 'stop-opacity':'0'}));
+  defs1.appendChild(g1);
+  heroSvg.appendChild(defs1);
+  heroSvg.appendChild(el('circle', {cx:center.x, cy:center.y, r:60, fill:'url(#centerGlow)'}));
+
+  const bridgeLines = [];
+  nodes.forEach((n,i) => {
+    const bow = 18 * Math.sin(i*1.7);
+    const mx = (n.x+center.x)/2, my = (n.y+center.y)/2 + bow;
+    const path = el('path', {d:`M${n.x} ${n.y} Q ${mx} ${my}, ${center.x} ${center.y}`, fill:'none', stroke:'#b98fc9', 'stroke-width':1, opacity:0.35});
+    heroSvg.appendChild(path);
+    bridgeLines.push(path);
+  });
+
+  heroSvg.appendChild(el('circle', {cx:center.x, cy:center.y, r:8, fill:'#a1477e'}));
+  const aggLabel = el('text', {x:center.x, y:center.y+30, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':10, fill:'#8a7a8e', 'letter-spacing':'0.06em'});
+  aggLabel.textContent = 'AGGREGATED POLICY';
+  heroSvg.appendChild(aggLabel);
+
+  const pulses = nodes.map((n,i) => {
+    const c = el('circle', {cx:n.x, cy:n.y, r:8, fill: i%2===0 ? '#c14a72':'#6b5296'});
+    heroSvg.appendChild(c);
+    const dot = el('circle', {r:4, fill:'#a1477e'});
+    heroSvg.appendChild(dot);
+    return {n, dot, offset: i/nodeCount, speed: 0.25 + (i%3)*0.05};
+  });
+
+  let heroT = 0;
+  function animateHero(){
+    heroT += 0.01;
+    pulses.forEach(p => {
+      const t = (heroT * p.speed + p.offset) % 1;
+      const bow = 18 * Math.sin(bridgeLines.indexOf === undefined ? 0 : 0);
+      const mx = (p.n.x+center.x)/2, my = (p.n.y+center.y)/2;
+      const x = (1-t)*(1-t)*p.n.x + 2*(1-t)*t*mx + t*t*center.x;
+      const y = (1-t)*(1-t)*p.n.y + 2*(1-t)*t*my + t*t*center.y;
+      p.dot.setAttribute('cx', x);
+      p.dot.setAttribute('cy', y);
+      p.dot.style.opacity = 0.3 + 0.7*Math.sin(t*Math.PI);
+    });
+    requestAnimationFrame(animateHero);
+  }
+  animateHero();
+
+  /* ================= BRIDGE FIGURE ================= */
+  const bridgeSvg = document.getElementById('bridgeSvg');
+  const entropySlider = document.getElementById('entropySlider');
+  const entropyBadge = document.getElementById('entropyBadge');
+  const statSpread = document.getElementById('statSpread');
+  const statCross = document.getElementById('statCross');
+  const replayBtn = document.getElementById('replayBtn');
+
+  const W = 700, H = 340;
+  const nParticles = 22;
+  const sourceX = 90, targetX = 610;
+  let seeds = [];
+  function makeSeeds(){
+    seeds = [];
+    for (let i=0;i<nParticles;i++){
+      seeds.push({
+        sy: 50 + (H-100) * (i/(nParticles-1)),
+        ty: 50 + (H-100) * ((i + (Math.floor(Math.random()*5)-2) + nParticles) % nParticles) / (nParticles-1),
+        wob1: (Math.random()-0.5)*2,
+        wob2: (Math.random()-0.5)*2,
+        phase: Math.random()*Math.PI*2
+      });
+    }
+  }
+  makeSeeds();
+
+  function pathFor(seed, entropy){
+    const pts = [];
+    const n = 24;
+    for (let i=0;i<=n;i++){
+      const t = i/n;
+      const baseX = sourceX + (targetX-sourceX)*t;
+      const baseY = seed.sy + (seed.ty-seed.sy)*t;
+      const envelope = Math.sin(t*Math.PI); // 0 at ends, 1 in middle
+      const wob = entropy * envelope * (seed.wob1*Math.sin(t*8+seed.phase) + seed.wob2*Math.sin(t*3+seed.phase*1.7)) * 26;
+      pts.push({x: baseX, y: baseY + wob});
+    }
+    return pts;
+  }
+
+  function ptsToPath(pts){
+    return "M" + pts.map(p=>`${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L");
+  }
+
+  function countCrossings(allPts){
+    // approximate: compare y-order at t=0.5 vs t=1 (source order vs target order)
+    const mid = allPts.map(pts => pts[Math.floor(pts.length/2)].y);
+    const end = allPts.map(pts => pts[pts.length-1].y);
+    let crossings = 0;
+    for (let i=0;i<mid.length;i++){
+      for (let j=i+1;j<mid.length;j++){
+        const a = (mid[i]-mid[j]);
+        const b = (end[i]-end[j]);
+        if (a*b < 0) crossings++;
+      }
+    }
+    return crossings;
+  }
+
+  function drawBridge(){
+    clear(bridgeSvg);
+    const entropy = (+entropySlider.value)/100;
+    entropyBadge.textContent = entropy.toFixed(2);
+
+    // distribution blobs
+    const defs = el('defs', {});
+    const gL = el('radialGradient', {id:'srcGlow', cx:'50%', cy:'50%', r:'50%'});
+    gL.appendChild(el('stop', {offset:'0%', 'stop-color':'#E86A8A', 'stop-opacity':'0.28'}));
+    gL.appendChild(el('stop', {offset:'100%', 'stop-color':'#E86A8A', 'stop-opacity':'0'}));
+    defs.appendChild(gL);
+    const gR = el('radialGradient', {id:'tgtGlow', cx:'50%', cy:'50%', r:'50%'});
+    gR.appendChild(el('stop', {offset:'0%', 'stop-color':'#7552B7', 'stop-opacity':'0.28'}));
+    gR.appendChild(el('stop', {offset:'100%', 'stop-color':'#7552B7', 'stop-opacity':'0'}));
+    defs.appendChild(gR);
+    bridgeSvg.appendChild(defs);
+    bridgeSvg.appendChild(el('ellipse', {cx:sourceX, cy:H/2, rx:80, ry:H/2-10, fill:'url(#srcGlow)'}));
+    bridgeSvg.appendChild(el('ellipse', {cx:targetX, cy:H/2, rx:80, ry:H/2-10, fill:'url(#tgtGlow)'}));
+
+    const allPts = seeds.map(s => pathFor(s, entropy));
+    allPts.forEach((pts, i) => {
+      const op = 0.25 + 0.35*(1-entropy);
+      bridgeSvg.appendChild(el('path', {d: ptsToPath(pts), fill:'none', stroke:'#b98fc9', 'stroke-width':1, opacity: op}));
+    });
+
+    seeds.forEach(s => {
+      bridgeSvg.appendChild(el('circle', {cx:sourceX, cy:s.sy, r:5, fill:'#c14a72', opacity:0.9}));
+      bridgeSvg.appendChild(el('circle', {cx:targetX, cy:s.ty, r:5, fill:'#6b5296', opacity:0.9}));
+    });
+
+    bridgeSvg.appendChild(el('text', {x:sourceX, y:24, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#b0507a', 'letter-spacing':'0.06em'})).textContent = 'SOURCE';
+    bridgeSvg.appendChild(el('text', {x:targetX, y:24, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#6f5aa0', 'letter-spacing':'0.06em'})).textContent = 'TARGET';
+
+    statSpread.textContent = (entropy*2.4).toFixed(2);
+    statCross.textContent = countCrossings(allPts);
+  }
+
+  entropySlider.addEventListener('input', drawBridge);
+  replayBtn.addEventListener('click', () => { makeSeeds(); drawBridge(); });
+  drawBridge();
+
+  /* ================= ASYNC COMPARISON ================= */
+  const asyncSvg = document.getElementById('asyncSvg');
+  const btnSync = document.getElementById('btnSync');
+  const btnAsync = document.getElementById('btnAsync');
+  const asyncCap = document.getElementById('asyncCap');
+
+  const nNodes = 8;
+  function drawAsync(mode){
+    clear(asyncSvg);
+    const W3 = 700, H3 = 260;
+    const rowH = (H3-40)/nNodes;
+    const lineEnd = 560;
+
+    for (let i=0;i<nNodes;i++){
+      const y = 30 + i*rowH + rowH/2;
+      asyncSvg.appendChild(el('line', {x1:60, y1:y, x2:lineEnd, y2:y, stroke:'#eadcf0', 'stroke-width':1}));
+
+      let reportX;
+      if (mode === 'sync'){
+        reportX = lineEnd;
+      } else {
+        const delay = (Math.sin(i*2.3)+1)/2; // 0..1
+        reportX = 300 + delay * (lineEnd-300);
+      }
+
+      asyncSvg.appendChild(el('circle', {cx:60, cy:y, r:5, fill: i%2===0 ? '#c14a72':'#6b5296'}));
+      asyncSvg.appendChild(el('line', {x1:60, y1:y, x2:reportX, y2:y, stroke: i%2===0 ? '#c14a72':'#6b5296', 'stroke-width':2, opacity:0.7}));
+      asyncSvg.appendChild(el('circle', {cx:reportX, cy:y, r:5, fill: i%2===0 ? '#c14a72':'#6b5296'}));
+    }
+
+    // aggregation marker
+    if (mode === 'sync'){
+      asyncSvg.appendChild(el('line', {x1:lineEnd, y1:20, x2:lineEnd, y2:H3-20, stroke:'#a1477e', 'stroke-width':2, 'stroke-dasharray':'4 4', opacity:0.7}));
+      const t = el('text', {x:lineEnd, y:14, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#a1477e'});
+      t.textContent = 'sync point';
+      asyncSvg.appendChild(t);
+    } else {
+      // bridge-based aggregation: a curved envelope showing it absorbs the spread
+      const pathTop = `M300 20 C 450 20, 500 20, ${lineEnd} 20`;
+      asyncSvg.appendChild(el('path', {d:`M300 15 C 420 15, 480 ${H3-15}, ${lineEnd} ${H3-15} L ${lineEnd} 15 Z`, fill:'#a1477e', opacity:0.08}));
+      const t = el('text', {x:(300+lineEnd)/2, y:14, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#a1477e'});
+      t.textContent = 'bridge absorbs staleness';
+      asyncSvg.appendChild(t);
+    }
+  }
+
+  btnSync.addEventListener('click', () => {
+    btnSync.classList.add('active'); btnAsync.classList.remove('active');
+    asyncCap.textContent = "All eight nodes report at once. Averaging is fine here — there's no staleness to account for.";
+    drawAsync('sync');
+  });
+  btnAsync.addEventListener('click', () => {
+    btnAsync.classList.add('active'); btnSync.classList.remove('active');
+    asyncCap.textContent = "Nodes report at different times. A fixed sync point either waits (wasting compute) or drops stale nodes (wasting information) — the bridge formulation treats arrival time itself as part of the uncertainty it's modeling.";
+    drawAsync('async');
+  });
+  drawAsync('sync');
+})();
+</script>
+
+</body>
+</html>
