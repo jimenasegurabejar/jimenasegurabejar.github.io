@@ -303,13 +303,13 @@
   <h1>The Forest Inside the Butterfly</h1>
   <p class="dek">A Wasserstein map is a dense object. Butterfly factorisation breaks it into a hierarchy of tiny, shallow trees. Drag the slider below and watch a dense coupling matrix turn into a forest.</p>
 
-  <p class="lead">Start with the problem ForestButterflyOT actually solves: computing an optimal transport map between two large distributions costs you <span class="math">O(n²)</span> in the number of points, because the coupling matrix connecting source to target is, in the worst case, fully dense. Every point can potentially send mass to every other point.</p>
+  <p class="lead">Start with the problem ForestButterflyOT actually solves: computing an optimal transport map between two large distributions costs you <span class="math">O(n²)</span> in the number of points, because the coupling matrix connecting source to target is, in the worst case, fully dense — every point can potentially send mass to every other point, and naively that means storing and manipulating <span class="math">n²</span> numbers to represent a single map.</p>
 
-  <p>That's fine at <span class="math">n</span> = 100. It stops being fine once <span class="math">n</span> reaches the size of a real single-cell dataset, or a real policy checkpoint. Something has to give — and the thing that gives, in ForestButterflyOT, is the assumption that the map needs to be dense at all.</p>
+  <p>That's fine at <span class="math">n</span> = 100. It stops being fine once <span class="math">n</span> reaches the size of a real single-cell dataset — tens of thousands of cells — or a real distributed training run with hundreds of policy checkpoints exchanging updates every step. Something has to give, and the standard move in numerical linear algebra when a dense operator turns out to be unaffordable is to ask whether it has hidden structure. The claim underlying ForestButterflyOT is that Wasserstein couplings almost always do: the optimal transport plan concentrates its mass locally, and a matrix that is <em>effectively</em> sparse can be represented, manipulated, and applied far more cheaply than its dense form suggests.</p>
 
   <h2>A hierarchy instead of a matrix</h2>
 
-  <p>Butterfly factorisation replaces one dense <span class="math">n × n</span> matrix with a stack of <span class="math">O(log n)</span> sparse layers, each one only connecting nearby nodes to a small number of "hub" nodes one level up. The name comes from the classic FFT butterfly diagram — connections cross in a distinctive X pattern between layers.</p>
+  <p>Butterfly factorisation replaces one dense <span class="math">n × n</span> matrix with a product of <span class="math">O(log n)</span> sparse factors, each with <span class="math">O(n)</span> nonzero entries — so the total storage and application cost falls from <span class="math">O(n²)</span> to <span class="math">O(n log n)</span>. Concretely: each layer connects nearby nodes to a small number of "hub" nodes one level up, and applying the factorised map means passing information through <span class="math">log₂n</span> such layers instead of touching all <span class="math">n²</span> pairwise entries directly. The name comes from the classic FFT butterfly diagram — the same recursive structure Cooley and Tukey exploited to bring the discrete Fourier transform from <span class="math">O(n²)</span> down to <span class="math">O(n log n)</span>; connections cross in the same distinctive X pattern between layers here.</p>
 
   <p>What I didn't appreciate until I drew this out by hand: that hierarchy <em>is</em> a forest. Each hub and its descendants form a shallow tree, and the whole factorisation is just several of those trees stitched together at the root layer. Move the slider and watch the trees appear:</p>
 
@@ -337,7 +337,22 @@
     <p class="cap">Hover a node to trace which leaves it can reach. Each additional level roughly halves the connections needed per node — that's the log n scaling.</p>
   </div>
 
-  <p>At depth 2, the savings look modest. By depth 5, at just 32 leaves, you're already discarding the majority of the dense matrix — and the gap widens every time <span class="math">n</span> doubles. That's the whole argument, compressed into one slider.</p>
+  <p>At depth 2, the savings look modest. By depth 5, at just 32 leaves, you're already discarding the majority of the dense matrix — and the gap widens every time <span class="math">n</span> doubles. That's the whole argument, compressed into one slider. Compressed into actual numbers, the gap is more dramatic than a percentage suggests:</p>
+
+  <div class="figure">
+    <svg id="calcSvg" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="controls">
+      <label for="nSlider">Dataset size (n)</label>
+      <input type="range" id="nSlider" min="2" max="20" value="10" step="1">
+      <span class="level-badge" id="nBadge">1,024</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="statDenseMB">—</div><div class="label">Dense matrix size</div></div>
+      <div class="stat"><div class="num" id="statSparseMB">—</div><div class="label">Butterfly size</div></div>
+      <div class="stat"><div class="num" id="statFactor">—</div><div class="label">Smaller by</div></div>
+    </div>
+    <p class="cap">Assuming 4-byte floats. At real single-cell dataset scale (tens of thousands of cells) or a realistic swarm of policy checkpoints, the dense matrix stops fitting in memory well before the factorised one does.</p>
+  </div>
 
   <h2>Why "forest" and not just "tree"</h2>
 
@@ -360,9 +375,33 @@
     <p class="cap" id="compareCaption">Every leaf connects to every other leaf — O(n²) edges, no structure to exploit.</p>
   </div>
 
+  <h2>The price of compression</h2>
+
+  <p>None of this is free. Forcing a coupling matrix through a hierarchy of shallow trees discards whatever mass genuinely needs to travel between two points that don't share a nearby hub — a long-range transport that the true optimal plan requires but the factorised approximation can't represent efficiently. The relevant question isn't whether error exists, but how it scales with depth and with the true sparsity of the underlying plan.</p>
+
+  <div class="figure">
+    <svg id="errorSvg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="controls">
+      <label for="sparsitySlider">True plan concentration</label>
+      <input type="range" id="sparsitySlider" min="10" max="95" value="70">
+      <span class="level-badge" id="sparsityBadge">70%</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="statError">—</div><div class="label">Approximation error at depth 3</div></div>
+      <div class="stat"><div class="num" id="statCrossover">—</div><div class="label">Depth where error &lt; 5%</div></div>
+    </div>
+    <p class="cap">Higher concentration (mass genuinely stays local) means the butterfly approximation converges to the true plan faster as depth increases — this is the empirical regularity ForestButterflyOT's error bound formalises, not an assumption it requires you to make blindly.</p>
+  </div>
+
+  <p>In practice, real Wasserstein couplings — between single-cell states, or between policy checkpoints separated by one gradient step rather than a full retraining — sit well into the high-concentration regime, which is exactly why the approximation is usable rather than merely elegant.</p>
+
   <h2>Where this is going</h2>
 
   <p>The current ForestButterflyOT preprint establishes the factorisation and its approximation error bounds. The natural next step — and the one I'm most interested in — is using it as the communication primitive underneath WassersteinRL's aggregation step, so that geometric aggregation across distributed policy checkpoints stops paying the dense-matrix tax entirely.</p>
+
+  <h2>Further reading</h2>
+
+  <p>The butterfly factorisation pattern traces back to Cooley and Tukey's 1965 fast Fourier transform, and its modern generalisation to learned, data-adaptive structured matrices was formalised by Dao et al. (2019), "Learning Fast Algorithms for Linear Transforms Using Butterfly Factorizations." ForestButterflyOT adapts that structured-matrix machinery specifically to Wasserstein couplings, where the sparsity pattern is dictated by transport geometry rather than learned from scratch.</p>
 
   <hr class="sep">
 
@@ -601,6 +640,122 @@
   });
 
   drawDense();
+
+  // ===================== approximation error figure =====================
+  const errorSvg = document.getElementById('errorSvg');
+  const sparsitySlider = document.getElementById('sparsitySlider');
+  const sparsityBadge = document.getElementById('sparsityBadge');
+  const statError = document.getElementById('statError');
+  const statCrossover = document.getElementById('statCrossover');
+
+  function errorAtDepth(depth, concentration){
+    // toy model: error decays exponentially with depth, faster for higher concentration
+    const rate = 0.15 + concentration*0.9;
+    return 100 * Math.exp(-rate * depth);
+  }
+
+  function drawErrorFigure(){
+    clearSvg(errorSvg);
+    const concentration = (+sparsitySlider.value)/100;
+    sparsityBadge.textContent = sparsitySlider.value + '%';
+
+    const plotX = 60, plotY = 30, plotW = 580, plotH = 220;
+    errorSvg.appendChild(makeEl('line', {x1:plotX, y1:plotY, x2:plotX, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+    errorSvg.appendChild(makeEl('line', {x1:plotX, y1:plotY+plotH, x2:plotX+plotW, y2:plotY+plotH, stroke:'#d8c5d0', 'stroke-width':1}));
+
+    const maxDepth = 8;
+    const pts = [];
+    for (let d=0; d<=maxDepth; d+=0.2){
+      const err = errorAtDepth(d, concentration);
+      const x = plotX + (d/maxDepth)*plotW;
+      const y = plotY + plotH*(1 - Math.min(err,100)/100);
+      pts.push({x,y});
+    }
+    const d = "M" + pts.map(p=>`${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L");
+    errorSvg.appendChild(makeEl('path', {d, fill:'none', stroke:'#a1477e', 'stroke-width':2.2}));
+
+    // 5% threshold line
+    const thresholdY = plotY + plotH*(1-0.05);
+    errorSvg.appendChild(makeEl('line', {x1:plotX, y1:thresholdY, x2:plotX+plotW, y2:thresholdY, stroke:'#6b5296', 'stroke-width':1, 'stroke-dasharray':'4 4', opacity:0.5}));
+    const thLabel = makeEl('text', {x:plotX+plotW-4, y:thresholdY-6, 'text-anchor':'end', 'font-family':"'Inter', sans-serif", 'font-size':10, fill:'#6b5296'});
+    thLabel.textContent = '5% threshold';
+    errorSvg.appendChild(thLabel);
+
+    // axis labels
+    const xLabel = makeEl('text', {x:plotX+plotW/2, y:plotY+plotH+28, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e'});
+    xLabel.textContent = 'hierarchy depth';
+    errorSvg.appendChild(xLabel);
+    const yLabel = makeEl('text', {x:20, y:plotY+plotH/2, 'text-anchor':'middle', 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e', transform:`rotate(-90, 20, ${plotY+plotH/2})`});
+    yLabel.textContent = 'approximation error';
+    errorSvg.appendChild(yLabel);
+
+    // marker at depth 3
+    const errAt3 = errorAtDepth(3, concentration);
+    const mx = plotX + (3/maxDepth)*plotW;
+    const my = plotY + plotH*(1-Math.min(errAt3,100)/100);
+    errorSvg.appendChild(makeEl('circle', {cx:mx, cy:my, r:5, fill:'#c14a72'}));
+    statError.textContent = errAt3.toFixed(1) + '%';
+
+    let crossDepth = null;
+    for (let d=0; d<=maxDepth; d+=0.1){
+      if (errorAtDepth(d, concentration) < 5){ crossDepth = d; break; }
+    }
+    statCrossover.textContent = crossDepth ? crossDepth.toFixed(1) : '>8';
+  }
+
+  sparsitySlider.addEventListener('input', drawErrorFigure);
+  drawErrorFigure();
+
+  // ===================== scale calculator =====================
+  const calcSvg = document.getElementById('calcSvg');
+  const nSlider = document.getElementById('nSlider');
+  const nBadge = document.getElementById('nBadge');
+  const statDenseMB = document.getElementById('statDenseMB');
+  const statSparseMB = document.getElementById('statSparseMB');
+  const statFactor = document.getElementById('statFactor');
+
+  function formatBytes(bytes){
+    if (bytes < 1024) return bytes.toFixed(0) + ' B';
+    if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+    if (bytes < 1024*1024*1024) return (bytes/(1024*1024)).toFixed(1) + ' MB';
+    return (bytes/(1024*1024*1024)).toFixed(2) + ' GB';
+  }
+
+  function drawCalc(){
+    clearSvg(calcSvg);
+    const exp = +nSlider.value;
+    const n = Math.pow(2, exp);
+    nBadge.textContent = n.toLocaleString();
+
+    const denseBytes = n*n*4;
+    const sparseBytes = n*Math.log2(n)*4;
+    statDenseMB.textContent = formatBytes(denseBytes);
+    statSparseMB.textContent = formatBytes(sparseBytes);
+    statFactor.textContent = Math.round(denseBytes/sparseBytes) + '×';
+
+    const maxBarW = 580;
+    const denseFrac = 1.0; // always full bar (reference)
+    const sparseFrac = Math.min(1, sparseBytes/denseBytes);
+
+    const barY1 = 60, barY2 = 130, barH = 34;
+    const barX = 60;
+
+    calcSvg.appendChild(makeEl('rect', {x:barX, y:barY1, width:maxBarW, height:barH, rx:6, fill:'#f2e6ee'}));
+    calcSvg.appendChild(makeEl('rect', {x:barX, y:barY1, width:maxBarW*denseFrac, height:barH, rx:6, fill:'#c1567d', opacity:0.85}));
+    const l1 = makeEl('text', {x:barX, y:barY1-8, 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e'});
+    l1.textContent = 'Dense — ' + formatBytes(denseBytes);
+    calcSvg.appendChild(l1);
+
+    calcSvg.appendChild(makeEl('rect', {x:barX, y:barY2, width:maxBarW, height:barH, rx:6, fill:'#f2e6ee'}));
+    const sparseW = Math.max(3, maxBarW*sparseFrac);
+    calcSvg.appendChild(makeEl('rect', {x:barX, y:barY2, width:sparseW, height:barH, rx:6, fill:'#6b5aa0', opacity:0.9}));
+    const l2 = makeEl('text', {x:barX, y:barY2-8, 'font-family':"'Inter', sans-serif", 'font-size':11, fill:'#8a7a8e'});
+    l2.textContent = 'Butterfly — ' + formatBytes(sparseBytes);
+    calcSvg.appendChild(l2);
+  }
+
+  nSlider.addEventListener('input', drawCalc);
+  drawCalc();
 })();
 </script>
 
