@@ -1406,6 +1406,90 @@
     </div><div class="card">
       <div class="card-preview"><svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" class="organoid-art" preserveAspectRatio="xMidYMid slice">
   <defs>
+    <filter id="agiBlur" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+    <radialGradient id="agiPink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E86A8A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#E86A8A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="agiPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7552B7" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7552B7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="agiSomaPink" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f3c2d3"/>
+      <stop offset="55%" stop-color="#c14a72"/>
+      <stop offset="100%" stop-color="#932b52"/>
+    </radialGradient>
+    <radialGradient id="agiSomaPurple" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#d9c9ef"/>
+      <stop offset="55%" stop-color="#6b5296"/>
+      <stop offset="100%" stop-color="#4a3670"/>
+    </radialGradient>
+    <linearGradient id="agiFlow" x1="0" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c9567f"/>
+      <stop offset="50%" stop-color="#b98fc9"/>
+      <stop offset="100%" stop-color="#6f4fa8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="440" fill="#fdf6f8"/>
+
+  <g filter="url(#agiBlur)">
+    <ellipse cx="90" cy="230" rx="110" ry="150" fill="url(#agiPink)"/>
+    <ellipse cx="300" cy="230" rx="130" ry="170" fill="url(#agiPurple)"/>
+    <ellipse cx="510" cy="230" rx="110" ry="150" fill="url(#agiPink)"/>
+  </g>
+
+  <g fill="none" stroke="url(#agiFlow)">
+      <path d="M90 120 C 195 134, 195 104, 300 90" opacity="0.18" stroke-width="0.6"/>
+<path d="M90 230 C 195 226, 195 86, 300 90" opacity="0.27" stroke-width="0.6"/>
+<path d="M90 230 C 195 227, 195 367, 300 370" opacity="0.22" stroke-width="0.6"/>
+<path d="M90 340 C 195 341, 195 176, 300 175" opacity="0.26" stroke-width="0.6"/>
+<path d="M90 340 C 195 326, 195 271, 300 285" opacity="0.19" stroke-width="0.6"/>
+      <path d="M300 90 C 405 100, 405 150, 510 140" opacity="0.16" stroke-width="0.6"/>
+<path d="M300 90 C 405 90, 405 230, 510 230" opacity="0.28" stroke-width="0.6"/>
+<path d="M300 90 C 405 98, 405 328, 510 320" opacity="0.22" stroke-width="0.6"/>
+<path d="M300 175 C 405 185, 405 150, 510 140" opacity="0.17" stroke-width="0.6"/>
+<path d="M300 175 C 405 171, 405 316, 510 320" opacity="0.18" stroke-width="0.6"/>
+<path d="M300 285 C 405 295, 405 150, 510 140" opacity="0.19" stroke-width="0.6"/>
+<path d="M300 285 C 405 283, 405 228, 510 230" opacity="0.2" stroke-width="0.6"/>
+<path d="M300 285 C 405 291, 405 326, 510 320" opacity="0.22" stroke-width="0.6"/>
+<path d="M300 370 C 405 373, 405 143, 510 140" opacity="0.17" stroke-width="0.6"/>
+  </g>
+
+  <g>
+      <circle cx="90" cy="120" r="12" fill="url(#agiSomaPink)"/>
+<circle cx="90" cy="230" r="12" fill="url(#agiSomaPink)"/>
+<circle cx="90" cy="340" r="12" fill="url(#agiSomaPink)"/>
+      <circle cx="300" cy="90" r="10" fill="url(#agiSomaPurple)"/>
+<circle cx="300" cy="175" r="10" fill="url(#agiSomaPurple)"/>
+<circle cx="300" cy="285" r="10" fill="url(#agiSomaPurple)"/>
+<circle cx="300" cy="370" r="10" fill="url(#agiSomaPurple)"/>
+      <circle cx="510" cy="140" r="12" fill="url(#agiSomaPink)"/>
+<circle cx="510" cy="230" r="12" fill="url(#agiSomaPink)"/>
+<circle cx="510" cy="320" r="12" fill="url(#agiSomaPink)"/>
+  </g>
+
+  <text x="300" y="42" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-weight="700" font-size="16" letter-spacing="2" fill="#5a4a5e">A BIOLOGICAL AGI</text>
+  <text x="300" y="64" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#8a7a8e">for cellular agriculture</text>
+
+</svg></div>
+      <div class="card-body">
+        <h3>Towards a Biological AGI for Cellular Agriculture</h3>
+        <span class="preprint">Cellular Agriculture · Foundational Model · Nature Communications</span>
+        <p>Add a short description of this project here.</p>
+        <div class="card-footer">
+          <a class="paper-pill" href="#">Website</a>
+          <a class="paper-pill" href="#">Paper</a>
+          <a class="paper-pill" href="#">Repository</a>
+          <a class="paper-pill" href="#">Article</a>
+        </div>
+      </div>
+    </div><div class="card">
+      <div class="card-preview"><svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" class="organoid-art" preserveAspectRatio="xMidYMid slice">
+  <defs>
     <filter id="ttBlur" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="22"/>
     </filter>
