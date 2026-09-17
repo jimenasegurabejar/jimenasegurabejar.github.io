@@ -134,8 +134,9 @@
     color:var(--ink);
     margin-bottom:50px;
   }
-  .scholar-link:hover{
-    color:var(--ink);
+  .scholar-link:hover,
+  .scholar-link:active{
+    color:var(--rose-deep);
   }
 
   .grid{
@@ -215,7 +216,7 @@
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:24px;
+    font-size:34px;
     margin-bottom:6px;
   }
   .card-body h3 em{
@@ -278,12 +279,15 @@
 
   .paper-pill{
     font-family:'Inter', sans-serif;
-    font-size:12.5px;
-    font-weight:600;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
     color:#fff;
     border:1.5px solid rgba(255,255,255,0.7);
-    border-radius:0;
-    padding:6px 16px;
+    border-radius:5px;
+    padding:7px 16px;
+    transition:background .2s ease;
   }
   .paper-pill:hover{
     background:rgba(255,255,255,0.15);
@@ -451,7 +455,7 @@
         <div class="card-footer">
           <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
-          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Repository</a>
           <a class="paper-pill" href="#">Dataset</a>
           <a class="paper-pill" href="#">Article</a>
         </div>
@@ -613,7 +617,7 @@
         <div class="card-footer">
           <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
-          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Repository</a>
           <a class="paper-pill" href="#">Dataset</a>
           <a class="paper-pill" href="https://jimenasegurabejar.github.io/forestbutterflyot-blog">Article</a>
         </div>
@@ -733,7 +737,7 @@
         <div class="card-footer">
           <a class="paper-pill" href="https://jimenasegurabejar.github.io/MonarchButterflyOT/">Website</a>
           <a class="paper-pill" href="#">Paper</a>
-          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Repository</a>
           <a class="paper-pill" href="#">Dataset</a>
           <a class="paper-pill" href="https://jimenasegurabejar.github.io/monarchbutterflyot-blog">Article</a>
         </div>
@@ -858,7 +862,7 @@
         <div class="card-footer">
           <a class="paper-pill" href="#">Website</a>
           <a class="paper-pill" href="#">Paper</a>
-          <a class="paper-pill" href="#">Code</a>
+          <a class="paper-pill" href="#">Repository</a>
           <a class="paper-pill" href="#">Dataset</a>
           <a class="paper-pill" href="https://jimenasegurabejar.github.io/wassersteinrl-blog">Article</a>
         </div>
@@ -1398,11 +1402,6 @@
         <h3>AI for Food Systems Research Internship</h3>
         <span class="preprint">Proxy Foods · AI Formulation · Food R&D</span>
         <p>Add a short description of this project here.</p>
-        <div class="card-footer">
-          <a class="paper-pill" href="#">Website</a>
-          <a class="paper-pill" href="#">Paper</a>
-          <a class="paper-pill" href="#">Article</a>
-        </div>
       </div>
     </div><div class="card">
       <div class="card-preview"><svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" class="organoid-art" preserveAspectRatio="xMidYMid slice">
