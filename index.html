@@ -585,17 +585,27 @@
       color:var(--ink-soft);
 
       margin-bottom:20px;
+
+      display:flex;
+
+      align-items:center;
+
+      flex-wrap:wrap;
     }
 
     .affiliations span{
-      margin:0 10px;
-
-      color:var(--ink);
+      display:flex;
+      align-items:center;
     }
 
-    .affiliations span:first-child{
-      margin-left:0;
+    .affiliations span:not(:last-child)::after{
+      content:"/";
+
+      margin:0 14px;
+
+      color:var(--rose);
     }
+
 
 
     /* =========================================================
@@ -2441,9 +2451,7 @@
       </h1>
 
       <p class="affiliations">
-        <span>add description</span> /
-        <span>add description</span> /
-        <span>add description</span>
+        <span>add description</span><span>add description</span><span>add description</span>
       </p>
 
     </div>
