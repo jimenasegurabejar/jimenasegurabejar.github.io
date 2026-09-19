@@ -45,7 +45,7 @@
     color:var(--ink-soft);
     margin-bottom:40px;
   }
-  .back-link:hover{ color:var(--rose-deep); }
+  .back-link:hover{ color:#7552b7; }
 
   h1{
     font-family:'Cormorant Garamond', serif;
@@ -74,7 +74,7 @@
   .card{
     border-radius:14px;
     overflow:hidden;
-    background:#1c1830;
+    background:var(--rose-card);
     box-shadow:0 10px 30px rgba(30,20,50,0.18);
     display:flex;
     flex-direction:column;
@@ -84,8 +84,8 @@
   }
   .card:hover{
     transform:translateY(-6px);
-    box-shadow:0 20px 44px rgba(117,82,183,0.28);
-    border-color:rgba(178,150,230,0.5);
+    box-shadow:0 20px 44px rgba(214,122,152,0.32);
+    border-color:rgba(233,169,196,0.7);
   }
 
   .card:active{
@@ -117,13 +117,13 @@
     font-size:12px;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:var(--rose);
+    color:#ffffff;
   }
 
   .card-body{
     padding:30px 32px 32px;
-    color:#e9e4f5;
-    background:#1c1830;
+    color:#ffffff;
+    background:var(--rose-card);
   }
 
   .card-body h3{
@@ -138,7 +138,7 @@
     font-style:italic;
     font-size:15px;
     font-weight:600;
-    color:#b39ce8;
+    color:#ffffff;
     opacity:1;
     margin-bottom:14px;
     display:block;
@@ -151,7 +151,7 @@
     font-family:'Inter', sans-serif;
     font-size:13px;
     font-weight:600;
-    color:#b8afd1;
+    color:rgba(255,255,255,0.85);
     margin-bottom:14px;
   }
 
@@ -167,13 +167,16 @@
     font-size:18px;
     line-height:1.6;
     letter-spacing:0.01em;
-    color:#d8d2ec;
+    color:#ffffff;
   }
 
   .card-body p em{
     font-style:italic;
-    color:#b39ce8;
-    font-weight:600;
+    color:#fdeef4;
+    font-weight:700;
+    text-decoration:underline;
+    text-decoration-color:rgba(255,255,255,0.6);
+    text-underline-offset:3px;
   }
 
   .card-footer{
@@ -188,7 +191,7 @@
     font-family:'Inter', sans-serif;
     font-size:14px;
     font-weight:600;
-    color:#b39ce8;
+    color:#ffffff;
     display:inline-flex;
     align-items:center;
     gap:6px;
@@ -196,7 +199,7 @@
   }
   .visit-link:hover{
     gap:10px;
-    color:#cbb8f5;
+    color:#ffffff;
   }
 
   .paper-pill{
@@ -205,15 +208,15 @@
     font-weight:700;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:#cbb8f5;
-    border:1.5px solid rgba(179,156,232,0.5);
+    color:#ffffff;
+    border:1.5px solid rgba(255,255,255,0.7);
     border-radius:999px;
     padding:7px 16px;
     transition:background .2s ease, border-color .2s ease;
   }
   .paper-pill:hover{
-    background:rgba(179,156,232,0.15);
-    border-color:rgba(179,156,232,0.9);
+    background:rgba(255,255,255,0.18);
+    border-color:#ffffff;
   }
 
   footer{
