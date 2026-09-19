@@ -253,6 +253,39 @@
     50%{ opacity: 0.25; }
   }
 
+  .flow-anim-line, .flow-anim-path{
+    animation: miniFlowDash 2.4s linear infinite;
+  }
+  @keyframes miniFlowDash{
+    to{ stroke-dashoffset: -80; }
+  }
+
+  .grid-shimmer rect{
+    animation: gridShimmer 3.6s ease-in-out infinite;
+  }
+  .grid-shimmer rect:nth-child(3n){ animation-delay:-0.4s; }
+  .grid-shimmer rect:nth-child(3n+1){ animation-delay:-0.9s; }
+  .grid-shimmer rect:nth-child(3n+2){ animation-delay:-1.5s; }
+  @keyframes gridShimmer{
+    0%, 100%{ opacity: 0.4; }
+    50%{ opacity: 1; }
+  }
+
+  .bar-grow{
+    transform-box: view-box;
+    transform-origin: 80px 0px;
+    animation: barGrow 3s ease-in-out infinite;
+  }
+  @keyframes barGrow{
+    0%, 100%{ transform: scaleX(0.82); }
+    50%{ transform: scaleX(1.06); }
+  }
+
+  .card:hover .flow-anim-line,
+  .card:hover .flow-anim-path{
+    animation-duration: 1.1s;
+  }
+
   .card-preview .organoid-art .butterfly-flutter{
     transform-box: fill-box;
     transform-origin: center;
@@ -1243,7 +1276,7 @@
     <ellipse cx="450" cy="220" rx="160" ry="180" fill="url(#srPurple)"/>
   </g>
   
-  <g><rect x="190" y="110" width="23" height="23" rx="4" fill="url(#srSomaPink)" opacity="0.72"/>
+  <g class="grid-shimmer"><rect x="190" y="110" width="23" height="23" rx="4" fill="url(#srSomaPink)" opacity="0.72"/>
 <rect x="216" y="110" width="23" height="23" rx="4" fill="url(#srSomaPurple)" opacity="0.61"/>
 <rect x="242" y="110" width="23" height="23" rx="4" fill="url(#srSomaPink)" opacity="0.42"/>
 <rect x="268" y="110" width="23" height="23" rx="4" fill="url(#srSomaPurple)" opacity="0.3"/>
@@ -1309,7 +1342,7 @@
 <rect x="372" y="292" width="23" height="23" rx="4" fill="url(#srSomaPink)" opacity="0.8"/></g>
   <text x="176" y="340" font-family="'Inter', sans-serif" font-size="10" fill="#b0507a" letter-spacing="0.05em">SOURCE STATES</text>
   <text x="390" y="96" text-anchor="end" font-family="'Inter', sans-serif" font-size="10" fill="#6f5aa0" letter-spacing="0.05em">GOAL DISTRIBUTION</text>
-  <path d="M160 358 C 270 328, 370 278, 438 80" fill="none" stroke="#a1477e" stroke-width="1.4" opacity="0.4" marker-end="none"/>
+  <path d="M160 358 C 270 328, 370 278, 438 80" fill="none" stroke="#a1477e" stroke-width="1.4" stroke-dasharray="6 6" opacity="0.4" marker-end="none" class="flow-anim-path"/>
 
   <text x="300" y="42" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-weight="700" font-size="15" letter-spacing="2" fill="#5a4a5e">SINKHORN REWARD SHAPING</text>
   <text x="300" y="64" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#8a7a8e">entropic OT coupling as a dense reward signal</text>
@@ -1355,20 +1388,20 @@
     <ellipse cx="450" cy="220" rx="160" ry="180" fill="url(#blPurple)"/>
   </g>
   
-  <g><line x1="151" y1="320" x2="172" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="194" y1="320" x2="172" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="236" y1="320" x2="258" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="279" y1="320" x2="258" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="321" y1="320" x2="342" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="364" y1="320" x2="342" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="406" y1="320" x2="428" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="449" y1="320" x2="428" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="172" y1="243" x2="215" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="258" y1="243" x2="215" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="342" y1="243" x2="385" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="428" y1="243" x2="385" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="215" y1="167" x2="300" y2="90" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/>
-<line x1="385" y1="167" x2="300" y2="90" stroke="#b98fc9" stroke-width="0.8" opacity="0.5"/></g>
+  <g class="flow-anim-line"><line x1="151" y1="320" x2="172" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="194" y1="320" x2="172" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="236" y1="320" x2="258" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="279" y1="320" x2="258" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="321" y1="320" x2="342" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="364" y1="320" x2="342" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="406" y1="320" x2="428" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="449" y1="320" x2="428" y2="243" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="172" y1="243" x2="215" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="258" y1="243" x2="215" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="342" y1="243" x2="385" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="428" y1="243" x2="385" y2="167" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="215" y1="167" x2="300" y2="90" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/>
+<line x1="385" y1="167" x2="300" y2="90" stroke="#b98fc9" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 4"/></g>
   <g><circle cx="151" cy="320" r="5" fill="url(#blSomaPink)" class="pulse-node"/>
 <circle cx="194" cy="320" r="5" fill="url(#blSomaPink)" class="pulse-node"/>
 <circle cx="236" cy="320" r="5" fill="url(#blSomaPink)" class="pulse-node"/>
@@ -1430,16 +1463,16 @@
     <ellipse cx="450" cy="220" rx="160" ry="180" fill="url(#jfPurple)"/>
   </g>
   
-  <g><path d="M144 220 L135 237 L121 247 L99 250 L85 238 L76 220 L80 202 L100 190 L120 193 L140 203 Z" fill="url(#jfSomaPink)" opacity="0.90"/>
-<path d="M150 220 Q 175.0 190, 204 210" fill="none" stroke="#a1477e" stroke-width="1.2" opacity="0.4" stroke-dasharray="4 4"/>
+  <g><path d="M144 220 L135 237 L121 247 L99 250 L85 238 L76 220 L80 202 L100 190 L120 193 L140 203 Z" fill="url(#jfSomaPink)" opacity="0.90" class="pulse-node"/>
+<path d="M150 220 Q 175.0 190, 204 210" fill="none" stroke="#a1477e" stroke-width="1.2" opacity="0.4" stroke-dasharray="4 4" class="flow-anim-path"/>
 <text x="110" y="272" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="#8a7a8e">t=0</text>
-<path d="M274 210 L264 230 L248 247 L230 240 L214 228 L214 210 L216 190 L229 182 L249 176 L262 188 Z" fill="url(#jfSomaPurple)" opacity="0.82"/>
-<path d="M276 210 Q 305.0 180, 338 225" fill="none" stroke="#a1477e" stroke-width="1.2" opacity="0.4" stroke-dasharray="4 4"/>
+<path d="M274 210 L264 230 L248 247 L230 240 L214 228 L214 210 L216 190 L229 182 L249 176 L262 188 Z" fill="url(#jfSomaPurple)" opacity="0.82" class="pulse-node"/>
+<path d="M276 210 Q 305.0 180, 338 225" fill="none" stroke="#a1477e" stroke-width="1.2" opacity="0.4" stroke-dasharray="4 4" class="flow-anim-path"/>
 <text x="240" y="266" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="#8a7a8e">t=1</text>
-<path d="M392 225 L395 243 L378 245 L364 248 L347 244 L340 225 L353 212 L362 196 L380 199 L389 213 Z" fill="url(#jfSomaPink)" opacity="0.74"/>
-<path d="M402 225 Q 435.0 195, 474 215" fill="none" stroke="#a1477e" stroke-width="1.2" opacity="0.4" stroke-dasharray="4 4"/>
+<path d="M392 225 L395 243 L378 245 L364 248 L347 244 L340 225 L353 212 L362 196 L380 199 L389 213 Z" fill="url(#jfSomaPink)" opacity="0.74" class="pulse-node"/>
+<path d="M402 225 Q 435.0 195, 474 215" fill="none" stroke="#a1477e" stroke-width="1.2" opacity="0.4" stroke-dasharray="4 4" class="flow-anim-path"/>
 <text x="370" y="273" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="#8a7a8e">t=2</text>
-<path d="M517 215 L513 223 L508 236 L494 238 L489 224 L477 215 L480 200 L495 198 L506 200 L521 200 Z" fill="url(#jfSomaPurple)" opacity="0.66"/>
+<path d="M517 215 L513 223 L508 236 L494 238 L489 224 L477 215 L480 200 L495 198 L506 200 L521 200 Z" fill="url(#jfSomaPurple)" opacity="0.66" class="pulse-node"/>
 <text x="500" y="257" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="#8a7a8e">t=3</text></g>
 
   <text x="300" y="42" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-weight="700" font-size="15" letter-spacing="2" fill="#5a4a5e">JKO-FLOW</text>
@@ -1488,27 +1521,27 @@
   
   <g><line x1="80" y1="100" x2="520" y2="100" stroke="#eadcf0" stroke-width="1"/>
 <circle cx="80" cy="100" r="6" fill="#c14a72" class="pulse-node"/>
-<line x1="80" y1="100" x2="458" y2="100" stroke="#c14a72" stroke-width="2.4" opacity="0.75"/>
+<line x1="80" y1="100" x2="458" y2="100" stroke="#c14a72" stroke-width="2.4" opacity="0.75" class="bar-grow" style="animation-delay:-0.0s;"/>
 <circle cx="458" cy="100" r="6" fill="#c14a72" class="pulse-node"/>
 <line x1="80" y1="135" x2="520" y2="135" stroke="#eadcf0" stroke-width="1"/>
 <circle cx="80" cy="135" r="6" fill="#6b5296" class="pulse-node"/>
-<line x1="80" y1="135" x2="381" y2="135" stroke="#6b5296" stroke-width="2.4" opacity="0.75"/>
+<line x1="80" y1="135" x2="381" y2="135" stroke="#6b5296" stroke-width="2.4" opacity="0.75" class="bar-grow" style="animation-delay:-0.3s;"/>
 <circle cx="381" cy="135" r="6" fill="#6b5296" class="pulse-node"/>
 <line x1="80" y1="170" x2="520" y2="170" stroke="#eadcf0" stroke-width="1"/>
 <circle cx="80" cy="170" r="6" fill="#c14a72" class="pulse-node"/>
-<line x1="80" y1="170" x2="291" y2="170" stroke="#c14a72" stroke-width="2.4" opacity="0.75"/>
+<line x1="80" y1="170" x2="291" y2="170" stroke="#c14a72" stroke-width="2.4" opacity="0.75" class="bar-grow" style="animation-delay:-0.6s;"/>
 <circle cx="291" cy="170" r="6" fill="#c14a72" class="pulse-node"/>
 <line x1="80" y1="205" x2="520" y2="205" stroke="#eadcf0" stroke-width="1"/>
 <circle cx="80" cy="205" r="6" fill="#6b5296" class="pulse-node"/>
-<line x1="80" y1="205" x2="292" y2="205" stroke="#6b5296" stroke-width="2.4" opacity="0.75"/>
+<line x1="80" y1="205" x2="292" y2="205" stroke="#6b5296" stroke-width="2.4" opacity="0.75" class="bar-grow" style="animation-delay:-0.9s;"/>
 <circle cx="292" cy="205" r="6" fill="#6b5296" class="pulse-node"/>
 <line x1="80" y1="240" x2="520" y2="240" stroke="#eadcf0" stroke-width="1"/>
 <circle cx="80" cy="240" r="6" fill="#c14a72" class="pulse-node"/>
-<line x1="80" y1="240" x2="335" y2="240" stroke="#c14a72" stroke-width="2.4" opacity="0.75"/>
+<line x1="80" y1="240" x2="335" y2="240" stroke="#c14a72" stroke-width="2.4" opacity="0.75" class="bar-grow" style="animation-delay:-1.2s;"/>
 <circle cx="335" cy="240" r="6" fill="#c14a72" class="pulse-node"/>
 <line x1="80" y1="275" x2="520" y2="275" stroke="#eadcf0" stroke-width="1"/>
 <circle cx="80" cy="275" r="6" fill="#6b5296" class="pulse-node"/>
-<line x1="80" y1="275" x2="462" y2="275" stroke="#6b5296" stroke-width="2.4" opacity="0.75"/>
+<line x1="80" y1="275" x2="462" y2="275" stroke="#6b5296" stroke-width="2.4" opacity="0.75" class="bar-grow" style="animation-delay:-1.5s;"/>
 <circle cx="462" cy="275" r="6" fill="#6b5296" class="pulse-node"/></g>
   <line x1="520" y1="80" x2="520" y2="320" stroke="#a1477e" stroke-width="1.4" stroke-dasharray="4 4" opacity="0.5"/>
   <text x="520" y="72" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="#a1477e">deadline</text>
