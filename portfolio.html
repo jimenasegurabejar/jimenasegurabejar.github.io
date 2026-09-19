@@ -152,6 +152,7 @@
     box-shadow:0 10px 30px rgba(214,122,152,0.18);
     display:flex;
     flex-direction:column;
+    height:100%;
     cursor:pointer;
     transition:transform .2s ease, box-shadow .2s ease;
   }
@@ -205,6 +206,10 @@
     background-size:300% 100%;
     animation:shimmerLight 7s ease-in-out infinite;
     transition:filter .25s ease;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-height:400px;
   }
 
   @keyframes shimmerLight{
@@ -356,7 +361,8 @@
     align-items:center;
     flex-wrap:wrap;
     gap:14px;
-    margin-top:20px;
+    margin-top:auto;
+    padding-top:20px;
   }
 
   .visit-link{
@@ -2196,6 +2202,5 @@
 <footer>
   © Copyright 2026 Jimena Segura.
 </footer>
-
 </body>
 </html>
