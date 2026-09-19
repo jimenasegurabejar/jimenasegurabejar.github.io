@@ -72,32 +72,29 @@
   }
 
   .card{
-    border-radius:0;
+    border-radius:14px;
     overflow:hidden;
-    background:var(--rose-card);
-    box-shadow:0 10px 30px rgba(214,122,152,0.18);
+    background:#1c1830;
+    box-shadow:0 10px 30px rgba(30,20,50,0.18);
     display:flex;
     flex-direction:column;
     cursor:pointer;
-    transition:transform .2s ease, box-shadow .2s ease;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    border:1px solid transparent;
   }
   .card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+    transform:translateY(-6px);
+    box-shadow:0 20px 44px rgba(117,82,183,0.28);
+    border-color:rgba(178,150,230,0.5);
   }
 
   .card:active{
-    transform:translateY(-1px) scale(0.99);
-  }
-
-  .card:active .card-body{
-    filter:brightness(1.32) saturate(1.4);
-    animation-duration:1.4s;
+    transform:translateY(-2px) scale(0.99);
   }
 
   .card-preview{
     background:#fff;
-    min-height:380px;
+    aspect-ratio:16/11;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -110,6 +107,10 @@
     object-fit:cover;
     object-position:center;
     display:block;
+    transition:transform .4s ease;
+  }
+  .card:hover .card-preview img{
+    transform:scale(1.04);
   }
   .card-preview .placeholder{
     font-family:'Inter', sans-serif;
@@ -120,41 +121,26 @@
   }
 
   .card-body{
-    padding:34px 34px 38px;
-    color:#fff;
-    background:linear-gradient(
-      90deg,
-      var(--rose-card) 0%,
-      #F6D9E7 25%,
-      var(--rose-card) 50%,
-      var(--rose-card) 100%
-    );
-    background-size:300% 100%;
-    animation:shimmerLight 7s ease-in-out infinite;
-    transition:filter .25s ease;
-  }
-
-  @keyframes shimmerLight{
-    0%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-    100%{ background-position:0% 50%; }
+    padding:30px 32px 32px;
+    color:#e9e4f5;
+    background:#1c1830;
   }
 
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:32px;
-    margin-bottom:8px;
+    font-size:28px;
+    margin-bottom:6px;
     color:#ffffff;
-    text-shadow:0 1px 3px rgba(0,0,0,0.15);
   }
 
   .card-body .tag{
-    font-style:normal;
-    font-size:18px;
-    color:#ffffff;
-    opacity:0.95;
-    margin-bottom:16px;
+    font-style:italic;
+    font-size:15px;
+    font-weight:600;
+    color:#b39ce8;
+    opacity:1;
+    margin-bottom:14px;
     display:block;
   }
 
@@ -163,10 +149,10 @@
     align-items:center;
     gap:6px;
     font-family:'Inter', sans-serif;
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
-    color:#fff;
-    margin-bottom:16px;
+    color:#b8afd1;
+    margin-bottom:14px;
   }
 
   .card-body .location svg{
@@ -178,11 +164,16 @@
   .card-body p{
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
-    font-size:21px;
+    font-size:18px;
     line-height:1.6;
     letter-spacing:0.01em;
-    color:#ffffff;
-    text-shadow:0 1px 2px rgba(0,0,0,0.12);
+    color:#d8d2ec;
+  }
+
+  .card-body p em{
+    font-style:italic;
+    color:#b39ce8;
+    font-weight:600;
   }
 
   .card-footer{
@@ -190,19 +181,23 @@
     flex-wrap:wrap;
     align-items:center;
     gap:16px;
-    margin-top:24px;
+    margin-top:22px;
   }
 
   .visit-link{
     font-family:'Inter', sans-serif;
     font-size:14px;
     font-weight:600;
-    color:#fff;
+    color:#b39ce8;
     display:inline-flex;
     align-items:center;
     gap:6px;
+    transition:gap .2s ease;
   }
-  .visit-link:hover{ opacity:0.85; }
+  .visit-link:hover{
+    gap:10px;
+    color:#cbb8f5;
+  }
 
   .paper-pill{
     font-family:'Inter', sans-serif;
@@ -210,14 +205,15 @@
     font-weight:700;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:#fff;
-    border:1.5px solid rgba(255,255,255,0.7);
-    border-radius:5px;
+    color:#cbb8f5;
+    border:1.5px solid rgba(179,156,232,0.5);
+    border-radius:999px;
     padding:7px 16px;
-    transition:background .2s ease;
+    transition:background .2s ease, border-color .2s ease;
   }
   .paper-pill:hover{
-    background:rgba(255,255,255,0.15);
+    background:rgba(179,156,232,0.15);
+    border-color:rgba(179,156,232,0.9);
   }
 
   footer{
@@ -254,9 +250,9 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
           Cambridge, United Kingdom
         </div>
-        <p>Biological Superintelligence for Cellular Agriculture.</p>
+        <p>Biological <em>Superintelligence</em> for Cellular Agriculture.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://athenei.com/" target="_blank" rel="noopener">Website</a>
+          <a class="visit-link" href="https://athenei.com/" target="_blank" rel="noopener">Visit site →</a>
           <a class="paper-pill" href="https://github.com/Athenei-Biosciences" target="_blank" rel="noopener">GitHub</a>
           <a class="paper-pill" href="https://athenei.com/#research" target="_blank" rel="noopener">Research</a>
         </div>
