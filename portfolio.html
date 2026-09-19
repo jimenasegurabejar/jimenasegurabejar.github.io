@@ -213,6 +213,19 @@
     100%{ background-position:0% 50%; }
   }
 
+  .card-preview .organoid-art .butterfly-flutter{
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: butterflyFlutter 2.4s ease-in-out infinite;
+  }
+
+  @keyframes butterflyFlutter{
+    0%, 100%{ transform: rotate(0deg) scale(1) translateY(0); }
+    25%{ transform: rotate(6deg) scale(1.06) translateY(-2px); }
+    50%{ transform: rotate(-4deg) scale(0.94) translateY(1px); }
+    75%{ transform: rotate(4deg) scale(1.03) translateY(-1px); }
+  }
+
   .card-body h3{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
@@ -528,25 +541,34 @@
   </g>
 
   <g><g transform="translate(160,200) rotate(-15) scale(0.7)" opacity="0.85">
+      <animateMotion path="M0,0 Q 18,-14 4,-30 Q -10,-16 0,0 Z" dur="7s" begin="-0.0s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0s;">
       <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#e8a9be" opacity="0.85"/>
       <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
       <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
       <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+      </g>
     </g>
 <g transform="translate(440,190) rotate(20) scale(0.6)" opacity="0.85">
+      <animateMotion path="M0,0 Q -20,-10 -8,-28 Q 12,-18 0,0 Z" dur="8.5s" begin="-0.4s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0.3s;">
       <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#c3b3e0" opacity="0.85"/>
       <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
       <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
       <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+      </g>
     </g>
 <g transform="translate(300,260) rotate(-8) scale(0.55)" opacity="0.85">
+      <animateMotion path="M0,0 Q 14,-20 -6,-32 Q -18,-10 0,0 Z" dur="6.5s" begin="-0.8s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0.6s;">
       <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#e8a9be" opacity="0.85"/>
       <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
       <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
       <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+      </g>
     </g></g>
 
   <g stroke="#a83a63" fill="none" stroke-linecap="round">
@@ -680,52 +702,70 @@
   <circle cx="500" cy="140" r="14" fill="url(#mSomaPurple)"/>
 
   <g><g transform="translate(132.0,292.35200000000003) rotate(-21.160300500228466) scale(0.47000000000000003)">
+      <animateMotion path="M0,0 Q -16,-18 2,-34 Q 16,-12 0,0 Z" dur="9s" begin="-1.2s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0.9s;">
       <path d="M0 0 C -16 -20, -34 -15, -29 3 C -24 18, -8 11, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C 16 -20, 34 -15, 29 3 C 24 18, 8 11, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C -9 11, -18 24, -11 33 C -4 40, 5 30, 0 0 Z" fill="#d17b9c" opacity="0.9"/>
       <path d="M0 0 C 9 11, 18 24, 11 33 C 4 40, -5 30, 0 0 Z" fill="#d17b9c" opacity="0.9"/>
       <line x1="0" y1="0" x2="0" y2="12" stroke="#6b4a5a" stroke-width="1.6"/>
       <circle cx="0" cy="0" r="2.2" fill="#6b4a5a"/>
+      </g>
     </g>
 <g transform="translate(200.0,241.25) rotate(-17.023549382212224) scale(0.5125)">
+      <animateMotion path="M0,0 Q 22,-8 6,-26 Q -14,-20 0,0 Z" dur="7.5s" begin="-1.6s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:1.2s;">
       <path d="M0 0 C -16 -20, -34 -15, -29 3 C -24 18, -8 11, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C 16 -20, 34 -15, 29 3 C 24 18, 8 11, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C -9 11, -18 24, -11 33 C -4 40, 5 30, 0 0 Z" fill="#d17b9c" opacity="0.9"/>
       <path d="M0 0 C 9 11, 18 24, 11 33 C 4 40, -5 30, 0 0 Z" fill="#d17b9c" opacity="0.9"/>
       <line x1="0" y1="0" x2="0" y2="12" stroke="#6b4a5a" stroke-width="1.6"/>
       <circle cx="0" cy="0" r="2.2" fill="#6b4a5a"/>
+      </g>
     </g>
 <g transform="translate(268.0,200.55200000000002) rotate(-19.031892463671987) scale(0.555)">
+      <animateMotion path="M0,0 Q -18,-16 -2,-30 Q 18,-14 0,0 Z" dur="8s" begin="-2.0s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:1.5s;">
       <path d="M0 0 C -16 -20, -34 -15, -29 3 C -24 18, -8 11, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C 16 -20, 34 -15, 29 3 C 24 18, 8 11, 0 0 Z" fill="#e8a9be"/>
       <path d="M0 0 C -9 11, -18 24, -11 33 C -4 40, 5 30, 0 0 Z" fill="#d17b9c" opacity="0.9"/>
       <path d="M0 0 C 9 11, 18 24, 11 33 C 4 40, -5 30, 0 0 Z" fill="#d17b9c" opacity="0.9"/>
       <line x1="0" y1="0" x2="0" y2="12" stroke="#6b4a5a" stroke-width="1.6"/>
       <circle cx="0" cy="0" r="2.2" fill="#6b4a5a"/>
+      </g>
     </g>
 <g transform="translate(332.0,171.752) rotate(1.0678493442605994) scale(0.595)">
+      <animateMotion path="M0,0 Q 18,-14 4,-30 Q -10,-16 0,0 Z" dur="7s" begin="-2.4s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0s;">
       <path d="M0 0 C -16 -20, -34 -15, -29 3 C -24 18, -8 11, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C 16 -20, 34 -15, 29 3 C 24 18, 8 11, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C -9 11, -18 24, -11 33 C -4 40, 5 30, 0 0 Z" fill="#8b76b3" opacity="0.9"/>
       <path d="M0 0 C 9 11, 18 24, 11 33 C 4 40, -5 30, 0 0 Z" fill="#8b76b3" opacity="0.9"/>
       <line x1="0" y1="0" x2="0" y2="12" stroke="#6b4a5a" stroke-width="1.6"/>
       <circle cx="0" cy="0" r="2.2" fill="#6b4a5a"/>
+      </g>
     </g>
 <g transform="translate(400.0,151.25) rotate(-6.0420966519938535) scale(0.6375)">
+      <animateMotion path="M0,0 Q -20,-10 -8,-28 Q 12,-18 0,0 Z" dur="8.5s" begin="-2.8s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0.3s;">
       <path d="M0 0 C -16 -20, -34 -15, -29 3 C -24 18, -8 11, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C 16 -20, 34 -15, 29 3 C 24 18, 8 11, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C -9 11, -18 24, -11 33 C -4 40, 5 30, 0 0 Z" fill="#8b76b3" opacity="0.9"/>
       <path d="M0 0 C 9 11, 18 24, 11 33 C 4 40, -5 30, 0 0 Z" fill="#8b76b3" opacity="0.9"/>
       <line x1="0" y1="0" x2="0" y2="12" stroke="#6b4a5a" stroke-width="1.6"/>
       <circle cx="0" cy="0" r="2.2" fill="#6b4a5a"/>
+      </g>
     </g>
 <g transform="translate(468.0,141.152) rotate(1.049839377607082) scale(0.68)">
+      <animateMotion path="M0,0 Q 14,-20 -6,-32 Q -18,-10 0,0 Z" dur="6.5s" begin="-3.2s" repeatCount="indefinite" rotate="0"/>
+      <g class="butterfly-flutter" style="animation-delay:0.6s;">
       <path d="M0 0 C -16 -20, -34 -15, -29 3 C -24 18, -8 11, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C 16 -20, 34 -15, 29 3 C 24 18, 8 11, 0 0 Z" fill="#c3b3e0"/>
       <path d="M0 0 C -9 11, -18 24, -11 33 C -4 40, 5 30, 0 0 Z" fill="#8b76b3" opacity="0.9"/>
       <path d="M0 0 C 9 11, 18 24, 11 33 C 4 40, -5 30, 0 0 Z" fill="#8b76b3" opacity="0.9"/>
       <line x1="0" y1="0" x2="0" y2="12" stroke="#6b4a5a" stroke-width="1.6"/>
       <circle cx="0" cy="0" r="2.2" fill="#6b4a5a"/>
+      </g>
     </g></g>
 
   <text x="105" y="368" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-weight="700" font-size="12" letter-spacing="2" fill="#b0507a">SOURCE</text>
@@ -938,46 +978,64 @@
 
   <g>
       <g transform="translate(110,120) scale(0.5)">
+        <animateMotion path="M0,0 Q -16,-18 2,-34 Q 16,-12 0,0 Z" dur="9s" begin="-3.6s" repeatCount="indefinite" rotate="0"/>
+        <g class="butterfly-flutter" style="animation-delay:0.9s;">
         <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#e8a9be"/>
         <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#e8a9be" opacity="0.85"/>
         <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
         <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
         <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+        </g>
       </g>
       <g transform="translate(90,230) scale(0.5)">
+        <animateMotion path="M0,0 Q 22,-8 6,-26 Q -14,-20 0,0 Z" dur="7.5s" begin="-4.0s" repeatCount="indefinite" rotate="0"/>
+        <g class="butterfly-flutter" style="animation-delay:1.2s;">
         <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#c3b3e0"/>
         <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#c3b3e0" opacity="0.85"/>
         <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
         <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
         <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+        </g>
       </g>
       <g transform="translate(110,340) scale(0.5)">
+        <animateMotion path="M0,0 Q -18,-16 -2,-30 Q 18,-14 0,0 Z" dur="8s" begin="-4.4s" repeatCount="indefinite" rotate="0"/>
+        <g class="butterfly-flutter" style="animation-delay:1.5s;">
         <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#e8a9be"/>
         <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#e8a9be" opacity="0.85"/>
         <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
         <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
         <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+        </g>
       </g>
       <g transform="translate(490,120) scale(0.5)">
+        <animateMotion path="M0,0 Q 18,-14 4,-30 Q -10,-16 0,0 Z" dur="7s" begin="-4.8s" repeatCount="indefinite" rotate="0"/>
+        <g class="butterfly-flutter" style="animation-delay:0s;">
         <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#c3b3e0"/>
         <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#c3b3e0" opacity="0.85"/>
         <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
         <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
         <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+        </g>
       </g>
       <g transform="translate(510,230) scale(0.5)">
+        <animateMotion path="M0,0 Q -20,-10 -8,-28 Q 12,-18 0,0 Z" dur="8.5s" begin="-5.2s" repeatCount="indefinite" rotate="0"/>
+        <g class="butterfly-flutter" style="animation-delay:0.3s;">
         <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#e8a9be"/>
         <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#e8a9be" opacity="0.85"/>
         <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
         <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#e8a9be" opacity="0.7"/>
         <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+        </g>
       </g>
       <g transform="translate(490,340) scale(0.5)">
+        <animateMotion path="M0,0 Q 14,-20 -6,-32 Q -18,-10 0,0 Z" dur="6.5s" begin="-5.6s" repeatCount="indefinite" rotate="0"/>
+        <g class="butterfly-flutter" style="animation-delay:0.6s;">
         <path d="M0 0 C -14 -18, -30 -14, -26 2 C -22 16, -8 10, 0 0 Z" fill="#c3b3e0"/>
         <path d="M0 0 C 14 -18, 30 -14, 26 2 C 22 16, 8 10, 0 0 Z" fill="#c3b3e0" opacity="0.85"/>
         <path d="M0 0 C -8 10, -16 22, -10 30 C -4 36, 4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
         <path d="M0 0 C 8 10, 16 22, 10 30 C 4 36, -4 28, 0 0 Z" fill="#c3b3e0" opacity="0.7"/>
         <line x1="0" y1="0" x2="0" y2="10" stroke="#6b4a5a" stroke-width="1.4"/>
+        </g>
       </g>
   </g>
 
