@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Featured — Jimena Segura</title>
+<link rel="icon" type="image/png" href="me.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF1F3;
+    --bg-deep: #F5E1E7;
+    --ink: #4A4750;
+    --ink-soft: #8B8790;
+    --rose: #EBA9C0;
+    --rose-deep: #D67A98;
+    --rose-card: #E9A9C4;
+    --line: #E8D3DC;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    line-height:1.7;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding:70px 40px 120px;
+  }
+
+  .back-link{
+    display:inline-block;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    margin-bottom:40px;
+  }
+  .back-link:hover{ color:#7552b7; }
+
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(50px, 8vw, 88px);
+    margin-bottom:12px;
+    color:var(--ink);
+    line-height:1.02;
+  }
+
+  .subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:22px;
+    color:#4a4a4a;
+    margin-bottom:50px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(380px, 1fr));
+    gap:40px;
+  }
+
+  .card{
+    border-radius:0;
+    overflow:hidden;
+    background:var(--rose-card);
+    box-shadow:0 10px 30px rgba(214,122,152,0.18);
+    display:flex;
+    flex-direction:column;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(214,122,152,0.26);
+  }
+
+  .card-image{
+    width:100%;
+    aspect-ratio:1 / 1;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .card-image .placeholder{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--rose);
+  }
+
+  .card-body{
+    padding:26px 26px 28px;
+    color:#fff;
+  }
+
+  .card-year{
+    font-family:'Times New Roman', Times, serif;
+    font-size:15px;
+    color:#fdeef4;
+    opacity:0.85;
+    margin-bottom:6px;
+    display:block;
+  }
+
+  .card-body h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:26px;
+    margin-bottom:10px;
+    color:#ffffff;
+  }
+
+  .card-body p{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-size:17px;
+    line-height:1.6;
+    color:#ffffff;
+  }
+
+  footer{
+    font-family:'Times New Roman', Times, serif;
+    font-weight:400;
+    padding:40px 0;
+    text-align:center;
+    font-size:16px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:640px){
+    .wrap{ padding:50px 24px 80px; }
+    .grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a class="back-link" href="index.html">Back</a>
+  <h1>Featured</h1>
+  <p class="subtitle">Press &amp; Recognition</p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-image">
+        <div class="placeholder">Add photo</div>
+      </div>
+      <div class="card-body">
+        <span class="card-year">2023</span>
+        <h3>From Fauna Fellowship</h3>
+        <p>Selected as a fellow of the From Fauna Fellowship, supporting work to advance cellular agriculture.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <div class="placeholder">Add photo</div>
+      </div>
+      <div class="card-body">
+        <span class="card-year">2023</span>
+        <h3>Malala Fund Article</h3>
+        <p>Add a short description of this feature here.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © Copyright 2026 Jimena Segura Béjar.
+</footer>
+
+</body>
+</html>
