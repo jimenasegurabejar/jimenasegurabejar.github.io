@@ -149,7 +149,8 @@
 
     .partner-highlight{
       font-weight:700;
-      color:#000000;
+      color:#4a4a4a;
+      text-shadow:0.4px 0 currentColor, -0.4px 0 currentColor;
     }
 
     .wrap{
@@ -566,6 +567,48 @@
       100%{
         transform:translate(0, 0) rotate(-8deg);
       }
+    }
+
+    .ot-float{
+      animation:otFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes otFloat{
+      0%, 100%{
+        transform:translateY(0);
+        opacity:1;
+      }
+      50%{
+        transform:translateY(-4px);
+        opacity:0.75;
+      }
+    }
+
+    .hero-art .pulse-node{
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: heroNodePulse 2.6s ease-in-out infinite;
+    }
+    @keyframes heroNodePulse{
+      0%, 100%{ transform: scale(1); }
+      50%{ transform: scale(1.18); }
+    }
+
+    .hero-art .glow-pulse{
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: heroGlowPulse 3.6s ease-in-out infinite;
+    }
+    @keyframes heroGlowPulse{
+      0%, 100%{ transform: scale(1); opacity: 0.85; }
+      50%{ transform: scale(1.1); opacity: 1; }
+    }
+
+    .hero-art .flow-anim path{
+      animation: heroFlowDash 3s linear infinite;
+    }
+    @keyframes heroFlowDash{
+      to{ stroke-dashoffset: -200; }
     }
 
 
@@ -1021,6 +1064,10 @@
 
     section.page .body-text p + p{
       margin-top:16px;
+    }
+
+    section.page .body-text a.partner-highlight{
+      color:#4a4a4a;
     }
 
     section.page .body-text a{
@@ -2248,9 +2295,9 @@
           <ellipse cx="720" cy="600" rx="150" ry="120" fill="url(#lavenderWash)"/>
         </g>
 
-        <circle cx="500" cy="360" r="130" fill="url(#centerGlow)"/>
+        <circle cx="500" cy="360" r="130" fill="url(#centerGlow)" class="glow-pulse"/>
 
-        <g fill="none" stroke="url(#flowGradient)" stroke-linecap="round">
+        <g fill="none" stroke="url(#flowGradient)" stroke-linecap="round" stroke-dasharray="8 10" class="flow-anim">
           <path d="M220 200 C 495 188, 495 179, 770 200" opacity="0.13" stroke-width="0.72"/>
           <path d="M220 200 C 475 322, 467 344, 750 390" opacity="0.27" stroke-width="0.66"/>
           <path d="M220 200 C 488 377, 503 359, 720 600" opacity="0.2" stroke-width="0.42"/>
@@ -2275,7 +2322,7 @@
           <path d="M500 360 C 603 486, 598 491, 720 600" opacity="0.25" stroke-width="0.57"/>
         </g>
 
-        <circle cx="500" cy="360" r="8" fill="#a1477e"/>
+        <circle cx="500" cy="360" r="8" fill="#a1477e" class="pulse-node"/>
         <circle cx="500" cy="360" r="15" fill="none" stroke="#a1477e" stroke-width="0.6" opacity="0.5"/>
 
         <g filter="url(#softBlur)">
@@ -2310,12 +2357,12 @@
         </g>
 
         <g>
-          <circle cx="110" cy="90" r="12" fill="url(#somaPink)"/>
-          <circle cx="220" cy="200" r="14" fill="url(#somaPink)"/>
-          <circle cx="90" cy="300" r="11" fill="url(#somaPink)"/>
-          <circle cx="240" cy="390" r="13" fill="url(#somaPink)"/>
-          <circle cx="130" cy="490" r="12" fill="url(#somaPink)"/>
-          <circle cx="270" cy="600" r="11" fill="url(#somaPink)"/>
+          <circle cx="110" cy="90" r="12" fill="url(#somaPink)" class="pulse-node"/>
+          <circle cx="220" cy="200" r="14" fill="url(#somaPink)" class="pulse-node"/>
+          <circle cx="90" cy="300" r="11" fill="url(#somaPink)" class="pulse-node"/>
+          <circle cx="240" cy="390" r="13" fill="url(#somaPink)" class="pulse-node"/>
+          <circle cx="130" cy="490" r="12" fill="url(#somaPink)" class="pulse-node"/>
+          <circle cx="270" cy="600" r="11" fill="url(#somaPink)" class="pulse-node"/>
         </g>
 
         <g filter="url(#softBlur)">
@@ -2350,12 +2397,12 @@
         </g>
 
         <g>
-          <circle cx="890" cy="90" r="12" fill="url(#somaPurple)"/>
-          <circle cx="770" cy="200" r="14" fill="url(#somaPurple)"/>
-          <circle cx="910" cy="300" r="11" fill="url(#somaPurple)"/>
-          <circle cx="750" cy="390" r="13" fill="url(#somaPurple)"/>
-          <circle cx="870" cy="490" r="12" fill="url(#somaPurple)"/>
-          <circle cx="720" cy="600" r="11" fill="url(#somaPurple)"/>
+          <circle cx="890" cy="90" r="12" fill="url(#somaPurple)" class="pulse-node"/>
+          <circle cx="770" cy="200" r="14" fill="url(#somaPurple)" class="pulse-node"/>
+          <circle cx="910" cy="300" r="11" fill="url(#somaPurple)" class="pulse-node"/>
+          <circle cx="750" cy="390" r="13" fill="url(#somaPurple)" class="pulse-node"/>
+          <circle cx="870" cy="490" r="12" fill="url(#somaPurple)" class="pulse-node"/>
+          <circle cx="720" cy="600" r="11" fill="url(#somaPurple)" class="pulse-node"/>
         </g>
 
         <g fill="#d98cae" opacity="0.7">
@@ -2389,6 +2436,7 @@
           font-size="22"
           letter-spacing="3"
           fill="#5a4a5e"
+          class="ot-float"
         >OPTIMAL TRANSPORT</text>
 
         <text
@@ -2398,6 +2446,8 @@
           font-style="italic"
           font-size="16"
           fill="#8a7a8e"
+          class="ot-float"
+          style="animation-delay:-0.6s;"
         >between probability distributions</text>
 
         <text
