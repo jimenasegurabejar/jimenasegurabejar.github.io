@@ -449,10 +449,11 @@
 
     .about-photo{
       display:block;
-      margin:0 auto 30px;
+      margin:0;
       border-radius:0;
       width:240px;
       height:240px;
+      flex:0 0 240px;
     }
 
     .main-picture{
@@ -1091,15 +1092,20 @@
        ========================================================= */
 
     #about .eyebrow{
-      font-size:clamp(
-        48px,
-        7vw,
-        68px
-      );
-
-      letter-spacing:0.04em;
-
+      font-size:15px;
+      font-weight:700;
+      letter-spacing:0.02em;
       color:var(--ink);
+      text-transform:none;
+      margin-bottom:20px;
+    }
+
+    .about-name{
+      font-family:'Cormorant Garamond', serif;
+      font-weight:700;
+      font-size:28px;
+      color:var(--ink);
+      margin-bottom:24px;
     }
 
     .about-title{
@@ -1122,18 +1128,31 @@
     }
 
     #about .wrap{
-      text-align:center;
+      text-align:left;
+    }
+
+    .about-flex{
+      display:flex;
+      gap:56px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+
+    .about-text{
+      flex:1 1 auto;
+      min-width:0;
     }
 
     #about .body-text{
-      margin-left:auto;
-      margin-right:auto;
+      margin-left:0;
+      margin-right:0;
+      max-width:none;
 
-      text-align:justify;
+      text-align:left;
     }
 
     #about .eyebrow{
-      text-align:center;
+      text-align:left;
     }
 
     .research-title{
@@ -1213,15 +1232,11 @@
 
       font-weight:700;
 
-      font-size:clamp(
-        48px,
-        7vw,
-        68px
-      );
+      font-size:28px;
 
       color:#000000;
 
-      text-align:center;
+      text-align:left;
 
       margin-top:44px;
     }
@@ -1229,7 +1244,7 @@
     .focus-list{
       max-width:680px;
 
-      margin:28px auto 0;
+      margin:28px 0 0;
 
       padding-left:26px;
 
@@ -2130,6 +2145,17 @@
 
     @media (max-width:860px){
 
+      .about-flex{
+        flex-direction:column-reverse;
+        gap:24px;
+      }
+
+      .about-photo{
+        width:160px;
+        height:160px;
+        flex:none;
+      }
+
       .nav-toggle-label{
         display:flex;
 
@@ -2462,67 +2488,77 @@
 
     <div class="wrap">
 
-      <img
-        class="profile-photo about-photo"
-        src="jimena.png"
-        alt="Jimena Segura"
-      >
+      <div class="about-flex">
 
-      <span class="eyebrow">
-        About
-      </span>
+        <div class="about-text">
 
-      <div class="body-text">
+          <h2 class="about-name">Jimena Segura Béjar</h2>
 
-        <p>
-          I'm an AI Researcher, authored four papers in geometric reinforcement
-          learning, spanning Wasserstein-based policy aggregation
-          and hierarchical optimal transport. My research sits at
-          the intersection of
-          <strong>optimal transport</strong>
-          and reinforcement learning, scaling Wasserstein-geometric
-          aggregation for decentralized training, and asking whether
-          Schrödinger-bridge aggregation, in place of parameter
-          averaging, unlocks emergent properties and cross-task
-          transfer in policies trained at frontier scale.
-          Currently, I'm creating <strong><a href="https://physisresearch.com" target="_blank" rel="noopener">Physis Research</a></strong>.
-        </p>
+          <span class="eyebrow">
+            About
+          </span>
 
-        <p>
-          Additionally, I'm the author of 4
-          <a
-            href="publications.html"
-            class="partner-highlight"
-          >
-            Foundational Models
-          </a>
-          in brain organoids and cellular agriculture published in <span class="partner-highlight">Nature Communications</span> & <span class="partner-highlight">Cell Press</span>,
-          and founder of <a href="https://athenei.com/" target="_blank" rel="noopener" class="partner-highlight">Athenei Biosciences</a>.
-        </p>
+          <div class="body-text">
 
-        <p>
-          Beyond this, I founded
-          <a
-            href="https://github.com/Imasion-org"
-            target="_blank"
-            rel="noopener"
-          >
-            Imasion
-          </a>
-          , a non-profit, working to democratize the next
-          generation of climate change education in Peru and the world, backed by
-          <span class="partner-highlight">MIT Solve</span>,
-          <span class="partner-highlight">UN Women</span>,
-          <span class="partner-highlight">Catalyst Now</span>,
-          <span class="partner-highlight">Malala Fund</span>,
-          <span class="partner-highlight">Earth Guardians</span>,
-          <span class="partner-highlight">Women Win</span>,
-          and others. It's the same conviction that runs through my
-          technical work: that decentralizing access, whether to
-          compute, to models, or to education, is what lets people
-          historically locked out of a field actually contribute
-          to it.
-        </p>
+            <p>
+              I'm an AI Researcher, authored four papers in geometric reinforcement
+              learning, spanning Wasserstein-based policy aggregation
+              and hierarchical optimal transport. My research sits at
+              the intersection of
+              <strong>optimal transport</strong>
+              and reinforcement learning, scaling Wasserstein-geometric
+              aggregation for decentralized training, and asking whether
+              Schrödinger-bridge aggregation, in place of parameter
+              averaging, unlocks emergent properties and cross-task
+              transfer in policies trained at frontier scale.
+              Currently, I'm creating <strong><a href="https://physisresearch.com" target="_blank" rel="noopener">Physis Research</a></strong>.
+            </p>
+
+            <p>
+              Additionally, I'm the author of 4
+              <a
+                href="publications.html"
+                class="partner-highlight"
+              >
+                Foundational Models
+              </a>
+              in brain organoids and cellular agriculture published in <span class="partner-highlight">Nature Communications</span> & <span class="partner-highlight">Cell Press</span>,
+              and founder of <a href="https://athenei.com/" target="_blank" rel="noopener" class="partner-highlight">Athenei Biosciences</a>.
+            </p>
+
+            <p>
+              Beyond this, I founded
+              <a
+                href="https://github.com/Imasion-org"
+                target="_blank"
+                rel="noopener"
+              >
+                Imasion
+              </a>
+              , a non-profit, working to democratize the next
+              generation of climate change education in Peru and the world, backed by
+              <span class="partner-highlight">MIT Solve</span>,
+              <span class="partner-highlight">UN Women</span>,
+              <span class="partner-highlight">Catalyst Now</span>,
+              <span class="partner-highlight">Malala Fund</span>,
+              <span class="partner-highlight">Earth Guardians</span>,
+              <span class="partner-highlight">Women Win</span>,
+              and others. It's the same conviction that runs through my
+              technical work: that decentralizing access, whether to
+              compute, to models, or to education, is what lets people
+              historically locked out of a field actually contribute
+              to it.
+            </p>
+
+          </div>
+
+        </div>
+
+        <img
+          class="profile-photo about-photo"
+          src="jimena.png"
+          alt="Jimena Segura"
+        >
 
       </div>
 
@@ -2557,6 +2593,7 @@
         </li>
 
       </ol>
+
 
     </div>
 
