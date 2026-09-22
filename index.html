@@ -278,19 +278,7 @@
        ========================================================= */
 
     #home{
-      min-height:100vh;
-
-      padding-top:300px;
-
-      position:relative;
-
-      display:flex;
-      align-items:flex-end;
-      justify-content:flex-start;
-
-      overflow:hidden;
-
-      background:#ffffff;
+      min-height:0;
     }
 
     .hero-art-wrap{
@@ -1127,6 +1115,10 @@
       color:var(--ink);
     }
 
+    #about{
+      padding-top:40px;
+    }
+
     #about .wrap{
       text-align:left;
     }
@@ -1148,7 +1140,7 @@
       margin-right:0;
       max-width:none;
 
-      text-align:left;
+      text-align:justify;
     }
 
     #about .eyebrow{
@@ -1300,17 +1292,16 @@
       margin-top:16px;
     }
 
-    section.page .body-text a.partner-highlight{
-      color:#4a4a4a;
-    }
-
     section.page .body-text a{
-      color:#262626;
-      font-weight:700;
+      color:var(--ink);
+      font-weight:400;
+      text-decoration:underline;
+      text-decoration-color:var(--ink-soft);
+      text-underline-offset:2px;
     }
 
     section.page .body-text a:hover{
-      color:var(--ink-soft);
+      color:var(--rose-deep);
     }
 
 
@@ -2276,15 +2267,7 @@
       }
 
       #home{
-        aspect-ratio:4 / 3;
-
-        min-height:auto;
-
-        height:auto;
-
-        padding-top:0;
-
-        overflow:hidden;
+        min-height:0;
       }
 
       .hero-art-wrap{
@@ -2457,33 +2440,15 @@
 
 
   <!-- =======================================================
-       HERO
-       ======================================================= -->
-
-  <section id="home">
-
-
-
-    <div class="hero-content">
-
-      <h1>
-        <span class="first-name-wrap">Jimena<img src="me.png" alt="" class="name-icon"></span> <span class="second-name-wrap"><img src="me.png" alt="" class="name-icon name-icon-left">Segura</span>
-      </h1>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =======================================================
        ABOUT
        ======================================================= -->
+
+  <div id="home"></div>
 
   <section
     id="about"
     class="page"
+    style="border-top:none;"
   >
 
     <div class="wrap">
@@ -2494,36 +2459,30 @@
 
           <h2 class="about-name">Jimena Segura Béjar</h2>
 
-          <span class="eyebrow">
-            About
-          </span>
-
           <div class="body-text">
 
             <p>
               I'm an AI Researcher, authored four papers in geometric reinforcement
               learning, spanning Wasserstein-based policy aggregation
               and hierarchical optimal transport. My research sits at
-              the intersection of
-              <strong>optimal transport</strong>
+              the intersection of optimal transport
               and reinforcement learning, scaling Wasserstein-geometric
               aggregation for decentralized training, and asking whether
               Schrödinger-bridge aggregation, in place of parameter
               averaging, unlocks emergent properties and cross-task
               transfer in policies trained at frontier scale.
-              Currently, I'm creating <strong><a href="https://physisresearch.com" target="_blank" rel="noopener">Physis Research</a></strong>.
+              Currently, I'm creating <a href="https://physisresearch.com" target="_blank" rel="noopener">Physis Research</a>.
             </p>
 
             <p>
               Additionally, I'm the author of 4
               <a
                 href="publications.html"
-                class="partner-highlight"
               >
                 Foundational Models
               </a>
-              in brain organoids and cellular agriculture published in <span class="partner-highlight">Nature Communications</span> & <span class="partner-highlight">Cell Press</span>,
-              and founder of <a href="https://athenei.com/" target="_blank" rel="noopener" class="partner-highlight">Athenei Biosciences</a>.
+              in brain organoids and cellular agriculture published in Nature Communications & Cell Press,
+              and founder of <a href="https://athenei.com/" target="_blank" rel="noopener">Athenei Biosciences</a>.
             </p>
 
             <p>
@@ -2537,12 +2496,7 @@
               </a>
               , a non-profit, working to democratize the next
               generation of climate change education in Peru and the world, backed by
-              <span class="partner-highlight">MIT Solve</span>,
-              <span class="partner-highlight">UN Women</span>,
-              <span class="partner-highlight">Catalyst Now</span>,
-              <span class="partner-highlight">Malala Fund</span>,
-              <span class="partner-highlight">Earth Guardians</span>,
-              <span class="partner-highlight">Women Win</span>,
+              MIT Solve, UN Women, Catalyst Now, Malala Fund, Earth Guardians, Women Win,
               and others. It's the same conviction that runs through my
               technical work: that decentralizing access, whether to
               compute, to models, or to education, is what lets people
@@ -2561,38 +2515,6 @@
         >
 
       </div>
-
-      <h3 class="about-subtitle">
-        Research Focus
-      </h3>
-
-      <ol class="focus-list">
-
-        <li>
-          <strong>Distributed policy optimization.</strong>
-          Aggregating policy updates as Schrödinger bridges instead
-          of Euclidean averages, with convergence guarantees under
-          asynchronous, heterogeneous compute.
-        </li>
-
-        <li>
-          <strong>Scalable optimal transport.</strong>
-          Hierarchical butterfly factorisation for tractable
-          Wasserstein maps, toward lower-bandwidth alternatives to
-          standard parameter synchronization.
-        </li>
-
-        <li>
-          <strong>Geometry of learning dynamics.</strong>
-          The JKO scheme as a variational lens on decentralized
-          aggregation, framed as gradient flow in Wasserstein space.
-        </li>
-
-        <li>
-          <strong>Foundational models for cellular agriculture and brain organoids.</strong>
-        </li>
-
-      </ol>
 
 
     </div>
@@ -2697,7 +2619,6 @@
     </div>
 
   </section>
-
 
 
   <!-- =======================================================
