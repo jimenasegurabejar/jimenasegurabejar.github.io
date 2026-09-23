@@ -15,7 +15,6 @@
   >
 
   <style>
-  <style>
 
     /* =========================================================
        COLOR SYSTEM — PURPLE + PINK
@@ -60,7 +59,39 @@
       margin:0;
       position:relative;
 
-      background:#ffffff;
+      background:
+        radial-gradient(
+          circle at 82% 8%,
+          rgba(244,198,220,0.55),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 12% 26%,
+          rgba(248,209,226,0.5),
+          transparent 36%
+        ),
+        radial-gradient(
+          circle at 92% 64%,
+          rgba(241,182,208,0.4),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 8% 84%,
+          rgba(250,214,230,0.5),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 55% 45%,
+          rgba(255,255,255,0.55),
+          transparent 55%
+        ),
+        linear-gradient(
+          170deg,
+          #fdeef4 0%,
+          #fce6ef 38%,
+          #fbe1ec 68%,
+          #fce7f0 100%
+        );
 
       color:var(--ink);
 
@@ -140,7 +171,13 @@
       text-align:center;
       max-width:100vw;
 
-      background:#ffffff;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,250,253,0.94),
+          rgba(255,250,253,0.72),
+          transparent
+        );
 
       backdrop-filter:blur(8px);
     }
@@ -709,11 +746,21 @@
 
       position:relative;
 
-      background:#ffffff;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.55),
+          rgba(250,243,255,0.42)
+        );
     }
 
     #news{
-      background:#ffffff;
+      background:
+        linear-gradient(
+          135deg,
+          #fdf2f5,
+          #fbe6ee
+        );
     }
 
     .news-deco{
@@ -732,7 +779,17 @@
     }
 
     section.page:nth-of-type(even){
-      background:#ffffff;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(223,145,187,0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(251,246,255,0.5),
+          rgba(255,248,252,0.4)
+        );
     }
 
 
@@ -879,12 +936,11 @@
 
     .pub-meta .meta-value a{
       color:var(--ink-soft);
-      border-bottom:1px solid var(--rose);
+      border-bottom:none;
     }
 
     .pub-meta .meta-value a:hover{
       color:var(--ink);
-      border-color:var(--purple-deep);
     }
 
     @media (max-width:640px){
@@ -1697,7 +1753,7 @@
 
       color:var(--rose-deep);
 
-      background:#ffffff;
+      background:var(--pink-soft);
 
       padding:5px 12px;
 
@@ -1755,7 +1811,7 @@
       width:24px;
       height:24px;
 
-      background:#ffffff;
+      background:var(--pink-soft);
 
       border-radius:50%;
 
@@ -1962,7 +2018,12 @@
       border-top:
         1px solid var(--line);
 
-      background:#ffffff;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(117,82,183,0.04),
+          rgba(223,145,187,0.08)
+        );
     }
 
     .footer-links{
@@ -2248,8 +2309,6 @@
       }
     }
 
-  </style>
-
 
     /* Companies page specific */
     .pub-page-header{
@@ -2398,20 +2457,6 @@
             <span class="pub-thumb-placeholder">Add image</span>
           </div>
           <div class="pub-body">
-            <h3>Physis Research</h3>
-            <p class="pub-venue">Venture · 2026</p>
-            <p class="pub-desc">Geometric Aggregation Research.</p>
-            <div class="pub-meta">
-              <span class="meta-label">website</span><span class="meta-value"><a href="https://physisresearch.com" target="_blank" rel="noopener">physisresearch.com</a></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card">
-          <div class="pub-thumb">
-            <span class="pub-thumb-placeholder">Add image</span>
-          </div>
-          <div class="pub-body">
             <h3>Athenei Biosciences</h3>
             <p class="pub-venue">Venture · Founded 2025 · Cambridge, UK</p>
             <p class="pub-desc">Biological Superintelligence for Cellular Agriculture.</p>
@@ -2427,6 +2472,447 @@
     </div>
   </section>
 
+
+
+  <!-- =======================================================
+       NEWS
+       ======================================================= -->
+
+  <section
+    id="news"
+    class="page"
+  >
+
+<div class="wrap">
+
+      <h2>
+        News
+      </h2>
+
+      <div class="news-scroll">
+
+        <div class="news-row">
+          <span class="news-date">Sep 19, 2026</span>
+          <p class="news-text">
+            Accepted into a fellowship! <span class="news-emoji">🎉</span>
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 04, 2026</span>
+          <p class="news-text">
+            News headline goes here — mention a
+            <a href="#" target="_blank" rel="noopener">linked project or update</a>
+            <span class="news-emoji">🆕</span>. A short description
+            of what happened.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 03, 2026</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">Another recent update</a>
+            <span class="news-emoji">📣</span> — one or two sentences
+            describing it.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 02, 2026</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A talk, event, or release</a>
+            <span class="news-emoji">📌</span> — a short note on what
+            it covers.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 01, 2026</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">Something to highlight</a>
+            <span class="news-emoji">✨</span> — a brief description
+            and why it matters.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Aug 23, 2026</span>
+          <p class="news-text">
+            News headline goes here — mention a
+            <a href="#" target="_blank" rel="noopener">linked project or event</a>
+            <span class="news-emoji">🔬</span>. Add a short description
+            of this update, and link out to anything relevant
+            by <strong>a deadline</strong> if there is one.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Aug 05, 2026</span>
+          <p class="news-text">
+            Received the <strong>1517 Fund</strong> grant! <span class="news-emoji">🎉</span>
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jul 24, 2026</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">Paper or project name</a>
+            <span class="news-emoji">🌀</span> is out! One or two
+            sentences describing what it is and why it matters.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jun 15, 2026</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">First release</a>
+            <span class="news-emoji">🧬</span> and
+            <a href="#" target="_blank" rel="noopener">second release</a>
+            <span class="news-emoji">📡</span> are out! A short
+            summary of both, written as one flowing sentence.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jun 06, 2026</span>
+          <p class="news-text">
+            Started a research internship at
+            <strong>Proxy Foods</strong> <span class="news-emoji">🍽️</span>.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Mar 30, 2026</span>
+          <p class="news-text">
+            New note or talk on
+            <a href="#" target="_blank" rel="noopener">a topic name</a>
+            — a brief description of the content and where to find it.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Feb 12, 2026</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">Another project name</a>
+            <span class="news-emoji">🧠</span> is out! A short summary
+            of the release and what problem it solves.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jan 08, 2026</span>
+          <p class="news-text">
+            Invited to speak at
+            <a href="#" target="_blank" rel="noopener">an event or conference name</a>
+            <span class="news-emoji">🎤</span> — a sentence on the topic
+            of the talk.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Dec 03, 2025</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A collaboration or fellowship</a>
+            <span class="news-emoji">🤝</span> announced — a short
+            description of what it involves.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Nov 19, 2025</span>
+          <p class="news-text">
+            New preprint on
+            <a href="#" target="_blank" rel="noopener">a research topic</a>
+            <span class="news-emoji">📄</span> — one sentence on the
+            main contribution.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Oct 09, 2025</span>
+          <p class="news-text">
+            Attended the <strong>Women in AI Breakfast</strong> by
+            PillarVC <span class="news-emoji">☕</span>.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Oct 08, 2025</span>
+          <p class="news-text">
+            Attended <strong>"From Bench to Breakthrough"</strong>,
+            an AI for Science Salon by PillarVC <span class="news-emoji">🔬</span>.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Oct 05, 2025</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A workshop or panel</a>
+            <span class="news-emoji">🗣️</span> — a sentence on what
+            was discussed and who else was involved.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Oct 01, 2025</span>
+          <p class="news-text">
+            Attended <strong>In Silico #002</strong>, a protein
+            structure seminar <span class="news-emoji">🧬</span>.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 14, 2025</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A grant or award</a>
+            <span class="news-emoji">🏆</span> received — a short
+            description of what it supports.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 02, 2025</span>
+          <p class="news-text">
+            Attended <strong>"Translating Discovery"</strong>,
+            an AI for Science Salon <span class="news-emoji">🔬</span>.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Aug 02, 2025</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">Codebase or dataset</a>
+            <span class="news-emoji">💾</span> released publicly — a
+            sentence on what it contains and how to use it.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jun 21, 2025</span>
+          <p class="news-text">
+            Joined
+            <a href="#" target="_blank" rel="noopener">a lab, fellowship, or program</a>
+            <span class="news-emoji">🌱</span> — a short note on the
+            focus of the work.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">May 09, 2025</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A blog post or newsletter issue</a>
+            <span class="news-emoji">✍️</span> — a sentence on what
+            it covers.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Apr 17, 2025</span>
+          <p class="news-text">
+            Accepted at
+            <a href="#" target="_blank" rel="noopener">a conference or venue name</a>
+            <span class="news-emoji">🎉</span> — a short note on the
+            paper and what it's about.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Mar 03, 2025</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">An interview or podcast appearance</a>
+            <span class="news-emoji">🎙️</span> — a sentence on the
+            topic discussed.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jan 28, 2025</span>
+          <p class="news-text">
+            Started
+            <a href="#" target="_blank" rel="noopener">a new project or venture name</a>
+            <span class="news-emoji">🚀</span> — a short description
+            of its goal.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Dec 11, 2024</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">An earlier milestone</a>
+            <span class="news-emoji">📍</span> — a sentence
+            summarizing it.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Oct 30, 2024</span>
+          <p class="news-text">
+            Gave a talk on
+            <a href="#" target="_blank" rel="noopener">a topic name</a>
+            <span class="news-emoji">📽️</span> — a sentence on the
+            venue and audience.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Sep 15, 2024</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A mentorship or advisory role</a>
+            <span class="news-emoji">🧭</span> — a short note on
+            what it involves.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Aug 03, 2024</span>
+          <p class="news-text">
+            Earliest entry — a short note on how this work or
+            organization started.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jun 14, 2024</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A residency or program name</a>
+            <span class="news-emoji">🏛️</span> — a short note on
+            what it focused on.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Apr 22, 2024</span>
+          <p class="news-text">
+            Published
+            <a href="#" target="_blank" rel="noopener">a report or whitepaper name</a>
+            <span class="news-emoji">📘</span> — a sentence on its
+            contents.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Feb 09, 2024</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A collaboration announcement</a>
+            <span class="news-emoji">🔗</span> — a short note on the
+            partner and the goal.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Dec 20, 2023</span>
+          <p class="news-text">
+            Founding entry — a short note on the origin of the lab
+            or organization.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Oct 05, 2023</span>
+          <p class="news-text">
+            Earliest note — a short line on what came before all
+            of this.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Aug 18, 2023</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">A workshop attended or organized</a>
+            <span class="news-emoji">🧩</span> — a short note on
+            what it was about.
+          </p>
+          <div class="news-buttons">
+            <a class="news-btn" href="#" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jun 02, 2023</span>
+          <p class="news-text">
+            <a href="#" target="_blank" rel="noopener">First public write-up</a>
+            <span class="news-emoji">🖋️</span> — a sentence on the
+            topic and where it was published.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Mar 15, 2023</span>
+          <p class="news-text">
+            Joined <strong>From Fauna</strong> as a Fellow <span class="news-emoji">🌱</span>.
+          </p>
+        </div>
+
+        <div class="news-row">
+          <span class="news-date">Jan 09, 2023</span>
+          <p class="news-text">
+            First line item — a short note on where this all
+            started.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
   <!-- =======================================================
