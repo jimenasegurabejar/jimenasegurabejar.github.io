@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking — Jimena Segura Béjar</title>
+<meta name="description" content="Talks, panels, and videos by Jimena Segura Béjar on optimal transport, distributed reinforcement learning, and cellular agriculture.">
+
+<link rel="icon" type="image/png" href="me.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#F7ECED; --bg-deep:#f3e2e3; --ink:#3a3a3a; --ink-soft:#757575;
+    --rose:#df91bb; --rose-deep:#b94d91; --purple:#7552b7; --purple-deep:#56358f;
+    --pink-soft:#f4c6dc; --line:#eadcf0;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    line-height:1.7;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; }
+
+  .wrap{ width:min(1180px, 92vw); margin:0 auto; padding:70px 0 120px; }
+
+  .back-link{
+    display:inline-block;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    margin-bottom:40px;
+  }
+  .back-link:hover{ color:var(--rose-deep); }
+
+  h1{
+    font-weight:700;
+    font-size:clamp(50px, 8vw, 88px);
+    margin-bottom:16px;
+    color:var(--ink);
+    line-height:1.02;
+  }
+
+  .intro-blurb{
+    max-width:640px;
+    font-size:19px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin-bottom:50px;
+  }
+
+  /* ===== YOUTUBE CARD ===== */
+  .youtube-card{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    flex-wrap:wrap;
+    padding:32px;
+    border-radius:16px;
+    background:linear-gradient(135deg, #fdeef4, #fbe1ec);
+    box-shadow:0 10px 30px rgba(117,82,183,0.10);
+    margin-bottom:60px;
+  }
+
+  .youtube-icon{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#e0335e;
+    flex-shrink:0;
+    box-shadow:0 4px 14px rgba(117,82,183,0.14);
+  }
+
+  .youtube-info h2{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:4px;
+    color:var(--ink);
+  }
+
+  .youtube-info p{
+    font-size:16px;
+    color:var(--ink-soft);
+  }
+
+  .youtube-btn{
+    margin-left:auto;
+    display:inline-block;
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    color:#fff;
+    background:var(--rose-deep);
+    padding:12px 26px;
+    border-radius:999px;
+    transition:background .2s ease;
+    white-space:nowrap;
+  }
+  .youtube-btn:hover{ background:var(--purple-deep); }
+
+  /* ===== TALKS LIST ===== */
+  h2.section-title{
+    font-size:clamp(32px, 5vw, 44px);
+    font-weight:700;
+    margin-bottom:30px;
+    color:var(--ink);
+  }
+
+  .entries{
+    max-width:820px;
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+  }
+
+  .entry{
+    border-left:1.5px solid var(--rose);
+    padding-left:22px;
+    transition:border-color .25s ease;
+  }
+  .entry:hover{ border-left-color:var(--purple); }
+
+  .entry .tag{
+    font-family:'Inter', sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  .entry h3{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:6px;
+    color:var(--ink);
+  }
+
+  .entry p{
+    font-size:16.5px;
+    color:var(--ink-soft);
+  }
+
+  .entry a.watch-link{
+    display:inline-block;
+    margin-top:10px;
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:var(--rose-deep);
+    border-bottom:1.4px solid var(--rose);
+    padding-bottom:1px;
+  }
+  .entry a.watch-link:hover{ color:var(--purple-deep); border-color:var(--purple-deep); }
+
+  @media (max-width:640px){
+    .wrap{ padding:50px 24px 80px; }
+    .youtube-card{ padding:24px; }
+    .youtube-btn{ margin-left:0; width:100%; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="back-link" href="index.html">Back</a>
+
+  <h1>Speaking</h1>
+  <p class="intro-blurb">Talks, panels, and video explainers on optimal transport, distributed reinforcement learning, and cellular agriculture.</p>
+
+  <div class="youtube-card">
+    <div class="youtube-icon">
+      <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/>
+      </svg>
+    </div>
+    <div class="youtube-info">
+      <h2>YouTube Channel</h2>
+      <p>Video explainers, talk recordings, and research notes.</p>
+    </div>
+    <a class="youtube-btn" href="https://www.youtube.com/@JimenaSeguraBejar" target="_blank" rel="noopener">Subscribe →</a>
+  </div>
+
+  <h2 class="section-title">Speaking and Invited Talks</h2>
+
+  <div class="entries">
+
+    <div class="entry">
+      <span class="tag">Talk</span>
+      <h3>Add a talk title here</h3>
+      <p>A short description of the talk, the venue, and the audience.</p>
+      <a class="watch-link" href="https://www.youtube.com/@JimenaSeguraBejar" target="_blank" rel="noopener">Watch on YouTube →</a>
+    </div>
+
+    <div class="entry">
+      <span class="tag">Panel</span>
+      <h3>Add a panel title here</h3>
+      <p>A short description of the panel, co-panelists, and the topic discussed.</p>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
