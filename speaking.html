@@ -58,6 +58,25 @@
     margin-bottom:26px;
   }
 
+  .speaker-cta{
+    display:inline-block;
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--rose-deep);
+    border:1.5px solid var(--rose);
+    border-radius:0;
+    padding:10px 24px;
+    margin-bottom:50px;
+    transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  .speaker-cta:hover{
+    background:var(--rose-deep);
+    color:#fff;
+    border-color:var(--rose-deep);
+  }
+
   .intro-blurb{
     max-width:640px;
     font-size:19px;
@@ -192,31 +211,9 @@
 
   <h1>Speaker</h1>
   <p class="roles-subtitle">Research Scientist &amp; Founder</p>
-  <p class="intro-blurb">Invited talks</p>
+  <p class="intro-blurb">Talks, panels, and video explainers.</p>
 
-  <a
-    href="https://jimenaseguraspeaker.com"
-    target="_blank"
-    rel="noopener"
-    style="display:inline-block; font-family:'Inter', sans-serif; font-size:14px; font-weight:700; letter-spacing:0.03em; color:#fff; background:var(--rose-deep); padding:14px 30px; border-radius:999px; margin-bottom:50px; transition:background .2s ease;"
-    onmouseover="this.style.background='#56358f'"
-    onmouseout="this.style.background='#b94d91'"
-  >
-    Visit jimenaseguraspeaker.com →
-  </a>
-
-  <div class="youtube-card">
-    <div class="youtube-icon">
-      <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
-        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/>
-      </svg>
-    </div>
-    <div class="youtube-info">
-      <h2>YouTube Channel</h2>
-      <p>Invited Talks, Panels, Research Presentations.</p>
-    </div>
-    <a class="youtube-btn" href="https://www.youtube.com/@JimenaSeguraBejar" target="_blank" rel="noopener">Subscribe →</a>
-  </div>
+  <a class="speaker-cta" href="https://jimenaseguraspeaker.com" target="_blank" rel="noopener">jimenaseguraspeaker.com</a>
 
   <h2 class="section-title">Invited Talks</h2>
 
@@ -238,6 +235,16 @@
   </div>
 
 </div>
+
+<footer style="text-align:center; padding:40px 0; border-top:1px solid var(--line); font-family:'Times New Roman', Times, serif; font-size:19px; color:var(--ink-soft);">
+  <a href="https://www.youtube.com/@JimenaSeguraBejar" target="_blank" rel="noopener" aria-label="YouTube" style="color:var(--ink-soft); display:inline-flex; margin-bottom:14px; transition:color .2s ease, transform .2s ease;" onmouseover="this.style.color='#b94d91'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#757575'; this.style.transform='translateY(0)'">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/>
+    </svg>
+  </a>
+  <br>
+  © Jimena Segura Béjar. All Rights Reserved.
+</footer>
 
 </body>
 </html>
