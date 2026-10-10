@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research & Projects — Jimena Segura</title>
+<title>Publications — Jimena Segura</title>
 <link rel="icon" type="image/png" href="me.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -264,15 +264,38 @@
     .wrap{ padding:50px 24px 80px; }
     .grid{ grid-template-columns:1fr; }
   }
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  margin-bottom:14px;
+}
+
+.icon-link{
+  color:var(--ink-soft);
+  display:inline-flex;
+  transition:color .2s ease, transform .2s ease;
+}
+
+.icon-link:hover{
+  color:var(--rose-deep);
+  transform:translateY(-2px);
+}
+
+footer{
+  text-align:center;
+}
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <a class="back-link" href="index.html">Back</a>
-  <h1>Research &amp; <span class="word-wrap">Projects<img src="me.png" alt="" class="name-icon"></span></h1>
+  <h1><span class="word-wrap">Publications<img src="me.png" alt="" class="name-icon"></span></h1>
   <p class="intro-blurb">Selected publications spanning Wasserstein geometry, reinforcement learning, distributed policy optimisation, and Schrödinger bridges, with a parallel thread in biological transport — organoid trajectory inference and foundational models for cellular agriculture.</p>
-  <a class="scholar-link" href="https://scholar.google.com/" target="_blank" rel="noopener">Complete list on Google Scholar</a>
+  <a class="scholar-link" href="https://scholar.google.com/citations?user=NRhphvgAAAAJ&hl=en&authuser=2">Complete list on Google Scholar</a>
 
   <div class="grid">
 
@@ -913,7 +936,7 @@
         <span class="preprint">Open Source · Bounty Contribution</span>
         <p>A lightweight, drop-in implementation of Schrödinger-bridge-based policy aggregation for decentralized training stacks — geometric aggregation on the Wasserstein manifold in place of naive parameter averaging.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="https://github.com/jimenasegurabejar">GitHub</a>
         </div>
       </div>
     </div>
@@ -1025,7 +1048,7 @@
         <span class="preprint">Open Source · Bounty Contribution</span>
         <p>An entropic optimal transport toolkit for reward shaping in reinforcement learning environments — using Sinkhorn distances to measure progress toward a goal distribution instead of hand-tuned reward heuristics.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="https://github.com/jimenasegurabejar">GitHub</a>
         </div>
       </div>
     </div>
@@ -1100,7 +1123,7 @@
         <span class="preprint">Open Source · Bounty Contribution</span>
         <p>A minimal, dependency-light implementation of hierarchical butterfly factorisation for computing Wasserstein maps at scale — designed to drop into existing large-scale training pipelines without the overhead of a full research codebase.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="https://github.com/jimenasegurabejar">GitHub</a>
         </div>
       </div>
     </div>
@@ -1156,7 +1179,7 @@
         <span class="preprint">Open Source · Bounty Contribution</span>
         <p>A reference implementation of JKO-scheme gradient flows for population-based training — treating a population of policies as a distribution evolving in Wasserstein space, one variational step at a time, rather than a fixed set of independent agents.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="https://github.com/jimenasegurabejar">GitHub</a>
         </div>
       </div>
     </div>
@@ -1228,7 +1251,7 @@
         <span class="preprint">Open Source · Bounty Contribution</span>
         <p>A simulated benchmark suite for testing distributed RL aggregation methods under realistic asynchronous, heterogeneous compute — variable node latency, staleness, and dropout — rather than the idealized synchronous setting most methods are evaluated on.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://github.com/jimenasegurabejar" target="_blank" rel="noopener">GitHub</a>
+          <a class="paper-pill" href="https://github.com/jimenasegurabejar">GitHub</a>
         </div>
       </div>
     </div>
@@ -2077,7 +2100,7 @@
         <span class="preprint">2021 – Now · Social Impact · AI for Climate Change Education</span>
         <p>Think Khan Academy or Code.org, but for climate change: a platform for kids, with kits, teacher training, and curricula that make climate education hands-on for underserved communities.</p>
         <div class="card-footer">
-          <a class="paper-pill" href="https://github.com/Imasion-org">GitHub</a>
+          <a class="paper-pill" href="https://github.com/Imasion">GitHub</a>
         </div>
       </div>
     </div>
@@ -2086,6 +2109,35 @@
 </div>
 
 <footer>
+
+  <div class="footer-links">
+    <a href="https://x.com/jimenasegurab" class="icon-link" aria-label="X">
+      <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+    <a href="https://github.com/jimenasegurabejar" class="icon-link" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
+        <path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.8 10.8.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.6A10.5 10.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/>
+      </svg>
+    </a>
+    <a href="https://scholar.google.com/citations?user=NRhphvgAAAAJ&hl=en&authuser=2" class="icon-link" aria-label="Google Scholar">
+      <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
+        <path d="M12 2L1 8l11 6 9-4.91V17h2V8L12 2zM5 13.18v4.36L12 21l7-3.46v-4.36L12 17l-7-3.82z"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/jimena-segura-bejar/" class="icon-link" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
+        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.11 20.45H3.56V9h3.55v11.45z"/>
+      </svg>
+    </a>
+    <a href="mailto:#" class="icon-link" aria-label="Email">
+      <svg viewBox="0 0 24 24" width="52" height="52" fill="currentColor">
+        <path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.3 7.3 6.1a.75.75 0 0 0 .96 0l7.3-6.1H4.2zM20 7.06l-6.87 5.73a2.25 2.25 0 0 1-2.87 0L3.4 7.06V18h16.6V7.06z"/>
+      </svg>
+    </a>
+  </div>
+
   © Copyright 2026 Jimena Segura.
 </footer>
 
